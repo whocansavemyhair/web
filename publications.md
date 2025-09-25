@@ -2,6 +2,7 @@
 layout: single
 permalink: /publications/
 author_profile: false
+sidebar: false
 classes: wide
 ---
 

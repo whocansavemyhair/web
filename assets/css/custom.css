@@ -1,18 +1,23 @@
 /* === 全局布局 === */
 :root { --container: 1100px; }
 
-/* 禁用 sidebar */
-.sidebar { display: none !important; }
-.page__sidebar { display: none !important; }
-.layout--single .page__content { margin-left: 0 !important; }
+/* 去掉 sidebar */
+.sidebar,
+.page__related {
+  display: none !important;
+}
 
-/* 主体容器居中 */
-.initial-content {
+/* 主体居中并设定 80% 宽度 */
+.page__content {
+  max-width: 80% !important;
   margin: 0 auto !important;
-  float: none !important;
-  width: 100% !important;
-  max-width: var(--container);
-  padding: 0 30px;
+  padding: 0 20px;
+}
+
+/* 避免 initial-content 偏移 */
+.initial-content {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .page,

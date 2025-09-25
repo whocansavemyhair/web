@@ -3,6 +3,8 @@ layout: single
 permalink: /group/
 author_profile: false
 classes: wide
+sidebar: false
+
 ---
 
 ## Principal Investigator
