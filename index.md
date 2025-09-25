@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "Yang Lab"
 permalink: /
 author_profile: false
+classes: wide
 ---
 
 <!-- Banner Section -->
@@ -16,7 +16,7 @@ author_profile: false
 <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px;">
 
   <!-- Left Column -->
-  <div style="flex: 2; min-width: 300px;">
+  <div style="flex: 2; min-width: 400px; padding-right:40px">
     <h2>Welcome to Yang Lab</h2>
     <p>
       We are a research group at Johns Hopkins University, Whiting School of Engineering.  
@@ -26,14 +26,14 @@ author_profile: false
 
     <h2>News</h2>
     <ul>
-      <li>🎉 Sep 2025: Our paper was accepted to <em>[Conference/Journal]</em>.</li>
+      <li>🎉 Sep 2025: three papers was accepted to <em>Neurips 2025</em> with two spotlights.</li>
       <li>🧑‍🎓 Jun 2025: Welcome new graduate students joining the lab!</li>
       <li>🏆 Mar 2025: Our project received the <em>[Award Name]</em>.</li>
     </ul>
   </div>
 
   <!-- Right Column -->
-  <div style="flex: 1; min-width: 250px;">
+  <div style="flex: 1; min-width: 250px; padding-left:40px">
     <h2>Contact</h2>
     <p>
       Johns Hopkins University, Whiting School of Engineering<br>
@@ -42,9 +42,8 @@ author_profile: false
 
     <h2>Links</h2>
     <ul>
-      <li><a href="https://scholar.google.com/" target="_blank">Google Scholar</a></li>
+      <li><a href="https://scholar.google.com/citations?user=IA_dRMIAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a></li>
       <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-      <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
     </ul>
   </div>
 </div>

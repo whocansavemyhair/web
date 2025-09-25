@@ -1,0 +1,22 @@
+/* Increase overall page width */
+.page__content,
+.page,
+.wrapper {
+  max-width: 1200px;   /* 控制整体宽度，可以改成 75% */
+  margin: 0 auto;      /* 保证居中 */
+  padding: 0 30px;     /* 两边留点空间 */
+}
+
+/* Adjust header width to match */
+.masthead,
+.masthead__inner-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Adjust banner (your top section) */
+.page__content > div:first-child {
+  max-width: 1200px;
+  margin: 0 auto;
+}
