@@ -4,14 +4,17 @@ permalink: /group/
 author_profile: false
 classes: wide
 sidebar: false
-
+title: ""
 ---
 
 ## Principal Investigator
-**Prof. [Your Name]**  
-- Position (e.g., Assistant Professor of [Department])  
+**Prof. Hao Frank Yang**  
+- Assistant Professor
+- Department of Civil and System Engineering
+- Johns Hopkins Data Science & AI Institute
+- Johns Hopkins University, Baltimore, MD
 - Research interests: [Keywords]  
-- [Google Scholar](#) | [GitHub](#) | [Email](mailto:haofrankyang@jhu.edu)
+- [Google Scholar](https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate) | [GitHub](#) | [Email](mailto:haofrankyang@jhu.edu)
 
 ---
 

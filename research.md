@@ -1,31 +1,27 @@
 ---
 layout: single
 permalink: /research/
+title: ""
 author_profile: false
 sidebar: false
 classes: wide
 ---
 
-# Our Research
 
-We focus on interdisciplinary research at the intersection of **[Your Main Fields]**.  
+We focus on interdisciplinary research at the intersection of **[computation models and systems]** in the areas of transportation and public health.  
 Our goal is to develop innovative solutions that address real-world challenges.
 
 ---
 
 ## Current Research Areas
 
-### 🧠 Topic A
+### Topic A
 - Brief description of Topic A.
 - Key projects or methods.
 
-### ⚙️ Topic B
+### Topic B
 - Brief description of Topic B.
 - Ongoing collaborations.
-
-### 🌍 Topic C
-- Brief description of Topic C.
-- Potential applications and impact.
 
 ---
 

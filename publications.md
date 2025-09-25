@@ -1,12 +1,12 @@
 ---
 layout: single
 permalink: /publications/
+title: ""
 author_profile: false
 sidebar: false
 classes: wide
 ---
 
-# Publications
 
 We regularly publish in leading journals and conferences. Below is a selection of our recent work.
 
