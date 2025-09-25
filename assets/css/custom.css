@@ -1,44 +1,95 @@
-/* === 全局布局 === */
-:root { --container: 1100px; }
+/* ===========================
+   全局字体与基础
+   =========================== */
+html {
+  font-size: 16px; /* 默认字体大小 */
+}
 
-/* 去掉 sidebar */
+/* 定义全局容器宽度 */
+:root {
+  --container: 80%; /* 80% 宽度 */
+}
+
+/* ===========================
+   移除 Sidebar 占位
+   =========================== */
 .sidebar,
+.page__sidebar,
+.sidebar__left,
+.sidebar__right,
 .page__related {
   display: none !important;
 }
 
-/* 主体居中并设定 80% 宽度 */
-.page__content {
-  max-width: 80% !important;
-  margin: 0 auto !important;
-  padding: 0 20px;
-}
-
-/* 避免 initial-content 偏移 */
+/* 避免单页 layout 保留空白 */
+.layout--single .page__content,
 .initial-content {
   margin-left: 0 !important;
   margin-right: 0 !important;
+  float: none !important;
 }
 
-.page,
+/* ===========================
+   主体容器宽度控制
+   =========================== */
 .wrapper,
+.initial-content,
+.page,
+.archive,
+.page__inner-wrap,
+.page__content {
+  width: var(--container) !important;   /* 宽度 80% */
+  max-width: none !important;           /* 不受主题 max-width 限制 */
+  margin: 0 auto !important;            /* 居中 */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ===========================
+   Header（导航栏）对齐
+   =========================== */
 .masthead,
 .masthead__inner-wrap {
-  max-width: var(--container) !important;
+  width: var(--container) !important;
+  max-width: none !important;
   margin: 0 auto !important;
-  padding: 0 30px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-/* === Header 修复 === */
-.masthead__inner-wrap {
+/* Greedy-nav 结构 (Minimal Mistakes 默认导航) */
+.greedy-nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* 左 logo + 右菜单 */
 }
-.masthead__menu ul {
+.greedy-nav .visible-links {
   display: flex;
-  gap: 28px;
+  gap: 28px;        /* 链接间距 */
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
+}
+.greedy-nav a {
+  text-decoration: none;
+}
+
+/* ===========================
+   Banner 对齐
+   =========================== */
+.page__content > div:first-child {
+  width: var(--container) !important;
+  margin: 0 auto;
+}
+
+/* ===========================
+   响应式优化
+   =========================== */
+@media (max-width: 900px) {
+  :root {
+    --container: 92%; /* 移动端更宽 */
+  }
+  .greedy-nav .visible-links {
+    gap: 16px;
+  }
 }
