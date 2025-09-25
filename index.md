@@ -2,19 +2,20 @@
 layout: single
 permalink: /
 author_profile: false
+sidebar: false   # 保证彻底关闭 sidebar
 classes: wide
 ---
 
 <!-- Banner Section -->
-<div style="text-align:center; background-color:#0a5771; color:white; padding:40px; border-radius:8px;">
+<div style="text-align:center; background-color:#0a5771; color:white; padding:40px; border-radius:8px; margin-bottom:30px;">
   <h2>SELECTED PAPERS & PROJECT HIGHLIGHTS</h2>
   <p>Showcase representative projects, key research topics, or rotating banners here.</p>
 </div>
 
----
-
+<!-- Two-column layout -->
 <div class="home-columns">
 
+  <!-- Left Column -->
   <div class="left-col">
     <h2>Welcome to Yang Lab</h2>
     <p>
@@ -25,7 +26,7 @@ classes: wide
 
     <h2>News</h2>
     <ul>
-      <li>🎉 Sep 2025: three papers was accepted to <em>Neurips 2025</em> with two spotlights.</li>
+      <li>🎉 Sep 2025: Three papers accepted to <em>NeurIPS 2025</em>, with two spotlights.</li>
       <li>🧑‍🎓 Jun 2025: Welcome new graduate students joining the lab!</li>
       <li>🏆 Mar 2025: Our project received the <em>[Award Name]</em>.</li>
     </ul>
@@ -36,7 +37,7 @@ classes: wide
     <h2>Contact</h2>
     <p>
       Johns Hopkins University, Whiting School of Engineering<br>
-      📧 haofrankyang@jhu.edu
+      📧 <a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a>
     </p>
 
     <h2>Links</h2>
@@ -45,4 +46,5 @@ classes: wide
       <li><a href="https://github.com/" target="_blank">GitHub</a></li>
     </ul>
   </div>
+
 </div>
