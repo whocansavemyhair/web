@@ -1,95 +1,93 @@
 /* ===========================
-   全局字体与基础
+   全局基础设置
    =========================== */
+
+/* 全局字体大小，避免过大 */
 html {
-  font-size: 16px; /* 默认字体大小 */
-}
-
-/* 定义全局容器宽度 */
-:root {
-  --container: 100%; /* 80% 宽度 */
+  font-size: 16px;
 }
 
 /* ===========================
-   移除 Sidebar 占位
+   页面与导航栏统一宽度
    =========================== */
-.sidebar,
-.page__sidebar,
-.sidebar__left,
-.sidebar__right,
-.page__related {
-  display: none !important;
-}
 
-/* 避免单页 layout 保留空白 */
-.layout--single .page__content,
-.initial-content {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  float: none !important;
-}
-
-/* ===========================
-   主体容器宽度控制
-   =========================== */
+/* 保证主体、header、footer 同宽 */
 .wrapper,
 .initial-content,
 .page,
 .archive,
 .page__inner-wrap,
-.page__content {
-  width: var(--container) !important;   /* 宽度 80% */
-  max-width: none !important;           /* 不受主题 max-width 限制 */
-  margin: 0 auto !important;            /* 居中 */
-  padding-left: 0;
-  padding-right: 0;
+.page__content,
+.masthead,
+.masthead__inner-wrap,
+.footer {
+  width: 100% !important;        /* 占满可用宽度 */
+  max-width: 1400px !important;  /* 大屏幕时最多 1400px */
+  margin: 0 auto !important;     /* 居中对齐 */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* 移动端优化 */
+@media (max-width: 900px) {
+  .wrapper,
+  .initial-content,
+  .page,
+  .archive,
+  .page__inner-wrap,
+  .page__content,
+  .masthead,
+  .masthead__inner-wrap,
+  .footer {
+    max-width: 100% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 /* ===========================
-   Header（导航栏）对齐
+   Sidebar 彻底禁用
    =========================== */
-.masthead,
-.masthead__inner-wrap {
-  width: var(--container) !important;
-  max-width: none !important;
+.sidebar {
+  display: none !important;
+}
+.initial-content {
   margin: 0 auto !important;
-  padding-left: 0;
-  padding-right: 0;
+  float: none !important;
 }
 
-/* Greedy-nav 结构 (Minimal Mistakes 默认导航) */
-.greedy-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ===========================
+   Header 菜单修复
+   =========================== */
+
+/* 保证导航栏左对齐 Yang Lab，右对齐 Teaching */
+.masthead__menu {
+  float: right !important;
+  text-align: right !important;
 }
-.greedy-nav .visible-links {
+.masthead__menu ul {
   display: flex;
-  gap: 28px;        /* 链接间距 */
-  list-style: none;
+  gap: 30px;       /* 菜单间距 */
   margin: 0;
   padding: 0;
 }
-.greedy-nav a {
-  text-decoration: none;
-}
 
 /* ===========================
-   Banner 对齐
+   首页两列布局
    =========================== */
-.page__content > div:first-child {
-  width: var(--container) !important;
-  margin: 0 auto;
+.home-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 30px;
 }
 
-/* ===========================
-   响应式优化
-   =========================== */
-@media (max-width: 900px) {
-  :root {
-    --container: 92%; /* 移动端更宽 */
-  }
-  .greedy-nav .visible-links {
-    gap: 16px;
-  }
+.home-columns .left-col {
+  flex: 2;
+  min-width: 400px;
+}
+
+.home-columns .right-col {
+  flex: 1;
+  min-width: 250px;
 }
