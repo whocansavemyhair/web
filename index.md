@@ -33,7 +33,7 @@ classes: wide
     <h2>Welcome to Yang Lab</h2>
     <p>
       We are a research group at Johns Hopkins University, Whiting School of Engineering.
-      Our work focuses on <strong>[Your Research Areas]</strong>, including topics such as [Topic A], [Topic B], and [Topic C].
+      Our work focuses on <strong>[computation systems and models]</strong> in the areas of transportation and public health, including topics such as [optimal computation model] and [optimal computation systems].
       Please visit our <a href="{{ '/research/' | relative_url }}">Research</a> and
       <a href="{{ '/publications/' | relative_url }}">Publications</a> pages for more details.
     </p>
@@ -49,7 +49,8 @@ classes: wide
   <aside>
     <h2>Contact</h2>
     <p>
-      Johns Hopkins University, Whiting School of Engineering<br>
+      Department of Civil and System Engineering (CaSE)
+      Johns Hopkins University<br>
       📧 <a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a>
     </p>
 
