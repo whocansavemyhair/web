@@ -1,77 +1,40 @@
-/* ================================
-   GLOBAL LAYOUT
-   ================================ */
-
-/* Force consistent max width across site */
-.page__content,
-.page,
-.wrapper,
-.masthead,
-.masthead__inner-wrap,
-.initial-content {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 30px !important;
-  box-sizing: border-box;
+/* 全局字体缩放，避免页面过大 */
+html {
+  font-size: 16px;
 }
 
-/* Remove sidebar entirely */
+/* 页面整体宽度 */
+.page,
+.wrapper,
+.initial-content,
+.page__content {
+  max-width: 1000px !important; /* 1000 比 1200 看起来更合适 */
+  margin: 0 auto !important;
+  padding: 0 20px;
+}
+
+/* 禁止 sidebar */
 .sidebar {
   display: none !important;
 }
-
-/* Make sure content stretches full width */
-.layout--single .initial-content,
-.layout--home .initial-content {
-  width: 100% !important;
+.initial-content {
   margin: 0 auto !important;
+  float: none !important;
 }
 
-/* ================================
-   HEADER
-   ================================ */
-.masthead {
-  border-bottom: 1px solid #ddd;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
+/* Header 样式修复 */
+.masthead,
 .masthead__inner-wrap {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 20px;
+}
+.masthead__menu {
+  float: none !important;
+  text-align: left !important;
+}
+.masthead__menu ul {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* ================================
-   BANNER
-   ================================ */
-.page__content > div:first-child {
-  max-width: 1200px !important;
-  margin: 20px auto;
-  border-radius: 8px;
-}
-
-/* ================================
-   FLEX COLUMNS (WELCOME + CONTACT)
-   ================================ */
-.home-columns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 30px;
-}
-
-.home-columns .left-col {
-  flex: 2;
-  min-width: 400px;
-}
-
-.home-columns .right-col {
-  flex: 1;
-  min-width: 250px;
-}
-
-/* Padding between text blocks */
-.home-columns h2 {
-  margin-top: 0;
+  gap: 20px;
+  margin-left: 40px;
 }
