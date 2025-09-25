@@ -1,3 +1,23 @@
+title: "Yang Lab"
+email: haofrankyang@jhu.edu
+description: "Research at Johns Hopkins University"
+url: "https://whocansavemyhair.github.io"   # 改成你的 GitHub 用户名
+baseurl: "/web"                 # 如果仓库名是 yourusername.github.io，这里要留空 ""
+
 remote_theme: mmistakes/minimal-mistakes
+
 plugins:
   - jekyll-include-cache
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: /
+  - title: "Research"
+    url: /research/
+  - title: "Publications"
+    url: /publications/
+  - title: "Team"
+    url: /team/
+  - title: "Teaching"
+    url: /teaching/
