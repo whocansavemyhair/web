@@ -1,79 +1,32 @@
-/* ---------------------------
-   全局页面设置
---------------------------- */
+/* ---- 全站容器：居中 & 统一宽度 ---- */
+:root { --container: 1100px; }
 
-/* 页面字体大小（可调节整体缩放） */
-html {
-  font-size: 16px;
+.sidebar { display: none !important; }                 /* 彻底禁用 sidebar */
+.initial-content {                                     /* 主体容器 */
+  margin: 0 auto !important; float: none !important;
+  width: 100% !important; max-width: var(--container);
+  padding: 0 30px;
 }
+.layout--single .page__content { margin-left: 0 !important; } /* 防止被左移 */
 
-/* 主体居中且禁止 sidebar */
-.sidebar {
-  display: none !important;
-}
-
-.initial-content {
-  margin: 0 auto !important;   /* 居中 */
-  float: none !important;      /* 禁止 float */
-  width: 100% !important;
-  max-width: 1200px;           /* 控制最大宽度 */
-  padding: 0 30px;             /* 左右留白 */
-}
-
-/* 页面内容宽度 */
-.page__content {
-  max-width: 100% !important;  /* 占满容器 */
-  margin: 0 auto !important;
-  padding: 0 20px;
-}
-
-@media (max-width: 768px) {
-  .page__content {
-    max-width: 95% !important;
-    padding: 0 10px;
-  }
-}
-
-/* ---------------------------
-   Header 样式
---------------------------- */
+.page,
+.wrapper,
 .masthead,
 .masthead__inner-wrap {
-  max-width: 1200px !important;
+  max-width: var(--container) !important;
   margin: 0 auto !important;
   padding: 0 30px;
 }
 
-/* Logo（Yang Lab）靠左，导航菜单靠右 */
-.masthead__menu {
-  float: right !important;
-  text-align: right !important;
+/* ---- Header：左侧站名 + 右侧菜单（保持一行）---- */
+.masthead__inner-wrap{
+  display:flex; align-items:center; justify-content:space-between;
+}
+.masthead__menu ul{
+  display:flex; gap:28px; margin:0; padding:0; list-style:none;
 }
 
-.masthead__menu ul {
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* ---------------------------
-   Home 页面两列布局
---------------------------- */
-.home-columns {
-  display: flex;
-  flex-wrap: wrap;       /* 小屏幕自动换行 */
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.left-col {
-  flex: 2;
-  min-width: 400px;
-}
-
-.right-col {
-  flex: 1;
-  min-width: 250px;
-}
+/* ---- 首页两列（若你不想依赖 index 内联样式，也可放这里）----
+.home-grid{ display:grid; grid-template-columns:2fr 1fr; gap:40px; align-items:start; }
+@media (max-width:900px){ .home-grid{ grid-template-columns:1fr; } }
+*/
