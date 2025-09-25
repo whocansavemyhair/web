@@ -1,13 +1,19 @@
-/* ---- 全站容器：居中 & 统一宽度 ---- */
+/* === 全局布局 === */
 :root { --container: 1100px; }
 
-.sidebar { display: none !important; }                 /* 彻底禁用 sidebar */
-.initial-content {                                     /* 主体容器 */
-  margin: 0 auto !important; float: none !important;
-  width: 100% !important; max-width: var(--container);
+/* 禁用 sidebar */
+.sidebar { display: none !important; }
+.page__sidebar { display: none !important; }
+.layout--single .page__content { margin-left: 0 !important; }
+
+/* 主体容器居中 */
+.initial-content {
+  margin: 0 auto !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: var(--container);
   padding: 0 30px;
 }
-.layout--single .page__content { margin-left: 0 !important; } /* 防止被左移 */
 
 .page,
 .wrapper,
@@ -18,15 +24,16 @@
   padding: 0 30px;
 }
 
-/* ---- Header：左侧站名 + 右侧菜单（保持一行）---- */
-.masthead__inner-wrap{
-  display:flex; align-items:center; justify-content:space-between;
+/* === Header 修复 === */
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 左 logo + 右菜单 */
 }
-.masthead__menu ul{
-  display:flex; gap:28px; margin:0; padding:0; list-style:none;
+.masthead__menu ul {
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
-/* ---- 首页两列（若你不想依赖 index 内联样式，也可放这里）----
-.home-grid{ display:grid; grid-template-columns:2fr 1fr; gap:40px; align-items:start; }
-@media (max-width:900px){ .home-grid{ grid-template-columns:1fr; } }
-*/

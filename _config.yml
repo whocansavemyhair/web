@@ -9,6 +9,14 @@ remote_theme: mmistakes/minimal-mistakes
 plugins:
   - jekyll-include-cache
 
+# 禁用默认 sidebar
+defaults:
+  - scope:
+      path: ""
+    values:
+      sidebar: false
+
+
 # Navigation
 navigation:
   - title: "Home"
