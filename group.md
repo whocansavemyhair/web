@@ -1,15 +1,8 @@
 ---
 layout: single
-title: "Group"
 permalink: /group/
 author_profile: false
 classes: wide
----
-
-# Our Team
-
-We are a diverse group of researchers, graduate students, and collaborators.
-
 ---
 
 ## Principal Investigator
