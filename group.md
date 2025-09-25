@@ -12,7 +12,8 @@ title: ""
 - Assistant Professor
 - Department of Civil and System Engineering
 - Johns Hopkins Data Science & AI Institute
-- Johns Hopkins University, Baltimore, MD
+- Johns Hopkins University, Baltimore, MD  
+<br>
 [Google Scholar](https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate) | [GitHub](#) | [Email](mailto:haofrankyang@jhu.edu)
 
 ---
