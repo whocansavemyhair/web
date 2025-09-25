@@ -20,3 +20,9 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* Remove default left margin caused by sidebar */
+.initial-content {
+  margin-left: 0 !important;
+}
+
