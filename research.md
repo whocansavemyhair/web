@@ -1,14 +1,14 @@
 ---
 layout: single
 permalink: /research/
-title: ""
+title: "Research"
 author_profile: false
 sidebar: false
 classes: wide
 ---
 
 
-We focus on interdisciplinary research at the intersection of **[computation models and systems]** in the areas of transportation and public health.  
+We focus on interdisciplinary research at the intersection of **computation models and systems** in the areas of transportation and public health.  
 Our goal is to develop innovative solutions that address real-world challenges.
 
 ---

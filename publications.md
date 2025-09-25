@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /publications/
-title: ""
+title: "Publications"
 author_profile: false
 sidebar: false
 classes: wide

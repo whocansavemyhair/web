@@ -47,7 +47,6 @@ classes: wide
   <aside>
     <h2>Contact</h2>
     <p>
-      Department of Civil and System Engineering (CaSE)<br>
       Johns Hopkins University<br>
       📧 <a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a>
     </p>
