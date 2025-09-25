@@ -9,10 +9,13 @@ title: ""
 
 ## Principal Investigator
 **Prof. Hao Frank Yang**  
-Assistant Professor<br>
-Department of Civil and System Engineering<br>
-Johns Hopkins Data Science & AI Institute<br>
-Johns Hopkins University, Baltimore, MD<br>
+Assistant Professor  
+
+Department of Civil and System Engineering  
+
+Johns Hopkins Data Science & AI Institute  
+
+Johns Hopkins University, Baltimore, MD  
 
 [Google Scholar](https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate) | [GitHub](#) | [Email](mailto:haofrankyang@jhu.edu)
 
