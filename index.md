@@ -13,10 +13,9 @@ classes: wide
 
 ---
 
-<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px;">
+<div class="home-columns">
 
-  <!-- Left Column -->
-  <div style="flex: 2; min-width: 400px; padding-right:40px">
+  <div class="left-col">
     <h2>Welcome to Yang Lab</h2>
     <p>
       We are a research group at Johns Hopkins University, Whiting School of Engineering.  
@@ -33,7 +32,7 @@ classes: wide
   </div>
 
   <!-- Right Column -->
-  <div style="flex: 1; min-width: 250px; padding-left:40px">
+  <div class="right-col">
     <h2>Contact</h2>
     <p>
       Johns Hopkins University, Whiting School of Engineering<br>

@@ -1,28 +1,77 @@
-/* Increase overall page width */
+/* ================================
+   GLOBAL LAYOUT
+   ================================ */
+
+/* Force consistent max width across site */
 .page__content,
 .page,
-.wrapper {
-  max-width: 1200px;   /* 控制整体宽度，可以改成 75% */
-  margin: 0 auto;      /* 保证居中 */
-  padding: 0 30px;     /* 两边留点空间 */
-}
-
-/* Adjust header width to match */
+.wrapper,
 .masthead,
-.masthead__inner-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-/* Adjust banner (your top section) */
-.page__content > div:first-child {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Remove default left margin caused by sidebar */
+.masthead__inner-wrap,
 .initial-content {
-  margin-left: 0 !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 30px !important;
+  box-sizing: border-box;
 }
 
+/* Remove sidebar entirely */
+.sidebar {
+  display: none !important;
+}
+
+/* Make sure content stretches full width */
+.layout--single .initial-content,
+.layout--home .initial-content {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+.masthead {
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ================================
+   BANNER
+   ================================ */
+.page__content > div:first-child {
+  max-width: 1200px !important;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+/* ================================
+   FLEX COLUMNS (WELCOME + CONTACT)
+   ================================ */
+.home-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.home-columns .left-col {
+  flex: 2;
+  min-width: 400px;
+}
+
+.home-columns .right-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Padding between text blocks */
+.home-columns h2 {
+  margin-top: 0;
+}
