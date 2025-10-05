@@ -27,6 +27,37 @@ html {
   padding-left: 20px;
   padding-right: 20px;
 }
+/* 固定 header 到页面顶部 */
+.masthead {
+  position: fixed;        /* 关键：固定在顶部 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;          /* 确保在最上层 */
+  background-color: #fff; /* 背景填充，避免滚动时文字穿透 */
+  border-bottom: 1px solid #e0e0e0;
+  
+  /* 保持主体对齐 */
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* 修正内边距，避免导航项被挤压 */
+.masthead__inner-wrap {
+  padding: 10px 0;
+}
+
+/* 给主体内容增加顶部留白，避免被 header 遮住 */
+.page__content {
+  margin-top: 80px; /* 这个值取决于导航栏高度，可微调 */
+}
+.masthead {
+  transition: box-shadow 0.3s ease;
+}
+.masthead.is-sticky {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 
 /* 移动端优化 */
 @media (max-width: 900px) {
@@ -186,6 +217,12 @@ html {
 }
 .news-card .read-more:hover {
   text-decoration: underline;
+}
+
+/* long & single：无论列数多少，都占满整行 */
+.news-card.long,
+.news-card.single {
+  grid-column: 1 / -1;  /* 比 span 2 更稳，自动跨越所有列 */
 }
 
 /* 小屏降级为单列 */

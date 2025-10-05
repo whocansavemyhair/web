@@ -1,0 +1,9 @@
+<script src="{{ '/assets/js/news.js' | relative_url }}"></script>
+
+<script>
+document.addEventListener('scroll', () => {
+  const header = document.querySelector('.masthead');
+  if (window.scrollY > 10) header.classList.add('is-sticky');
+  else header.classList.remove('is-sticky');
+});
+</script>
