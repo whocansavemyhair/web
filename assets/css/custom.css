@@ -1,67 +1,75 @@
-/* ========= 统一容器宽度（你也可以改成 1200px 等） ========= */
-:root { --container-max: 1400px; --container-pad: 20px; }
+/* ===========================
+   全局基础设置
+   =========================== */
 
-/* 让需要对齐的内层容器严格一致 */
-.masthead__inner-wrap,
+html {
+  font-size: 16px;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===========================
+   Header 全宽 + 固定在顶部（仅此处改动）
+   =========================== */
+
+/* 移除上层容器限制，确保 header 可以全屏展开 */
+.initial-content,
+.site-header,
+.wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 主体、footer 保持居中布局，但不影响 header */
 .page,
 .archive,
 .page__inner-wrap,
 .page__content,
+.masthead__inner-wrap,
 .footer {
-  max-width: var(--container-max) !important;
   width: 100% !important;
+  max-width: 1400px !important;
   margin: 0 auto !important;
-  padding-left: var(--container-pad);
-  padding-right: var(--container-pad);
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* ========= Header：与主体同宽且不被滚动条影响 ========= */
-/* 背景可以全宽，但元素不要用 100vw，避免溢出导致“看起来更宽” */
+/* Header 核心样式（改动：position: sticky；width: 100%） */
 .masthead {
-  position: sticky;      /* 由 fixed 改为 sticky：吸顶且不盖内容 */
+  position: sticky;         /* 改自 fixed：吸顶且不遮挡首屏内容 */
   top: 0;
   left: 0;
   right: 0;
-  width: 100% !important;   /* 由 100vw 改为 100% */
+  width: 100% !important;   /* 改自 100vw：避免比主体更宽 */
   z-index: 9999;
   margin: 0;
-  background-color: #fff;
+  background-color: #fff;   /* 避免透底 */
   border-bottom: 1px solid #e0e0e0;
   transition: box-shadow 0.3s ease;
 }
 
-/* 内层用 flex 水平分布，和主体完全同宽 */
 .masthead__inner-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* 让左侧标题在最左，右侧菜单靠右 */
-  gap: 24px;
-  padding: 10px var(--container-pad);
-  max-width: var(--container-max);
+  max-width: 1400px;
   margin: 0 auto;
-}
-
-/* 取消 float，改用 flex 的“自动左边距”把菜单推到最右 */
-.masthead__menu {
-  float: none !important;
-  margin-left: auto;        /* 关键：把菜单推到最右，使左右边界与正文对齐 */
-  text-align: right;
-}
-
-/* 菜单本身用横向排列 */
-.masthead__menu ul {
+  padding: 10px 20px;
   display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  flex-wrap: wrap;          /* 防止小屏过长溢出 */
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ========= 取消对正文的“人为上边距补偿” ========= */
-/* 因为 header 已改为 sticky，不再压住内容 */
+.masthead.is-sticky {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 避免 header 遮住主体内容（保留你的原设置） */
 .page__content {
-  margin-top: 0 !important;
+  margin-top: 90px; /* 根据导航栏高度微调 */
 }
 
 /* ===========================
@@ -76,7 +84,7 @@
 }
 
 /* ===========================
-   Header 菜单布局
+   Header 菜单布局（保持原样）
    =========================== */
 .masthead__menu {
   float: right !important;
@@ -91,7 +99,7 @@
 }
 
 /* ===========================
-   首页两列布局
+   首页两列布局（保持原样）
    =========================== */
 .home-columns {
   display: flex;
@@ -109,7 +117,7 @@
 }
 
 /* ===========================
-   News Grid 样式
+   News Grid 样式（保持原样）
    =========================== */
 .news-section {
   margin-top: 10px;
@@ -164,7 +172,7 @@
   text-decoration: underline;
 }
 
-/* 移动端优化 */
+/* 移动端优化（保持原样） */
 @media (max-width: 900px) {
   .wrapper,
   .initial-content,
