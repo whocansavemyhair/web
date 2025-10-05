@@ -38,30 +38,32 @@ classes: wide
       <a href="{{ '/publications/' | relative_url }}">Publications</a> pages for more details.
     </p>
 
-    ## News
+    News
 
-<div class="news-grid">
+    <section class="news-section">
+      <div class="news-grid">
 
-  <div class="news-card">
-    <h3><a href="/news/2025-09-article1/">🎉 Our paper accepted to NeurIPS 2025</a></h3>
-    <p class="news-date">Sep 2025</p>
-    <p class="news-excerpt">We are thrilled to announce that our work on XYZ was accepted to NeurIPS 2025. <a href="/news/2025-09-article1/">Read more →</a></p>
-  </div>
+        <!-- 短卡片：标题 + 摘要 -->
+        <article class="news-card short">
+          <h3>🎉 Paper accepted to NeurIPS 2025</h3>
+          <p>Our paper on XYZ was accepted to NeurIPS 2025.</p>
+        </article>
 
-  <div class="news-card">
-    <h3><a href="/news/2025-06-joining-lab/">🧑‍🎓 Welcome new students</a></h3>
-    <p class="news-date">Jun 2025</p>
-    <p class="news-excerpt">We welcome new graduate students joining the lab in summer 2025. <a href="/news/2025-06-joining-lab/">Read more →</a></p>
-  </div>
+        <!-- 短卡片：标题 + 摘要 -->
+        <article class="news-card short">
+          <h3>👩‍🎓 Welcome new students</h3>
+          <p>We welcome new graduate students joining the lab in summer 2025.</p>
+        </article>
 
-  <div class="news-card">
-    <h3><a href="/news/2025-03-award/">🏆 Project awarded grant</a></h3>
-    <p class="news-date">Mar 2025</p>
-    <p class="news-excerpt">Our project received the [Award Name] grant to further develop … <a href="/news/2025-03-award/">Read more →</a></p>
-  </div>
+        <!-- 长卡片：标题 + 摘要 + Read more（占两列） -->
+        <article class="news-card long">
+          <h3>🏆 Project awarded grant</h3>
+          <p>Our project received the [Award Name] grant to further develop …</p>
+          <a class="read-more" href="/web/news/2025-03-award/">Read more →</a>
+        </article>
 
-</div>
-
+      </div>
+    </section>
   </section>
 
   <aside>
