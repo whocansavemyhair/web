@@ -29,22 +29,22 @@ html {
 }
 /* 固定 header 到页面顶部 */
 .masthead {
-  position: fixed;        /* 关键：固定在顶部 */
+  position: sticky;        /* 固定在顶部 */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;          /* 确保在最上层 */
-  background-color: #fff; /* 背景填充，避免滚动时文字穿透 */
+  z-index: 9999;
+  width: 100%;             /* 占满屏幕宽度 */
+  background-color: #fff;  /* 避免透底 */
   border-bottom: 1px solid #e0e0e0;
-  
-  /* 保持主体对齐 */
-  max-width: 80%;
-  margin: 0 auto;
+  transition: box-shadow 0.3s ease;
 }
 
-/* 修正内边距，避免导航项被挤压 */
+/* 仅约束 header 内层内容，与主体一致宽度 */
 .masthead__inner-wrap {
-  padding: 10px 0;
+  max-width: 1400px;       /* 与上方 .wrapper/.page 等保持一致 */
+  margin: 0 auto;
+  padding: 10px 20px;
 }
 
 /* 给主体内容增加顶部留白，避免被 header 遮住 */
