@@ -7,13 +7,20 @@ html {
   font-size: 16px;
 }
 
-/* ===========================
-   页面与导航栏统一宽度
-   =========================== */
 
-/* 保证主体、header、footer 同宽 */
-.wrapper,
+/* =======================================
+   强制 Header 完全横跨浏览器宽度
+   ======================================= */
+
+/*  移除所有上层容器的宽度限制 */
 .initial-content,
+.site-header,
+.wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .page,
 .archive,
 .page__inner-wrap,
@@ -34,7 +41,8 @@ html {
   left: 0;
   right: 0;
   z-index: 9999;
-  width: 100%;             /* 占满屏幕宽度 */
+  width: 100vw;             /* 占满屏幕宽度 */
+  margin: 0;
   background-color: #fff;  /* 避免透底 */
   border-bottom: 1px solid #e0e0e0;
   transition: box-shadow 0.3s ease;
@@ -45,6 +53,12 @@ html {
   max-width: 1400px;       /* 与上方 .wrapper/.page 等保持一致 */
   margin: 0 auto;
   padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body {
+  overflow-x: hidden;
 }
 
 /* 给主体内容增加顶部留白，避免被 header 遮住 */
