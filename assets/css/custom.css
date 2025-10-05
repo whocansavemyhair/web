@@ -25,7 +25,6 @@ html {
 .archive,
 .page__inner-wrap,
 .page__content,
-.masthead,
 .masthead__inner-wrap,
 .footer {
   width: 100% !important;        /* 占满可用宽度 */
