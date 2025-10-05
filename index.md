@@ -38,10 +38,30 @@ classes: wide
       <a href="{{ '/publications/' | relative_url }}">Publications</a> pages for more details.
     </p>
 
-    <h2>News</h2>
-    <ul>
-      <li>🎉 Sep 2025: Three papers were accepted to <em>NeurIPS 2025</em> with two spotlights.</li>
-    </ul>
+    ## News
+
+<div class="news-grid">
+
+  <div class="news-card">
+    <h3><a href="/news/2025-09-article1/">🎉 Our paper accepted to NeurIPS 2025</a></h3>
+    <p class="news-date">Sep 2025</p>
+    <p class="news-excerpt">We are thrilled to announce that our work on XYZ was accepted to NeurIPS 2025. <a href="/news/2025-09-article1/">Read more →</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3><a href="/news/2025-06-joining-lab/">🧑‍🎓 Welcome new students</a></h3>
+    <p class="news-date">Jun 2025</p>
+    <p class="news-excerpt">We welcome new graduate students joining the lab in summer 2025. <a href="/news/2025-06-joining-lab/">Read more →</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3><a href="/news/2025-03-award/">🏆 Project awarded grant</a></h3>
+    <p class="news-date">Mar 2025</p>
+    <p class="news-excerpt">Our project received the [Award Name] grant to further develop … <a href="/news/2025-03-award/">Read more →</a></p>
+  </div>
+
+</div>
+
   </section>
 
   <aside>
