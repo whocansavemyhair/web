@@ -2,91 +2,74 @@
    全局基础设置
    =========================== */
 
-/* 全局字体大小，避免过大 */
 html {
   font-size: 16px;
 }
 
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-/* =======================================
-   强制 Header 完全横跨浏览器宽度
-   ======================================= */
+/* ===========================
+   Header 全宽 + 固定在顶部
+   =========================== */
 
-/*  移除所有上层容器的宽度限制 */
+/* 移除上层容器限制，确保 header 可以全屏展开 */
 .initial-content,
 .site-header,
 .wrapper {
   max-width: 100% !important;
   width: 100% !important;
-  padding: 0 !important;
   margin: 0 !important;
+  padding: 0 !important;
 }
+
+/* 主体、footer 保持居中布局，但不影响 header */
 .page,
 .archive,
 .page__inner-wrap,
 .page__content,
 .masthead__inner-wrap,
 .footer {
-  width: 100% !important;        /* 占满可用宽度 */
-  max-width: 1400px !important;  /* 大屏幕时最多 1400px */
-  margin: 0 auto !important;     /* 居中对齐 */
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
   padding-left: 20px;
   padding-right: 20px;
 }
-/* 固定 header 到页面顶部 */
+
+/* Header 核心样式 */
 .masthead {
-  position: sticky;        /* 固定在顶部 */
+  position: fixed;           /* 永远固定在顶部 */
   top: 0;
   left: 0;
   right: 0;
+  width: 100vw !important;   /* 横跨整个视口 */
   z-index: 9999;
-  width: 100vw;             /* 占满屏幕宽度 */
   margin: 0;
-  background-color: #fff;  /* 避免透底 */
+  background-color: #fff;    /* 避免透底 */
   border-bottom: 1px solid #e0e0e0;
   transition: box-shadow 0.3s ease;
 }
 
-/* 仅约束 header 内层内容，与主体一致宽度 */
 .masthead__inner-wrap {
-  max-width: 1400px;       /* 与上方 .wrapper/.page 等保持一致 */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-body {
-  overflow-x: hidden;
-}
 
-/* 给主体内容增加顶部留白，避免被 header 遮住 */
-.page__content {
-  margin-top: 80px; /* 这个值取决于导航栏高度，可微调 */
-}
-.masthead {
-  transition: box-shadow 0.3s ease;
-}
 .masthead.is-sticky {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-
-/* 移动端优化 */
-@media (max-width: 900px) {
-  .wrapper,
-  .initial-content,
-  .page,
-  .archive,
-  .page__inner-wrap,
-  .page__content,
-  .masthead,
-  .masthead__inner-wrap,
-  .footer {
-    max-width: 100% !important;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
+/* 避免 header 遮住主体内容 */
+.page__content {
+  margin-top: 90px; /* 根据导航栏高度微调 */
 }
 
 /* ===========================
@@ -101,19 +84,18 @@ body {
 }
 
 /* ===========================
-   Header 菜单修复
+   Header 菜单布局
    =========================== */
-
-/* 保证导航栏左对齐 Yang Lab，右对齐 Teaching */
 .masthead__menu {
   float: right !important;
   text-align: right !important;
 }
 .masthead__menu ul {
   display: flex;
-  gap: 30px;       /* 菜单间距 */
+  gap: 30px;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 /* ===========================
@@ -125,76 +107,30 @@ body {
   gap: 40px;
   margin-top: 30px;
 }
-
 .home-columns .left-col {
   flex: 2;
   min-width: 400px;
 }
-
 .home-columns .right-col {
   flex: 1;
   min-width: 250px;
 }
 
-
-/* ---------- News Grid 样式 ---------- */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-
-.news-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: box-shadow 0.2s ease;
-}
-
-.news-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.news-card h3 {
-  margin-top: 0;
-  font-size: 1.25rem;
-}
-
-.news-card .news-date {
-  font-size: 0.875rem;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.news-card .news-excerpt {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* 小屏幕优化 */
-@media (max-width: 600px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* ===== News Grid ===== */
+/* ===========================
+   News Grid 样式
+   =========================== */
 .news-section {
   margin-top: 10px;
 }
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 两列 */
-  gap: 20px;                              /* 卡片间距 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-/* 基础卡片 */
 .news-card {
   background: #ffffff;
   border: 1px solid #D9D9D9;
@@ -203,22 +139,26 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   transition: transform .15s ease, box-shadow .15s ease;
 }
+
 .news-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
+
 .news-card h3 {
   margin: 0 0 8px 0;
   font-size: 1.15rem;
 }
+
 .news-card p {
   margin: 0;
   line-height: 1.55;
 }
 
-/* 长卡片 = 占两列（宽度=两张短卡+中间gap）*/
-.news-card.long {
-  grid-column: span 2;
+/* 长卡片 = 跨越两列或整行 */
+.news-card.long,
+.news-card.single {
+  grid-column: 1 / -1;
 }
 
 /* Read more 链接样式 */
@@ -232,14 +172,26 @@ body {
   text-decoration: underline;
 }
 
-/* long & single：无论列数多少，都占满整行 */
-.news-card.long,
-.news-card.single {
-  grid-column: 1 / -1;  /* 比 span 2 更稳，自动跨越所有列 */
-}
+/* 移动端优化 */
+@media (max-width: 900px) {
+  .wrapper,
+  .initial-content,
+  .page,
+  .archive,
+  .page__inner-wrap,
+  .page__content,
+  .masthead__inner-wrap,
+  .footer {
+    max-width: 100% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
-/* 小屏降级为单列 */
-@media (max-width: 800px) {
-  .news-grid { grid-template-columns: 1fr; }
-  .news-card.long { grid-column: span 1; }
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-card.long {
+    grid-column: span 1;
+  }
 }
