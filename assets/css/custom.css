@@ -12,6 +12,25 @@ body {
   padding: 0;
 }
 
+:root{
+  /* 这两个变量只给 header 用，不影响主体 */
+  --header-max: 1400px;   /* 与主体相同的对齐宽度 */
+  --header-pad: 20px;     /* 与主体相同的左右 padding */
+}
+
+/* 让 header 内容与主体完全同宽并使用相同的左右留白 */
+.masthead__inner-wrap{
+  max-width: var(--header-max) !important;
+  padding-left: var(--header-pad) !important;
+  padding-right: var(--header-pad) !important;
+  box-sizing: border-box; /* 避免 padding 额外撑宽造成视觉错位 */
+}
+
+/* 小屏时可单独缩小 header 的左右留白（可选） */
+@media (max-width: 900px){
+  :root{ --header-pad: 15px; }
+}
+
 /* ===========================
    Header 全宽 + 固定在顶部（仅此处改动）
    =========================== */
