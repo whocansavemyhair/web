@@ -22,10 +22,21 @@ classes: wide
   }
 </style>
 
-<div class="home-banner">
-  <h2>SELECTED PAPERS & PROJECT HIGHLIGHTS</h2>
-  <p>Showcase representative projects, key research topics, or rotating banners here.</p>
-</div>
+<section class="hero-section">
+  <div class="hero-text">
+    <h1>Yang Lab</h1>
+    <p>
+      The Yang Research Group at Johns Hopkins University focuses on
+      <strong>computational systems and models</strong> in transportation,
+      public health, and optimization. Our research integrates data-driven
+      modeling with computational theory to advance intelligent system design.
+    </p>
+  </div>
+
+  <div class="hero-image">
+    <img src="/assets/images/lab1.jpg" alt="Yang Lab photo">
+  </div>
+</section>
 
 <div class="home-grid">
 

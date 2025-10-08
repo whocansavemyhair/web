@@ -1,0 +1,166 @@
+/* ========== 主页 Hero Section：左文字右六边形图片 ========== */
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 60px 40px;
+  margin-bottom: 50px;
+  background-image: linear-gradient(120deg, #f9fafb 0%, #f0f3f7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 左侧文字区 */
+.hero-text {
+  flex: 1;
+  max-width: 45%;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 2.8em;
+  color: #6b0000;
+  margin-bottom: 0.4em;
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 1.1em;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* 右侧图片区：六边形排列 */
+.hero-images {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
+  justify-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-images img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* 六边形图片的排版控制：中间突出、两侧对齐 */
+.hero-images img:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+.hero-images img:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.hero-images img:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+.hero-images img:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+.hero-images img:nth-child(5) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* 响应式布局 */
+@media (max-width: 1000px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .hero-text {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .hero-images {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 8px;
+  }
+  .hero-images img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ========== 原 index.md 中的 home-grid 栅格布局 ========== */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== 可复用 News 卡片样式 ========== */
+
+.news-section .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.news-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.news-card h3 {
+  margin-top: 0;
+  color: #0a5771;
+  font-size: 1.1em;
+}
+
+.news-card p {
+  color: #444;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.news-card.long {
+  grid-column: span 2;
+}
+
+.read-more {
+  color: #0a5771;
+  font-weight: 600;
+  text-decoration: none;
+}
+.read-more:hover {
+  text-decoration: underline;
+}
