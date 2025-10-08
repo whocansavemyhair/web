@@ -1,5 +1,14 @@
 /* ========== 主页 Hero Section：左文字右六边形图片 ========== */
 
+.hero-wrapper {
+  width: 100vw;              /* 占满整个视口宽度 */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;        /* 从居中容器中“推出去” */
+  margin-right: -50vw;
+}
+
 .hero-section {
   display: flex;
   align-items: center;
@@ -21,7 +30,7 @@
 
 .hero-text h1 {
   font-size: 2.8em;
-  color: #6b0000;
+  color: #0a5771;
   margin-bottom: 0.4em;
   font-weight: 700;
 }
