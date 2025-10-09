@@ -13,16 +13,43 @@ classes: wide
     <div class="research-text">
       <h2>Computational Transportation Systems</h2>
       <p>
-        We study how computation and optimization can enhance <strong>transportation networks</strong> through data-driven modeling, system-level simulation, and control theory.
+        We study how computation and optimization can enhance 
+        <strong>transportation networks</strong> through data-driven modeling, 
+        system-level simulation, and control theory.
       </p>
       <ul>
         <li>Urban mobility modeling and prediction</li>
         <li>Multi-agent traffic simulation</li>
         <li>Autonomous system optimization</li>
       </ul>
+
+      <!-- 下拉展开项目列表 -->
+      <details>
+        <summary>View Selected Projects</summary>
+        <div class="project-grid">
+          <article class="news-card short">
+            <h3>🚗 Autonomous Mobility Simulation</h3>
+            <p>Simulation framework for multi-agent decision making in urban systems.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+
+          <article class="news-card short">
+            <h3>🛰️ Urban Demand Optimization</h3>
+            <p>Dynamic pricing and routing for shared mobility and logistics.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+
+          <article class="news-card long">
+            <h3>🚦 Adaptive Traffic Control</h3>
+            <p>AI-based traffic control for real-time, city-wide signal coordination.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+        </div>
+      </details>
     </div>
+
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Transportation Systems">
+      <img src="{{ '/assets/images/lab1.jpg' | relative_url }}" alt="Transportation Systems">
     </div>
   </section>
 </div>
@@ -31,63 +58,44 @@ classes: wide
 <div class="research-wrapper alt">
   <section class="research-section">
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Health Systems">
+      <img src="{{ '/assets/images/lab1.jpg' | relative_url }}" alt="Public Health Systems">
     </div>
+
     <div class="research-text">
       <h2>Computational Public Health</h2>
       <p>
-        We integrate computation and data science into <strong>public health systems</strong> to improve policy design, resource allocation, and health equity.
+        We integrate computation and data science into 
+        <strong>public health systems</strong> to improve policy design, 
+        resource allocation, and health equity.
       </p>
       <ul>
         <li>Epidemic modeling and intervention optimization</li>
         <li>Healthcare system resilience</li>
         <li>AI-assisted health resource planning</li>
       </ul>
+
+      <details>
+        <summary>View Selected Projects</summary>
+        <div class="project-grid">
+          <article class="news-card short">
+            <h3>🧬 Pandemic Resource Planning</h3>
+            <p>Optimal allocation of hospital resources under dynamic constraints.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+
+          <article class="news-card short">
+            <h3>⚖️ Health Equity Modeling</h3>
+            <p>Quantifying and improving fairness in healthcare delivery systems.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+
+          <article class="news-card long">
+            <h3>📊 Data-driven Intervention Design</h3>
+            <p>Predictive modeling and optimization of epidemic control strategies.</p>
+            <a class="read-more" href="#">Read more →</a>
+          </article>
+        </div>
+      </details>
     </div>
   </section>
 </div>
-
----
-
-<!-- ========== Project Section ========== -->
-<section class="projects-section">
-  <div class="projects-header">
-    <h2>Selected Projects</h2>
-    <div class="project-buttons">
-      <button class="project-btn active" data-target="trans">Transportation</button>
-      <button class="project-btn" data-target="health">Public Health</button>
-    </div>
-  </div>
-
-  <div class="project-list trans active">
-    <ul>
-      <li><strong>Autonomous Mobility Simulation</strong> — Simulation framework for multi-agent decision making.</li>
-      <li><strong>Urban Demand Optimization</strong> — Dynamic pricing and routing for shared transport.</li>
-      <li><strong>Adaptive Traffic Control</strong> — AI-based control for city-wide signal coordination.</li>
-    </ul>
-  </div>
-
-  <div class="project-list health">
-    <ul>
-      <li><strong>Pandemic Resource Planning</strong> — Optimal allocation of hospital resources under constraints.</li>
-      <li><strong>Health Equity Modeling</strong> — Quantifying and improving fairness in medical access.</li>
-      <li><strong>Data-driven Intervention Design</strong> — Predictive modeling for epidemic control strategies.</li>
-    </ul>
-  </div>
-</section>
-
-<script>
-  // 按钮切换项目展示
-  document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.project-btn');
-    const lists = document.querySelectorAll('.project-list');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        lists.forEach(l => l.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelector('.project-list.' + btn.dataset.target).classList.add('active');
-      });
-    });
-  });
-</script>

@@ -1,4 +1,4 @@
-/* ========== 全宽研究方向 wrapper ========== */
+/* ========== 全宽区域设置 ========== */
 .research-wrapper {
   width: 100vw;
   position: relative;
@@ -14,7 +14,7 @@
   background: linear-gradient(120deg, #f7f9fa 0%, #e8edf2 100%);
 }
 
-/* 方向布局：左文字右图或反转 */
+/* ========== 布局：左右两栏 ========== */
 .research-section {
   max-width: 1300px;
   margin: 0 auto;
@@ -31,13 +31,14 @@
 .research-text h2 {
   color: #0a5771;
   font-size: 2em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
 }
 
 .research-text p {
   font-size: 1.05em;
   color: #333;
   margin-bottom: 0.8em;
+  line-height: 1.6;
 }
 
 .research-text ul {
@@ -57,78 +58,74 @@
   box-shadow: 0 5px 16px rgba(0,0,0,0.1);
 }
 
-/* 响应式：小屏改为垂直 */
+/* ========== 可折叠 Project Section ========== */
+details {
+  margin-top: 20px;
+}
+
+summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: #0a5771;
+  margin-bottom: 10px;
+}
+
+summary:hover {
+  text-decoration: underline;
+}
+
+/* ========== News-style Project Cards ========== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.news-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.news-card h3 {
+  margin-top: 0;
+  color: #0a5771;
+  font-size: 1.1em;
+}
+
+.news-card p {
+  color: #444;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.news-card.long {
+  grid-column: span 2;
+}
+
+.read-more {
+  color: #0a5771;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* 响应式布局 */
 @media (max-width: 900px) {
   .research-section {
     flex-direction: column;
     text-align: center;
   }
-}
-
-/* ========== Project 区域 ========== */
-.projects-section {
-  margin-top: 60px;
-}
-
-.projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.project-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.project-btn {
-  padding: 8px 18px;
-  border: 1px solid #0a5771;
-  background: white;
-  color: #0a5771;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-weight: 600;
-}
-
-.project-btn:hover {
-  background: #0a5771;
-  color: white;
-}
-
-.project-btn.active {
-  background: #0a5771;
-  color: white;
-}
-
-/* 隐藏非激活列表 */
-.project-list {
-  display: none;
-  margin-top: 20px;
-}
-
-.project-list.active {
-  display: block;
-}
-
-.project-list ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.project-list li {
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 14px 18px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease-in-out;
-}
-
-.project-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
