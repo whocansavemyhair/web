@@ -9,7 +9,7 @@ classes: wide
 <div class = "hero-wrapper">
   <section class="hero-section">
     <div class="hero-text">
-      <h1>Yang Lab</h1>
+      <h1>Welcome</h1>
       <p>
         The Yang Research Group at Johns Hopkins University focuses on
         <strong>computational systems and models</strong> in transportation,
