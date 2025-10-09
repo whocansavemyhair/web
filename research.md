@@ -7,8 +7,8 @@ classes: wide
 ---
 
 <!-- ========== 研究方向 1：左文右图 ========== -->
-<div class="research-hero">
-  <div class="research-content">
+<div class="research-wrapper">
+  <div class="research-section">
     <div class="research-text">
       <h2>Optimal Computation Models</h2>
       <p>
@@ -28,8 +28,8 @@ classes: wide
 </div>
 
 <!-- ========== 研究方向 2：左图右文 ========== -->
-<div class="research-hero alt">
-  <div class="research-content reverse">
+<div class="research-wrapper alt">
+  <div class="research-section">
     <div class="research-image">
       <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computational Systems">
     </div>
