@@ -7,8 +7,8 @@ classes: wide
 ---
 
 <!-- ========== 研究方向 1：左文右图 ========== -->
-<div class="research-wrapper">
-  <section class="research-section">
+<div class="research-hero">
+  <div class="research-content">
     <div class="research-text">
       <h2>Optimal Computation Models</h2>
       <p>
@@ -21,20 +21,18 @@ classes: wide
         <li>Sub area 3</li>
       </ul>
     </div>
-
     <div class="research-image">
       <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computation Models">
     </div>
-  </section>
+  </div>
 </div>
 
 <!-- ========== 研究方向 2：左图右文 ========== -->
-<div class="research-wrapper alt">
-  <section class="research-section">
+<div class="research-hero alt">
+  <div class="research-content reverse">
     <div class="research-image">
       <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computational Systems">
     </div>
-
     <div class="research-text">
       <h2>Optimal Computational Systems</h2>
       <p>
@@ -48,10 +46,10 @@ classes: wide
         <li>Sub area 3</li>
       </ul>
     </div>
-  </section>
+  </div>
 </div>
 
-<!-- ========== 可切换的 Project 区域 ========== -->
+<!-- ========== 项目部分保持不变 ========== -->
 <div class="projects-section">
   <h2>
     Highlighted Projects in 
@@ -60,7 +58,6 @@ classes: wide
     </button>
   </h2>
 
-  <!-- Optimal Computation Models 项目列表 -->
   <div class="project-grid show" id="models">
     <article class="news-card long">
       <h3>🚗 Multi-agent Optimization</h3>
@@ -81,7 +78,6 @@ classes: wide
     </article>
   </div>
 
-  <!-- Optimal Computational Systems 项目列表 -->
   <div class="project-grid" id="systems">
     <article class="news-card long">
       <h3>🧬 Health System Simulation</h3>
@@ -127,13 +123,11 @@ classes: wide
     const current = btn.dataset.current;
     const next = current === 'models' ? 'systems' : 'models';
 
-    // 切换按钮文字
     btn.dataset.current = next;
     btn.innerText = next === 'models'
       ? 'Optimal Computation Models'
       : 'Optimal Computational Systems';
 
-    // 切换显示的 grid
     Object.values(grids).forEach(g => g.classList.remove('show'));
     grids[next].classList.add('show');
   });
