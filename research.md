@@ -22,7 +22,7 @@ classes: wide
       </ul>
     </div>
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.jpg' | relative_url }}" alt="Transportation Systems">
+      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Transportation Systems">
     </div>
   </section>
 </div>
@@ -31,7 +31,7 @@ classes: wide
 <div class="research-wrapper alt">
   <section class="research-section">
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.jpg' | relative_url }}" alt="Health Systems">
+      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Health Systems">
     </div>
     <div class="research-text">
       <h2>Computational Public Health</h2>
