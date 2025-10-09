@@ -1,0 +1,134 @@
+/* ========== 全宽研究方向 wrapper ========== */
+.research-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(120deg, #f9fbfd 0%, #edf1f5 100%);
+  padding: 80px 60px;
+}
+
+.research-wrapper.alt {
+  background: linear-gradient(120deg, #f7f9fa 0%, #e8edf2 100%);
+}
+
+/* 方向布局：左文字右图或反转 */
+.research-section {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.research-text {
+  flex: 1;
+}
+
+.research-text h2 {
+  color: #0a5771;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.research-text p {
+  font-size: 1.05em;
+  color: #333;
+  margin-bottom: 0.8em;
+}
+
+.research-text ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: #444;
+}
+
+.research-image {
+  flex: 1;
+  text-align: center;
+}
+
+.research-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+}
+
+/* 响应式：小屏改为垂直 */
+@media (max-width: 900px) {
+  .research-section {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ========== Project 区域 ========== */
+.projects-section {
+  margin-top: 60px;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.project-btn {
+  padding: 8px 18px;
+  border: 1px solid #0a5771;
+  background: white;
+  color: #0a5771;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+.project-btn:hover {
+  background: #0a5771;
+  color: white;
+}
+
+.project-btn.active {
+  background: #0a5771;
+  color: white;
+}
+
+/* 隐藏非激活列表 */
+.project-list {
+  display: none;
+  margin-top: 20px;
+}
+
+.project-list.active {
+  display: block;
+}
+
+.project-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project-list li {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
