@@ -1,4 +1,4 @@
-/* ========== 全宽区域设置 ========== */
+/* ========== 全宽 wrapper ========== */
 .research-wrapper {
   width: 100vw;
   position: relative;
@@ -14,7 +14,7 @@
   background: linear-gradient(120deg, #f7f9fa 0%, #e8edf2 100%);
 }
 
-/* ========== 布局：左右两栏 ========== */
+/* ========== 左右布局 ========== */
 .research-section {
   max-width: 1300px;
   margin: 0 auto;
@@ -58,37 +58,66 @@
   box-shadow: 0 5px 16px rgba(0,0,0,0.1);
 }
 
-/* ========== 可折叠 Project Section ========== */
-details {
+/* ========== Project 区域 ========== */
+.projects-section {
+  text-align: center;
+  margin: 60px auto 100px;
+  max-width: 1200px;
+}
+
+.projects-section h2 {
+  color: #0a5771;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* 蓝色按钮样式（与首页风格一致） */
+.project-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.project-btn {
+  background-color: #0a5771;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-btn:hover {
+  background-color: #0c6e8d;
+  transform: translateY(-2px);
+}
+
+.project-btn.active {
+  background-color: #084e65;
+}
+
+/* ========== Project 卡片区域 ========== */
+.project-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
   margin-top: 20px;
 }
 
-summary {
-  font-weight: 600;
-  cursor: pointer;
-  color: #0a5771;
-  margin-bottom: 10px;
-}
-
-summary:hover {
-  text-decoration: underline;
-}
-
-/* ========== News-style Project Cards ========== */
-.project-grid {
+.project-grid.show {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
 }
 
 .news-card {
   background: #fff;
   border: 1px solid #e8e8e8;
   border-radius: 10px;
-  padding: 16px 20px;
+  padding: 20px 24px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .news-card:hover {
@@ -106,10 +135,7 @@ summary:hover {
   color: #444;
   font-size: 0.95em;
   line-height: 1.5;
-}
-
-.news-card.long {
-  grid-column: span 2;
+  margin-bottom: 10px;
 }
 
 .read-more {
