@@ -1,0 +1,31 @@
+- title: "Title 1"
+  authors: "Author 1, Author 2"
+  venue: "Conference 1"
+  year: 2025
+  type: "conference"
+  pdf: "#"
+  doi: "https://doi.org/10.1234/example1"
+
+- title: "Title 2"
+  authors: "Author 3, Author 4"
+  venue: "Journal 1"
+  year: 2025
+  type: "journal"
+  pdf: "#"
+  doi: "https://doi.org/10.1234/example2"
+
+- title: "Title 3"
+  authors: "Author 5"
+  venue: "Conference 2"
+  year: 2024
+  type: "conference"
+  pdf: "#"
+  doi: "https://doi.org/10.1234/example3"
+
+- title: "Title 4"
+  authors: "Author 6, Author 7"
+  venue: "Journal 2"
+  year: 2024
+  type: "journal"
+  pdf: "#"
+  doi: "https://doi.org/10.1234/example4"
