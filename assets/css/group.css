@@ -25,7 +25,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* 正方形头像 */
+/* 正方形照片 */
 .member-photo {
   width: 120px;
   height: 120px;
@@ -40,7 +40,7 @@
   font-size: 1.2rem;
 }
 
-/* 学历/身份标签 */
+/* 学历标签 */
 .member-card .degree {
   font-weight: 600;
   color: #555;
@@ -67,17 +67,12 @@
   text-decoration: underline;
 }
 
-/* 特殊样式 */
+/* PI 特殊背景 */
 .member-card.pi {
   background: #f5faff;
   border-color: #cce3ff;
 }
-.member-card.alumni {
-  background: #fafafa;
-  border-color: #e0e0e0;
-}
 
-/* 响应式 */
 @media (max-width: 600px) {
   .member-photo {
     width: 100px;

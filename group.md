@@ -48,7 +48,7 @@ title: "Our Group"
 ## Alumni
 <div class="group-grid">
   {% for member in site.data.group.alumni %}
-  <div class="member-card alumni">
+  <div class="member-card">
     <img src="{{ member.photolink }}" alt="{{ member.name }}" class="member-photo">
     <h3>{{ member.name }}</h3>
     <p class="degree">{{ member.title }}</p>
@@ -56,7 +56,7 @@ title: "Our Group"
       <p class="desc">{{ member.desc }}</p>
     {% endif %}
     {% if member.pagelink %}
-      <a href="{{ member.pagelink }}" class="profile-link" target="_blank">Profile →</a>
+      <a href="{{ member.pagelink }}" class="profile-link" target="_blank">Personal Page →</a>
     {% endif %}
   </div>
   {% endfor %}
