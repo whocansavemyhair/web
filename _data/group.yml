@@ -6,7 +6,7 @@ pi:
       Johns Hopkins Data Science & AI Institute  
       Johns Hopkins University
     photolink: "/assets/images/group/yang.jpg"
-    pagelink: "https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate"
+    pagelink: "https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ"
     email: "haofrankyang@jhu.edu"
     github: "https://github.com/whocansavemyhair"
 
@@ -15,35 +15,37 @@ current:
     title: "PhD Student"
     photolink: "/assets/images/group/student_a.jpg"
     pagelink: "#"
-    desc: "Research on Bayesian decision models"
+    desc: "Research on Bayesian decision models."
 
   - name: "Student B"
     title: "PhD Student"
     photolink: "/assets/images/group/student_b.jpg"
-    desc: "Research on graph-based AI systems"
+    desc: "Research on graph-based AI systems."
 
   - name: "Student C"
     title: "Master’s Student"
     photolink: "/assets/images/group/student_c.jpg"
-    desc: "Data-driven urban mobility"
+    desc: "Data-driven urban mobility."
 
   - name: "Student D"
     title: "Master’s Student"
     photolink: "/assets/images/group/student_d.jpg"
-    desc: "AI for infrastructure resilience"
+    desc: "AI for infrastructure resilience."
 
   - name: "Student E"
     title: "Undergraduate"
     photolink: "/assets/images/group/student_e.jpg"
-    desc: "Human–AI collaboration"
+    desc: "Human–AI collaboration."
 
 alumni:
   - name: "Name A"
     title: "Alumni"
     photolink: "/assets/images/group/alumni_a.jpg"
-    desc: "Now at MIT"
+    desc: "Now at MIT."
+    pagelink: "#"
 
   - name: "Name B"
     title: "Alumni"
     photolink: "/assets/images/group/alumni_b.jpg"
-    desc: "Now at Google Research"
+    desc: "Now at Google Research."
+    pagelink: "#"

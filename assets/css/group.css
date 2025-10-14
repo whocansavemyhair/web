@@ -25,7 +25,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* 正方形照片 */
+/* 正方形头像 */
 .member-photo {
   width: 120px;
   height: 120px;
@@ -40,14 +40,14 @@
   font-size: 1.2rem;
 }
 
-/* 学历标签 */
+/* 学历/身份标签 */
 .member-card .degree {
   font-weight: 600;
   color: #555;
   margin-bottom: 6px;
 }
 
-/* 研究方向/描述 */
+/* 描述 */
 .member-card .desc {
   font-size: 0.95rem;
   color: #666;
@@ -67,18 +67,17 @@
   text-decoration: underline;
 }
 
-/* Principal Investigator 特别样式 */
+/* 特殊样式 */
 .member-card.pi {
   background: #f5faff;
   border-color: #cce3ff;
 }
-
-/* Alumni 灰色背景 */
 .member-card.alumni {
   background: #fafafa;
   border-color: #e0e0e0;
 }
 
+/* 响应式 */
 @media (max-width: 600px) {
   .member-photo {
     width: 100px;

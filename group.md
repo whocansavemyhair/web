@@ -55,6 +55,9 @@ title: "Our Group"
     {% if member.desc %}
       <p class="desc">{{ member.desc }}</p>
     {% endif %}
+    {% if member.pagelink %}
+      <a href="{{ member.pagelink }}" class="profile-link" target="_blank">Profile →</a>
+    {% endif %}
   </div>
   {% endfor %}
 </div>
