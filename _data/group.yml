@@ -15,27 +15,27 @@ current:
     title: "PhD Student"
     photolink: "/assets/images/group/student_a.jpg"
     pagelink: "#"
-    desc: "Interest and Area"
+    desc: "Research on Bayesian decision models"
 
   - name: "Student B"
     title: "PhD Student"
     photolink: "/assets/images/group/student_b.jpg"
-    desc: "Interest and Area"
+    desc: "Research on graph-based AI systems"
 
   - name: "Student C"
     title: "Master’s Student"
     photolink: "/assets/images/group/student_c.jpg"
-    desc: "Interest and Area"
+    desc: "Data-driven urban mobility"
 
   - name: "Student D"
     title: "Master’s Student"
     photolink: "/assets/images/group/student_d.jpg"
-    desc: "Interest and Area"
+    desc: "AI for infrastructure resilience"
 
   - name: "Student E"
     title: "Undergraduate"
     photolink: "/assets/images/group/student_e.jpg"
-    desc: "Interest and Area"
+    desc: "Human–AI collaboration"
 
 alumni:
   - name: "Name A"
@@ -50,5 +50,5 @@ alumni:
 
   - name: "Name C"
     title: "Alumni"
-    photolink: "/assets/images/group/alumni_b.jpg"
+    photolink: "/assets/images/group/alumni_c.jpg"  
     desc: "Now at Google Research"

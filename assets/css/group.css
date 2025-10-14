@@ -1,28 +1,28 @@
-/* ===========================
-   Group 页面样式
-   =========================== */
-
+/* Group 页面网格布局 */
 .group-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: 20px 0 40px;
 }
 
+/* 统一模块：Alumni 与 Current 用同一张卡片 */
 .member-card {
   background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
-  text-align: center;
+  padding: 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .15s ease, box-shadow .15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 320px; /* 基础等高，可按需要调整 */
 }
 
 .member-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
 /* 正方形照片 */
@@ -32,50 +32,47 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
+  background: #f2f2f2;
 }
 
-/* 姓名 */
+/* 文本容器，撑开等高 */
+.member-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  flex: 1 1 auto;  /* 让正文撑开，配合 .spacer 实现按钮底对齐 */
+}
+
 .member-card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.2rem;
+  margin: 8px 0 4px;
+  font-size: 1.1rem;
 }
 
-/* 学历标签 */
-.member-card .degree {
+.degree {
   font-weight: 600;
   color: #555;
-  margin-bottom: 6px;
+  margin: 0 0 6px;
 }
 
-/* 描述 */
-.member-card .desc {
-  font-size: 0.95rem;
+.affiliation, .desc {
   color: #666;
-  line-height: 1.4;
-  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 4px 0;
 }
 
-/* 链接 */
-.member-card .profile-link {
+.spacer { flex: 1 1 auto; } /* 推动按钮到底部 */
+
+.profile-link {
   font-weight: 600;
-  color: #0077cc;
+  color: #0a5771;
   text-decoration: none;
-  transition: color .2s ease;
 }
-.member-card .profile-link:hover {
-  color: #004a99;
-  text-decoration: underline;
-}
-
-/* PI 特殊背景 */
-.member-card.pi {
-  background: #f5faff;
-  border-color: #cce3ff;
-}
+.profile-link:hover { text-decoration: underline; }
 
 @media (max-width: 600px) {
-  .member-photo {
-    width: 100px;
-    height: 100px;
-  }
+  .member-photo { width: 100px; height: 100px; }
+  .member-card { min-height: 300px; }
 }
