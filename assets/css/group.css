@@ -1,48 +1,61 @@
-/* ========== 四象限研究图基础布局 ========== */
+/* ========== 外部包裹容器，负责坐标轴相对布局 ========== */
+.axis-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 40px 0 80px; /* 预留下方 Application 标签空间 */
+}
+
+/* 坐标轴说明（外部） */
+.axis-label-x,
+.axis-label-y {
+  position: absolute;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: rgba(30, 30, 30, 0.75);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* 下方 Application 标签 */
+.axis-label-x {
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 右侧 Optimal Systems 标签 */
+.axis-label-y {
+  right: -55px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* ========== 主研究地图（四象限背景） ========== */
 .research-map {
   position: relative;
   width: 100%;
+  max-width: 900px;
   height: 600px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #ccc;
   background:
-    linear-gradient(to right, rgba(150,200,255,0.15) 50%, rgba(255,230,200,0.15) 50%),
+    linear-gradient(to right, rgba(200,220,255,0.15) 50%, rgba(255,230,200,0.15) 50%),
     linear-gradient(to bottom, rgba(210,255,210,0.15) 50%, rgba(255,210,210,0.15) 50%);
   background-size: 100% 100%;
-  margin: 40px 0;
 }
-
-.axis-label {
-  position: absolute;
-  font-weight: 600;
-  color: #333;
-  opacity: 0.8;
-  pointer-events: none;
-}
-.x-axis { bottom: 10px; left: 50%; transform: translateX(-50%); }
-.y-axis { top: 50%; left: 10px; transform: translateY(-50%) rotate(-90deg); }
 
 .members-layer {
   position: absolute;
   inset: 0;
 }
 
-/* 象限标题 */
-.quadrant-label {
-  position: absolute;
-  font-size: 0.95rem;
-  color: #333;
-  opacity: 0.75;
-  font-weight: 500;
-  pointer-events: none;
-}
-.top-left { top: 8%; left: 8%; }
-.top-right { top: 8%; right: 8%; text-align: right; }
-.bottom-left { bottom: 8%; left: 8%; }
-.bottom-right { bottom: 8%; right: 8%; text-align: right; }
-
-/* 成员头像 */
+/* 成员点样式 */
 .member-dot {
   position: absolute;
   left: var(--x);
@@ -66,7 +79,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* tooltip 气泡 */
+/* Tooltip */
 .tooltip {
   display: none;
   position: absolute;
@@ -103,7 +116,7 @@
 }
 .tooltip a:hover { text-decoration: underline; }
 
-/* PI 卡片 */
+/* ========== PI 卡片 ========== */
 .pi-container {
   display: flex;
   align-items: center;
@@ -129,11 +142,12 @@
 .pi-info .degree { color: #555; font-weight: 600; }
 .pi-info .affiliation { color: #666; margin-top: 6px; }
 
-/* 响应式 */
+/* ========== 响应式 ========== */
 @media (max-width: 700px) {
   .research-map { height: 400px; }
   .member-dot img { width: 60px; height: 60px; }
   .tooltip { width: 180px; font-size: 0.9rem; }
   .pi-card { flex-direction: column; text-align: center; }
   .pi-photo { margin: 0 0 12px; }
+  .axis-label-y { right: -45px; }
 }

@@ -31,30 +31,28 @@ title: "Our Group"
 ---
 
 ## Research Landscape
-<div class="research-map">
-  <div class="quadrant-label top-left">Theory + Fundamental Models</div>
-  <div class="quadrant-label top-right">Theory + Optimal Systems</div>
-  <div class="quadrant-label bottom-left">Application + Fundamental Models</div>
-  <div class="quadrant-label bottom-right">Application + Optimal Systems</div>
 
-  <div class="axis-label x-axis">Fundamental Models ← → Optimal Systems</div>
-  <div class="axis-label y-axis">Theory ↑ ↓ Application</div>
+<div class="axis-wrapper">
+  <div class="axis-label-x">APPLICATION</div>
+  <div class="axis-label-y">OPTIMAL SYSTEMS</div>
 
-  <div class="members-layer">
-    {% for member in site.data.group.current %}
-      <div class="member-dot" 
-           style="--x: {{ member.x }}%; --y: {{ member.y }}%;">
-        <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
-        <div class="tooltip">
-          <h4>{{ member.name }}</h4>
-          <p class="degree">{{ member.title }}</p>
-          {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
-          {% if member.pagelink %}
-            <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
-          {% endif %}
+  <div class="research-map">
+    <div class="members-layer">
+      {% for member in site.data.group.current %}
+        <div class="member-dot" 
+             style="--x: {{ member.x }}%; --y: {{ member.y }}%;">
+          <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
+          <div class="tooltip">
+            <h4>{{ member.name }}</h4>
+            <p class="degree">{{ member.title }}</p>
+            {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
+            {% if member.pagelink %}
+              <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
+            {% endif %}
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 

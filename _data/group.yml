@@ -17,7 +17,7 @@ current:
     pagelink: https://example.com/a
     photolink: /assets/images/group/a.jpg
     x: 30
-    y: 25   # 左上象限 (Theory + Fundamental Models)
+    y: 25   # 理论 + 基础模型
 
   - name: b
     title: MSc Student
@@ -25,7 +25,7 @@ current:
     pagelink: https://example.com/b
     photolink: /assets/images/group/b.jpg
     x: 70
-    y: 25   # 右上象限 (Theory + Optimal Systems)
+    y: 25   # 理论 + 优化系统
 
   - name: c
     title: PhD Student
@@ -33,7 +33,7 @@ current:
     pagelink: https://example.com/c
     photolink: /assets/images/group/c.jpg
     x: 30
-    y: 75   # 左下象限 (Application + Fundamental Models)
+    y: 75   # 应用 + 基础模型
 
   - name: d
     title: Research Assistant
@@ -41,7 +41,7 @@ current:
     pagelink: https://example.com/d
     photolink: /assets/images/group/d.jpg
     x: 70
-    y: 75   # 
+    y: 75   # 应用 + 优化系统
 
 alumni:
   - name: "Name A"
