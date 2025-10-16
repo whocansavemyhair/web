@@ -4,7 +4,6 @@ permalink: /group/
 author_profile: false
 classes: wide
 sidebar: false
-title: "Our Group"
 ---
 
 ## Principal Investigator
@@ -63,17 +62,38 @@ title: "Our Group"
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const map = document.querySelector('.research-map');
-  const dots = document.querySelectorAll('.member-dot');
+  const dots = Array.from(document.querySelectorAll('.member-dot'));
+
+  // 点击头像：切换当前激活，且先关闭其它
   dots.forEach(dot => {
     dot.addEventListener('click', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); // 阻止冒泡到外层
+      const wasActive = dot.classList.contains('active');
       dots.forEach(d => d.classList.remove('active'));
-      dot.classList.add('active');
+      if (!wasActive) dot.classList.add('active'); // 再次点击同一个可关闭
     });
   });
-  map.addEventListener('click', (e) => {
-    if (e.target === map) dots.forEach(d => d.classList.remove('active'));
+
+  // 点击交互区空白（地图、图层、网格外边缘等）：关闭所有
+  document.addEventListener('click', (e) => {
+    // 只要点击不在 member-dot 内部，就关闭
+    if (!e.target.closest('.member-dot')) {
+      dots.forEach(d => d.classList.remove('active'));
+    }
   });
+
+  // 键盘 Esc 关闭（桌面友好）
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dots.forEach(d => d.classList.remove('active'));
+    }
+  });
+
+  // 触摸设备优化：在触摸开始时关闭其它（避免残留）
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.member-dot')) {
+      dots.forEach(d => d.classList.remove('active'));
+    }
+  }, { passive: true });
 });
 </script>
