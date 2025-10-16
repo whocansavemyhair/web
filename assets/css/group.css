@@ -1,46 +1,48 @@
-/* ========== 外部包裹容器，负责坐标轴相对布局 ========== */
-.axis-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
+/* ===================== 轴标签 + 交互窗口：Grid 布局 ===================== */
+.axis-grid {
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr) minmax(300px, 900px) minmax(60px, 1fr);
+  grid-template-rows: auto 600px auto;
   align-items: center;
-  flex-direction: column;
-  margin: 40px 0 80px; /* 预留下方 Application 标签空间 */
+  justify-items: center;
+  gap: 12px 16px;          /* 行列间距：上/下与左右留一点呼吸空间 */
+  margin: 36px 24px 48px;  /* 整体外边距 */
 }
 
-/* 坐标轴说明（外部） */
-.axis-label-x,
-.axis-label-y {
-  position: absolute;
+/* 放置区域 */
+.axis-top    { grid-column: 2; grid-row: 1; }
+.axis-left   { grid-column: 1; grid-row: 2; }
+.axis-center { grid-column: 2; grid-row: 2; width: 100%; height: 100%; }
+.axis-right  { grid-column: 3; grid-row: 2; }
+.axis-bottom { grid-column: 2; grid-row: 3; }
+
+/* 轴标签的样式（学术风） */
+.axis-top,
+.axis-bottom,
+.axis-left,
+.axis-right {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
-  letter-spacing: 2px;
-  color: rgba(30, 30, 30, 0.75);
-  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(30,30,30,0.78);
+  text-align: center;
+  white-space: nowrap;
   pointer-events: none;
 }
 
-/* 下方 Application 标签 */
-.axis-label-x {
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+/* 垂直方向标签：用 writing-mode 实现自然竖排并居中 */
+.axis-left,
+.axis-right {
+  writing-mode: vertical-rl;   /* 垂直文字方向，自动居中 */
+  text-orientation: mixed;
 }
 
-/* 右侧 Optimal Systems 标签 */
-.axis-label-y {
-  right: -55px;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-}
-
-/* ========== 主研究地图（四象限背景） ========== */
+/* ===================== 研究地图（四象限背景） ===================== */
 .research-map {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  height: 600px;
+  height: 100%;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #ccc;
@@ -55,10 +57,10 @@
   inset: 0;
 }
 
-/* 成员点样式 */
+/* ===================== 成员点 ===================== */
 .member-dot {
   position: absolute;
-  left: var(--x);
+  left: var(--x);             /* 这里的 --x/--y 来自内联样式中的百分比 */
   top: var(--y);
   transform: translate(-50%, -50%);
   cursor: pointer;
@@ -79,7 +81,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Tooltip */
+/* ===================== Tooltip ===================== */
 .tooltip {
   display: none;
   position: absolute;
@@ -116,7 +118,7 @@
 }
 .tooltip a:hover { text-decoration: underline; }
 
-/* ========== PI 卡片 ========== */
+/* ===================== PI 卡片（保持不变的样式） ===================== */
 .pi-container {
   display: flex;
   align-items: center;
@@ -142,12 +144,22 @@
 .pi-info .degree { color: #555; font-weight: 600; }
 .pi-info .affiliation { color: #666; margin-top: 6px; }
 
-/* ========== 响应式 ========== */
+/* ===================== 响应式 ===================== */
+@media (max-width: 900px) {
+  .axis-grid {
+    grid-template-columns: minmax(40px, 1fr) minmax(260px, 1fr) minmax(40px, 1fr);
+    grid-template-rows: auto 480px auto;
+    gap: 8px 12px;
+  }
+}
+
 @media (max-width: 700px) {
-  .research-map { height: 400px; }
+  .axis-grid {
+    grid-template-rows: auto 400px auto;
+    margin: 28px 16px 40px;
+  }
   .member-dot img { width: 60px; height: 60px; }
   .tooltip { width: 180px; font-size: 0.9rem; }
   .pi-card { flex-direction: column; text-align: center; }
   .pi-photo { margin: 0 0 12px; }
-  .axis-label-y { right: -45px; }
 }

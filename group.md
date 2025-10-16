@@ -32,31 +32,33 @@ title: "Our Group"
 
 ## Research Landscape
 
-<div class="axis-wrapper">
-  <!-- 四个轴标签：外侧、沿边居中 -->
-  <div class="axis-label-top">Theory</div>
-  <div class="axis-label-bottom">Application</div>
-  <div class="axis-label-left">Fundamental Models</div>
-  <div class="axis-label-right">Optimal Systems</div>
+<!-- 使用网格将 4 个轴标签放在交互窗口外侧 -->
+<div class="axis-grid">
+  <div class="axis-top">Theory</div>
+  <div class="axis-left">Fundamental Models</div>
 
-  <div class="research-map">
-    <div class="members-layer">
-      {% for member in site.data.group.current %}
-        <div class="member-dot" 
-             style="--x: {{ member.x }}%; --y: {{ member.y }}%;">
-          <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
-          <div class="tooltip">
-            <h4>{{ member.name }}</h4>
-            <p class="degree">{{ member.title }}</p>
-            {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
-            {% if member.pagelink %}
-              <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
-            {% endif %}
+  <div class="axis-center">
+    <div class="research-map">
+      <div class="members-layer">
+        {% for member in site.data.group.current %}
+          <div class="member-dot" style="--x: {{ member.x }}%; --y: {{ member.y }}%;">
+            <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
+            <div class="tooltip">
+              <h4>{{ member.name }}</h4>
+              <p class="degree">{{ member.title }}</p>
+              {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
+              {% if member.pagelink %}
+                <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
+              {% endif %}
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </div>
+
+  <div class="axis-right">Optimal Systems</div>
+  <div class="axis-bottom">Application</div>
 </div>
 
 <script>
