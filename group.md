@@ -33,8 +33,11 @@ title: "Our Group"
 ## Research Landscape
 
 <div class="axis-wrapper">
-  <div class="axis-label-x">APPLICATION</div>
-  <div class="axis-label-y">OPTIMAL SYSTEMS</div>
+  <!-- 四个轴标签：外侧、沿边居中 -->
+  <div class="axis-label-top">Theory</div>
+  <div class="axis-label-bottom">Application</div>
+  <div class="axis-label-left">Fundamental Models</div>
+  <div class="axis-label-right">Optimal Systems</div>
 
   <div class="research-map">
     <div class="members-layer">
