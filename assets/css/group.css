@@ -1,12 +1,15 @@
-/* ========== 基础布局 ========== */
+/* ========== 四象限研究图基础布局 ========== */
 .research-map {
   position: relative;
   width: 100%;
   height: 600px;
-  background: linear-gradient(135deg, #fafbfc 0%, #eef2f3 100%);
-  border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #ccc;
+  background:
+    linear-gradient(to right, rgba(150,200,255,0.15) 50%, rgba(255,230,200,0.15) 50%),
+    linear-gradient(to bottom, rgba(210,255,210,0.15) 50%, rgba(255,210,210,0.15) 50%);
+  background-size: 100% 100%;
   margin: 40px 0;
 }
 
@@ -14,7 +17,7 @@
   position: absolute;
   font-weight: 600;
   color: #333;
-  opacity: 0.7;
+  opacity: 0.8;
   pointer-events: none;
 }
 .x-axis { bottom: 10px; left: 50%; transform: translateX(-50%); }
@@ -25,10 +28,23 @@
   inset: 0;
 }
 
-/* ========== 成员点样式 ========== */
+/* 象限标题 */
+.quadrant-label {
+  position: absolute;
+  font-size: 0.95rem;
+  color: #333;
+  opacity: 0.75;
+  font-weight: 500;
+  pointer-events: none;
+}
+.top-left { top: 8%; left: 8%; }
+.top-right { top: 8%; right: 8%; text-align: right; }
+.bottom-left { bottom: 8%; left: 8%; }
+.bottom-right { bottom: 8%; right: 8%; text-align: right; }
+
+/* 成员头像 */
 .member-dot {
   position: absolute;
-  /* 方案 A：变量里存百分比，这里直接用变量，不做 calc */
   left: var(--x);
   top: var(--y);
   transform: translate(-50%, -50%);
@@ -46,11 +62,11 @@
 }
 
 .member-dot:hover img {
+  transform: scale(1.08);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transform: scale(1.05);
 }
 
-/* ========== 悬浮信息卡 ========== */
+/* tooltip 气泡 */
 .tooltip {
   display: none;
   position: absolute;
@@ -87,7 +103,7 @@
 }
 .tooltip a:hover { text-decoration: underline; }
 
-/* ========== PI 区域 ========== */
+/* PI 卡片 */
 .pi-container {
   display: flex;
   align-items: center;
@@ -113,7 +129,7 @@
 .pi-info .degree { color: #555; font-weight: 600; }
 .pi-info .affiliation { color: #666; margin-top: 6px; }
 
-/* ========== 响应式 ========== */
+/* 响应式 */
 @media (max-width: 700px) {
   .research-map { height: 400px; }
   .member-dot img { width: 60px; height: 60px; }

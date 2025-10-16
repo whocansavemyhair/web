@@ -13,35 +13,35 @@ pi:
 current:
   - name: a
     title: PhD Student
-    desc: Researching Bayesian optimization under uncertainty.
+    desc: Works on theoretical foundations of probabilistic modeling.
     pagelink: https://example.com/a
     photolink: /assets/images/group/a.jpg
-    x: 20
-    y: 70
+    x: 30
+    y: 25   # 左上象限 (Theory + Fundamental Models)
 
   - name: b
     title: MSc Student
-    desc: Focused on reinforcement learning for control systems.
+    desc: Focused on robust optimization and control systems.
     pagelink: https://example.com/b
     photolink: /assets/images/group/b.jpg
-    x: 40
-    y: 60
+    x: 70
+    y: 25   # 右上象限 (Theory + Optimal Systems)
 
   - name: c
     title: PhD Student
-    desc: Works on theoretical machine learning foundations.
+    desc: Applies statistical learning to real-world sensor systems.
     pagelink: https://example.com/c
     photolink: /assets/images/group/c.jpg
-    x: 65
-    y: 40
+    x: 30
+    y: 75   # 左下象限 (Application + Fundamental Models)
 
   - name: d
     title: Research Assistant
-    desc: Interested in optimization and systems integration.
+    desc: Works on simulation-based optimization for autonomous control.
     pagelink: https://example.com/d
     photolink: /assets/images/group/d.jpg
-    x: 80
-    y: 20
+    x: 70
+    y: 75   # 
 
 alumni:
   - name: "Name A"

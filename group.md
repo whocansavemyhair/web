@@ -30,10 +30,16 @@ title: "Our Group"
 
 ---
 
-## Research Map
+## Research Landscape
 <div class="research-map">
-  <div class="axis-label x-axis">Fundamental Models →</div>
-  <div class="axis-label y-axis">↑ Optimal Systems</div>
+  <div class="quadrant-label top-left">Theory + Fundamental Models</div>
+  <div class="quadrant-label top-right">Theory + Optimal Systems</div>
+  <div class="quadrant-label bottom-left">Application + Fundamental Models</div>
+  <div class="quadrant-label bottom-right">Application + Optimal Systems</div>
+
+  <div class="axis-label x-axis">Fundamental Models ← → Optimal Systems</div>
+  <div class="axis-label y-axis">Theory ↑ ↓ Application</div>
+
   <div class="members-layer">
     {% for member in site.data.group.current %}
       <div class="member-dot" 
@@ -53,11 +59,9 @@ title: "Our Group"
 </div>
 
 <script>
-/* -------- group-page interaction -------- */
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('.research-map');
   const dots = document.querySelectorAll('.member-dot');
-
   dots.forEach(dot => {
     dot.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -65,12 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
       dot.classList.add('active');
     });
   });
-
-  // 点击空白区域取消激活
   map.addEventListener('click', (e) => {
-    if (e.target === map) {
-      dots.forEach(d => d.classList.remove('active'));
-    }
+    if (e.target === map) dots.forEach(d => d.classList.remove('active'));
   });
 });
 </script>
