@@ -8,11 +8,11 @@ title: "Our Group"
 ---
 
 ## Principal Investigator
-<div class="group-grid">
+<div class="pi-container">
   {% for member in site.data.group.pi %}
-  <div class="member-card">
-    <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}" class="member-photo" onerror="this.src='{{ '/assets/images/group/placeholder.jpg' | relative_url }}'">
-    <div class="member-body">
+  <div class="pi-card">
+    <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}" class="pi-photo">
+    <div class="pi-info">
       <h3>{{ member.name }}</h3>
       <p class="degree">{{ member.title }}</p>
       {% if member.affiliation %}
@@ -30,44 +30,42 @@ title: "Our Group"
 
 ---
 
-## Current Members
-<div class="group-grid">
-  {% for member in site.data.group.current %}
-  <div class="member-card">
-    <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}" class="member-photo" onerror="this.src='{{ '/assets/images/group/placeholder.jpg' | relative_url }}'">
-    <div class="member-body">
-      <h3>{{ member.name }}</h3>
-      <p class="degree">{{ member.title }}</p>
-      {% if member.desc %}
-        <p class="desc">{{ member.desc }}</p>
-      {% endif %}
-      {% if member.pagelink %}
-        <div class="spacer"></div>
-        <a href="{{ member.pagelink }}" class="profile-link" target="_blank">Personal Page →</a>
-      {% endif %}
-    </div>
+## Research Map
+<div class="research-map">
+  <div class="axis-label x-axis">Fundamental Models →</div>
+  <div class="axis-label y-axis">↑ Optimal Systems</div>
+  <div class="members-layer">
+    {% for member in site.data.group.current %}
+      <div class="member-dot" 
+           style="--x: {{ member.x }}%; --y: {{ member.y }}%;">
+        <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
+        <div class="tooltip">
+          <h4>{{ member.name }}</h4>
+          <p class="degree">{{ member.title }}</p>
+          {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
+          {% if member.pagelink %}
+            <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 
----
-
-## Alumni
-<div class="group-grid">
-  {% for member in site.data.group.alumni %}
-  <div class="member-card">
-    <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}" class="member-photo" onerror="this.src='{{ '/assets/images/group/placeholder.jpg' | relative_url }}'">
-    <div class="member-body">
-      <h3>{{ member.name }}</h3>
-      <p class="degree">{{ member.title }}</p>
-      {% if member.desc %}
-        <p class="desc">{{ member.desc }}</p>
-      {% endif %}
-      {% if member.pagelink %}
-        <div class="spacer"></div>
-        <a href="{{ member.pagelink }}" class="profile-link" target="_blank">Personal Page →</a>
-      {% endif %}
-    </div>
-  </div>
-  {% endfor %}
-</div>
+<script>
+/* -------- group-page interaction -------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const map = document.querySelector('.research-map');
+  const dots = document.querySelectorAll('.member-dot');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      dots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+    });
+  });
+  // 点击空白区域取消激活
+  map.addEventListener('click', e => {
+    if (e.target === map) dots.forEach(d => d.classList.remove('active'));
+  });
+});
+</script>

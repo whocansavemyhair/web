@@ -11,31 +11,37 @@ pi:
     github: "https://github.com/whocansavemyhair"
 
 current:
-  - name: "Student A"
-    title: "PhD Student"
-    photolink: "/assets/images/group/student_a.jpg"
-    pagelink: "#"
-    desc: "Research on Bayesian decision models"
+  - name: a
+    title: PhD Student
+    desc: Researching Bayesian optimization under uncertainty.
+    pagelink: https://example.com/a
+    photolink: /assets/images/group/a.jpg
+    x: 20
+    y: 70
 
-  - name: "Student B"
-    title: "PhD Student"
-    photolink: "/assets/images/group/student_b.jpg"
-    desc: "Research on graph-based AI systems"
+  - name: b
+    title: MSc Student
+    desc: Focused on reinforcement learning for control systems.
+    pagelink: https://example.com/b
+    photolink: /assets/images/group/b.jpg
+    x: 40
+    y: 60
 
-  - name: "Student C"
-    title: "Master’s Student"
-    photolink: "/assets/images/group/student_c.jpg"
-    desc: "Data-driven urban mobility"
+  - name: c
+    title: PhD Student
+    desc: Works on theoretical machine learning foundations.
+    pagelink: https://example.com/c
+    photolink: /assets/images/group/c.jpg
+    x: 65
+    y: 40
 
-  - name: "Student D"
-    title: "Master’s Student"
-    photolink: "/assets/images/group/student_d.jpg"
-    desc: "AI for infrastructure resilience"
-
-  - name: "Student E"
-    title: "Undergraduate"
-    photolink: "/assets/images/group/student_e.jpg"
-    desc: "Human–AI collaboration"
+  - name: d
+    title: Research Assistant
+    desc: Interested in optimization and systems integration.
+    pagelink: https://example.com/d
+    photolink: /assets/images/group/d.jpg
+    x: 80
+    y: 20
 
 alumni:
   - name: "Name A"

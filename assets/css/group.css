@@ -1,78 +1,122 @@
-/* Group 页面网格布局 */
-.group-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-  margin: 20px 0 40px;
-}
-
-/* 统一模块：Alumni 与 Current 用同一张卡片 */
-.member-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform .15s ease, box-shadow .15s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 320px; /* 基础等高，可按需要调整 */
-}
-
-.member-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-/* 正方形照片 */
-.member-photo {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background: #f2f2f2;
-}
-
-/* 文本容器，撑开等高 */
-.member-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ========== 基础布局 ========== */
+.research-map {
+  position: relative;
   width: 100%;
-  text-align: center;
-  flex: 1 1 auto;  /* 让正文撑开，配合 .spacer 实现按钮底对齐 */
+  height: 600px;
+  background: linear-gradient(135deg, #fafbfc 0%, #eef2f3 100%);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 40px 0;
 }
 
-.member-card h3 {
-  margin: 8px 0 4px;
-  font-size: 1.1rem;
-}
-
-.degree {
+.axis-label {
+  position: absolute;
   font-weight: 600;
-  color: #555;
+  color: #333;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.x-axis { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.y-axis { top: 50%; left: 10px; transform: translateY(-50%) rotate(-90deg); }
+
+.members-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ========== 成员点样式 ========== */
+.member-dot {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.member-dot img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.member-dot:hover img {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+}
+
+/* ========== 悬浮信息卡 ========== */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  margin-left: 10px;
+  width: 230px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  text-align: left;
+  z-index: 20;
+}
+
+.member-dot:hover .tooltip,
+.member-dot.active .tooltip {
+  display: block;
+}
+
+.tooltip h4 {
   margin: 0 0 6px;
+  font-size: 1rem;
 }
-
-.affiliation, .desc {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 4px 0;
+.tooltip .desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
 }
-
-.spacer { flex: 1 1 auto; } /* 推动按钮到底部 */
-
-.profile-link {
+.tooltip a {
   font-weight: 600;
   color: #0a5771;
   text-decoration: none;
 }
-.profile-link:hover { text-decoration: underline; }
+.tooltip a:hover { text-decoration: underline; }
 
-@media (max-width: 600px) {
-  .member-photo { width: 100px; height: 100px; }
-  .member-card { min-height: 300px; }
+/* ========== PI 区域 ========== */
+.pi-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+.pi-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.pi-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  margin-right: 25px;
+  object-fit: cover;
+}
+.pi-info h3 { margin: 0; }
+.pi-info .degree { color: #555; font-weight: 600; }
+.pi-info .affiliation { color: #666; margin-top: 6px; }
+
+/* ========== 响应式 ========== */
+@media (max-width: 700px) {
+  .research-map { height: 400px; }
+  .member-dot img { width: 60px; height: 60px; }
+  .tooltip { width: 180px; font-size: 0.9rem; }
+  .pi-card { flex-direction: column; text-align: center; }
+  .pi-photo { margin: 0 0 12px; }
 }
