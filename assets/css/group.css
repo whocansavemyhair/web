@@ -28,8 +28,9 @@
 /* ========== 成员点样式 ========== */
 .member-dot {
   position: absolute;
-  left: calc(var(--x) * 1%);
-  top: calc(var(--y) * 1%);
+  /* 方案 A：变量里存百分比，这里直接用变量，不做 calc */
+  left: var(--x);
+  top: var(--y);
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: transform 0.2s ease;

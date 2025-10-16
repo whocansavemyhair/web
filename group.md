@@ -57,15 +57,20 @@ title: "Our Group"
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('.research-map');
   const dots = document.querySelectorAll('.member-dot');
+
   dots.forEach(dot => {
-    dot.addEventListener('click', () => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
       dots.forEach(d => d.classList.remove('active'));
       dot.classList.add('active');
     });
   });
+
   // 点击空白区域取消激活
-  map.addEventListener('click', e => {
-    if (e.target === map) dots.forEach(d => d.classList.remove('active'));
+  map.addEventListener('click', (e) => {
+    if (e.target === map) {
+      dots.forEach(d => d.classList.remove('active'));
+    }
   });
 });
 </script>
