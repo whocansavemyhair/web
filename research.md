@@ -49,13 +49,14 @@ classes: wide
   </div>
 </div>
 
-<!-- ========== 项目部分保持不变 ========== -->
+<!-- ========== 项目部分更新 ========== -->
 <div class="projects-section">
-  <h2>
-    Highlighted Projects in 
-    <button id="toggleProjectBtn" class="switch-btn" data-current="models">
-      Optimal Computation Models
-    </button>
+  <h2 style="text-align:center;">
+    Highlighted Projects in
+    <select id="projectSelector" class="switch-select">
+      <option value="models" selected>Optimal Computation Models</option>
+      <option value="systems">Optimal Computational Systems</option>
+    </select>
   </h2>
 
   <div class="project-grid show" id="models">
@@ -100,35 +101,16 @@ classes: wide
 </div>
 
 <script>
-  const btn = document.getElementById('toggleProjectBtn');
+  const selector = document.getElementById('projectSelector');
   const grids = {
     models: document.getElementById('models'),
-    systems: document.getElementById('systems'),
+    systems: document.getElementById('systems')
   };
 
-  btn.addEventListener('mouseenter', () => {
-    const next = btn.dataset.current === 'models'
-      ? 'Optimal Computational Systems'
-      : 'Optimal Computation Models';
-    btn.innerText = `switch to ${next}`;
-  });
-
-  btn.addEventListener('mouseleave', () => {
-    btn.innerText = btn.dataset.current === 'models'
-      ? 'Optimal Computation Models'
-      : 'Optimal Computational Systems';
-  });
-
-  btn.addEventListener('click', () => {
-    const current = btn.dataset.current;
-    const next = current === 'models' ? 'systems' : 'models';
-
-    btn.dataset.current = next;
-    btn.innerText = next === 'models'
-      ? 'Optimal Computation Models'
-      : 'Optimal Computational Systems';
+  selector.addEventListener('change', (e) => {
+    const selected = e.target.value;
 
     Object.values(grids).forEach(g => g.classList.remove('show'));
-    grids[next].classList.add('show');
+    grids[selected].classList.add('show');
   });
 </script>
