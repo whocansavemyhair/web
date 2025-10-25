@@ -127,45 +127,56 @@ transition: all 0.25s ease-in-out;
 }
 
 /* dropdown style */
-.switch-select {
-  appearance: none; /* 隐藏系统默认箭头 */
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #0a5771;
-  color: #0a5771;
+/* dropdown refined style with full override */
+.projects-section select.switch-select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  color: #0a5771 !important;
   font-weight: 600;
   font-size: 1.05em;
   cursor: pointer;
-  padding: 2px 4px;
-  outline: none;
-  transition: color 0.25s ease, border-color 0.25s ease;
+
+  border-bottom: 2px solid #0a5771 !important;
+  padding: 4px 28px 4px 2px;
+
+  transition: border-color 0.25s ease, color 0.25s ease;
+  line-height: 1.2;
 }
 
-/* hover 更细腻，不改变布局 */
-.switch-select:hover {
-  color: #083f56;
-  border-bottom-color: #083f56;
+/* custom arrow icon */
+.projects-section select.switch-select {
+  background-image: url("data:image/svg+xml,%3Csvg fill='%230a5771' width='13' height='13' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  background-size: 13px;
 }
 
-/* 让选项背景仍然白色，不会透明错位 */
-.switch-select option {
-  background-color: #ffffff;
-  color: #0a5771;
-  font-weight: 500;
+/* hover + focus feedback */
+.projects-section select.switch-select:hover,
+.projects-section select.switch-select:focus {
+  color: #083f56 !important;
+  border-bottom-color: #083f56 !important;
 }
 
-/* 去除点击后的蓝色外圈 */
-.switch-select:focus {
-  border-bottom-color: #06384c;
-  color: #06384c;
+/* dropdown option list */
+.projects-section select.switch-select option {
+  background: #ffffff !important;
+  color: #0a5771 !important;
+  font-weight: 500 !important;
 }
 
-/* 小屏幕适配，增加可点击面积 */
+/* mobile size tuning */
 @media (max-width: 600px) {
-  .switch-select {
-    font-size: 1.1em;
-    padding: 3px 6px;
+  .projects-section select.switch-select {
+    font-size: 1.15em;
+    padding: 6px 30px 6px 4px;
   }
 }
-
-
