@@ -128,21 +128,44 @@ transition: all 0.25s ease-in-out;
 
 /* dropdown style */
 .switch-select {
-  background: #fff;
+  appearance: none; /* 隐藏系统默认箭头 */
+  background: transparent;
   border: none;
-  border-bottom: 3px solid #0a5771;
+  border-bottom: 2px solid #0a5771;
   color: #0a5771;
   font-weight: 600;
+  font-size: 1.05em;
   cursor: pointer;
-  font-size: 1em;
-  padding: 4px 6px;
-  border-radius: 2px;
-  transition: all 0.25s ease;
+  padding: 2px 4px;
+  outline: none;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
+/* hover 更细腻，不改变布局 */
 .switch-select:hover {
-  color: #084e65;
-  border-bottom: 3px solid #084e65;
-  transform: translateY(-1px);
+  color: #083f56;
+  border-bottom-color: #083f56;
 }
+
+/* 让选项背景仍然白色，不会透明错位 */
+.switch-select option {
+  background-color: #ffffff;
+  color: #0a5771;
+  font-weight: 500;
+}
+
+/* 去除点击后的蓝色外圈 */
+.switch-select:focus {
+  border-bottom-color: #06384c;
+  color: #06384c;
+}
+
+/* 小屏幕适配，增加可点击面积 */
+@media (max-width: 600px) {
+  .switch-select {
+    font-size: 1.1em;
+    padding: 3px 6px;
+  }
+}
+
 
