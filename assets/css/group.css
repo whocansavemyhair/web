@@ -1,27 +1,63 @@
-/* ===================== 轴标签 + 交互窗口：Grid 布局 ===================== */
-.axis-grid {
-  display: grid;
-  grid-template-columns: minmax(60px, 1fr) minmax(300px, 900px) minmax(60px, 1fr);
-  grid-template-rows: auto 600px auto;
-  align-items: center;
-  justify-items: center;
-  gap: 12px 16px;          /* 行列间距：上/下与左右留一点呼吸空间 */
-  margin: 36px 24px 48px;  /* 整体外边距 */
+/* 作用域，避免与主题样式冲突 */
+.page-group .section-title {
+  margin-top: 0.5rem;
+  color: #0a5771;
 }
 
-/* 放置区域 */
-.axis-top    { grid-column: 2; grid-row: 1; }
-.axis-left   { grid-column: 1; grid-row: 2; }
-.axis-center { grid-column: 2; grid-row: 2; width: 100%; height: 100%; }
-.axis-right  { grid-column: 3; grid-row: 2; }
-.axis-bottom { grid-column: 2; grid-row: 3; }
+/* ========== 顶部：PI 信息窗 + 右侧象限整体布局 ========== */
+.page-group .pi-container {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr; /* 左窄右宽 */
+  gap: 24px;
+  align-items: start;
+  margin: 14px 0 28px;
+}
 
-/* 轴标签的样式（学术风） */
-.axis-top,
-.axis-bottom,
-.axis-left,
-.axis-right {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/* 信息窗（矩形） */
+.page-group .info-panel {
+  position: sticky;
+  top: 80px; /* 页面滚动时固定在视口 */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 1px solid #e9edf1;
+  padding: 16px;
+}
+.page-group .info-panel .panel-inner {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.page-group .info-panel img {
+  width: 96px; height: 96px; object-fit: cover; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.page-group .info-panel h3 { margin: 0 0 4px; color: #0a5771; }
+.page-group .info-panel .degree { margin: 0 0 6px; color: #555; font-weight: 600; }
+.page-group .info-panel .affiliation { color: #666; margin: 6px 0 8px; }
+.page-group .info-panel .links a { color: #0a5771; text-decoration: none; font-weight: 600; }
+.page-group .info-panel .links a:hover { text-decoration: underline; }
+
+/* ========== 右侧：轴标签 + 平行四边形象限 ========== */
+.page-group .axis-grid {
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr) minmax(320px, 1000px) minmax(60px, 1fr);
+  grid-template-rows: auto 580px auto;
+  align-items: center;
+  justify-items: center;
+  gap: 12px 16px;
+}
+.page-group .axis-top    { grid-column: 2; grid-row: 1; }
+.page-group .axis-left   { grid-column: 1; grid-row: 2; }
+.page-group .axis-center { grid-column: 2; grid-row: 2; width: 100%; height: 100%; }
+.page-group .axis-right  { grid-column: 3; grid-row: 2; }
+.page-group .axis-bottom { grid-column: 2; grid-row: 3; }
+
+.page-group .axis-top,
+.page-group .axis-bottom,
+.page-group .axis-left,
+.page-group .axis-right {
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 1.5px;
@@ -30,136 +66,139 @@
   white-space: nowrap;
   pointer-events: none;
 }
-
-/* 垂直方向标签：用 writing-mode 实现自然竖排并居中 */
-.axis-left,
-.axis-right {
-  writing-mode: vertical-rl;   /* 垂直文字方向，自动居中 */
-  text-orientation: mixed;
+.page-group .axis-left,
+.page-group .axis-right {
+  writing-mode: vertical-rl; text-orientation: mixed;
 }
 
-/* ===================== 研究地图（四象限背景） ===================== */
-.research-map {
+/* 平行四边形象限（clip-path） */
+.page-group .research-map {
   position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
+  width: 100%; height: 100%;
+  clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
   overflow: hidden;
-  border: 1px solid #ccc;
   background:
-    linear-gradient(to right, rgba(200,220,255,0.15) 50%, rgba(255,230,200,0.15) 50%),
-    linear-gradient(to bottom, rgba(210,255,210,0.15) 50%, rgba(255,210,210,0.15) 50%);
-  background-size: 100% 100%;
+    linear-gradient(to right, rgba(200,220,255,0.16) 50%, rgba(255,230,200,0.16) 50%),
+    linear-gradient(to bottom, rgba(210,255,210,0.16) 50%, rgba(255,210,210,0.16) 50%);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08));
 }
-
-.members-layer {
-  position: absolute;
-  inset: 0;
+.page-group .research-map::after {
+  content: "";
+  position: absolute; inset: 0;
+  border: 1px solid #dfe4ea;
+  clip-path: inherit;
+  pointer-events: none;
 }
+.page-group .members-layer { position: absolute; inset: 0; }
 
-/* ===================== 成员点 ===================== */
-.member-dot {
+/* 成员头像（百分比定位） */
+.page-group .member-dot {
   position: absolute;
-  left: var(--x);             /* 这里的 --x/--y 来自内联样式中的百分比 */
-  top: var(--y);
+  left: var(--x); top: var(--y);
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-
-.member-dot img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.page-group .member-dot img {
+  width: 80px; height: 80px; border-radius: 50%;
+  border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
-
-.member-dot:hover img {
+.page-group .member-dot:hover img,
+.page-group .member-dot.selected img {
   transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
 }
 
-/* ===================== Tooltip ===================== */
-.tooltip {
+/* Tooltip（可选） */
+.page-group .tooltip {
   display: none;
   position: absolute;
-  top: -10px;
-  left: 100%;
-  margin-left: 10px;
-  width: 230px;
-  background: #fff;
+  top: -10px; left: 100%; margin-left: 10px;
+  width: 230px; background: #fff; border-radius: 10px; padding: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15); text-align: left; z-index: 20;
+}
+.page-group .member-dot:hover .tooltip,
+.page-group .member-dot.selected .tooltip { display: block; }
+.page-group .tooltip h4 { margin: 0 0 6px; font-size: 1rem; }
+.page-group .tooltip .degree { color: #555; font-weight: 600; margin: 0 0 6px; }
+.page-group .tooltip .desc { font-size: 0.9rem; color: #555; margin-bottom: 8px; }
+.page-group .tooltip a { font-weight: 600; color: #0a5771; text-decoration: none; }
+.page-group .tooltip a:hover { text-decoration: underline; }
+
+/* ========== Alumni：卡片网格（按你的范式） ========== */
+.page-group .group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.page-group .member-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  text-align: left;
-  z-index: 20;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.page-group .member-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.page-group .member-photo {
+  width: 120px; height: 120px; object-fit: cover;
+  border-radius: 10px; margin-bottom: 10px;
+}
+.page-group .member-card h3 { margin: 10px 0 5px 0; font-size: 1.2rem; }
+.page-group .member-card .degree { font-weight: 600; color: #555; margin-bottom: 6px; }
+.page-group .member-card .desc { font-size: 0.95rem; color: #666; line-height: 1.4; margin-bottom: 8px; }
+.page-group .member-card .links a { font-weight: 600; color: #0a5771; text-decoration: none; }
+.page-group .member-card .links a:hover { text-decoration: underline; }
+.page-group .member-card.pi { background: #f5faff; border-color: #cce3ff; }
+.page-group .member-card.alumni { background: #fafafa; border-color: #e0e0e0; }
 
-.member-dot:hover .tooltip,
-.member-dot.active .tooltip {
-  display: block;
+/* ========== Life 相册 ========== */
+.page-group .life-slider {
+  position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+  gap: 12px; margin: 8px 0 24px;
 }
+.page-group .life-viewport {
+  overflow: hidden; border-radius: 12px; border: 1px solid #e9edf1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.page-group .life-track { display: flex; transition: transform 0.4s ease; width: 100%; }
+.page-group .life-slide { min-width: 100%; position: relative; background: #fff; }
+.page-group .life-slide img { display: block; width: 100%; height: auto; object-fit: cover; }
+.page-group .life-slide figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0));
+  color: #fff; padding: 10px 12px; font-size: 0.95rem;
+}
+.page-group .life-nav {
+  border: none; background: #0a5771; color: #fff; width: 36px; height: 36px;
+  border-radius: 8px; cursor: pointer; font-size: 20px; line-height: 36px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.15s ease, opacity 0.2s ease;
+}
+.page-group .life-nav:hover { transform: translateY(-1px); opacity: 0.92; }
 
-.tooltip h4 {
-  margin: 0 0 6px;
-  font-size: 1rem;
+/* ========== 响应式 ========== */
+@media (max-width: 1024px) {
+  .page-group .axis-grid { grid-template-rows: auto 520px auto; }
 }
-.tooltip .desc {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 8px;
-}
-.tooltip a {
-  font-weight: 600;
-  color: #0a5771;
-  text-decoration: none;
-}
-.tooltip a:hover { text-decoration: underline; }
-
-/* ===================== PI 卡片（保持不变的样式） ===================== */
-.pi-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 40px 0;
-}
-.pi-card {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px 30px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-.pi-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px;
-  margin-right: 25px;
-  object-fit: cover;
-}
-.pi-info h3 { margin: 0; }
-.pi-info .degree { color: #555; font-weight: 600; }
-.pi-info .affiliation { color: #666; margin-top: 6px; }
-
-/* ===================== 响应式 ===================== */
 @media (max-width: 900px) {
-  .axis-grid {
+  .page-group .pi-container { grid-template-columns: 1fr; }
+  .page-group .info-panel { position: static; }
+  .page-group .axis-grid {
     grid-template-columns: minmax(40px, 1fr) minmax(260px, 1fr) minmax(40px, 1fr);
-    grid-template-rows: auto 480px auto;
-    gap: 8px 12px;
+    grid-template-rows: auto 420px auto;
   }
+  .page-group .member-dot img { width: 64px; height: 64px; }
+  .page-group .tooltip { width: 190px; font-size: 0.9rem; }
 }
-
-@media (max-width: 700px) {
-  .axis-grid {
-    grid-template-rows: auto 400px auto;
-    margin: 28px 16px 40px;
-  }
-  .member-dot img { width: 60px; height: 60px; }
-  .tooltip { width: 180px; font-size: 0.9rem; }
-  .pi-card { flex-direction: column; text-align: center; }
-  .pi-photo { margin: 0 0 12px; }
+@media (max-width: 600px) {
+  .page-group .axis-grid { grid-template-rows: auto 360px auto; }
+  .page-group .member-dot img { width: 56px; height: 56px; }
+  .page-group .member-photo { width: 100px; height: 100px; }
 }
