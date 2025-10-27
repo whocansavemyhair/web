@@ -75,22 +75,29 @@
 .page-group .research-map {
   position: relative;
   width: 100%; height: 100%;
+  /* 平行四边形倾角与裁剪一致，给默认值，避免 var 未定义 */
+  --skew: 4deg; /* 如果 clip-path 改为 10%/90%，把这里改成 ~6deg */
   clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
   overflow: hidden;
+
+  /* 用明确百分比区间，避免 Safari 对 0 50% 简写的兼容问题 */
   background:
-    /* 倾斜的“纵轴” */
     linear-gradient(
-      calc(90deg + var(--skew-angle)),
-      rgba(200,220,255,0.16) 0 50%,
-      rgba(255,230,200,0.16) 50% 100%
+      calc(90deg + var(--skew, 4deg)),
+      rgba(200,220,255,0.22) 0%,
+      rgba(200,220,255,0.22) 50%,
+      rgba(255,230,200,0.22) 50%,
+      rgba(255,230,200,0.22) 100%
     ),
-    /* 水平“横轴”保持水平 */
     linear-gradient(
       to bottom,
-      rgba(210,255,210,0.16) 0 50%,
-      rgba(255,210,210,0.16) 50% 100%
+      rgba(210,255,210,0.18) 0%,
+      rgba(210,255,210,0.18) 50%,
+      rgba(255,210,210,0.18) 50%,
+      rgba(255,210,210,0.18) 100%
     );
 }
+
 .page-group .research-map::after {
   content: "";
   position: absolute; inset: 0;

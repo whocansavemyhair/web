@@ -58,3 +58,7 @@ alumni:
     title: "Alumni"
     photolink: "/assets/images/group/alumni_c.jpg"  
     desc: "Now at Google Research"
+
+life:
+  - src: event1.png
+  - src: hiking2.png
