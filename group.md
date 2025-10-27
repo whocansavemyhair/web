@@ -14,7 +14,7 @@ title: "Our Group"
 
   <!-- ========== Principal Investigator（左侧信息窗默认展示） ========== -->
   <section class="pi-section">
-    <h2 class="section-title">Principal Investigator</h2>
+    <h2 class="section-title">Current Members</h2>
 
     <div class="pi-container">
       {% assign pi = site.data.group.pi | first %}
@@ -58,14 +58,7 @@ title: "Our Group"
                   data-photo="{{ member.photolink | relative_url }}"
                 >
                   <img src="{{ member.photolink | relative_url }}" alt="{{ member.name }}">
-                  <div class="tooltip">
-                    <h4>{{ member.name }}</h4>
-                    <p class="degree">{{ member.title }}</p>
-                    {% if member.desc %}<p class="desc">{{ member.desc }}</p>{% endif %}
-                    {% if member.pagelink %}
-                      <a href="{{ member.pagelink }}" target="_blank">Personal Page →</a>
-                    {% endif %}
-                  </div>
+                  
                 </div>
               {% endfor %}
             </div>

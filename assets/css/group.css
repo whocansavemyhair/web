@@ -78,9 +78,18 @@
   clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
   overflow: hidden;
   background:
-    linear-gradient(to right, rgba(200,220,255,0.16) 50%, rgba(255,230,200,0.16) 50%),
-    linear-gradient(to bottom, rgba(210,255,210,0.16) 50%, rgba(255,210,210,0.16) 50%);
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.08));
+    /* 倾斜的“纵轴” */
+    linear-gradient(
+      calc(90deg + var(--skew-angle)),
+      rgba(200,220,255,0.16) 0 50%,
+      rgba(255,230,200,0.16) 50% 100%
+    ),
+    /* 水平“横轴”保持水平 */
+    linear-gradient(
+      to bottom,
+      rgba(210,255,210,0.16) 0 50%,
+      rgba(255,210,210,0.16) 50% 100%
+    );
 }
 .page-group .research-map::after {
   content: "";
@@ -111,13 +120,9 @@
 }
 
 /* Tooltip（可选） */
-.page-group .tooltip {
-  display: none;
-  position: absolute;
-  top: -10px; left: 100%; margin-left: 10px;
-  width: 230px; background: #fff; border-radius: 10px; padding: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15); text-align: left; z-index: 20;
-}
+.page-group .tooltip { display: none !important; }
+.member-dot:hover .tooltip,
+.member-dot.selected .tooltip { display: none !important; }
 .page-group .member-dot:hover .tooltip,
 .page-group .member-dot.selected .tooltip { display: block; }
 .page-group .tooltip h4 { margin: 0 0 6px; font-size: 1rem; }
