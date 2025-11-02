@@ -214,3 +214,60 @@
   .page-group .member-dot img { width: 56px; height: 56px; }
   .page-group .member-photo { width: 100px; height: 100px; }
 }
+
+
+
+/* ===== 讨论用 1D 轴可视化（不影响现有样式） ===== */
+.page-group .viz1d-shell{
+  display:grid;
+  grid-template-columns:minmax(260px,360px) 1fr; /* 左信息窗 + 右轴区 */
+  gap:24px; align-items:start; margin:18px 0 28px;
+}
+
+/* 复用信息窗外观，略小一号即可 */
+.page-group .info-panel--small{ position:sticky; top:80px; }
+
+/* 右侧四条坐标轴容器 */
+.page-group .axes-1d{ display:grid; gap:22px; }
+
+/* 单条轴：左标签 | 轨道 | 右标签 */
+.page-group .axis-row{
+  display:grid; grid-template-columns:140px 1fr 140px; gap:12px; align-items:center;
+}
+.page-group .axis-label{
+  font-weight:700; letter-spacing:.5px; color:#0a5771; opacity:.9;
+  font-size:.98rem; text-align:center;
+}
+.page-group .axis-label--left{text-align:right;}
+.page-group .axis-label--right{text-align:left;}
+
+/* 轨道 */
+.page-group .axis-track{
+  position:relative; height:48px; display:flex; align-items:center;
+}
+.page-group .axis-track::before{
+  content:""; position:absolute; left:0; right:0; height:2px; top:50%;
+  transform:translateY(-50%);
+  background:#dfe4ea; box-shadow:0 1px 0 rgba(0,0,0,.02) inset;
+}
+
+/* 学生头像定位到进度位置 */
+.page-group .axis-thumb{
+  position:absolute; top:50%;
+  left:calc(var(--pos, 50%) );
+  transform:translate(-50%, -50%);
+  cursor:pointer; transition:transform .15s ease;
+}
+.page-group .axis-thumb img{
+  width:44px; height:44px; border-radius:50%; border:2px solid #fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.15); transition:transform .15s ease;
+}
+.page-group .axis-thumb:hover img,
+.page-group .axis-thumb.selected img{ transform:scale(1.08); }
+
+/* 窄屏处理 */
+@media (max-width:900px){
+  .page-group .viz1d-shell{ grid-template-columns:1fr; }
+  .page-group .info-panel--small{ position:static; }
+  .page-group .axis-row{ grid-template-columns:110px 1fr 110px; }
+}

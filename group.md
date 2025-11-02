@@ -11,6 +11,155 @@ title: "Our Group"
 <link rel="stylesheet" href="{{ '/assets/css/group.css' | relative_url }}">
 
 <div class="page-group">
+  <!-- === 讨论用可视化 · 左信息窗 + 右侧四条一维坐标 === -->
+  <section class="viz1d">
+    <div class="viz1d-shell">
+      <!-- 左：信息窗（独立于下面那块，以免互相影响） -->
+      {% assign pi = site.data.group.pi | first %}
+      <aside class="info-panel info-panel--small" id="infoPanel1D">
+        <div class="panel-inner">
+          <img src="{{ pi.photolink | relative_url }}" alt="{{ pi.name }}">
+          <div class="panel-text">
+            <h3>{{ pi.name }}</h3>
+            <p class="degree">{{ pi.title }}</p>
+            {% if pi.affiliation %}<p class="affiliation">{{ pi.affiliation | markdownify }}</p>{% endif %}
+            <div class="links">
+              {% if pi.pagelink %}<a href="{{ pi.pagelink }}" target="_blank">Google Scholar</a>{% endif %}
+              {% if pi.github %}{% if pi.pagelink %} | {% endif %}<a href="{{ pi.github }}" target="_blank">GitHub</a>{% endif %}
+              {% if pi.email %}{% if pi.pagelink or pi.github %} | {% endif %}<a href="mailto:{{ pi.email }}">Email</a>{% endif %}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 右：四条横向坐标轴 -->
+      <div class="axes-1d">
+        <!-- 1) Efficiency  ↔  Robustness -->
+        <div class="axis-row">
+          <span class="axis-label axis-label--left">Efficiency</span>
+          <div class="axis-track">
+            {% for m in site.data.group.current %}
+              <div class="axis-thumb"
+                  style="--pos: {{ m.a1 | default: 50 }}%;"
+                  data-name="{{ m.name | escape }}"
+                  data-title="{{ m.title | escape }}"
+                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                  data-desc="{{ m.desc | strip_newlines | escape }}"
+                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                  data-photo="{{ m.photolink | relative_url }}">
+                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+              </div>
+            {% endfor %}
+          </div>
+          <span class="axis-label axis-label--right">Robustness</span>
+        </div>
+
+        <!-- 2) Foundational Models  ↔  Optimal Systems -->
+        <div class="axis-row">
+          <span class="axis-label axis-label--left">Fundamental Models</span>
+          <div class="axis-track">
+            {% for m in site.data.group.current %}
+              <div class="axis-thumb" style="--pos: {{ m.a2 | default: 50 }}%;"
+                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
+                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                  data-desc="{{ m.desc | strip_newlines | escape }}"
+                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                  data-photo="{{ m.photolink | relative_url }}">
+                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+              </div>
+            {% endfor %}
+          </div>
+          <span class="axis-label axis-label--right">Optimal Systems</span>
+        </div>
+
+        <!-- 3) Exploration  ↔  Exploitation -->
+        <div class="axis-row">
+          <span class="axis-label axis-label--left">Exploration</span>
+          <div class="axis-track">
+            {% for m in site.data.group.current %}
+              <div class="axis-thumb" style="--pos: {{ m.a3 | default: 50 }}%;"
+                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
+                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                  data-desc="{{ m.desc | strip_newlines | escape }}"
+                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                  data-photo="{{ m.photolink | relative_url }}">
+                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+              </div>
+            {% endfor %}
+          </div>
+          <span class="axis-label axis-label--right">Exploitation</span>
+        </div>
+
+        <!-- 4) Transportation  ↔  Public Health -->
+        <div class="axis-row">
+          <span class="axis-label axis-label--left">Transportation</span>
+          <div class="axis-track">
+            {% for m in site.data.group.current %}
+              <div class="axis-thumb" style="--pos: {{ m.a4 | default: 50 }}%;"
+                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
+                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                  data-desc="{{ m.desc | strip_newlines | escape }}"
+                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                  data-photo="{{ m.photolink | relative_url }}">
+                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+              </div>
+            {% endfor %}
+          </div>
+          <span class="axis-label axis-label--right">Public Health</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 绑定 1D 轴的 hover/click 到左侧信息窗（与原有平行四边形互不干扰） -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const panel = document.getElementById('infoPanel1D');
+  if (!panel) return;
+  const defaultHTML = panel.innerHTML;
+  let locked = false;
+
+  function render(el){
+    const d = el.dataset;
+    panel.innerHTML = `
+      <div class="panel-inner">
+        <img src="${d.photo||''}" alt="${d.name||''}">
+        <div class="panel-text">
+          <h3>${d.name||''}</h3>
+          ${d.title?`<p class="degree">${d.title}</p>`:''}
+          ${d.affiliation?`<p class="affiliation">${d.affiliation}</p>`:''}
+          ${d.desc?`<p class="desc">${d.desc}</p>`:''}
+          <div class="links">
+            ${d.page?`<a href="${d.page}" target="_blank">Personal Page</a>`:''}
+            ${d.github?`${d.page?' | ':''}<a href="${d.github}" target="_blank">GitHub</a>`:''}
+            ${d.email?`${(d.page||d.github)?' | ':''}<a href="mailto:${d.email}">Email</a>`:''}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  const thumbs = Array.from(document.querySelectorAll('.viz1d .axis-thumb'));
+  thumbs.forEach(t=>{
+    t.addEventListener('mouseenter', ()=>{ if(!locked) render(t); });
+    t.addEventListener('mouseleave', ()=>{ if(!locked) panel.innerHTML = defaultHTML; });
+    t.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const on = t.classList.contains('selected');
+      thumbs.forEach(x=>x.classList.remove('selected'));
+      if (on){ locked=false; panel.innerHTML = defaultHTML; }
+      else    { locked=true; t.classList.add('selected'); render(t); }
+    });
+  });
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('.viz1d .axis-thumb') && !e.target.closest('#infoPanel1D')){
+      locked=false; thumbs.forEach(x=>x.classList.remove('selected')); panel.innerHTML = defaultHTML;
+    }
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='Escape'){ locked=false; thumbs.forEach(x=>x.classList.remove('selected')); panel.innerHTML = defaultHTML; }
+  });
+});
+</script>
 
   <!-- ========== Principal Investigator（左侧信息窗默认展示） ========== -->
   <section class="pi-section">
