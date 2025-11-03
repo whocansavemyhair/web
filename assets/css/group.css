@@ -242,31 +242,29 @@
 .page-group .axes-1d .axis-label--left{ text-align:right; }
 .page-group .axes-1d .axis-label--right{ text-align:left; }
 
-/* 轨道为矩形 */
+/* 轨道：无边框、无背景、无阴影 */
 .page-group .axes-1d .axis-track{
-  position:relative; height:var(--row-h);
-  background:#fff; border:1px solid #e4e9f0; border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.05);
-  overflow:hidden;
-  /* 画 6 条细水平分割线，方便对齐车道 */
+  position: relative;
+  height: var(--row-h);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
-.page-group .axes-1d .axis-track::after{
-  content:""; position:absolute; inset:0;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent calc(100%/6 - 1px),
-      rgba(10,87,113,.08) calc(100%/6 - 1px),
-      rgba(10,87,113,.08) calc(100%/6)
-    );
-  pointer-events:none;
-}
+
+/* 唯一的线：底部坐标轴线 */
 .page-group .axes-1d .axis-track::before{
-  /* 中央主线 */
-  content:""; position:absolute; left:0; right:0; top:50%; height:2px; transform:translateY(-50%);
-  background:#dfe4ea; box-shadow:0 1px 0 rgba(0,0,0,.02) inset;
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: #d0d7df; /* 坐标轴颜色，可按需调深 */
 }
+
+/* 关闭一切分割/描线 */
+.page-group .axes-1d .axis-track::after{ content: none; }
+
 
 /* 学生头像（绝对定位） */
 .page-group .axes-1d .axis-thumb{

@@ -231,7 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(e.key==='Escape'){ locked=false; thumbsAll.forE
 
   <!-- === 讨论用可视化 · 左信息窗 + 右侧四条一维坐标 === -->
-  <section class="viz1d">
+  <section class="viz1d page-group">
+
     <div class="viz1d-shell">
       <!-- 左：信息窗（独立于下面那块，以免互相影响） -->
       {% assign pi = site.data.group.pi | first %}
