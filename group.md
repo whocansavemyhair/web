@@ -12,6 +12,7 @@ title: "Our Group"
 
 <div class="page-group">
 <!-- ===== 1D 讨论可视化：左信息窗 + 右侧四条一维坐标（矩形） ===== -->
+<!-- ===== 1D 讨论可视化：左信息窗 + 右侧四条一维坐标（矩形） ===== -->
 <section class="viz1d">
   <div class="viz1d-shell">
     <!-- 左：信息窗（默认显示 PI） -->
@@ -123,11 +124,14 @@ title: "Our Group"
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // 信息窗（容错）
   const panel = document.getElementById('infoPanel1D');
-  const defaultHTML = panel.innerHTML;
+  const hasPanel = !!panel;
+  const defaultHTML = hasPanel ? panel.innerHTML : '';
   let locked = false;
 
   function render(el){
+    if (!hasPanel) return;
     const d = el.dataset;
     panel.innerHTML = `
       <div class="panel-inner">
@@ -146,22 +150,25 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`;
   }
 
-  // 轨道布局：6 车道 + 局部蜂群
+  // ===== 核心：6 车道 + 局部蜂群，按 a1..a4 横向位置定位 =====
   function layoutTracks(){
     const nowYear = new Date().getFullYear();
     document.querySelectorAll('.viz1d .axis-row').forEach(row=>{
       const track = row.querySelector('.axis-track');
       const thumbs = Array.from(track.querySelectorAll('.axis-thumb'));
-      const padX = 24;  // 左右安全边距
-      const padY = 10;  // 上下安全边距
-      const W = track.clientWidth;
-      const H = track.clientHeight;
+
+      // 尺寸兜底（避免 0 宽高导致全部堆在(0,0)）
+      const padX = 24;                // 左右安全边距
+      const padY = 10;                // 上下安全边距
+      const W = track.clientWidth || track.getBoundingClientRect().width || 600;
+      const H = track.clientHeight || 120;
       const innerW = Math.max(10, W - padX*2);
       const innerH = Math.max(10, H - padY*2);
+
       const lanes = 6;
       const bandH = innerH / lanes;
 
-      // 分到 6 个年份车道
+      // 分桶：按年份映射到 0..5 车道
       const laneBuckets = Array.from({length: lanes}, ()=>[]);
       thumbs.forEach(t=>{
         const pos = Math.max(0, Math.min(100, parseFloat(t.dataset.pos||50)));
@@ -173,14 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
         laneBuckets[lane].push({el:t, x});
       });
 
-      // 每条车道内部：按 x 排序 + 自适应半径 + 局部蜂群
+      // 逐车道：按 x 排序 + 自适应半径 + 局部蜂群纵向微调
       const rMin = 16, rMax = 24, gap = 8;
       laneBuckets.forEach((bucket, laneIdx)=>{
         bucket.sort((a,b)=>a.x-b.x);
         const n = bucket.length || 1;
         const r = Math.max(rMin, Math.min(rMax, 0.45 * innerW / n));
         const dMin = 2*r + gap;
-        const step = Math.min(r*0.85, (bandH/2 - r)/3); // 竖向步长，保证不越出带宽
+        const step = Math.min(r*0.85, (bandH/2 - r)/3);
         const cy = padY + bandH*(laneIdx + 0.5);
         const laneTop = cy - bandH/2 + r;
         const laneBot = cy + bandH/2 - r;
@@ -188,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const placed = [];
         bucket.forEach(item=>{
           let y = cy;
-          // 与最近的若干个可能碰撞的点检查
           const colliders = placed.filter(p => (item.x - p.x) < dMin*1.2);
           let tries = 0, dir = 1;
           while (colliders.some(p => Math.hypot(item.x - p.x, y - p.y) < dMin)) {
@@ -198,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tries > 30) break;
           }
           placed.push({x:item.x, y});
-          // 应用定位与尺寸
           const s = `${2*r}px`;
           item.el.style.width = s;
           item.el.style.height = s;
@@ -209,177 +214,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 交互：hover 更新、click 锁定
+  // 交互：hover 更新、click 锁定、点空白/ESC 解除
   const thumbsAll = Array.from(document.querySelectorAll('.viz1d .axis-thumb'));
   thumbsAll.forEach(t=>{
     t.addEventListener('mouseenter', ()=>{ if(!locked) render(t); });
-    t.addEventListener('mouseleave', ()=>{ if(!locked) panel.innerHTML = defaultHTML; });
+    t.addEventListener('mouseleave', ()=>{ if(!locked && hasPanel) panel.innerHTML = defaultHTML; });
     t.addEventListener('click', (e)=>{
       e.stopPropagation();
       const on = t.classList.contains('selected');
       thumbsAll.forEach(x=>x.classList.remove('selected'));
-      if (on){ locked=false; panel.innerHTML = defaultHTML; }
-      else    { locked=true; t.classList.add('selected'); render(t); }
+      if (on){ locked=false; if (hasPanel) panel.innerHTML = defaultHTML; }
+      else    { locked=true;  t.classList.add('selected'); render(t); }
     });
   });
   document.addEventListener('click', (e)=>{
     if(!e.target.closest('.viz1d .axis-thumb') && !e.target.closest('#infoPanel1D')){
-      locked=false; thumbsAll.forEach(x=>x.classList.remove('selected')); panel.innerHTML = defaultHTML;
+      locked=false; thumbsAll.forEach(x=>x.classList.remove('selected'));
+      if (hasPanel) panel.innerHTML = defaultHTML;
     }
   });
   document.addEventListener('keydown', (e)=>{
-    if(e.key==='Escape'){ locked=false; thumbsAll.forE
-
-  <!-- === 讨论用可视化 · 左信息窗 + 右侧四条一维坐标 === -->
-  <section class="viz1d page-group">
-
-    <div class="viz1d-shell">
-      <!-- 左：信息窗（独立于下面那块，以免互相影响） -->
-      {% assign pi = site.data.group.pi | first %}
-      <aside class="info-panel info-panel--small" id="infoPanel1D">
-        <div class="panel-inner">
-          <img src="{{ pi.photolink | relative_url }}" alt="{{ pi.name }}">
-          <div class="panel-text">
-            <h3>{{ pi.name }}</h3>
-            <p class="degree">{{ pi.title }}</p>
-            {% if pi.affiliation %}<p class="affiliation">{{ pi.affiliation | markdownify }}</p>{% endif %}
-            <div class="links">
-              {% if pi.pagelink %}<a href="{{ pi.pagelink }}" target="_blank">Google Scholar</a>{% endif %}
-              {% if pi.github %}{% if pi.pagelink %} | {% endif %}<a href="{{ pi.github }}" target="_blank">GitHub</a>{% endif %}
-              {% if pi.email %}{% if pi.pagelink or pi.github %} | {% endif %}<a href="mailto:{{ pi.email }}">Email</a>{% endif %}
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- 右：四条横向坐标轴 -->
-      <div class="axes-1d">
-        <!-- 1) Efficiency  ↔  Robustness -->
-        <div class="axis-row">
-          <span class="axis-label axis-label--left">Efficiency</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb"
-                  style="--pos: {{ m.a1 | default: 50 }}%;"
-                  data-name="{{ m.name | escape }}"
-                  data-title="{{ m.title | escape }}"
-                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                  data-desc="{{ m.desc | strip_newlines | escape }}"
-                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                  data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
-          </div>
-          <span class="axis-label axis-label--right">Robustness</span>
-        </div>
-
-        <!-- 2) Foundational Models  ↔  Optimal Systems -->
-        <div class="axis-row">
-          <span class="axis-label axis-label--left">Fundamental Models</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb" style="--pos: {{ m.a2 | default: 50 }}%;"
-                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
-                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                  data-desc="{{ m.desc | strip_newlines | escape }}"
-                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                  data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
-          </div>
-          <span class="axis-label axis-label--right">Optimal Systems</span>
-        </div>
-
-        <!-- 3) Exploration  ↔  Exploitation -->
-        <div class="axis-row">
-          <span class="axis-label axis-label--left">Exploration</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb" style="--pos: {{ m.a3 | default: 50 }}%;"
-                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
-                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                  data-desc="{{ m.desc | strip_newlines | escape }}"
-                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                  data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
-          </div>
-          <span class="axis-label axis-label--right">Exploitation</span>
-        </div>
-
-        <!-- 4) Transportation  ↔  Public Health -->
-        <div class="axis-row">
-          <span class="axis-label axis-label--left">Transportation</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb" style="--pos: {{ m.a4 | default: 50 }}%;"
-                  data-name="{{ m.name | escape }}" data-title="{{ m.title | escape }}"
-                  data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                  data-desc="{{ m.desc | strip_newlines | escape }}"
-                  data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                  data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
-          </div>
-          <span class="axis-label axis-label--right">Public Health</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- 绑定 1D 轴的 hover/click 到左侧信息窗（与原有平行四边形互不干扰） -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const panel = document.getElementById('infoPanel1D');
-  if (!panel) return;
-  const defaultHTML = panel.innerHTML;
-  let locked = false;
-
-  function render(el){
-    const d = el.dataset;
-    panel.innerHTML = `
-      <div class="panel-inner">
-        <img src="${d.photo||''}" alt="${d.name||''}">
-        <div class="panel-text">
-          <h3>${d.name||''}</h3>
-          ${d.title?`<p class="degree">${d.title}</p>`:''}
-          ${d.affiliation?`<p class="affiliation">${d.affiliation}</p>`:''}
-          ${d.desc?`<p class="desc">${d.desc}</p>`:''}
-          <div class="links">
-            ${d.page?`<a href="${d.page}" target="_blank">Personal Page</a>`:''}
-            ${d.github?`${d.page?' | ':''}<a href="${d.github}" target="_blank">GitHub</a>`:''}
-            ${d.email?`${(d.page||d.github)?' | ':''}<a href="mailto:${d.email}">Email</a>`:''}
-          </div>
-        </div>
-      </div>`;
-  }
-
-  const thumbs = Array.from(document.querySelectorAll('.viz1d .axis-thumb'));
-  thumbs.forEach(t=>{
-    t.addEventListener('mouseenter', ()=>{ if(!locked) render(t); });
-    t.addEventListener('mouseleave', ()=>{ if(!locked) panel.innerHTML = defaultHTML; });
-    t.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      const on = t.classList.contains('selected');
-      thumbs.forEach(x=>x.classList.remove('selected'));
-      if (on){ locked=false; panel.innerHTML = defaultHTML; }
-      else    { locked=true; t.classList.add('selected'); render(t); }
-    });
-  });
-  document.addEventListener('click', (e)=>{
-    if(!e.target.closest('.viz1d .axis-thumb') && !e.target.closest('#infoPanel1D')){
-      locked=false; thumbs.forEach(x=>x.classList.remove('selected')); panel.innerHTML = defaultHTML;
+    if(e.key==='Escape'){
+      locked=false; thumbsAll.forEach(x=>x.classList.remove('selected'));
+      if (hasPanel) panel.innerHTML = defaultHTML;
     }
   });
-  document.addEventListener('keydown', (e)=>{
-    if(e.key==='Escape'){ locked=false; thumbs.forEach(x=>x.classList.remove('selected')); panel.innerHTML = defaultHTML; }
-  });
+
+  // 首次布局 + resize 重排（用 rAF 确保首次渲染后再测量）
+  requestAnimationFrame(layoutTracks);
+  window.addEventListener('resize', layoutTracks);
 });
 </script>
+
 
   <!-- ========== Principal Investigator（左侧信息窗默认展示） ========== -->
   <section class="pi-section">
