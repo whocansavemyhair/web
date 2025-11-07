@@ -6,111 +6,119 @@ sidebar: false
 classes: wide
 ---
 
-<!-- ========== 研究方向 1：左文右图 ========== -->
-<div class="research-wrapper">
-  <div class="research-section">
-    <div class="research-text">
-      <h2>Optimal Computation Models</h2>
-      <p>
-        We study to integrate <strong>optimal computation models</strong> through data-driven modeling,
-        system-level simulation, and control theory in the areas of transportation and health.
-      </p>
-      <ul>
-        <li>Sub area 1</li>
-        <li>Sub area 2</li>
-        <li>Sub area 3</li>
-      </ul>
-    </div>
-    <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computation Models">
-    </div>
+<!-- ========== 全局筛选栏 ========== -->
+<div class="global-filter-bar">
+  <div class="filter-buttons">
+    <button data-target="research-models" class="active">Models</button>
+    <button data-target="research-systems">Systems</button>
+    <button data-target="pub-all">All Publications</button>
+    <button data-target="pub-journal">Journal</button>
+    <button data-target="pub-conference">Conference</button>
   </div>
+  <input type="text" id="globalSearch" placeholder="Search publications...">
 </div>
 
-<!-- ========== 研究方向 2：左图右文 ========== -->
-<div class="research-wrapper alt">
-  <div class="research-section">
-    <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computational Systems">
-    </div>
-    <div class="research-text">
-      <h2>Optimal Computational Systems</h2>
-      <p>
-        We integrate computation and data science into
-        <strong>computational systems</strong> to improve 
-        policy design and resource allocation.
-      </p>
-      <ul>
-        <li>Sub area 1</li>
-        <li>Sub area 2</li>
-        <li>Sub area 3</li>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<!-- ========== 项目部分更新 ========== -->
+<!-- ========== Research Section ========== -->
 <div class="projects-section">
-  <h2 style="text-align:center;">
-    Highlighted Projects in
-    <select id="projectSelector" class="switch-select">
-      <option value="models" selected>Optimal Computation Models</option>
-      <option value="systems">Optimal Computational Systems</option>
-    </select>
-  </h2>
 
-  <div class="project-grid show" id="models">
+  <div class="project-grid show" id="research-models">
     <article class="news-card long">
-      <h3>🚗 Multi-agent Optimization</h3>
+      <h3>Multi-agent Optimization</h3>
       <p>Developing scalable algorithms for multi-agent systems with adaptive control.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
 
     <article class="news-card long">
-      <h3>🛰️ Learning-based Routing</h3>
+      <h3>Learning-based Routing</h3>
       <p>Combining graph learning and dynamic optimization for network flow problems.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
 
     <article class="news-card long">
-      <h3>🚦 Distributed Control Systems</h3>
+      <h3>Distributed Control Systems</h3>
       <p>Decentralized optimization for real-time system coordination.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
   </div>
 
-  <div class="project-grid" id="systems">
+  <div class="project-grid" id="research-systems">
     <article class="news-card long">
-      <h3>🧬 Health System Simulation</h3>
+      <h3>Health System Simulation</h3>
       <p>Data-driven modeling for healthcare system optimization and resilience.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
 
     <article class="news-card long">
-      <h3>⚖️ Resource Allocation Algorithms</h3>
+      <h3>Resource Allocation Algorithms</h3>
       <p>Adaptive resource allocation across distributed computational environments.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
 
     <article class="news-card long">
-      <h3>📊 Policy Optimization Frameworks</h3>
+      <h3>Policy Optimization Frameworks</h3>
       <p>Developing computational tools for data-informed policy decision-making.</p>
-      <a class="read-more" href="#">Read more →</a>
     </article>
   </div>
 </div>
+
+
+
+<!-- ========== Publications Section（原 publication.md 移植） ========== -->
+<div id="pubList" class="pub-list">
+  {% assign pubs = site.data.publications | sort: "year" | reverse %}
+  {% for pub in pubs %}
+  <div class="pub-item" data-type="{{ pub.type }}">
+    <div class="pub-year">{{ pub.year }}</div>
+    <div class="pub-content">
+      <h3 class="pub-title">{{ pub.title }}</h3>
+      <p class="pub-authors">{{ pub.authors }}</p>
+      <p class="pub-venue"><em>{{ pub.venue }}</em></p>
+      <p class="pub-links">
+        {% if pub.pdf and pub.pdf != "" %}
+        <a href="{{ pub.pdf }}" target="_blank">[PDF]</a>
+        {% endif %}
+        {% if pub.doi and pub.doi != "" %}
+        <a href="{{ pub.doi }}" target="_blank">[DOI]</a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
 
 <script>
-  const selector = document.getElementById('projectSelector');
-  const grids = {
-    models: document.getElementById('models'),
-    systems: document.getElementById('systems')
-  };
+document.addEventListener("DOMContentLoaded", function () {
 
-  selector.addEventListener('change', (e) => {
-    const selected = e.target.value;
+  const buttons = document.querySelectorAll(".global-filter-bar .filter-buttons button");
+  const searchInput = document.getElementById("globalSearch");
 
-    Object.values(grids).forEach(g => g.classList.remove('show'));
-    grids[selected].classList.add('show');
+  const researchModels = document.getElementById("research-models");
+  const researchSystems = document.getElementById("research-systems");
+  const pubs = document.querySelectorAll(".pub-item");
+
+  function updateView() {
+    const active = document.querySelector(".global-filter-bar .filter-buttons .active").dataset.target;
+    const term = searchInput.value.toLowerCase();
+
+    // Research 显示切换
+    researchModels.classList.toggle("show", active === "research-models");
+    researchSystems.classList.toggle("show", active === "research-systems");
+
+    // Publications 筛选 + 搜索
+    pubs.forEach(pub => {
+      const t = pub.dataset.type;
+      const matchType = (active === "pub-all") || (active === `pub-${t}`);
+      const matchSearch = pub.querySelector(".pub-title").innerText.toLowerCase().includes(term);
+      pub.style.display = (matchType && matchSearch) ? "flex" : "none";
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updateView();
+    });
   });
+
+  searchInput.addEventListener("input", updateView);
+});
 </script>
