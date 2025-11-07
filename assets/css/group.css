@@ -1,43 +1,47 @@
-/* 基础 */
+/* 仅保留必要视觉；无边框、无阴影、无背景框 */
 .page-group .section-title{ margin-top:.5rem; color:#0a5771; }
 
-/* ===== 轴区域（独立一行） ===== */
-.page-group .axes-1d-carousel{ width:100%; }
-.page-group .axes-1d-carousel .axes-viewport{
-  overflow:hidden; border-radius:12px; border:1px solid #e9edf1;
-  background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.05);
-}
-.page-group .axes-1d-carousel .axes-track{ display:flex; transition:transform .4s ease; width:100%; }
-.page-group .axes-1d-carousel .axis-slide{ min-width:100%; padding:16px 18px 8px 18px; }
+/* ===== 纯净横轴 ===== */
+.page-group .viz1d{ margin: 10px 0 0; }
 
-/* 单条横轴三列：左label | 轨道 | 右label */
+.page-group .axes-plain{ position: relative; }
+.page-group .axes-plain .axes-track{ display:flex; transition:transform .4s ease; }
+.page-group .axes-plain .axis-slide{ min-width:100%; }
+
 .page-group .axis-row{
-  display:grid; grid-template-columns:150px 1fr 150px; gap:12px; align-items:end; /* 关键：文字对齐到底部 */
+  display:grid;
+  grid-template-columns:160px 1fr 160px;
+  align-items:end;       /* 两侧文字与底线对齐 */
+  gap:12px;
+  /* 增大整体高度，使顶部留白自然 */
+  margin: 24px 0 6px;
 }
 
-/* 文字基线与横轴同高 */
+/* 左右标签与底线对齐 */
 .page-group .axis-label{
-  font-weight:700; letter-spacing:.4px; color:#0a5771; font-size:.98rem; opacity:.95;
-  align-self:end; padding-bottom:18px; /* 与轨道底部基线对齐 */
+  font-weight:700; letter-spacing:.4px; color:#0a5771; font-size:1rem; opacity:.95;
+  align-self:end; padding-bottom:12px;
 }
 .page-group .axis-label--left{ text-align:right; }
 .page-group .axis-label--right{ text-align:left; }
 
+/* 轨道：底部基线 + 上方用于 years 分层；无外框 */
 .page-group .axis-track{
   position:relative;
-  height:300px; /* 更高的纵向空间 */
-  background:transparent; border:none; overflow:visible;
-  padding-bottom:18px; /* 为底部基线留出文字基线空间 */
+  height: 360px;              /* 决定上方留白空间与层高 */
+  overflow:visible;
+  padding-bottom:12px;         /* 让标签与基线对齐 */
 }
 
 /* 底部横轴基线 */
 .page-group .axis-track::after{
-  content:""; position:absolute; left:0; right:0; bottom:0;
-  height:2px; background:#d0d7df;
+  content:"";
+  position:absolute; left:0; right:0; bottom:0;
+  height:2px; background:#cfd6de;
 }
 
-/* 车道导引（不显示数字） */
-.page-group .lane-guides{ position:absolute; inset:0 0 18px 0; pointer-events:none; }
+/* 车道导引（淡） */
+.page-group .lane-guides{ position:absolute; inset:0 0 12px 0; pointer-events:none; }
 .page-group .lane-guide{
   position:absolute; left:0; right:0; height:0;
   border-bottom:1px dashed rgba(0,0,0,.12);
@@ -53,39 +57,42 @@
   width:100%; height:100%; border-radius:50%;
   border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
-
-/* 选中放大：中间最大，左右略小 */
-.page-group .axis-thumb.thumb-main{ transform:translate(-50%,-50%) scale(1.22); z-index:3; }
-.page-group .axis-thumb.thumb-side{ transform:translate(-50%,-50%) scale(1.10); z-index:2; opacity:.9; }
-.page-group .axis-thumb.thumb-side--left{}
-.page-group .axis-thumb.thumb-side--right{}
-
 .page-group .axis-thumb:hover{ z-index:2; transform:translate(-50%,-50%) scale(1.08); }
 
-/* 轮播导航与指示点 */
-.page-group .axes-nav-wrap{ display:flex; align-items:center; justify-content:center; gap:10px; margin:8px 0 10px; }
+/* 选中放大 */
+.page-group .axis-thumb.thumb-main{ transform:translate(-50%,-50%) scale(1.24); z-index:3; }
+.page-group .axis-thumb.thumb-side{ transform:translate(-50%,-50%) scale(1.10); z-index:2; opacity:.9; }
+
+/* 导航（极简） */
 .page-group .axes-nav{
-  border:none; background:#0a5771; color:#fff; width:36px; height:36px;
-  border-radius:8px; cursor:pointer; font-size:20px; line-height:36px;
-  box-shadow:0 2px 8px rgba(0,0,0,.15); transition:transform .15s ease, opacity .2s ease;
+  position:absolute; top: calc(100% - 18px);  /* 放在基线附近，低调 */
+  transform: translateY(50%);
+  border:none; background:#0a5771; color:#fff; width:32px; height:32px;
+  border-radius:8px; cursor:pointer; font-size:18px; line-height:32px;
+  transition:transform .15s ease, opacity .2s ease; opacity:.95;
 }
-.page-group .axes-nav:hover{ transform:translateY(-1px); opacity:.92; }
-.page-group .axes-dots{ display:flex; gap:6px; }
+.page-group .axes-nav.prev{ left: 0; }
+.page-group .axes-nav.next{ right: 0; }
+.page-group .axes-nav:hover{ transform: translateY(50%) translateY(-1px); opacity:1; }
+
+.page-group .axes-dots{
+  display:flex; gap:6px; justify-content:center; margin: 10px 0 0;
+}
 .page-group .axes-dots .dot{
   width:8px; height:8px; border-radius:50%; background:#cbd5e1; border:none; cursor:pointer;
 }
 .page-group .axes-dots .dot.active{ background:#0a5771; }
 
-/* ===== 轴下信息带（默认 PI；选中后显示三张卡） ===== */
+/* ===== 轴下信息带：PI / 三卡 ===== */
 .page-group .info-ribbon{
-  display:flex; align-items:stretch; justify-content:center; gap:14px;
-  margin:14px 0 4px;
+  display:flex; align-items:stretch; justify-content:center; gap:16px;
+  margin: 14px 0 8px;
 }
 .page-group .info-card{
   background:#fff; border:1px solid #e9edf1; border-radius:12px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-  max-width:680px; min-width:260px;
+  max-width:720px; min-width:260px;
 }
 .page-group .info-card .card-inner{
   display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:center; padding:14px;
@@ -98,8 +105,6 @@
 .page-group .info-card .affiliation{ color:#666; margin:6px 0 8px; }
 .page-group .info-card .links a{ color:#0a5771; text-decoration:none; font-weight:600; }
 .page-group .info-card .links a:hover{ text-decoration:underline; }
-
-/* 中心卡更大更显眼；侧卡半透明并可点击 */
 .page-group .info-card--main{ transform:scale(1.02); }
 .page-group .info-card--side{ opacity:.68; cursor:pointer; }
 .page-group .info-card--side:hover{ opacity:.85; transform:scale(1.01); }
@@ -121,7 +126,7 @@
 .page-group .member-card .links a{ font-weight:600; color:#0a5771; text-decoration:none; }
 .page-group .member-card .links a:hover{ text-decoration:underline; }
 
-/* ===== Life ===== */
+/* ===== Life（不变） ===== */
 .page-group .life-slider{
   position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center;
   gap:12px; margin:8px 0 24px;
@@ -144,12 +149,12 @@
 /* ===== 响应式 ===== */
 @media (max-width:900px){
   .page-group .axis-row{ grid-template-columns:120px 1fr 120px; }
-  .page-group .axis-track{ height:280px; }
+  .page-group .axis-track{ height: 320px; }
   .page-group .info-card .card-inner{ grid-template-columns:80px 1fr; }
   .page-group .info-card img{ width:80px; height:80px; }
 }
 @media (max-width:600px){
   .page-group .axis-row{ grid-template-columns:90px 1fr 90px; }
-  .page-group .axis-track{ height:260px; }
+  .page-group .axis-track{ height: 300px; }
   .page-group .info-card{ min-width:220px; }
 }
