@@ -4,19 +4,17 @@
   color: #0a5771;
 }
 
-/* ========== 顶部：PI 信息窗 + 右侧象限整体布局 ========== */
-.page-group .pi-container {
-  display: grid;
-  grid-template-columns: minmax(260px, 360px) 1fr; /* 左窄右宽 */
-  gap: 24px;
-  align-items: start;
-  margin: 14px 0 28px;
+/* ========== 顶部：PI 信息窗 + 右侧“单条横轴轮播”布局 ========== */
+.page-group .viz1d-shell{
+  display:grid;
+  grid-template-columns:minmax(260px, 360px) 1fr; /* 左信息窗 + 右画布 */
+  gap:24px; align-items:start; margin:18px 0 28px;
 }
 
-/* 信息窗（矩形） */
+/* 信息窗 */
 .page-group .info-panel {
   position: sticky;
-  top: 80px; /* 页面滚动时固定在视口 */
+  top: 80px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -24,10 +22,7 @@
   padding: 16px;
 }
 .page-group .info-panel .panel-inner {
-  display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 14px;
-  align-items: center;
+  display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center;
 }
 .page-group .info-panel img {
   width: 96px; height: 96px; object-fit: cover; border-radius: 12px;
@@ -39,106 +34,69 @@
 .page-group .info-panel .links a { color: #0a5771; text-decoration: none; font-weight: 600; }
 .page-group .info-panel .links a:hover { text-decoration: underline; }
 
-/* ========== 右侧：轴标签 + 平行四边形象限 ========== */
-.page-group .axis-grid {
-  display: grid;
-  grid-template-columns: minmax(60px, 1fr) minmax(320px, 1000px) minmax(60px, 1fr);
-  grid-template-rows: auto 580px auto;
-  align-items: center;
-  justify-items: center;
-  gap: 12px 16px;
+/* ========== 横轴轮播（一次一条） ========== */
+.page-group .axes-1d-carousel{
+  position: relative; width: 100%;
 }
-.page-group .axis-top    { grid-column: 2; grid-row: 1; }
-.page-group .axis-left   { grid-column: 1; grid-row: 2; }
-.page-group .axis-center { grid-column: 2; grid-row: 2; width: 100%; height: 100%; }
-.page-group .axis-right  { grid-column: 3; grid-row: 2; }
-.page-group .axis-bottom { grid-column: 2; grid-row: 3; }
+.page-group .axes-viewport{
+  overflow: hidden; border-radius: 12px; border: 1px solid #e9edf1;
+  background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.page-group .axes-track{
+  display: flex; transition: transform .4s ease; width: 100%;
+}
+.page-group .axis-slide{
+  min-width: 100%; padding: 16px 18px;
+}
+.page-group .axes-nav{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  border: none; background: #0a5771; color: #fff; width: 36px; height: 36px;
+  border-radius: 8px; cursor: pointer; font-size: 20px; line-height: 36px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.15s ease, opacity 0.2s ease;
+}
+.page-group .axes-nav.prev{ left: -10px; }
+.page-group .axes-nav.next{ right: -10px; }
+.page-group .axes-nav:hover { transform: translateY(-50%) translateY(-1px); opacity: 0.92; }
 
-.page-group .axis-top,
-.page-group .axis-bottom,
-.page-group .axis-left,
-.page-group .axis-right {
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 1.5px;
-  color: rgba(30,30,30,0.78);
-  text-align: center;
-  white-space: nowrap;
-  pointer-events: none;
+/* 一条横轴的布局 */
+.page-group .axis-row{
+  display:grid; grid-template-columns:150px 1fr 150px; gap:12px; align-items:center;
 }
-.page-group .axis-left,
-.page-group .axis-right {
-  writing-mode: vertical-rl; text-orientation: mixed;
+.page-group .axis-label{
+  font-weight:700; letter-spacing:.4px; color:#0a5771; font-size:.98rem; opacity:.95;
 }
+.page-group .axis-label--left{ text-align:right; }
+.page-group .axis-label--right{ text-align:left; }
 
-/* 平行四边形象限（clip-path） */
-.page-group .research-map {
+/* 轨道本体（干净，仅底线） */
+.page-group .axis-track{
   position: relative;
-  width: 100%; height: 100%;
-  /* 平行四边形倾角与裁剪一致，给默认值，避免 var 未定义 */
-  --skew: 4deg; /* 如果 clip-path 改为 10%/90%，把这里改成 ~6deg */
-  clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
-  overflow: hidden;
-
-  /* 用明确百分比区间，避免 Safari 对 0 50% 简写的兼容问题 */
-  background:
-    linear-gradient(
-      calc(90deg + var(--skew, 4deg)),
-      rgba(200,220,255,0.22) 0%,
-      rgba(200,220,255,0.22) 50%,
-      rgba(255,230,200,0.22) 50%,
-      rgba(255,230,200,0.22) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(210,255,210,0.18) 0%,
-      rgba(210,255,210,0.18) 50%,
-      rgba(255,210,210,0.18) 50%,
-      rgba(255,210,210,0.18) 100%
-    );
+  height: 160px;    /* 单条横轴的高度，可按需调大/调小 */
+  background: transparent; border: none; border-radius: 0; box-shadow: none; overflow: visible;
+}
+.page-group .axis-track::before{
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #d0d7df;
 }
 
-.page-group .research-map::after {
-  content: "";
-  position: absolute; inset: 0;
-  border: 1px solid #dfe4ea;
-  clip-path: inherit;
-  pointer-events: none;
+/* 成员头像（按 data-pos 横坐标；按 data-years 分到不同纵向车道） */
+.page-group .axis-thumb{
+  position:absolute; transform:translate(-50%, -50%);
+  cursor:pointer; z-index:1; transition:transform .15s ease, box-shadow .15s ease;
 }
-.page-group .members-layer { position: absolute; inset: 0; }
+.page-group .axis-thumb img{
+  width:100%; height:100%; border-radius:50%;
+  border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+.page-group .axis-thumb:hover{ z-index:2; transform:translate(-50%, -50%) scale(1.08); }
+.page-group .axis-thumb.selected{ z-index:3; transform:translate(-50%, -50%) scale(1.12); }
 
-/* 成员头像（百分比定位） */
-.page-group .member-dot {
-  position: absolute;
-  left: var(--x); top: var(--y);
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.page-group .member-dot img {
-  width: 80px; height: 80px; border-radius: 50%;
-  border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-.page-group .member-dot:hover img,
-.page-group .member-dot.selected img {
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+/* ========== PI 简要（去掉“平行四边形四象限”，仅保留信息窗） ========== */
+.page-group .pi-single{
+  margin: 14px 0 28px;
+  display: block;
 }
 
-/* Tooltip（可选） */
-.page-group .tooltip { display: none !important; }
-.member-dot:hover .tooltip,
-.member-dot.selected .tooltip { display: none !important; }
-.page-group .member-dot:hover .tooltip,
-.page-group .member-dot.selected .tooltip { display: block; }
-.page-group .tooltip h4 { margin: 0 0 6px; font-size: 1rem; }
-.page-group .tooltip .degree { color: #555; font-weight: 600; margin: 0 0 6px; }
-.page-group .tooltip .desc { font-size: 0.9rem; color: #555; margin-bottom: 8px; }
-.page-group .tooltip a { font-weight: 600; color: #0a5771; text-decoration: none; }
-.page-group .tooltip a:hover { text-decoration: underline; }
-
-/* ========== Alumni：卡片网格（按你的范式） ========== */
+/* ========== Alumni：卡片网格（保留） ========== */
 .page-group .group-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -171,7 +129,7 @@
 .page-group .member-card.pi { background: #f5faff; border-color: #cce3ff; }
 .page-group .member-card.alumni { background: #fafafa; border-color: #e0e0e0; }
 
-/* ========== Life 相册 ========== */
+/* ========== Life 相册（保留） ========== */
 .page-group .life-slider {
   position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center;
   gap: 12px; margin: 8px 0 24px;
@@ -196,104 +154,15 @@
 .page-group .life-nav:hover { transform: translateY(-1px); opacity: 0.92; }
 
 /* ========== 响应式 ========== */
-@media (max-width: 1024px) {
-  .page-group .axis-grid { grid-template-rows: auto 520px auto; }
-}
-@media (max-width: 900px) {
-  .page-group .pi-container { grid-template-columns: 1fr; }
-  .page-group .info-panel { position: static; }
-  .page-group .axis-grid {
-    grid-template-columns: minmax(40px, 1fr) minmax(260px, 1fr) minmax(40px, 1fr);
-    grid-template-rows: auto 420px auto;
-  }
-  .page-group .member-dot img { width: 64px; height: 64px; }
-  .page-group .tooltip { width: 190px; font-size: 0.9rem; }
-}
-@media (max-width: 600px) {
-  .page-group .axis-grid { grid-template-rows: auto 360px auto; }
-  .page-group .member-dot img { width: 56px; height: 56px; }
-  .page-group .member-photo { width: 100px; height: 100px; }
-}
-
-
-/* ===== 1D 讨论可视化（矩形） ===== */
-.page-group .viz1d-shell{
-  display:grid;
-  grid-template-columns:minmax(260px, 360px) 1fr; /* 左信息窗 + 右轨道画布 */
-  gap:24px; align-items:start; margin:18px 0 28px;
-}
-
-/* 信息窗复用 */
-.page-group .info-panel--small{ position:sticky; top:80px; }
-
-/* 右侧四条轴容器 */
-.page-group .axes-1d{
-  display:grid; gap:22px;
-  /* 聚焦展开：通过 data-focus 控制行高 */
-  --row-h: 120px;      /* 默认每条轨道高度 */
-  --row-h-focus: 380px;/* 聚焦时高度 */
-}
-.page-group .axes-1d .axis-row{
-  display:grid; grid-template-columns:150px 1fr 150px; gap:12px; align-items:center;
-}
-.page-group .axes-1d .axis-label{
-  font-weight:700; letter-spacing:.4px; color:#0a5771; font-size:.98rem; opacity:.95;
-}
-.page-group .axes-1d .axis-label--left{ text-align:right; }
-.page-group .axes-1d .axis-label--right{ text-align:left; }
-
-/* 轨道：无边框、无背景、无阴影 */
-.page-group .axes-1d .axis-track{
-  position: relative;
-  height: var(--row-h);
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
-}
-
-/* 唯一的线：底部坐标轴线 */
-.page-group .axes-1d .axis-track::before{
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 2px;
-  background: #d0d7df; /* 坐标轴颜色，可按需调深 */
-}
-
-/* 关闭一切分割/描线 */
-.page-group .axes-1d .axis-track::after{ content: none; }
-
-
-/* 学生头像（绝对定位） */
-.page-group .axes-1d .axis-thumb{
-  position:absolute; transform:translate(-50%, -50%);
-  cursor:pointer; z-index:1; transition:transform .15s ease, box-shadow .15s ease;
-}
-.page-group .axes-1d .axis-thumb img{
-  width:100%; height:100%; border-radius:50%;
-  border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
-.page-group .axes-1d .axis-thumb:hover{ z-index:2; transform:translate(-50%, -50%) scale(1.08); }
-.page-group .axes-1d .axis-thumb.selected{ z-index:3; transform:translate(-50%, -50%) scale(1.12); }
-
-/* 聚焦展开：将被点击的那一行高度放大，其余压缩 */
-.page-group .axes-1d[data-focus="0"] .axis-row:nth-child(1) .axis-track,
-.page-group .axes-1d[data-focus="1"] .axis-row:nth-child(2) .axis-track,
-.page-group .axes-1d[data-focus="2"] .axis-row:nth-child(3) .axis-track,
-.page-group .axes-1d[data-focus="3"] .axis-row:nth-child(4) .axis-track{
-  height:var(--row-h-focus);
-}
-.page-group .axes-1d[data-focus] .axis-row .axis-track{
-  transition:height .25s ease;
-}
-
-
-/* 响应式 */
 @media (max-width: 900px){
   .page-group .viz1d-shell{ grid-template-columns:1fr; }
-  .page-group .info-panel--small{ position:static; }
-  .page-group .axes-1d{ --row-h: 96px; --row-h-focus: 320px; }
-  .page-group .axes-1d .axis-row{ grid-template-columns:120px 1fr 120px; }
+  .page-group .info-panel { position: static; }
+  .page-group .axes-1d-carousel .axes-nav.prev{ left: 6px; }
+  .page-group .axes-1d-carousel .axes-nav.next{ right: 6px; }
+  .page-group .axis-row{ grid-template-columns:120px 1fr 120px; }
+  .page-group .axis-track{ height: 140px; }
+}
+@media (max-width: 600px){
+  .page-group .axis-row{ grid-template-columns:90px 1fr 90px; }
+  .page-group .axis-track{ height: 120px; }
 }

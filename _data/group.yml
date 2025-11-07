@@ -18,7 +18,7 @@ current:
     photolink: /assets/images/group/a.jpg
     x: 30
     y: 25   # 理论 + 基础模型
-    join_year: 2024
+    years: 2
     a1: 35   # Efficiency vs Robustness
     a2: 80   # Fundamental Models vs Optimal Systems
     a3: 45   # Exploration vs Exploitation
@@ -31,7 +31,7 @@ current:
     photolink: /assets/images/group/b.jpg
     x: 70
     y: 25   # 理论 + 优化系统
-    join_year: 2024
+    years: 2
     a1: 70
     a2: 50
     a3: 20
@@ -44,7 +44,7 @@ current:
     photolink: /assets/images/group/c.jpg
     x: 30
     y: 75   # 应用 + 基础模型
-    join_year: 2025
+    years: 1
     a1: 55
     a2: 30
     a3: 75
@@ -57,7 +57,7 @@ current:
     photolink: /assets/images/group/d.jpg
     x: 70
     y: 75   # 应用 + 优化系统
-    join_year: 2025
+    years: 1
     a1: 15
     a2: 65
     a3: 60
