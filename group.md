@@ -4,119 +4,122 @@ permalink: /group/
 author_profile: false
 classes: wide
 sidebar: false
-title: ""
+title: "Our Group"
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/group.css' | relative_url }}">
 
 <div class="page-group">
 
-<!-- ===== 纯净横轴：一次只显示一条；years=1 紧贴横轴，years 向上递增；无任何外框/标题 ===== -->
+<!-- ===== 纯净横轴：一次只显示一条，样式与 Life 一致（viewport + track + slides） ===== -->
 <section class="viz1d">
 
   <div class="axes-plain" id="axesCarousel">
-    <div class="axes-track" id="axesTrack">
+    <!-- 关键：viewport 负责裁切，只显示一条 -->
+    <div class="axes-viewport">
+      <div class="axes-track" id="axesTrack">
 
-      <!-- Slide 1: Efficiency ↔ Robustness -->
-      <div class="axis-slide">
-        <div class="axis-row" data-axis="a1">
-          <span class="axis-label axis-label--left">Efficiency</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb"
-                   data-pos="{{ m.a1 | default: 50 }}"
-                   data-years="{{ m.years | default: 1 }}"
-                   data-name="{{ m.name | escape }}"
-                   data-title="{{ m.title | escape }}"
-                   data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                   data-desc="{{ m.desc | strip_newlines | escape }}"
-                   data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                   data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
+        <!-- Slide 1 -->
+        <div class="axis-slide">
+          <div class="axis-row" data-axis="a1">
+            <span class="axis-label axis-label--left">Efficiency</span>
+            <div class="axis-track">
+              {% for m in site.data.group.current %}
+                <div class="axis-thumb"
+                     data-pos="{{ m.a1 | default: 50 }}"
+                     data-years="{{ m.years | default: 1 }}"
+                     data-name="{{ m.name | escape }}"
+                     data-title="{{ m.title | escape }}"
+                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                     data-desc="{{ m.desc | strip_newlines | escape }}"
+                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                     data-photo="{{ m.photolink | relative_url }}">
+                  <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+                </div>
+              {% endfor %}
+            </div>
+            <span class="axis-label axis-label--right">Robustness</span>
           </div>
-          <span class="axis-label axis-label--right">Robustness</span>
         </div>
-      </div>
 
-      <!-- Slide 2 -->
-      <div class="axis-slide">
-        <div class="axis-row" data-axis="a2">
-          <span class="axis-label axis-label--left">Fundamental Models</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb"
-                   data-pos="{{ m.a2 | default: 50 }}"
-                   data-years="{{ m.years | default: 1 }}"
-                   data-name="{{ m.name | escape }}"
-                   data-title="{{ m.title | escape }}"
-                   data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                   data-desc="{{ m.desc | strip_newlines | escape }}"
-                   data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                   data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
+        <!-- Slide 2 -->
+        <div class="axis-slide">
+          <div class="axis-row" data-axis="a2">
+            <span class="axis-label axis-label--left">Fundamental Models</span>
+            <div class="axis-track">
+              {% for m in site.data.group.current %}
+                <div class="axis-thumb"
+                     data-pos="{{ m.a2 | default: 50 }}"
+                     data-years="{{ m.years | default: 1 }}"
+                     data-name="{{ m.name | escape }}"
+                     data-title="{{ m.title | escape }}"
+                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                     data-desc="{{ m.desc | strip_newlines | escape }}"
+                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                     data-photo="{{ m.photolink | relative_url }}">
+                  <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+                </div>
+              {% endfor %}
+            </div>
+            <span class="axis-label axis-label--right">Optimal Systems</span>
           </div>
-          <span class="axis-label axis-label--right">Optimal Systems</span>
         </div>
-      </div>
 
-      <!-- Slide 3 -->
-      <div class="axis-slide">
-        <div class="axis-row" data-axis="a3">
-          <span class="axis-label axis-label--left">Exploration</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb"
-                   data-pos="{{ m.a3 | default: 50 }}"
-                   data-years="{{ m.years | default: 1 }}"
-                   data-name="{{ m.name | escape }}"
-                   data-title="{{ m.title | escape }}"
-                   data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                   data-desc="{{ m.desc | strip_newlines | escape }}"
-                   data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                   data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
+        <!-- Slide 3 -->
+        <div class="axis-slide">
+          <div class="axis-row" data-axis="a3">
+            <span class="axis-label axis-label--left">Exploration</span>
+            <div class="axis-track">
+              {% for m in site.data.group.current %}
+                <div class="axis-thumb"
+                     data-pos="{{ m.a3 | default: 50 }}"
+                     data-years="{{ m.years | default: 1 }}"
+                     data-name="{{ m.name | escape }}"
+                     data-title="{{ m.title | escape }}"
+                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                     data-desc="{{ m.desc | strip_newlines | escape }}"
+                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                     data-photo="{{ m.photolink | relative_url }}">
+                  <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+                </div>
+              {% endfor %}
+            </div>
+            <span class="axis-label axis-label--right">Exploitation</span>
           </div>
-          <span class="axis-label axis-label--right">Exploitation</span>
         </div>
-      </div>
 
-      <!-- Slide 4 -->
-      <div class="axis-slide">
-        <div class="axis-row" data-axis="a4">
-          <span class="axis-label axis-label--left">Transportation</span>
-          <div class="axis-track">
-            {% for m in site.data.group.current %}
-              <div class="axis-thumb"
-                   data-pos="{{ m.a4 | default: 50 }}"
-                   data-years="{{ m.years | default: 1 }}"
-                   data-name="{{ m.name | escape }}"
-                   data-title="{{ m.title | escape }}"
-                   data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                   data-desc="{{ m.desc | strip_newlines | escape }}"
-                   data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                   data-photo="{{ m.photolink | relative_url }}">
-                <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
-              </div>
-            {% endfor %}
+        <!-- Slide 4 -->
+        <div class="axis-slide">
+          <div class="axis-row" data-axis="a4">
+            <span class="axis-label axis-label--left">Transportation</span>
+            <div class="axis-track">
+              {% for m in site.data.group.current %}
+                <div class="axis-thumb"
+                     data-pos="{{ m.a4 | default: 50 }}"
+                     data-years="{{ m.years | default: 1 }}"
+                     data-name="{{ m.name | escape }}"
+                     data-title="{{ m.title | escape }}"
+                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                     data-desc="{{ m.desc | strip_newlines | escape }}"
+                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                     data-photo="{{ m.photolink | relative_url }}">
+                  <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
+                </div>
+              {% endfor %}
+            </div>
+            <span class="axis-label axis-label--right">Public Health</span>
           </div>
-          <span class="axis-label axis-label--right">Public Health</span>
         </div>
-      </div>
 
+      </div>
     </div>
 
-    <!-- 极简导航：两侧箭头 + 底部小点 -->
+    <!-- 与 Life 相同的极简导航 -->
     <button class="axes-nav prev" aria-label="Previous">‹</button>
     <button class="axes-nav next" aria-label="Next">›</button>
     <div class="axes-dots" id="axesDots"></div>
 
-    <!-- 轴下信息带：默认 PI；点击头像显示 3 卡 -->
+    <!-- 轴下信息带：默认 PI；点击头像显示三卡 -->
     {% assign pi = site.data.group.pi | first %}
     <div class="info-ribbon" id="infoRibbon">
       <div class="info-card info-card--main">
@@ -129,8 +132,7 @@ title: ""
             <div class="links">
               {% if pi.pagelink %}<a href="{{ pi.pagelink }}" target="_blank">Google Scholar</a>{% endif %}
               {% if pi.github %}{% if pi.pagelink %} | {% endif %}<a href="{{ pi.github }}" target="_blank">GitHub</a>{% endif %}
-              {% if pi.email %}{% if pi.pagelink or pi.github %} | {% endif %}<a href="mailto:{{
-                pi.email }}">Email</a>{% endif %}
+              {% if pi.email %}{% if pi.pagelink or pi.github %} | {% endif %}<a href="mailto:{{ pi.email }}">Email</a>{% endif %}
             </div>
           </div>
         </div>
@@ -163,7 +165,7 @@ title: ""
 
 <hr>
 
-<!-- ===== Life ===== -->
+<!-- ===== Life（原样） ===== -->
 <section class="life-section">
   <h2 class="section-title">Life</h2>
   <div class="life-slider" id="lifeSlider">
@@ -187,16 +189,15 @@ title: ""
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  /* ========== 布局：years=1 紧贴横轴，years 向上；上方留白 ==========
-     思路：把“车道”从底部（baseline）向上铺，底部是横轴基线。 */
+  /* ========== years=1 贴横轴；years 向上；无外框，顶部自然留白 ========== */
   function layoutOneRow(row){
     const track = row.querySelector('.axis-track');
     const thumbs = Array.from(track.querySelectorAll('.axis-thumb'));
 
-    // 清理旧导引线
+    // 清理导引线
     track.querySelectorAll('.lane-guides').forEach(n => n.remove());
 
-    // 最大 years
+    // 求最大 years
     let maxYears = 1;
     thumbs.forEach(t => {
       const y = parseInt(t.dataset.years || 1, 10);
@@ -206,29 +207,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const padX = 20;
     const W = track.clientWidth || track.getBoundingClientRect().width || 900;
-    const H = track.clientHeight || 280;
+    const H = track.clientHeight || 360;
     const innerW = Math.max(10, W - padX*2);
 
-    // 从底部向上分配 lanes：years=1 位于最靠近 baseline 的带
+    // 自底向上分配层：baseline 在最底，years=1 紧贴 baseline
     const guides = document.createElement('div');
     guides.className = 'lane-guides';
     track.appendChild(guides);
 
-    const baselineY = H - 2;                 // 基线位置(接近底部)
-    const usableUp = H * 0.68;               // 从底部向上用于车道的高度（上方仍会留白）
+    const baselineY = H - 2;
+    const usableUp = H * 0.70;                   // 底部向上 70% 用于层，其余作为顶部留白
     const bandH = Math.max(18, usableUp / maxYears);
 
-    // years k 的纵向中心位置（k=1..maxYears）
-    function yForYears(k){
-      // 紧贴横轴：k=1 -> baseline 上方半个 band
-      return baselineY - bandH*(k - 0.5);
-    }
+    const yFor = (k) => baselineY - bandH*(k - 0.5); // k=1..maxYears
 
-    // 画几条淡导引线（可选：只画 1..maxYears 的中心线）
+    // 画淡导引线
     for(let k=1; k<=maxYears; k++){
       const g = document.createElement('div');
       g.className = 'lane-guide';
-      g.style.top = `${yForYears(k)}px`;
+      g.style.top = `${yFor(k)}px`;
       guides.appendChild(g);
     }
 
@@ -238,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const years = Math.max(1, Math.min(maxYears, parseInt(t.dataset.years||1, 10) || 1));
       const pos = Math.max(0, Math.min(100, parseFloat(t.dataset.pos||50)));
       const x = padX + innerW * (pos/100);
-      buckets[years-1].push({el:t, x, yCenter: yForYears(years)});
+      buckets[years-1].push({el:t, x, yc: yFor(years)});
     });
 
     const rMin = 18, rMax = 26, gap = 8;
@@ -250,9 +247,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const step = Math.min(r*0.9, (bandH/2 - r)/3);
       const placed = [];
       bucket.forEach(item=>{
-        let y = item.yCenter, tries = 0, dir = 1;
+        let y = item.yc, tries = 0, dir = 1;
         while (placed.some(p => Math.hypot(item.x - p.x, y - p.y) < dMin)) {
-          y = item.yCenter + dir * step * (1 + Math.floor(tries/2));
+          y = item.yc + dir * step * (1 + Math.floor(tries/2));
           dir *= -1; tries++; if (tries > 30) break;
         }
         placed.push({x:item.x, y});
@@ -274,41 +271,35 @@ document.addEventListener('DOMContentLoaded', () => {
     return {
       el: t,
       x: parseFloat(t.style.left) || 0,
-      name: d.name || '',
-      title: d.title || '',
-      affiliation: d.affiliation || '',
-      desc: d.desc || '',
-      page: d.page || '',
-      github: d.github || '',
-      email: d.email || '',
-      photo: d.photo || ''
+      name: d.name || '', title: d.title || '', affiliation: d.affiliation || '',
+      desc: d.desc || '', page: d.page || '', github: d.github || '',
+      email: d.email || '', photo: d.photo || ''
     };
   }
-  function nearestThree(currentThumb){
-    const row = currentThumb.closest('.axis-row');
+  function nearestThree(t){
+    const row = t.closest('.axis-row');
     const items = Array.from(row.querySelectorAll('.axis-thumb'))
       .map(thumbData).sort((a,b)=>a.x-b.x);
-    const i = items.findIndex(it => it.el === currentThumb);
+    const i = items.findIndex(it => it.el === t);
     return { left: items[i-1]||null, center: items[i], right: items[i+1]||null };
   }
   function cardHTML(item, mod){
-    return `
-      <div class="info-card ${mod}">
-        <div class="card-inner">
-          <img src="${item.photo}" alt="${item.name}">
-          <div class="card-text">
-            <h3>${item.name}</h3>
-            ${item.title ? `<p class="degree">${item.title}</p>` : ''}
-            ${item.affiliation ? `<p class="affiliation">${item.affiliation}</p>` : ''}
-            ${item.desc ? `<p class="desc">${item.desc}</p>` : ''}
-            <div class="links">
-              ${item.page ? `<a href="${item.page}" target="_blank">Page</a>` : ''}
-              ${item.github ? `${item.page ? ' | ' : ''}<a href="${item.github}" target="_blank">GitHub</a>` : ''}
-              ${item.email ? `${(item.page || item.github) ? ' | ' : ''}<a href="mailto:${item.email}">Email</a>` : ''}
-            </div>
+    return `<div class="info-card ${mod}">
+      <div class="card-inner">
+        <img src="${item.photo}" alt="${item.name}">
+        <div class="card-text">
+          <h3>${item.name}</h3>
+          ${item.title ? `<p class="degree">${item.title}</p>` : ''}
+          ${item.affiliation ? `<p class="affiliation">${item.affiliation}</p>` : ''}
+          ${item.desc ? `<p class="desc">${item.desc}</p>` : ''}
+          <div class="links">
+            ${item.page ? `<a href="${item.page}" target="_blank">Page</a>` : ''}
+            ${item.github ? `${item.page ? ' | ' : ''}<a href="${item.github}" target="_blank">GitHub</a>` : ''}
+            ${item.email ? `${(item.page || item.github) ? ' | ' : ''}<a href="mailto:${item.email}">Email</a>` : ''}
           </div>
         </div>
-      </div>`;
+      </div>
+    </div>`;
   }
   function clearThumbFocus(){ document.querySelectorAll('.axis-thumb').forEach(t=>t.classList.remove('thumb-main','thumb-side')); }
   function focusThumbSet(set){
@@ -342,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, {passive:true});
     });
   }
-  // 点击空白恢复 PI
   ribbon.setAttribute('data-pi-html', ribbon.innerHTML);
   document.addEventListener('click', (e)=>{
     if (!e.target.closest('.axis-thumb') && !e.target.closest('#infoRibbon')){
@@ -352,11 +342,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ========== 轮播（极简） ========== */
+  /* ========== 轮播：与 Life 相同（viewport + track + slides） ========== */
   const trackEl = document.getElementById('axesTrack');
   const slides = Array.from(trackEl.querySelectorAll('.axis-slide'));
   const dotsWrap = document.getElementById('axesDots');
+  const prevBtn = document.querySelector('.axes-nav.prev');
+  const nextBtn = document.querySelector('.axes-nav.next');
   let idx = 0;
+
   function renderDots(){
     dotsWrap.innerHTML = '';
     slides.forEach((_, i)=>{
@@ -370,26 +363,23 @@ document.addEventListener('DOMContentLoaded', () => {
     trackEl.style.transform = `translateX(-${idx * 100}%)`;
     renderDots();
     if (reLayout) requestAnimationFrame(()=>{ layoutAll(); bindThumbs(); });
-    // 切换轴时恢复 PI
+    // 每次切轴恢复 PI
     clearThumbFocus();
     ribbon.innerHTML = ribbon.getAttribute('data-pi-html');
     ribbon.dataset.mode = 'pi';
   }
-  document.querySelector('.axes-nav.prev').addEventListener('click', ()=>{
-    idx = (idx - 1 + slides.length) % slides.length; updateCarousel(true);
-  });
-  document.querySelector('.axes-nav.next').addEventListener('click', ()=>{
-    idx = (idx + 1) % slides.length; updateCarousel(true);
-  });
-  // 触摸
+  prevBtn.addEventListener('click', ()=>{ idx = (idx - 1 + slides.length) % slides.length; updateCarousel(true); });
+  nextBtn.addEventListener('click', ()=>{ idx = (idx + 1) % slides.length; updateCarousel(true); });
+
+  // 触摸滑动
   let startX=0, swiping=false;
   trackEl.addEventListener('touchstart', e=>{ if(e.touches[0]){ startX=e.touches[0].clientX; swiping=true; } }, {passive:true});
-  trackEl.addEventListener('touchend',   e=>{
+  trackEl.addEventListener('touchend', e=>{
     if(!swiping) return;
     const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
     const dx = endX - startX; const TH = 40;
-    if (dx>TH) document.querySelector('.axes-nav.prev').click();
-    else if (dx<-TH) document.querySelector('.axes-nav.next').click();
+    if (dx>TH) prevBtn.click();
+    else if (dx<-TH) nextBtn.click();
     swiping=false;
   }, {passive:true});
 
@@ -398,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(()=>{ layoutAll(); bindThumbs(); });
   window.addEventListener('resize', layoutAll);
 
-  /* ========== Life（保持不变） ========== */
+  /* ===== Life slider 保持不变 ===== */
   const lifeTrack = document.getElementById('lifeTrack');
   if (lifeTrack){
     const slidesLife = Array.from(lifeTrack.children);

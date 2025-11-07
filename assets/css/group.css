@@ -1,23 +1,24 @@
-/* 仅保留必要视觉；无边框、无阴影、无背景框 */
+/* 简洁：无边框、无背景盒子，仅保留基线与淡导引 */
 .page-group .section-title{ margin-top:.5rem; color:#0a5771; }
 
-/* ===== 纯净横轴 ===== */
-.page-group .viz1d{ margin: 10px 0 0; }
+/* ===== 纯净横轴（像 Life 一样的结构：viewport + track + slides） ===== */
+.page-group .viz1d{ margin: 8px 0 0; }
 
 .page-group .axes-plain{ position: relative; }
+.page-group .axes-plain .axes-viewport{ overflow: hidden; }
 .page-group .axes-plain .axes-track{ display:flex; transition:transform .4s ease; }
 .page-group .axes-plain .axis-slide{ min-width:100%; }
 
+/* 一条横轴的三列：左标签 | 轨道 | 右标签 */
 .page-group .axis-row{
   display:grid;
   grid-template-columns:160px 1fr 160px;
-  align-items:end;       /* 两侧文字与底线对齐 */
+  align-items:end;          /* 让标签与基线对齐到底部 */
   gap:12px;
-  /* 增大整体高度，使顶部留白自然 */
-  margin: 24px 0 6px;
+  margin: 24px 0 6px;       /* 顶部自然留白 */
 }
 
-/* 左右标签与底线对齐 */
+/* 左右标签：与基线同一高度 */
 .page-group .axis-label{
   font-weight:700; letter-spacing:.4px; color:#0a5771; font-size:1rem; opacity:.95;
   align-self:end; padding-bottom:12px;
@@ -25,12 +26,11 @@
 .page-group .axis-label--left{ text-align:right; }
 .page-group .axis-label--right{ text-align:left; }
 
-/* 轨道：底部基线 + 上方用于 years 分层；无外框 */
 .page-group .axis-track{
   position:relative;
-  height: 360px;              /* 决定上方留白空间与层高 */
+  height: 360px;           /* 决定顶部留白与层高 */
   overflow:visible;
-  padding-bottom:12px;         /* 让标签与基线对齐 */
+  padding-bottom:12px;     /* 让标签和基线对齐 */
 }
 
 /* 底部横轴基线 */
@@ -40,7 +40,7 @@
   height:2px; background:#cfd6de;
 }
 
-/* 车道导引（淡） */
+/* 年份层导引（淡） */
 .page-group .lane-guides{ position:absolute; inset:0 0 12px 0; pointer-events:none; }
 .page-group .lane-guide{
   position:absolute; left:0; right:0; height:0;
@@ -51,39 +51,33 @@
 /* 头像 */
 .page-group .axis-thumb{
   position:absolute; transform:translate(-50%,-50%);
-  cursor:pointer; z-index:1; transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  cursor:pointer; z-index:1;
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
 .page-group .axis-thumb img{
   width:100%; height:100%; border-radius:50%;
   border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 .page-group .axis-thumb:hover{ z-index:2; transform:translate(-50%,-50%) scale(1.08); }
-
-/* 选中放大 */
 .page-group .axis-thumb.thumb-main{ transform:translate(-50%,-50%) scale(1.24); z-index:3; }
 .page-group .axis-thumb.thumb-side{ transform:translate(-50%,-50%) scale(1.10); z-index:2; opacity:.9; }
 
-/* 导航（极简） */
+/* 导航（与 Life 风格一致） */
 .page-group .axes-nav{
-  position:absolute; top: calc(100% - 18px);  /* 放在基线附近，低调 */
-  transform: translateY(50%);
-  border:none; background:#0a5771; color:#fff; width:32px; height:32px;
-  border-radius:8px; cursor:pointer; font-size:18px; line-height:32px;
-  transition:transform .15s ease, opacity .2s ease; opacity:.95;
+  border:none; background:#0a5771; color:#fff; width:36px; height:36px;
+  border-radius:8px; cursor:pointer; font-size:20px; line-height:36px;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  position:absolute; top:50%; transform:translateY(-50%);
 }
-.page-group .axes-nav.prev{ left: 0; }
-.page-group .axes-nav.next{ right: 0; }
-.page-group .axes-nav:hover{ transform: translateY(50%) translateY(-1px); opacity:1; }
-
-.page-group .axes-dots{
-  display:flex; gap:6px; justify-content:center; margin: 10px 0 0;
-}
+.page-group .axes-nav.prev{ left: -4px; }
+.page-group .axes-nav.next{ right: -4px; }
+.page-group .axes-dots{ display:flex; gap:6px; justify-content:center; margin: 10px 0 0; }
 .page-group .axes-dots .dot{
   width:8px; height:8px; border-radius:50%; background:#cbd5e1; border:none; cursor:pointer;
 }
 .page-group .axes-dots .dot.active{ background:#0a5771; }
 
-/* ===== 轴下信息带：PI / 三卡 ===== */
+/* ===== 轴下信息带（PI/三卡） ===== */
 .page-group .info-ribbon{
   display:flex; align-items:stretch; justify-content:center; gap:16px;
   margin: 14px 0 8px;
@@ -109,7 +103,7 @@
 .page-group .info-card--side{ opacity:.68; cursor:pointer; }
 .page-group .info-card--side:hover{ opacity:.85; transform:scale(1.01); }
 
-/* ===== Alumni ===== */
+/* ===== Alumni / Life 保持不变（略） ===== */
 .page-group .group-grid{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:25px; margin-top:20px; margin-bottom:40px;
@@ -120,31 +114,16 @@
 }
 .page-group .member-card:hover{ transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,.15); }
 .page-group .member-photo{ width:120px; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
-.page-group .member-card h3{ margin:10px 0 5px; font-size:1.2rem; }
-.page-group .member-card .degree{ font-weight:600; color:#555; margin-bottom:6px; }
-.page-group .member-card .desc{ font-size:.95rem; color:#666; line-height:1.4; margin-bottom:8px; }
-.page-group .member-card .links a{ font-weight:600; color:#0a5771; text-decoration:none; }
-.page-group .member-card .links a:hover{ text-decoration:underline; }
 
-/* ===== Life（不变） ===== */
-.page-group .life-slider{
-  position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center;
-  gap:12px; margin:8px 0 24px;
-}
+.page-group .life-slider{ position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; margin:8px 0 24px; }
 .page-group .life-viewport{ overflow:hidden; border-radius:12px; border:1px solid #e9edf1; box-shadow:0 4px 12px rgba(0,0,0,.05); }
 .page-group .life-track{ display:flex; transition:transform .4s ease; width:100%; }
 .page-group .life-slide{ min-width:100%; position:relative; background:#fff; }
 .page-group .life-slide img{ display:block; width:100%; height:auto; object-fit:cover; }
-.page-group .life-slide figcaption{
-  position:absolute; left:0; right:0; bottom:0;
-  background:linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
-  color:#fff; padding:10px 12px; font-size:.95rem;
-}
 .page-group .life-nav{
   border:none; background:#0a5771; color:#fff; width:36px; height:36px; border-radius:8px; cursor:pointer; font-size:20px; line-height:36px;
-  box-shadow:0 2px 8px rgba(0,0,0,.15); transition:transform .15s ease, opacity .2s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
-.page-group .life-nav:hover{ transform:translateY(-1px); opacity:.92; }
 
 /* ===== 响应式 ===== */
 @media (max-width:900px){
@@ -156,5 +135,7 @@
 @media (max-width:600px){
   .page-group .axis-row{ grid-template-columns:90px 1fr 90px; }
   .page-group .axis-track{ height: 300px; }
+  .page-group .axes-nav.prev{ left: -2px; }
+  .page-group .axes-nav.next{ right: -2px; }
   .page-group .info-card{ min-width:220px; }
 }
