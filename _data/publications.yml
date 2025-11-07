@@ -3,6 +3,7 @@
   venue: "Conference 1"
   year: 2025
   type: "conference"
+  direction: "models"
   pdf: "#"
   doi: "https://doi.org/10.1234/example1"
 
@@ -11,6 +12,7 @@
   venue: "Journal 1"
   year: 2025
   type: "journal"
+  direction: "models"
   pdf: "#"
   doi: "https://doi.org/10.1234/example2"
 
@@ -19,6 +21,7 @@
   venue: "Conference 2"
   year: 2024
   type: "conference"
+  direction: "systems"
   pdf: "#"
   doi: "https://doi.org/10.1234/example3"
 
@@ -27,5 +30,6 @@
   venue: "Journal 2"
   year: 2024
   type: "journal"
+  direction: "systems"
   pdf: "#"
   doi: "https://doi.org/10.1234/example4"
