@@ -264,8 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function layoutAll(){ document.querySelectorAll('.axis-row').forEach(layoutOneRow); }
 
-  /* ========== 信息带：三卡（中心 + 左右最近），头像同步放大 ========== */
-  /* ========== 信息带：从三卡 -> 支持边缘点击显示“内侧两个”且相对位置不变 ========== */
+  /* ========== 信息带：三卡（中心/边缘-双内侧）+ 固定尺寸 ========== */
   const ribbon = document.getElementById('infoRibbon');
 
   function thumbData(t){
@@ -280,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-  * 选择规则：
-  * - 中间位置：返回 [left1, center, right1]，center 居中不变
-  * - 最左端（i==0）：返回 [center, right1, right2]，center 在最左
-  * - 最右端（i==n-1）：返回 [left2, left1, center]，center 在最右
-  * - 次边缘（只有一侧不足）：尽量补齐“内侧”方向的两个
-  * 返回 { order: [itemA, itemB, itemC], mode: 'center' | 'edge-left' | 'edge-right' }
-  */
+   * 选择规则：
+   * - 中间：返回 [left1, center, right1]（center 居中）
+   * - 最左端（i==0）：返回 [center, right1, right2]（center 在最左）
+   * - 最右端（i==n-1）：返回 [left2, left1, center]（center 在最右）
+   * - 次边缘：尽量补“内侧”第二个
+   * 返回 { order: [...], mode: 'center' | 'edge-left' | 'edge-right' }
+   */
   function pickTriplet(t){
     const row = t.closest('.axis-row');
     const items = Array.from(row.querySelectorAll('.axis-thumb'))
@@ -294,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const n = items.length;
     const i = items.findIndex(it => it.el === t);
 
-    // 保护：总数不足 3 的情况
     if (n === 0) return { order: [], mode: 'center' };
     if (n === 1) return { order: [items[0]], mode: 'center' };
     if (n === 2){
@@ -302,22 +300,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return { order: [items[0], items[1]], mode: 'edge-right' };
     }
 
-    const left1  = (i-1 >= 0)   ? items[i-1] : null;
-    const left2  = (i-2 >= 0)   ? items[i-2] : null;
-    const right1 = (i+1 <  n)   ? items[i+1] : null;
-    const right2 = (i+2 <  n)   ? items[i+2] : null;
+    const left1  = (i-1 >= 0) ? items[i-1] : null;
+    const left2  = (i-2 >= 0) ? items[i-2] : null;
+    const right1 = (i+1 <  n) ? items[i+1] : null;
+    const right2 = (i+2 <  n) ? items[i+2] : null;
 
-    // 极左：x 在最左 -> 取 x, x右1, x右2（x 在最左）
-    if (i === 0) return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
+    if (i === 0)     return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
+    if (i === n-1)   return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
-    // 极右：x 在最右 -> 取 x左2, x左1, x（x 在最右）
-    if (i === n-1) return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
+    if (!left1 && right1) return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
+    if (!right1 && left1) return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
-    // 次边缘：如果一侧只有一个邻居，则补“内侧”第二个
-    if (!left1 && right1)      return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
-    if (!right1 && left1)      return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
-
-    // 中间：左右各取一个（保持三卡：左-中-右）
     return { order: [left1, items[i], right1].filter(Boolean), mode: 'center' };
   }
 
@@ -340,21 +333,22 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>`;
   }
 
-  function clearThumbFocus(){ 
-    document.querySelectorAll('.axis-thumb').forEach(t=>t.classList.remove('thumb-main','thumb-side','thumb-side--left','thumb-side--right')); 
+  function clearThumbFocus(){
+    document.querySelectorAll('.axis-thumb')
+      .forEach(t=>t.classList.remove('thumb-main','thumb-side','thumb-side--left','thumb-side--right'));
   }
 
   /**
-  * 根据 order 里的顺序渲染三卡，并保持“相对位置不变”的要求：
-  * - edge-left：点击的是最左/靠左 -> 排列 [X, Y, Z]，X 在最左，其余在右侧（都标记为 side-right）
-  * - edge-right：点击的是最右/靠右 -> 排列 [Z, Y, X]，X 在最右，其余在左侧（都标记为 side-left）
-  * - center：排列 [L, X, R]，X 居中，L 标记 side-left，R 标记 side-right
-  */
+   * 渲染规则保持相对位置：
+   * - edge-left：顺序 [X, Y, Z] -> X（主卡）在最左，其余在右侧
+   * - edge-right：顺序 [Z, Y, X] -> X（主卡）在最右，其余在左侧
+   * - center：顺序 [L, X, R] -> 左侧卡、主卡、右侧卡
+   */
   function renderRibbonSet(result){
     const { order, mode } = result;
     if (!order || order.length === 0) return;
 
-    // 标记头像上的放大状态
+    // 头像高亮
     clearThumbFocus();
     order.forEach((it, idx)=>{
       if (!it || !it.el) return;
@@ -371,29 +365,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 生成卡片 HTML
+    // 生成卡片
     let html = '';
     if (mode === 'center'){
-      // [L, X, R] -> [side-left][main][side-right]
       html += cardHTML(order[0], 'info-card--side side-left');
       html += cardHTML(order[1], 'info-card--main');
       html += cardHTML(order[2], 'info-card--side side-right');
     }else if (mode === 'edge-left'){
-      // [X, Y, Z] -> X 在最左，其它都在右侧
       html += cardHTML(order[0], 'info-card--main');
       if (order[1]) html += cardHTML(order[1], 'info-card--side side-right');
       if (order[2]) html += cardHTML(order[2], 'info-card--side side-right');
     }else if (mode === 'edge-right'){
-      // [Z, Y, X] -> X 在最右，其它都在左侧
       if (order[0]) html += cardHTML(order[0], 'info-card--side side-left');
       if (order[1]) html += cardHTML(order[1], 'info-card--side side-left');
       html += cardHTML(order[2], 'info-card--main');
     }
 
-    ribbon.innerHTML = html; 
+    ribbon.innerHTML = html;
     ribbon.dataset.mode = 'triplet';
 
-    // 侧卡点击切换为它的三卡
+    // 侧卡点击 -> 切换到那个人的三卡
     ribbon.querySelectorAll('.info-card--side').forEach(c=>{
       c.addEventListener('click', ()=>{
         const name = c.querySelector('h3')?.textContent?.trim();
@@ -414,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 点击空白恢复 PI
   ribbon.setAttribute('data-pi-html', ribbon.innerHTML);
   document.addEventListener('click', (e)=>{
     if (!e.target.closest('.axis-thumb') && !e.target.closest('#infoRibbon')){
