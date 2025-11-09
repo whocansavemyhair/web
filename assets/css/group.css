@@ -13,9 +13,9 @@
 .page-group .axis-row{
   display:grid;
   grid-template-columns:160px 1fr 160px;
-  align-items:end;          /* 让标签与基线对齐到底部 */
+  align-items:end;
   gap:12px;
-  margin: 24px 0 6px;       /* 顶部自然留白 */
+  margin: 24px 0 6px;
 }
 
 /* 左右标签：与基线同一高度 */
@@ -28,9 +28,9 @@
 
 .page-group .axis-track{
   position:relative;
-  height: 360px;           /* 决定顶部留白与层高 */
+  height: 360px;
   overflow:visible;
-  padding-bottom:12px;     /* 让标签和基线对齐 */
+  padding-bottom:12px;
 }
 
 /* 底部横轴基线 */
@@ -48,19 +48,19 @@
   transform:translateY(-50%);
 }
 
-/* 头像 */
+/* 头像（增强对比） */
 .page-group .axis-thumb{
   position:absolute; transform:translate(-50%,-50%);
   cursor:pointer; z-index:1;
-  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease, filter .15s ease;
 }
 .page-group .axis-thumb img{
   width:100%; height:100%; border-radius:50%;
   border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 .page-group .axis-thumb:hover{ z-index:2; transform:translate(-50%,-50%) scale(1.08); }
-.page-group .axis-thumb.thumb-main{ transform:translate(-50%,-50%) scale(1.24); z-index:3; }
-.page-group .axis-thumb.thumb-side{ transform:translate(-50%,-50%) scale(1.10); z-index:2; opacity:.9; }
+.page-group .axis-thumb.thumb-main{ transform:translate(-50%,-50%) scale(1.28); z-index:3; opacity:1; filter:none; }
+.page-group .axis-thumb.thumb-side{ transform:translate(-50%,-50%) scale(1.06); z-index:2; opacity:.55; filter:saturate(0.85); }
 .page-group .axis-thumb.thumb-side--left{}
 .page-group .axis-thumb.thumb-side--right{}
 
@@ -79,37 +79,37 @@
 }
 .page-group .axes-dots .dot.active{ background:#0a5771; }
 
-/* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸（只作用在 info-*） ===== */
+/* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸（与 alumni 至少等大） ===== */
 .page-group .info-ribbon{
-  display:flex; align-items:stretch; justify-content:center; gap:16px;
-  height: 190px;           /* 固定整体高度，避免跳动 */
-  margin: 14px 0 8px;
+  display:flex; align-items:stretch; justify-content:center; gap:18px;
+  height: 220px;              /* 提升整体高度，保证信息更舒展 */
+  margin: 16px 0 10px;
 }
 .page-group .info-card{
   background:#fff; border:1px solid #e9edf1; border-radius:10px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
-  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-  width: 420px;            /* 主卡默认宽度（侧卡会被覆盖）*/
-  height: 190px;           /* 与 info-ribbon 保持一致 */
-  overflow: hidden;        /* 固定高度后避免内容溢出 */
-  display:flex;            /* 不影响其他模块，仅 info-card */
+  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease, filter .2s ease;
+  width: 460px;               /* 主卡宽度提升（≥ alumni 视觉体量）*/
+  height: 220px;              /* 与 ribbon 一致，固定高度 */
+  overflow: hidden;
+  display:flex;
 }
-.page-group .info-card--main{ width: 420px; transform:scale(1.00); }
-.page-group .info-card--side{ width: 300px; opacity:.80; cursor:pointer; }
-.page-group .info-card--side:hover{ opacity:.92; transform:scale(1.01); }
+.page-group .info-card--main{ width: 460px; opacity:1; filter:none; }
+.page-group .info-card--side{ width: 320px; opacity:.55; filter:saturate(0.9); cursor:pointer; }
+.page-group .info-card--side:hover{ opacity:.75; transform:scale(1.01); filter:none; }
 
 .page-group .info-card .card-inner{
-  display:grid; grid-template-columns:108px 1fr; gap:14px; align-items:center; 
-  padding:14px;
+  display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:center; 
+  padding:16px;
   height: 100%;
   box-sizing: border-box;
 }
 .page-group .info-card img{
-  width:108px; height:108px; object-fit:cover; border-radius:10px; 
+  width:120px; height:120px; object-fit:cover; border-radius:10px; 
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 .page-group .info-card h3{ 
-  margin:0 0 4px; color:#0a5771; font-size:1.05rem; line-height:1.25;
+  margin:0 4px 6px 0; color:#0a5771; font-size:1.08rem; line-height:1.3;
   display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
 }
 .page-group .info-card .degree{ 
@@ -127,7 +127,7 @@
 .page-group .info-card .links a{ color:#0a5771; text-decoration:none; font-weight:600; }
 .page-group .info-card .links a:hover{ text-decoration:underline; }
 
-/* ===== Alumni / Life 完全保持原样（未改动） ===== */
+/* ===== Alumni / Life 完全保持原样 ===== */
 .page-group .group-grid{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:25px; margin-top:20px; margin-bottom:40px;
@@ -149,15 +149,17 @@
   box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
-/* ===== 响应式（仅调整 info-* 宽度；不改 Alumni/Life） ===== */
+/* ===== 响应式（仅调整 info-* 尺寸；不改 Alumni/Life） ===== */
 @media (max-width:900px){
   .page-group .axis-row{ grid-template-columns:120px 1fr 120px; }
   .page-group .axis-track{ height: 320px; }
 
-  .page-group .info-card--main{ width: 360px; }
-  .page-group .info-card--side{ width: 260px; }
-  .page-group .info-card .card-inner{ grid-template-columns:96px 1fr; }
-  .page-group .info-card img{ width:96px; height:96px; }
+  .page-group .info-ribbon{ height: 210px; gap:14px; }
+  .page-group .info-card--main{ width: 420px; }
+  .page-group .info-card--side{ width: 300px; }
+  .page-group .info-card{ height: 210px; }
+  .page-group .info-card .card-inner{ grid-template-columns:110px 1fr; padding:14px; }
+  .page-group .info-card img{ width:110px; height:110px; }
 }
 @media (max-width:600px){
   .page-group .axis-row{ grid-template-columns:90px 1fr 90px; }
@@ -166,8 +168,9 @@
   .page-group .axes-nav.next{ right: -2px; }
 
   .page-group .info-ribbon{ gap:10px; height: 200px; }
-  .page-group .info-card--main{ width: 320px; }
-  .page-group .info-card--side{ width: 220px; }
-  .page-group .info-card .card-inner{ grid-template-columns:84px 1fr; }
-  .page-group .info-card img{ width:84px; height:84px; }
+  .page-group .info-card--main{ width: 360px; }
+  .page-group .info-card--side{ width: 260px; }
+  .page-group .info-card{ height: 200px; }
+  .page-group .info-card .card-inner{ grid-template-columns:96px 1fr; }
+  .page-group .info-card img{ width:96px; height:96px; }
 }

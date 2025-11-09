@@ -193,11 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function layoutOneRow(row){
     const track = row.querySelector('.axis-track');
     const thumbs = Array.from(track.querySelectorAll('.axis-thumb'));
-
-    // 清理导引线
     track.querySelectorAll('.lane-guides').forEach(n => n.remove());
 
-    // 求最大 years
     let maxYears = 1;
     thumbs.forEach(t => {
       const y = parseInt(t.dataset.years || 1, 10);
@@ -210,18 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const H = track.clientHeight || 360;
     const innerW = Math.max(10, W - padX*2);
 
-    // 自底向上分配层：baseline 在最底，years=1 紧贴 baseline
     const guides = document.createElement('div');
     guides.className = 'lane-guides';
     track.appendChild(guides);
 
     const baselineY = H - 2;
-    const usableUp = H * 0.70;                   // 底部向上 70% 用于层，其余作为顶部留白
+    const usableUp = H * 0.70;
     const bandH = Math.max(18, usableUp / maxYears);
+    const yFor = (k) => baselineY - bandH*(k - 0.5);
 
-    const yFor = (k) => baselineY - bandH*(k - 0.5); // k=1..maxYears
-
-    // 画淡导引线
     for(let k=1; k<=maxYears; k++){
       const g = document.createElement('div');
       g.className = 'lane-guide';
@@ -229,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
       guides.appendChild(g);
     }
 
-    // 分桶并放置
     const buckets = Array.from({length: maxYears}, ()=>[]);
     thumbs.forEach(t=>{
       const years = Math.max(1, Math.min(maxYears, parseInt(t.dataset.years||1, 10) || 1));
@@ -278,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // 选择三卡（或两卡）集合：center / edge-left / edge-right
   function pickTriplet(t){
     const row = t.closest('.axis-row');
     const items = Array.from(row.querySelectorAll('.axis-thumb'))
@@ -298,16 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const right1 = (i+1 <  n) ? items[i+1] : null;
     const right2 = (i+2 <  n) ? items[i+2] : null;
 
-    // 极左：X 在最左，取 X、右1、右2
     if (i === 0)     return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
-    // 极右：X 在最右，取 左2、左1、X
     if (i === n-1)   return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
-    // 次边缘：尽量补“内侧”第二个
     if (!left1 && right1) return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
     if (!right1 && left1) return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
-    // 中间：左右各取一个
     return { order: [left1, items[i], right1].filter(Boolean), mode: 'center' };
   }
 
@@ -335,12 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .forEach(t=>t.classList.remove('thumb-main','thumb-side','thumb-side--left','thumb-side--right'));
   }
 
-  // 渲染三卡并保持相对位置不变
   function renderRibbonSet(result){
     const { order, mode } = result;
     if (!order || order.length === 0) return;
 
-    // 头像高亮
     clearThumbFocus();
     order.forEach((it, idx)=>{
       if (!it || !it.el) return;
@@ -357,7 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 生成卡片 HTML（顺序即视觉顺序）
     let html = '';
     if (mode === 'center'){
       html += cardHTML(order[0], 'info-card--side side-left');
@@ -376,7 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ribbon.innerHTML = html;
     ribbon.dataset.mode = 'triplet';
 
-    // 侧卡点击 -> 切换到那个人的三卡
     ribbon.querySelectorAll('.info-card--side').forEach(c=>{
       c.addEventListener('click', ()=>{
         const name = c.querySelector('h3')?.textContent?.trim();
@@ -428,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
     trackEl.style.transform = `translateX(-${idx * 100}%)`;
     renderDots();
     if (reLayout) requestAnimationFrame(()=>{ layoutAll(); bindThumbs(); });
-    // 每次切轴恢复 PI
     clearThumbFocus();
     ribbon.innerHTML = ribbon.getAttribute('data-pi-html');
     ribbon.dataset.mode = 'pi';
