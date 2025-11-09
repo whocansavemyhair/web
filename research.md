@@ -50,14 +50,17 @@ classes: wide
 
 
 <!-- ========== 统一 Filter Bar（publication 同款结构/类名） ========== -->
+<!-- ========== 统一 Filter Bar（All 作为全局开关，放到最前） ========== -->
 <div class="pub-filter-bar">
   <div class="filter-buttons">
+    <!-- 全局 All（唯一的 All；控制 方向 + 类型 + 年份） -->
+    <button data-scope="all" class="active">All</button>
+
     <!-- 方向 -->
-    <button data-scope="direction" data-value="models" class="active">Models</button>
+    <button data-scope="direction" data-value="models">Models</button>
     <button data-scope="direction" data-value="systems">Systems</button>
 
     <!-- 类型 -->
-    <button data-scope="type" data-type="all" class="active">All</button>
     <button data-scope="type" data-type="journal">Journal</button>
     <button data-scope="type" data-type="conference">Conference</button>
   </div>
@@ -74,7 +77,7 @@ classes: wide
 
 
 <!-- ========== Research Projects（随方向切换） ========== -->
-<div class="project-grid show" id="projects-models">
+<!-- <div class="project-grid show" id="projects-models">
   <article class="news-card long">
     <h3>Multi-agent Optimization</h3>
     <p>Developing scalable algorithms for multi-agent systems with adaptive control.</p>
@@ -106,7 +109,7 @@ classes: wide
     <h3>Policy Optimization Frameworks</h3>
     <p>Developing computational tools for data-informed policy decision-making.</p>
   </article>
-</div>
+</div> -->
 
 
 <!-- ========== Publications（按 方向 + 类型 + 年份 联动过滤） ========== -->
@@ -135,64 +138,83 @@ classes: wide
   {% endfor %}
 </div>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // 按钮 & 控件
   const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button");
   const yearSel = document.getElementById("pubYear");
-
-  // 项目区
-  const projectsModels = document.getElementById("projects-models");
-  const projectsSystems = document.getElementById("projects-systems");
-
-  // 论文
   const pubs = document.querySelectorAll(".pub-item");
 
-  // 当前状态
-  let currentDirection = "models";
+  // 状态：默认 All 模式（展示全部）
+  let allMode = true;
+  let currentDirection = "all";
   let currentType = "all";
   let currentYear = "all";
 
-  function applyFilters() {
-    // 1) 项目：方向切换
-    projectsModels.classList.toggle("show", currentDirection === "models");
-    projectsSystems.classList.toggle("show", currentDirection === "systems");
+  const btnAll = document.querySelector('.pub-filter-bar .filter-buttons button[data-scope="all"]');
 
-    // 2) 论文：方向 + 类型 + 年份
+  function applyFilters() {
+    if (allMode) {
+      pubs.forEach(pub => { pub.style.display = "flex"; });
+      return;
+    }
+
     pubs.forEach(pub => {
-      const okDir = pub.dataset.direction === currentDirection;
+      const okDir  = (currentDirection === "all") || (pub.dataset.direction === currentDirection);
       const okType = (currentType === "all") || (pub.dataset.type === currentType);
       const okYear = (currentYear === "all") || (pub.dataset.year === currentYear);
       pub.style.display = (okDir && okType && okYear) ? "flex" : "none";
     });
   }
 
-  // 按钮点击（按 scope 互斥）
+  // 处理按钮点击（同 scope 互斥；All 为全局总开关）
   btns.forEach(btn => {
     btn.addEventListener("click", () => {
       const scope = btn.dataset.scope;
 
-      // 同 scope 的按钮互斥
+      if (scope === "all") {
+        // 进入 All 模式：清空其它激活
+        allMode = true;
+        currentDirection = "all";
+        currentType = "all";
+        currentYear = "all";
+        yearSel.value = "all";
+
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        applyFilters();
+        return;
+      }
+
+      // 只要点了非 All，All 就失效
+      allMode = false;
+      btnAll.classList.remove("active");
+
+      // 同 scope 互斥
       btns.forEach(b => {
         if (b.dataset.scope === scope) b.classList.remove("active");
       });
       btn.classList.add("active");
 
-      if (scope === "direction") currentDirection = btn.dataset.value;
-      if (scope === "type") currentType = btn.dataset.type;
+      if (scope === "direction") currentDirection = btn.dataset.value || "all";
+      if (scope === "type")      currentType      = btn.dataset.type  || "all";
 
       applyFilters();
     });
   });
 
-  // 年份选择
+  // 年份选择（变更即使 All 失效）
   yearSel.addEventListener("change", () => {
-    currentYear = yearSel.value;
+    const val = yearSel.value;
+    if (val !== "all") {
+      allMode = false;
+      btnAll.classList.remove("active");
+    }
+    currentYear = val;
     applyFilters();
   });
 
-  // 首次渲染
+  // 首次渲染（All 模式）
   applyFilters();
 });
 </script>
