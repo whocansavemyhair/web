@@ -78,64 +78,75 @@
 .page-group .axes-dots .dot.active{ background:#0a5771; }
 
 /* ===== 轴下信息带（PI/三卡） ===== */
+/* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸 ===== */
 .page-group .info-ribbon{
   display:flex; align-items:stretch; justify-content:center; gap:16px;
+  /* 固定整体高度，确保点击不同学生时控件大小不跳动 */
+  height: 190px; 
   margin: 14px 0 8px;
 }
+
+/* 固定卡片尺寸：主卡+侧卡都固定宽高，风格与 alumni 保持一致 */
 .page-group .info-card{
-  background:#fff; border:1px solid #e9edf1; border-radius:12px;
+  background:#fff; border:1px solid #e9edf1; border-radius:10px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-  max-width:720px; min-width:260px;
+  width: 420px;              /* 主卡默认宽度（如果是侧卡会被覆盖）*/
+  height: 190px;             /* 与 info-ribbon 保持一致 */
+  overflow: hidden;          /* 固定高度后避免内容溢出 */
+  display:flex;              /* 兜底，避免高度塌陷 */
 }
+
+.page-group .info-card--main{ width: 420px; transform:scale(1.00); }
+.page-group .info-card--side{ width: 300px; opacity:.80; cursor:pointer; }
+.page-group .info-card--side:hover{ opacity:.92; transform:scale(1.01); }
+
+/* 内部布局固定：图片 + 文本区 */
 .page-group .info-card .card-inner{
-  display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:center; padding:14px;
+  display:grid; grid-template-columns:108px 1fr; gap:14px; align-items:center; 
+  padding:14px;
+  height: 100%;
+  box-sizing: border-box;
 }
 .page-group .info-card img{
-  width:96px; height:96px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.08);
+  width:108px; height:108px; object-fit:cover; border-radius:10px; 
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-.page-group .info-card h3{ margin:0 0 4px; color:#0a5771; }
-.page-group .info-card .degree{ margin:0 0 6px; color:#555; font-weight:600; }
-.page-group .info-card .affiliation{ color:#666; margin:6px 0 8px; }
+
+.page-group .info-card h3{ 
+  margin:0 0 4px; color:#0a5771; font-size:1.05rem; line-height:1.25;
+  display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
+}
+.page-group .info-card .degree{ 
+  margin:0 0 6px; color:#555; font-weight:600; 
+  display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
+}
+.page-group .info-card .affiliation{ 
+  color:#666; margin:6px 0 8px; 
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.page-group .info-card .desc{ 
+  color:#444; margin:0 0 6px;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
 .page-group .info-card .links a{ color:#0a5771; text-decoration:none; font-weight:600; }
 .page-group .info-card .links a:hover{ text-decoration:underline; }
-.page-group .info-card--main{ transform:scale(1.02); }
-.page-group .info-card--side{ opacity:.68; cursor:pointer; }
-.page-group .info-card--side:hover{ opacity:.85; transform:scale(1.01); }
 
-/* ===== Alumni / Life 保持不变（略） ===== */
-.page-group .group-grid{
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:25px; margin-top:20px; margin-bottom:40px;
-}
-.page-group .member-card{
-  background:#fff; border:1px solid #ddd; border-radius:10px; padding:20px; text-align:center;
-  box-shadow:0 2px 6px rgba(0,0,0,.05); transition:transform .2s ease, box-shadow .2s ease;
-}
-.page-group .member-card:hover{ transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,.15); }
-.page-group .member-photo{ width:120px; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
+/* 给“左右”侧卡一个方向样式（可选） */
+.page-group .info-card.side-left{ }
+.page-group .info-card.side-right{ }
 
-.page-group .life-slider{ position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; margin:8px 0 24px; }
-.page-group .life-viewport{ overflow:hidden; border-radius:12px; border:1px solid #e9edf1; box-shadow:0 4px 12px rgba(0,0,0,.05); }
-.page-group .life-track{ display:flex; transition:transform .4s ease; width:100%; }
-.page-group .life-slide{ min-width:100%; position:relative; background:#fff; }
-.page-group .life-slide img{ display:block; width:100%; height:auto; object-fit:cover; }
-.page-group .life-nav{
-  border:none; background:#0a5771; color:#fff; width:36px; height:36px; border-radius:8px; cursor:pointer; font-size:20px; line-height:36px;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
+/* 响应式（保持固定高度，调减宽度） */
+@media (max-width: 900px){
+  .page-group .info-card--main{ width: 360px; }
+  .page-group .info-card--side{ width: 260px; }
+  .page-group .info-card .card-inner{ grid-template-columns:96px 1fr; }
+  .page-group .info-card img{ width:96px; height:96px; }
 }
-
-/* ===== 响应式 ===== */
-@media (max-width:900px){
-  .page-group .axis-row{ grid-template-columns:120px 1fr 120px; }
-  .page-group .axis-track{ height: 320px; }
-  .page-group .info-card .card-inner{ grid-template-columns:80px 1fr; }
-  .page-group .info-card img{ width:80px; height:80px; }
-}
-@media (max-width:600px){
-  .page-group .axis-row{ grid-template-columns:90px 1fr 90px; }
-  .page-group .axis-track{ height: 300px; }
-  .page-group .axes-nav.prev{ left: -2px; }
-  .page-group .axes-nav.next{ right: -2px; }
-  .page-group .info-card{ min-width:220px; }
+@media (max-width: 640px){
+  .page-group .info-ribbon{ gap:10px; height: 200px; }
+  .page-group .info-card--main{ width: 320px; }
+  .page-group .info-card--side{ width: 220px; }
+  .page-group .info-card .card-inner{ grid-template-columns:84px 1fr; }
+  .page-group .info-card img{ width:84px; height:84px; }
 }
