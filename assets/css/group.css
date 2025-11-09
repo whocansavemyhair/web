@@ -82,7 +82,7 @@
 /* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸（与 alumni 至少等大） ===== */
 .page-group .info-ribbon{
   display:flex; align-items:stretch; justify-content:center; gap:18px;
-  height: 220px;              /* 提升整体高度，保证信息更舒展 */
+  height: 320px;              /* 提升整体高度，保证信息更舒展 */
   margin: 16px 0 10px;
 }
 .page-group .info-card{
@@ -90,7 +90,7 @@
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease, filter .2s ease;
   width: 460px;               /* 主卡宽度提升（≥ alumni 视觉体量）*/
-  height: 220px;              /* 与 ribbon 一致，固定高度 */
+  height: 320px;              /* 与 ribbon 一致，固定高度 */
   overflow: hidden;
   display:flex;
 }
