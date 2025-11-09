@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function layoutAll(){ document.querySelectorAll('.axis-row').forEach(layoutOneRow); }
 
-  /* ========== 信息带：三卡（中心/边缘-双内侧）+ 固定尺寸 ========== */
+  /* ========== 信息带：三卡（固定尺寸）+ 边缘显示两个内侧且相对位置不变 ========== */
   const ribbon = document.getElementById('infoRibbon');
 
   function thumbData(t){
@@ -278,14 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  /**
-   * 选择规则：
-   * - 中间：返回 [left1, center, right1]（center 居中）
-   * - 最左端（i==0）：返回 [center, right1, right2]（center 在最左）
-   * - 最右端（i==n-1）：返回 [left2, left1, center]（center 在最右）
-   * - 次边缘：尽量补“内侧”第二个
-   * 返回 { order: [...], mode: 'center' | 'edge-left' | 'edge-right' }
-   */
+  // 选择三卡（或两卡）集合：center / edge-left / edge-right
   function pickTriplet(t){
     const row = t.closest('.axis-row');
     const items = Array.from(row.querySelectorAll('.axis-thumb'))
@@ -305,12 +298,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const right1 = (i+1 <  n) ? items[i+1] : null;
     const right2 = (i+2 <  n) ? items[i+2] : null;
 
+    // 极左：X 在最左，取 X、右1、右2
     if (i === 0)     return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
+    // 极右：X 在最右，取 左2、左1、X
     if (i === n-1)   return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
+    // 次边缘：尽量补“内侧”第二个
     if (!left1 && right1) return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
     if (!right1 && left1) return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
 
+    // 中间：左右各取一个
     return { order: [left1, items[i], right1].filter(Boolean), mode: 'center' };
   }
 
@@ -338,12 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .forEach(t=>t.classList.remove('thumb-main','thumb-side','thumb-side--left','thumb-side--right'));
   }
 
-  /**
-   * 渲染规则保持相对位置：
-   * - edge-left：顺序 [X, Y, Z] -> X（主卡）在最左，其余在右侧
-   * - edge-right：顺序 [Z, Y, X] -> X（主卡）在最右，其余在左侧
-   * - center：顺序 [L, X, R] -> 左侧卡、主卡、右侧卡
-   */
+  // 渲染三卡并保持相对位置不变
   function renderRibbonSet(result){
     const { order, mode } = result;
     if (!order || order.length === 0) return;
@@ -365,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 生成卡片
+    // 生成卡片 HTML（顺序即视觉顺序）
     let html = '';
     if (mode === 'center'){
       html += cardHTML(order[0], 'info-card--side side-left');

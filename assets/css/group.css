@@ -79,24 +79,24 @@
 }
 .page-group .axes-dots .dot.active{ background:#0a5771; }
 
-/* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸 ===== */
+/* ===== 轴下信息带（PI/三卡）— 固定控件与卡片尺寸（只作用在 info-*） ===== */
 .page-group .info-ribbon{
   display:flex; align-items:stretch; justify-content:center; gap:16px;
-  /* 固定整体高度，确保点击不同学生时控件大小不跳动 */
-  height: 190px; 
+  height: 190px;           /* 固定整体高度，避免跳动 */
   margin: 14px 0 8px;
 }
-
-/* 固定卡片尺寸：主卡+侧卡都固定宽高，风格与 alumni 保持一致 */
 .page-group .info-card{
   background:#fff; border:1px solid #e9edf1; border-radius:10px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-  width: 420px;              /* 主卡默认宽度（侧卡会被覆盖）*/
-  height: 190px;             /* 与 info-ribbon 保持一致 */
-  overflow: hidden;          /* 固定高度后避免内容溢出 */
-  display:flex;
+  width: 420px;            /* 主卡默认宽度（侧卡会被覆盖）*/
+  height: 190px;           /* 与 info-ribbon 保持一致 */
+  overflow: hidden;        /* 固定高度后避免内容溢出 */
+  display:flex;            /* 不影响其他模块，仅 info-card */
 }
+.page-group .info-card--main{ width: 420px; transform:scale(1.00); }
+.page-group .info-card--side{ width: 300px; opacity:.80; cursor:pointer; }
+.page-group .info-card--side:hover{ opacity:.92; transform:scale(1.01); }
 
 .page-group .info-card .card-inner{
   display:grid; grid-template-columns:108px 1fr; gap:14px; align-items:center; 
@@ -108,12 +108,6 @@
   width:108px; height:108px; object-fit:cover; border-radius:10px; 
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-
-/* 主卡与侧卡固定宽度 */
-.page-group .info-card--main{ width: 420px; transform:scale(1.00); }
-.page-group .info-card--side{ width: 300px; opacity:.80; cursor:pointer; }
-.page-group .info-card--side:hover{ opacity:.92; transform:scale(1.01); }
-
 .page-group .info-card h3{ 
   margin:0 0 4px; color:#0a5771; font-size:1.05rem; line-height:1.25;
   display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
@@ -133,10 +127,7 @@
 .page-group .info-card .links a{ color:#0a5771; text-decoration:none; font-weight:600; }
 .page-group .info-card .links a:hover{ text-decoration:underline; }
 
-.page-group .info-card.side-left{ }
-.page-group .info-card.side-right{ }
-
-/* ===== Alumni / Life 保持不变 ===== */
+/* ===== Alumni / Life 完全保持原样（未改动） ===== */
 .page-group .group-grid{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:25px; margin-top:20px; margin-bottom:40px;
@@ -158,7 +149,7 @@
   box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
-/* ===== 响应式 ===== */
+/* ===== 响应式（仅调整 info-* 宽度；不改 Alumni/Life） ===== */
 @media (max-width:900px){
   .page-group .axis-row{ grid-template-columns:120px 1fr 120px; }
   .page-group .axis-track{ height: 320px; }
