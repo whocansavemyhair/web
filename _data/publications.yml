@@ -3,7 +3,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference 
-  direction: Models 
+  direction: models 
   pdf: /assets/publications/2510.21160v1.pdf
   doi: https://arxiv.org/abs/2510.21160 
 
@@ -12,7 +12,7 @@
   venue:  'International Conference on Computer Vision (ICCV), Poster' 
   year:  2025 
   type: conference 
-  direction: Autonomous Driving 
+  direction: models
   pdf: "#"
   doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf 
 
@@ -21,7 +21,7 @@
   venue:  'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)'
   year:  2025 
   type: journal
-  direction: Autonomous Driving 
+  direction: models
   pdf: "#"
   doi: https://ieeexplore.ieee.org/document/11175038 
   
@@ -30,7 +30,7 @@
   venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)' 
   year:  2024 
   type: conference 
-  direction: system 
+  direction: systems 
   pdf: "#"
   doi: 10.1109/IV55156.2024.10588634 
 
@@ -48,7 +48,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025' 
   year:  2025 
   type: conference 
-  direction: Models 
+  direction: models 
   pdf: “#”
   doi: https://arxiv.org/pdf/2510.21148 
 
@@ -57,7 +57,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference 
-  direction: Models 
+  direction: models 
   pdf: "#"
   doi: https://arxiv.org/pdf/2511.02194 
 
@@ -66,6 +66,6 @@
   venue:  'Nature Computational Science' 
   year:  2025 
   type: journal  
-  direction: Models 
+  direction: models 
   pdf: "#"
   doi: https://doi.org/10.1038/s43588-025-00798-6 
