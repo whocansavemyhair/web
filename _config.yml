@@ -23,9 +23,5 @@ navigation:
     url: /
   - title: "Research"
     url: /research/
-  - title: "Publications"
-    url: /publications/
   - title: "People"
     url: /group/
-  - title: "Teaching"
-    url: /teaching/
