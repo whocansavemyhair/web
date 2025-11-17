@@ -200,7 +200,7 @@ title: "Our Group"
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  /* ========== years=1 贴横轴；years 向上；无外框，顶部自然留白 ========== */
+  /* ========== years=1 贴横轴；years 表示在组年限；同一年严格同一水平线，重叠只在 X 方向解决 ========== */
   function layoutOneRow(row){
     const track = row.querySelector('.axis-track');
     const thumbs = Array.from(track.querySelectorAll('.axis-thumb'));
@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bandH = Math.max(18, usableUp / maxYears);
     const yFor = (k) => baselineY - bandH*(k - 0.5);
 
+    // 画每一年的水平虚线（只用来标记 year，纵坐标语义不再被打乱）
     for(let k=1; k<=maxYears; k++){
       const g = document.createElement('div');
       g.className = 'lane-guide';
@@ -234,34 +235,55 @@ document.addEventListener('DOMContentLoaded', () => {
       guides.appendChild(g);
     }
 
+    // 每个年份一个 bucket，同一年必须在同一条水平线上
     const buckets = Array.from({length: maxYears}, ()=>[]);
     thumbs.forEach(t=>{
       const years = Math.max(1, Math.min(maxYears, parseInt(t.dataset.years||1, 10) || 1));
       const pos = Math.max(0, Math.min(100, parseFloat(t.dataset.pos||50)));
-      const x = padX + innerW * (pos/100);
-      buckets[years-1].push({el:t, x, yc: yFor(years)});
+      const x0 = padX + innerW * (pos/100);
+      const yc = yFor(years);
+      buckets[years-1].push({el:t, x0, yc});
     });
 
     const rMin = 18, rMax = 26, gap = 8;
+
+    // ★ 关键改动：同一年里只在 X 方向左右错开，Y 固定为该年的 yc
     buckets.forEach(bucket=>{
-      bucket.sort((a,b)=>a.x-b.x);
+      if (bucket.length === 0) return;
+
+      bucket.sort((a,b)=>a.x0 - b.x0);
       const n = bucket.length || 1;
       const r = Math.max(rMin, Math.min(rMax, 0.45 * innerW / n));
-      const dMin = 2*r + gap;
-      const step = Math.min(r*0.9, (bandH/2 - r)/3);
+      const dMin = 2*r + gap; // 同一年内头像中心的最小水平间距
+
+      const minX = padX + r;
+      const maxX = padX + innerW - r;
       const placed = [];
+
       bucket.forEach(item=>{
-        let y = item.yc, tries = 0, dir = 1;
-        while (placed.some(p => Math.hypot(item.x - p.x, y - p.y) < dMin)) {
-          y = item.yc + dir * step * (1 + Math.floor(tries/2));
-          dir *= -1; tries++; if (tries > 30) break;
+        let x = item.x0; // 理想位置
+        let tries = 0;
+        let dir = 1;
+
+        // 只在 x 方向左右摆动，直到与已放的头像不重叠
+        while (placed.some(p => Math.abs(x - p.x) < dMin)) {
+          const shift = dMin * (1 + Math.floor(tries/2));
+          x = item.x0 + dir * shift;
+          dir *= -1;
+          tries++;
+          if (tries > 50) break;
         }
-        placed.push({x:item.x, y});
+
+        // 防止越出轨道边界
+        x = Math.max(minX, Math.min(maxX, x));
+        placed.push({x});
+
         const s = `${2*r}px`;
-        item.el.style.width = s;
+        item.el.style.width  = s;
         item.el.style.height = s;
-        item.el.style.left = `${item.x}px`;
-        item.el.style.top  = `${y}px`;
+        item.el.style.left   = `${x}px`;
+        // ★ Y 不再抖动，固定在该年的水平线
+        item.el.style.top    = `${item.yc}px`;
       });
     });
   }
@@ -329,36 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>`;
   }
 
+  // 现在这个函数只负责更新下方三张卡片，不再改变坐标轴上的头像样式
   function clearThumbFocus(){
-    document.querySelectorAll('.axis-thumb')
-      .forEach(t=>t.classList.remove('thumb-main','thumb-side','thumb-side--left','thumb-side--right'));
+    // 保留函数，但不再对 .axis-thumb 添加/移除任何 class
   }
 
   function renderRibbonSet(result){
     const { order, mode } = result;
     if (!order || order.length === 0) return;
 
+    // 不再对上方头像添加 thumb-main/thumb-side 等类，仅更新下方 info ribbon
     clearThumbFocus();
-    order.forEach((it, idx)=>{
-      if (!it || !it.el) return;
-      if (mode === 'center'){
-        if (idx === 1) it.el.classList.add('thumb-main');
-        else if (idx === 0) it.el.classList.add('thumb-side','thumb-side--left');
-        else it.el.classList.add('thumb-side','thumb-side--right');
-      }else if (mode === 'edge-left'){
-        if (idx === 0) it.el.classList.add('thumb-main'); // X 在最左
-        else it.el.classList.add('thumb-side','thumb-side--right');
-      }else if (mode === 'edge-right'){
-        if (idx === order.length-1) it.el.classList.add('thumb-main'); // X 在最右
-        else it.el.classList.add('thumb-side','thumb-side--left');
-      }
-    });
 
     let html = '';
     if (mode === 'center'){
       html += cardHTML(order[0], 'info-card--side side-left');
       html += cardHTML(order[1], 'info-card--main');
-      html += cardHTML(order[2], 'info-card--side side-right');
+      if (order[2]) html += cardHTML(order[2], 'info-card--side side-right');
     }else if (mode === 'edge-left'){
       html += cardHTML(order[0], 'info-card--main');
       if (order[1]) html += cardHTML(order[1], 'info-card--side side-right');
