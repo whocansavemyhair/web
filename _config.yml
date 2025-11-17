@@ -16,12 +16,3 @@ defaults:
     values:
       sidebar: false
 
-
-# Navigation
-navigation:
-  - title: "Home"
-    url: /
-  - title: "Research"
-    url: /research/
-  - title: "People"
-    url: /group/
