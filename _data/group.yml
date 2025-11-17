@@ -99,6 +99,17 @@ current:
     a3: 10
     a4: 20
 
+  - name: Yang Zhao
+    title: PhD student
+    desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
+    pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
+    photolink: /assets/images/group/bingjie_liu.jpg
+    years: 2024
+    a1: 50
+    a2: 0
+    a3: 10
+    a4: 20
+
 alumni:
   - name: "Name A"
     title: "Alumni"

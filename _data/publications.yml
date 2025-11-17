@@ -1,35 +1,71 @@
-- title: "Title 1"
-  authors: "Author 1, Author 2"
-  venue: "Conference 1"
-  year: 2025
-  type: "conference"
-  direction: "models"
-  pdf: "#"
-  doi: "https://doi.org/10.1234/example1"
+- title: 'Towards Physics-informed Spatial Intelligence with Human Priors: An Autonomous Driving Pilot Study ''
+  authors: Guanlin Wu*, Boyan Su*, Yang Zhao, Pu Wang, Yichen Lin, Hao Frank Yang† 
+  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight 
+  year:  2025 
+  type: conference 
+  direction: Models 
+  pdf: /assets/publications/2510.21160v1.pdf
+  doi: https://arxiv.org/abs/2510.21160 
 
-- title: "Title 2"
-  authors: "Author 3, Author 4"
-  venue: "Journal 1"
-  year: 2025
-  type: "journal"
-  direction: "models"
+- title: 'Towards Accurate and Efficient 3D Object Detection for Autonomous Driving: A Mixture of Experts Computing System on Edge'
+  authors: Linshen Liu*, Boyan Su*, Junyue Jiang, Guanlin Wu, Cong Guo, Ceyu Xu, Hao Frank Yang† 
+  venue:  International Conference on Computer Vision (ICCV), Poster 
+  year:  2025 
+  type: conference 
+  direction: Autonomous Driving 
   pdf: "#"
-  doi: "https://doi.org/10.1234/example2"
+  doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf 
 
-- title: "Title 3"
-  authors: "Author 5"
-  venue: "Conference 2"
-  year: 2024
-  type: "conference"
-  direction: "systems"
+- title: 'Towards Accurate and Efficient 3D Object Detection for Autonomous Driving: A Mixture of Experts Computing System on Edge'
+  authors: Linshen Liu, Pu Wang, Guanlin Wu, Hao Frank Yang† 
+  venue:  IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)  
+  year:  2025 
+  type: journal
+  direction: Autonomous Driving 
   pdf: "#"
-  doi: "https://doi.org/10.1234/example3"
+  doi: https://ieeexplore.ieee.org/document/11175038 
+  
+- title: 'Cost-effective vehicle recognition system in challenging environment empowered by micro-pulse lidar and edge AI'
+  authors: Junyue Jiang, Hongliang Lu, Chenxi Liu, Meixin Zhu, Yiran Chen, Hao Frank Yang 
+  venue:  2024 IEEE Intelligent Vehicles Symposium (IV) 
+  year:  2024 
+  type: conference 
+  direction: system 
+  pdf: "#"
+  doi: 10.1109/IV55156.2024.10588634 
 
-- title: "Title 4"
-  authors: "Author 6, Author 7"
-  venue: "Journal 2"
-  year: 2024
-  type: "journal"
-  direction: "systems"
+- title: 'SafeTraffic Copilot: adapting large language models for trustworthy traffic safety assessments and decision interventions'
+  authors: Yang Zhao, Pu Wang, Yibo Zhao, Hongru Du, Hao Frank Yang 
+  venue:  Nature Communications volume 16, Article number: 8846 (2025) 
+  year:  2025 
+  type: journal 
+  direction: models 
   pdf: "#"
-  doi: "https://doi.org/10.1234/example4"
+  doi: 10.1038/s41467-025-64574-w 
+
+- title: 'How to Auto-optimize Prompts for Domain Tasks? Adaptive Prompting and Reasoning through Evolutionary Domain Knowledge Adaptation'
+  authors: Yang Zhao, Pu Wang, Hao Frank Yang 
+  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 
+  year:  2025 
+  type: conference 
+  direction: Models 
+  pdf: “#”
+  doi: https://arxiv.org/pdf/2510.21148 
+
+- title: 'Personalized Decision Modeling: Utility Optimization or Textualized-Symbolic Reasoning'
+  authors: Yibo Zhao, Yang Zhao, Hongru Du, Hao Frank Yang 
+  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight 
+  year:  2025 
+  type: conference 
+  direction: Models 
+  pdf: "#"
+  doi: https://arxiv.org/pdf/2511.02194 
+
+- title: 'Advancing real-time infectious disease forecasting using large language models'
+  authors: Hongru Du, Yang Zhao, Jianan Zhao, Shaochong Xu, Xihong Lin, Yiran Chen, Lauren M. Gardner, Hao Frank Yang 
+  venue:  Nature Computational Science 
+  year:  2025 
+  type: journal  
+  direction: Models 
+  pdf: "#"
+  doi: https://doi.org/10.1038/s43588-025-00798-6 
