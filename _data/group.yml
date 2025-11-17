@@ -11,57 +11,93 @@ pi:
     github: "https://github.com/whocansavemyhair"
 
 current:
-  - name: a
-    title: PhD Student
-    desc: Works on theoretical foundations of probabilistic modeling.
-    pagelink: https://example.com/a
-    photolink: /assets/images/group/a.jpg
-    x: 30
-    y: 25   # 理论 + 基础模型
-    years: 2
-    a1: 35   # Efficiency vs Robustness
-    a2: 80   # Fundamental Models vs Optimal Systems
-    a3: 45   # Exploration vs Exploitation
-    a4: 60   # Transportation vs Public Health
+  - name: Guanlin Wu
+    title: Master Student
+    desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
+    pagelink: https://guanlinwu123.github.io/ 
+    photolink: /assets/images/group/guanlin_wu.jpg
+    years: 2024
+    a1: 30   # Efficiency vs Robustness
+    a2: 10   # Fundamental Models vs Optimal Systems
+    a3: 40   # Exploration vs Exploitation
+    a4: 10   # Transportation vs Public Health
 
-  - name: b
-    title: MSc Student
-    desc: Focused on robust optimization and control systems.
-    pagelink: https://example.com/b
-    photolink: /assets/images/group/b.jpg
-    x: 70
-    y: 25   # 理论 + 优化系统
-    years: 2
-    a1: 70
-    a2: 50
-    a3: 20
-    a4: 30
-
-  - name: c
-    title: PhD Student
-    desc: Applies statistical learning to real-world sensor systems.
-    pagelink: https://example.com/c
-    photolink: /assets/images/group/c.jpg
-    x: 30
-    y: 75   # 应用 + 基础模型
-    years: 1
-    a1: 55
-    a2: 30
-    a3: 75
+  - name: Yichen Lin
+    title: Master Student
+    desc: My research interests focus on Multimodal Large Language Model and human behavior.
+    pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
+    photolink: /assets/images/group/yichen_lin.jpg
+    years: 2024
+    a1: 40
+    a2: 20
+    a3: 35
     a4: 40
 
-  - name: d
-    title: Research Assistant
-    desc: Works on simulation-based optimization for autonomous control.
-    pagelink: https://example.com/d
-    photolink: /assets/images/group/d.jpg
-    x: 70
-    y: 75   # 应用 + 优化系统
-    years: 1
-    a1: 15
-    a2: 65
-    a3: 60
-    a4: 85
+  - name: Fan Yang
+    title: Visiting PhD Student
+    desc: My research interests lie in Multimodal Large Language Model and Energy System.
+    pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
+    photolink: /assets/images/group/fan_yang.jpg
+    years: 2025
+    a1: 20
+    a2: 30
+    a3: 40
+    a4: 10
+
+  - name: Yushan Li
+    title: Master student
+    desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
+    pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
+    photolink: /assets/images/group/yushan_lin.jpg
+    years: 2025
+    a1: 20
+    a2: 20
+    a3: 30
+    a4: 10
+
+  - name: Linshen Liu
+    title: PhD student
+    desc: MMy research interests lie in Efficiency Large Language Model and Edge AI for autonomous driving.  
+    pagelink: https://www.linkedin.com/in/linshenliu-994591289/ 
+    photolink: /assets/images/group/linshen_liu.jpg
+    years: 2024
+    a1: 20
+    a2: 80
+    a3: 80
+    a4: 10
+
+  - name: Junyue Jiang
+    title: PhD student
+    desc: My research interests include sustainable and efficient computing for machine learning systems, with a focus on energy-efficient decision making for edge AI and hardware–software co-optimization in smart transportation. 
+    pagelink: https://www.linkedin.com/in/junyue-jiang-52454222b/ 
+    photolink: /assets/images/group/junyue_jiang.jpg
+    years: 2024
+    a1: 70
+    a2: 90
+    a3: 20
+    a4: 10
+
+  - name: Pu Wang
+    title: PhD student
+    desc: My research interests lie in multimodal large language models and data centric AI.
+    pagelink: https://www.linkedin.com/in/pu-wang-a85048389/
+    photolink: /assets/images/group/pu_wang.jpg
+    years: 2024
+    a1: 70
+    a2: 10
+    a3: 10
+    a4: 20
+
+  - name: Bingjie Liu
+    title: Master student
+    desc: My research interest lies in optimization, quantitative economics, machine learning, and data-driven decision analytics in complex systems. 
+    pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
+    photolink: /assets/images/group/bingjie_liu.jpg
+    years: 2025
+    a1: 70
+    a2: 10
+    a3: 10
+    a4: 20
 
 alumni:
   - name: "Name A"
