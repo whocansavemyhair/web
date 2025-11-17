@@ -1,6 +1,6 @@
 - title: 'Towards Physics-informed Spatial Intelligence with Human Priors: An Autonomous Driving Pilot Study'
   authors: Guanlin Wu*, Boyan Su*, Yang Zhao, Pu Wang, Yichen Lin, Hao Frank Yang† 
-  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight 
+  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference 
   direction: Models 
@@ -9,7 +9,7 @@
 
 - title: 'Towards Accurate and Efficient 3D Object Detection for Autonomous Driving: A Mixture of Experts Computing System on Edge'
   authors: Linshen Liu*, Boyan Su*, Junyue Jiang, Guanlin Wu, Cong Guo, Ceyu Xu, Hao Frank Yang† 
-  venue:  International Conference on Computer Vision (ICCV), Poster 
+  venue:  'International Conference on Computer Vision (ICCV), Poster' 
   year:  2025 
   type: conference 
   direction: Autonomous Driving 
@@ -18,7 +18,7 @@
 
 - title: 'Towards Accurate and Efficient 3D Object Detection for Autonomous Driving: A Mixture of Experts Computing System on Edge'
   authors: Linshen Liu, Pu Wang, Guanlin Wu, Hao Frank Yang† 
-  venue:  IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)  
+  venue:  'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)'
   year:  2025 
   type: journal
   direction: Autonomous Driving 
@@ -27,7 +27,7 @@
   
 - title: 'Cost-effective vehicle recognition system in challenging environment empowered by micro-pulse lidar and edge AI'
   authors: Junyue Jiang, Hongliang Lu, Chenxi Liu, Meixin Zhu, Yiran Chen, Hao Frank Yang 
-  venue:  2024 IEEE Intelligent Vehicles Symposium (IV) 
+  venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)' 
   year:  2024 
   type: conference 
   direction: system 
@@ -36,7 +36,7 @@
 
 - title: 'SafeTraffic Copilot: adapting large language models for trustworthy traffic safety assessments and decision interventions'
   authors: Yang Zhao, Pu Wang, Yibo Zhao, Hongru Du, Hao Frank Yang 
-  venue:  Nature Communications volume 16, Article number: 8846 (2025) 
+  venue:  'Nature Communications volume 16, Article number: 8846 (2025)' 
   year:  2025 
   type: journal 
   direction: models 
@@ -45,7 +45,7 @@
 
 - title: 'How to Auto-optimize Prompts for Domain Tasks? Adaptive Prompting and Reasoning through Evolutionary Domain Knowledge Adaptation'
   authors: Yang Zhao, Pu Wang, Hao Frank Yang 
-  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 
+  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025' 
   year:  2025 
   type: conference 
   direction: Models 
@@ -54,7 +54,7 @@
 
 - title: 'Personalized Decision Modeling: Utility Optimization or Textualized-Symbolic Reasoning'
   authors: Yibo Zhao, Yang Zhao, Hongru Du, Hao Frank Yang 
-  venue:  Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight 
+  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference 
   direction: Models 
@@ -63,7 +63,7 @@
 
 - title: 'Advancing real-time infectious disease forecasting using large language models'
   authors: Hongru Du, Yang Zhao, Jianan Zhao, Shaochong Xu, Xihong Lin, Yiran Chen, Lauren M. Gardner, Hao Frank Yang 
-  venue:  Nature Computational Science 
+  venue:  'Nature Computational Science' 
   year:  2025 
   type: journal  
   direction: Models 
