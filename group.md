@@ -19,21 +19,25 @@ title: "Our Group"
     <div class="axes-viewport">
       <div class="axes-track" id="axesTrack">
 
+        {% assign current_year = site.time | date: "%Y" | plus: 0 %}
+
         <!-- Slide 1 -->
         <div class="axis-slide">
           <div class="axis-row" data-axis="a1">
             <span class="axis-label axis-label--left">Efficiency</span>
             <div class="axis-track">
               {% for m in site.data.group.current %}
+                {% assign start_year = m.years | default: current_year %}
+                {% assign years_in_lab = current_year | minus: start_year | plus: 1 %}
                 <div class="axis-thumb"
-                     data-pos="{{ m.a1 | default: 50 }}"
-                     data-years="{{ m.years | default: 1 }}"
-                     data-name="{{ m.name | escape }}"
-                     data-title="{{ m.title | escape }}"
-                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                     data-desc="{{ m.desc | strip_newlines | escape }}"
-                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                     data-photo="{{ m.photolink | relative_url }}">
+                    data-pos="{{ m.a1 | default: 50 }}"
+                    data-years="{{ years_in_lab }}"
+                    data-name="{{ m.name | escape }}"
+                    data-title="{{ m.title | escape }}"
+                    data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                    data-desc="{{ m.desc | strip_newlines | escape }}"
+                    data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                    data-photo="{{ m.photolink | relative_url }}">
                   <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
                 </div>
               {% endfor %}
@@ -48,15 +52,17 @@ title: "Our Group"
             <span class="axis-label axis-label--left">Fundamental Models</span>
             <div class="axis-track">
               {% for m in site.data.group.current %}
+                {% assign start_year = m.years | default: current_year %}
+                {% assign years_in_lab = current_year | minus: start_year | plus: 1 %}
                 <div class="axis-thumb"
-                     data-pos="{{ m.a2 | default: 50 }}"
-                     data-years="{{ m.years | default: 1 }}"
-                     data-name="{{ m.name | escape }}"
-                     data-title="{{ m.title | escape }}"
-                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                     data-desc="{{ m.desc | strip_newlines | escape }}"
-                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                     data-photo="{{ m.photolink | relative_url }}">
+                    data-pos="{{ m.a2 | default: 50 }}"
+                    data-years="{{ years_in_lab }}"
+                    data-name="{{ m.name | escape }}"
+                    data-title="{{ m.title | escape }}"
+                    data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                    data-desc="{{ m.desc | strip_newlines | escape }}"
+                    data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                    data-photo="{{ m.photolink | relative_url }}">
                   <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
                 </div>
               {% endfor %}
@@ -71,15 +77,17 @@ title: "Our Group"
             <span class="axis-label axis-label--left">Exploration</span>
             <div class="axis-track">
               {% for m in site.data.group.current %}
+                {% assign start_year = m.years | default: current_year %}
+                {% assign years_in_lab = current_year | minus: start_year | plus: 1 %}
                 <div class="axis-thumb"
-                     data-pos="{{ m.a3 | default: 50 }}"
-                     data-years="{{ m.years | default: 1 }}"
-                     data-name="{{ m.name | escape }}"
-                     data-title="{{ m.title | escape }}"
-                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                     data-desc="{{ m.desc | strip_newlines | escape }}"
-                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                     data-photo="{{ m.photolink | relative_url }}">
+                    data-pos="{{ m.a3 | default: 50 }}"
+                    data-years="{{ years_in_lab }}"
+                    data-name="{{ m.name | escape }}"
+                    data-title="{{ m.title | escape }}"
+                    data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                    data-desc="{{ m.desc | strip_newlines | escape }}"
+                    data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                    data-photo="{{ m.photolink | relative_url }}">
                   <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
                 </div>
               {% endfor %}
@@ -94,15 +102,17 @@ title: "Our Group"
             <span class="axis-label axis-label--left">Transportation</span>
             <div class="axis-track">
               {% for m in site.data.group.current %}
+                {% assign start_year = m.years | default: current_year %}
+                {% assign years_in_lab = current_year | minus: start_year | plus: 1 %}
                 <div class="axis-thumb"
-                     data-pos="{{ m.a4 | default: 50 }}"
-                     data-years="{{ m.years | default: 1 }}"
-                     data-name="{{ m.name | escape }}"
-                     data-title="{{ m.title | escape }}"
-                     data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
-                     data-desc="{{ m.desc | strip_newlines | escape }}"
-                     data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
-                     data-photo="{{ m.photolink | relative_url }}">
+                    data-pos="{{ m.a4 | default: 50 }}"
+                    data-years="{{ years_in_lab }}"
+                    data-name="{{ m.name | escape }}"
+                    data-title="{{ m.title | escape }}"
+                    data-affiliation="{{ m.affiliation | strip_newlines | escape }}"
+                    data-desc="{{ m.desc | strip_newlines | escape }}"
+                    data-page="{{ m.pagelink }}" data-github="{{ m.github }}" data-email="{{ m.email }}"
+                    data-photo="{{ m.photolink | relative_url }}">
                   <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}">
                 </div>
               {% endfor %}
@@ -110,6 +120,7 @@ title: "Our Group"
             <span class="axis-label axis-label--right">Public Health</span>
           </div>
         </div>
+
 
       </div>
     </div>
