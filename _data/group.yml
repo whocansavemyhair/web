@@ -111,11 +111,6 @@ current:
     a4: 20
 
 alumni:
-  - name: "Boyan Su"
-    title: "Master student"
-    photolink: "/assets/images/group/boyan_su.jpg"
-    desc: ""
-
   - name: "Xianglong Wang"
     title: "Master student"
     photolink: "/assets/images/group/xianglong_wang.jpg"
@@ -125,6 +120,20 @@ alumni:
     title: "Alumni"
     photolink: "/assets/images/group/yibo_zhao.jpg"  
     desc: "Now MIT Media Lab Research Affiliate"
+  
+  - name: "Boyan Su"
+    title: "Master student"
+    photolink: "/assets/images/group/boyan_su.jpg"
+    desc: ""
 
+  - name: "Shiyu Pan"
+    title: "Alumni"
+    photolink: "/assets/images/group/shiyu_pan.jpg"  
+    desc: ""
+
+  - name: "Yifei Xiang"
+    title: "Alumni"
+    photolink: "/assets/images/group/yibo_zhao.jpg"  
+    desc: "Now at Shanghai Jiao Tong University"
 life:
   - src: thanksgiving26.jpg
