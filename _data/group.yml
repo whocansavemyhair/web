@@ -111,21 +111,22 @@ current:
     a4: 20
 
 alumni:
-  - name: "Name A"
-    title: "Alumni"
-    photolink: "/assets/images/group/alumni_a.jpg"
-    desc: "Now at MIT"
+  - name: "Boyan Su"
+    title: "Master student"
+    photolink: "/assets/images/group/buyan_su.jpg"
+    desc: ""
 
-  - name: "Name B"
-    title: "Alumni"
-    photolink: "/assets/images/group/alumni_b.jpg"
-    desc: "Now at Google Research"
+  - name: "Xianglong Wang"
+    title: "Master student"
+    photolink: "/assets/images/group/xianglong_wang.jpg"
+    desc: "Now at Wyze Labs, Inc."
 
-  - name: "Name C"
+  - name: "Yibo Zhao"
     title: "Alumni"
-    photolink: "/assets/images/group/alumni_c.jpg"  
-    desc: "Now at Google Research"
+    photolink: "/assets/images/group/yibo_zhao.jpg"  
+    desc: "Now MIT Media Lab Research Affiliate"
 
 life:
   - src: event1.png
   - src: hiking2.png
+  - src: thanksgiving26.jpg
