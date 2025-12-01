@@ -113,7 +113,7 @@ current:
 alumni:
   - name: "Boyan Su"
     title: "Master student"
-    photolink: "/assets/images/group/buyan_su.jpg"
+    photolink: "/assets/images/group/boyan_su.jpg"
     desc: ""
 
   - name: "Xianglong Wang"
@@ -127,6 +127,4 @@ alumni:
     desc: "Now MIT Media Lab Research Affiliate"
 
 life:
-  - src: event1.png
-  - src: hiking2.png
   - src: thanksgiving26.jpg
