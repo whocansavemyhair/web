@@ -53,7 +53,7 @@ classes: wide
         </div>
 
         <div class="news-thumb">
-          <img src="{{ '/assets/images/others/neurips2025.png' | relative_url }}" alt="NeurIPS logo">
+          <img src="{{ '/assets/images/others/neurips2025.jpg' | relative_url }}" alt="NeurIPS logo">
         </div>
       </article>
 
