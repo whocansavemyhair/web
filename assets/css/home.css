@@ -93,7 +93,7 @@
 
 .home-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 40px;
   align-items: start;
   margin-top: 30px;
@@ -108,47 +108,98 @@
 /* ========== 可复用 News 卡片样式 ========== */
 
 .news-section .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
+  display: flex;
+  flex-direction: column; /* 垂直堆叠 */
+  gap: 20px;              /* 卡片之间的垂直间距 */
+  margin-top: 20px;
 }
 
 .news-card {
   background: #fff;
   border: 1px solid #e8e8e8;
-  border-radius: 10px;
-  padding: 16px 20px;
+  border-radius: 8px;
+  padding: 24px; /* 增加内部留白 */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease-in-out;
+  /* 移除 grid-column 设置，因为现在是垂直流式布局 */
 }
 
 .news-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d0d0d0;
 }
 
 .news-card h3 {
   margin-top: 0;
+  margin-bottom: 10px;
   color: #0a5771;
-  font-size: 1.1em;
+  font-size: 1.25em; /* 稍微加大标题 */
 }
 
 .news-card p {
   color: #444;
-  font-size: 0.95em;
-  line-height: 1.5;
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 0; /* 移除默认下边距，由父容器padding控制 */
 }
 
 .news-card.long {
   grid-column: span 2;
 }
 
+/* Read more 链接样式优化 */
 .read-more {
+  display: inline-block;
+  margin-top: 12px;
   color: #0a5771;
   font-weight: 600;
+  font-size: 0.9em;
   text-decoration: none;
 }
 .read-more:hover {
   text-decoration: underline;
 }
+
+/* ========== 4. 新增：纯链接卡片 (External Link Card) ========== */
+
+/* 这类卡片比较紧凑，没有摘要，通常包含外部链接图标 */
+.news-card.external-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px; /* 高度稍微压扁一点 */
+  cursor: pointer;    /* 鼠标放上去显示手型 */
+}
+
+/* 让整个卡片变成链接的视觉效果 */
+.news-card.external-link a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.news-card.external-link h3 {
+  margin: 0;
+  font-size: 1.15em;
+  color: #333; /* 链接卡片标题可以用深灰色，区分于普通新闻 */
+}
+
+.news-card.external-link:hover h3 {
+  color: #0a5771;
+}
+
+.icon-arrow {
+  color: #999;
+  font-size: 1.2em;
+  transition: transform 0.2s ease;
+}
+
+.news-card.external-link:hover .icon-arrow {
+  transform: translateX(4px) translateY(-4px); /* 右上角移动效果 */
+  color: #0a5771;
+}
+

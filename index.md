@@ -31,23 +31,35 @@ classes: wide
   <section class="news-section">
     <div class="news-grid">
 
-      <!-- 短卡片：标题 + 摘要 -->
-      <article class="news-card short">
-        <h3>🎉 Paper accepted to NeurIPS 2025</h3>
-        <p>Our paper on XYZ was accepted to NeurIPS 2025.</p>
-      </article>
-
-      <!-- 短卡片：标题 + 摘要 -->
-      <article class="news-card short">
-        <h3>👩‍🎓 Welcome new students</h3>
-        <p>We welcome new graduate students joining the lab in summer 2025.</p>
-      </article>
-
-      <!-- 长卡片：标题 + 摘要 + Read more（占两列） -->
-      <article class="news-card long">
-        <h3>🏆 Project awarded grant</h3>
-        <p>Our project received the [Award Name] grant to further develop …</p>
+      <article class="news-card">
+        <h3>🏆 Project awarded NSF grant</h3>
+        <p>
+          Our project regarding "Optimization in Public Health" received the NSF grant to further develop 
+          robust models for vaccine distribution. This project integrates data-driven modeling with...
+          </p>
         <a class="read-more" href="/web/news/2025-03-award/">Read more →</a>
+      </article>
+
+      <article class="news-card">
+        <h3>🎉 Paper accepted to NeurIPS 2025</h3>
+        <p>
+          We are excited to announce that our paper on differentiable optimization layers has been accepted to NeurIPS 2025. 
+          Congratulations to the lead authors!
+        </p>
+      </article>
+
+      <article class="news-card external-link">
+        <a href="https://github.com/your-repo" target="_blank">
+          <h3>📦 Released new open-source library: PyTorch-Opt</h3>
+          <span class="icon-arrow">↗</span>
+        </a>
+      </article>
+
+      <article class="news-card external-link">
+        <a href="https://news.jhu.edu/some-news" target="_blank">
+          <h3>📰 Featured in JHU Hub: "AI in Transportation"</h3>
+          <span class="icon-arrow">↗</span>
+        </a>
       </article>
 
     </div>
