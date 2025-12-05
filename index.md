@@ -51,6 +51,10 @@ classes: wide
           </p>
           <a class="read-more" href="https://engineering.jhu.edu/case/news/johns-hopkins-civil-and-systems-engineers-to-present-at-neurips-2025/">Read more →</a>
         </div>
+
+        <div class="news-thumb">
+          <img src="{{ '/assets/images/others/neurips2025.png' | relative_url }}" alt="NeurIPS logo">
+        </div>
       </article>
 
       <article class="news-card external-link">
