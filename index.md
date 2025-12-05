@@ -32,28 +32,23 @@ classes: wide
     <div class="news-grid">
 
       <article class="news-card">
-        <h3>🏆 Project awarded NSF grant</h3>
+        <h3>🏆 Paper accepted to Nature Communication</h3>
         <p>
-          Our project regarding "Optimization in Public Health" received the NSF grant to further develop 
-          robust models for vaccine distribution. This project integrates data-driven modeling with...
+          We are excited to announce that our paper has been accepted to Nature Communication. 
+          Congratulations to the authors!
           </p>
-        <a class="read-more" href="/web/news/2025-03-award/">Read more →</a>
+        <a class="read-more" href="https://hub.jhu.edu/2025/10/07/traffic-safety-artificial-intelligence-hopkins/">Read more →</a>
       </article>
 
       <article class="news-card">
         <h3>🎉 Paper accepted to NeurIPS 2025</h3>
         <p>
-          We are excited to announce that our paper on differentiable optimization layers has been accepted to NeurIPS 2025. 
-          Congratulations to the lead authors!
+          We are excited to announce that our papers have been accepted to NeurIPS 2025. 
+          Congratulations to the authors!
         </p>
+        <a class="read-more" href="https://engineering.jhu.edu/case/news/johns-hopkins-civil-and-systems-engineers-to-present-at-neurips-2025/">Read more →</a>
       </article>
 
-      <article class="news-card external-link">
-        <a href="https://github.com/your-repo" target="_blank">
-          <h3>📦 Released new open-source library: PyTorch-Opt</h3>
-          <span class="icon-arrow">↗</span>
-        </a>
-      </article>
 
       <article class="news-card external-link">
         <a href="https://news.jhu.edu/some-news" target="_blank">
