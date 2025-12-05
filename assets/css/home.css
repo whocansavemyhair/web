@@ -114,14 +114,21 @@
   margin-top: 20px;
 }
 
+/* ========== 通用 News 卡片样式 (升级版) ========== */
+
 .news-card {
   background: #fff;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
-  padding: 24px; /* 增加内部留白 */
+  padding: 24px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease-in-out;
-  /* 移除 grid-column 设置，因为现在是垂直流式布局 */
+  
+  /* 关键修改：开启 Flex 布局，实现左文右图 */
+  display: flex;
+  justify-content: space-between; /* 两端对齐 */
+  align-items: flex-start;        /* 顶部对齐 */
+  gap: 24px;                      /* 文字和图片之间的间距 */
 }
 
 .news-card:hover {
@@ -130,25 +137,27 @@
   border-color: #d0d0d0;
 }
 
-.news-card h3 {
+/* --- 左侧文字区域 --- */
+.news-content {
+  flex: 1; /* 占据剩余所有空间。如果没有图片，它会自动占满 */
+  min-width: 0; /* 防止长文本撑破 Flex 容器 */
+}
+
+.news-content h3 {
   margin-top: 0;
   margin-bottom: 10px;
   color: #0a5771;
-  font-size: 1.25em; /* 稍微加大标题 */
+  font-size: 1.25em;
+  line-height: 1.3;
 }
 
-.news-card p {
+.news-content p {
   color: #444;
   font-size: 1em;
   line-height: 1.6;
-  margin-bottom: 0; /* 移除默认下边距，由父容器padding控制 */
+  margin-bottom: 0;
 }
 
-.news-card.long {
-  grid-column: span 2;
-}
-
-/* Read more 链接样式优化 */
 .read-more {
   display: inline-block;
   margin-top: 12px;
@@ -161,45 +170,87 @@
   text-decoration: underline;
 }
 
-/* ========== 4. 新增：纯链接卡片 (External Link Card) ========== */
-
-/* 这类卡片比较紧凑，没有摘要，通常包含外部链接图标 */
-.news-card.external-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 24px; /* 高度稍微压扁一点 */
-  cursor: pointer;    /* 鼠标放上去显示手型 */
+/* --- 右侧缩略图区域 (可选) --- */
+.news-thumb {
+  flex-shrink: 0; /* 防止图片被挤压 */
+  width: 140px;   /* 图片固定宽度，可按需调整 */
+  height: 100px;  /* 图片固定高度 */
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f0f0f0; /* 图片加载前的占位色 */
 }
 
-/* 让整个卡片变成链接的视觉效果 */
-.news-card.external-link a {
-  text-decoration: none;
-  color: inherit;
+.news-thumb img {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 100%;
+  object-fit: cover; /* 保证图片填满方框且不变形 */
+  display: block;
 }
 
-.news-card.external-link h3 {
+/* --- 移动端适配：手机上图片换行或缩小 --- */
+@media (max-width: 600px) {
+  .news-card {
+    flex-direction: column-reverse; /* 手机上把图片放上面(column) 或 放下面(column-reverse) */
+    gap: 16px;
+  }
+  .news-thumb {
+    width: 100%; /* 手机上图片通栏 */
+    height: 160px;
+  }
+}
+
+/* ========== External Link 卡片 (升级版：支持多行) ========== */
+
+.news-card.external-link {
+  padding: 0; /* 移除 padding，由内部的 <a> 标签负责，为了让点击区域覆盖全卡片 */
+  border: 1px solid #e8e8e8; /* 边框保留在卡片上 */
+}
+
+/* 让链接填满整个卡片 */
+.news-card.external-link > a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 20px 24px; /* Padding 移到这里 */
+  text-decoration: none; /* 去掉下划线 */
+  align-items: center;   /* 垂直居中 */
+  justify-content: space-between;
+  color: inherit;        /* 继承默认颜色 */
+}
+
+/* External Link 内部的文字容器 */
+.ext-content {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.ext-content h3 {
   margin: 0;
   font-size: 1.15em;
-  color: #333; /* 链接卡片标题可以用深灰色，区分于普通新闻 */
+  color: #333;
+  display: inline-block;
 }
 
-.news-card.external-link:hover h3 {
+/* 支持 External Link 里的描述文字 */
+.ext-content p {
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0;
+}
+
+.news-card.external-link:hover h3,
+.news-card.external-link:hover .icon-arrow {
   color: #0a5771;
 }
 
 .icon-arrow {
   color: #999;
-  font-size: 1.2em;
+  font-size: 1.4em;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .news-card.external-link:hover .icon-arrow {
-  transform: translateX(4px) translateY(-4px); /* 右上角移动效果 */
-  color: #0a5771;
+  transform: translate(4px, -4px);
 }
-

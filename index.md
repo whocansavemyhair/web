@@ -32,27 +32,32 @@ classes: wide
     <div class="news-grid">
 
       <article class="news-card">
-        <h3>🏆 Paper accepted to Nature Communication</h3>
-        <p>
-          We are excited to announce that our paper has been accepted to Nature Communication. 
-          Congratulations to the authors!
+        <div class="news-content">
+          <h3>🏆 Paper accepted to Nature Communications</h3>
+          <p>
+            We are excited to announce that our paper has been accepted to Nature Communications. 
+            Congratulations to the authors!
           </p>
-        <a class="read-more" href="https://hub.jhu.edu/2025/10/07/traffic-safety-artificial-intelligence-hopkins/">Read more →</a>
-      </article>
+          <a class="read-more" href="https://hub.jhu.edu/2025/10/07/traffic-safety-artificial-intelligence-hopkins/">Read more →</a>
+        </div>
+        </article>
 
       <article class="news-card">
-        <h3>🎉 Paper accepted to NeurIPS 2025</h3>
-        <p>
-          We are excited to announce that our papers have been accepted to NeurIPS 2025. 
-          Congratulations to the authors!
-        </p>
-        <a class="read-more" href="https://engineering.jhu.edu/case/news/johns-hopkins-civil-and-systems-engineers-to-present-at-neurips-2025/">Read more →</a>
+        <div class="news-content">
+          <h3>🎉 Paper accepted to NeurIPS 2025</h3>
+          <p>
+            We are excited to announce that our papers have been accepted to NeurIPS 2025. 
+            Congratulations to the authors!
+          </p>
+          <a class="read-more" href="https://engineering.jhu.edu/case/news/johns-hopkins-civil-and-systems-engineers-to-present-at-neurips-2025/">Read more →</a>
+        </div>
       </article>
-
 
       <article class="news-card external-link">
         <a href="https://news.jhu.edu/some-news" target="_blank">
-          <h3>📰 Featured in JHU Hub: "AI in Transportation"</h3>
+          <div class="ext-content">
+            <h3>📰 Featured in JHU Hub: "AI in Transportation"</h3>
+            </div>
           <span class="icon-arrow">↗</span>
         </a>
       </article>
