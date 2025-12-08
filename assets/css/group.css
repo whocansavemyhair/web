@@ -139,14 +139,121 @@
 .page-group .member-card:hover{ transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,.15); }
 .page-group .member-photo{ width:120px; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
 
-.page-group .life-slider{ position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; margin:8px 0 24px; }
-.page-group .life-viewport{ overflow:hidden; border-radius:12px; border:1px solid #e9edf1; box-shadow:0 4px 12px rgba(0,0,0,.05); }
-.page-group .life-track{ display:flex; transition:transform .4s ease; width:100%; }
-.page-group .life-slide{ min-width:100%; position:relative; background:#fff; }
-.page-group .life-slide img{ display:block; width:100%; height:auto; object-fit:cover; }
-.page-group .life-nav{
-  border:none; background:#0a5771; color:#fff; width:36px; height:36px; border-radius:8px; cursor:pointer; font-size:20px; line-height:36px;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
+/* ===== Life Section (优化版：适配不同尺寸图片) ===== */
+
+/* 1. 整体布局：左右按钮 + 中间视口 */
+.page-group .life-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* 按钮 - 视口 - 按钮 */
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 24px;
+}
+
+/* 2. 视口：固定高度，去掉边框阴影 */
+.page-group .life-viewport {
+  overflow: hidden;
+  /* 关键：设置一个固定高度，防止竖图把页面撑得过长 */
+  height: 550px; 
+  /* 去掉了之前的 border 和 box-shadow，实现“无框”设计 */
+  border-radius: 8px; 
+  position: relative;
+}
+
+.page-group .life-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* 更顺滑的缓动 */
+  width: 100%;
+  height: 100%; /* 轨道占满视口高度 */
+}
+
+/* 3. 单个 Slide：使用 Flex 居中内容 */
+.page-group .life-slide {
+  min-width: 100%;
+  height: 100%; /* 占满高度 */
+  position: relative;
+  
+  /* Flexbox 让图片在当前 Slide 区域内水平垂直居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 4. 图片：核心适配逻辑 */
+.page-group .life-slide img {
+  display: block;
+  /* 限制最大宽高，绝不溢出视口 */
+  max-width: 100%;
+  max-height: 100%;
+  /* 覆盖之前的 width:100%，改为 auto 以保持比例 */
+  width: auto; 
+  height: auto;
+  
+  /* 保证图片完整显示，不被裁剪 (如果想要填满且允许裁剪，改用 cover) */
+  object-fit: contain; 
+  
+  border-radius: 6px;
+  /* 稍微加一点阴影让图片从背景浮起，因为去掉了外框 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+}
+
+/* 5. 图片说明文字 (Caption) - 可选优化 */
+.page-group .life-slide figcaption {
+  position: absolute;
+  bottom: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 6. 导航按钮 */
+.page-group .life-nav {
+  border: none;
+  background: #0a5771;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* 改成圆形更现代 */
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 36px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+  display: flex;       /* 确保箭头居中 */
+  justify-content: center;
+  align-items: center;
+}
+
+.page-group .life-nav:hover {
+  transform: scale(1.1);
+  background: #084a61;
+}
+
+/* ===== 响应式适配 ===== */
+@media (max-width: 900px) {
+  /* 平板/小屏上高度稍微减小 */
+  .page-group .life-viewport {
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* 手机上高度再减小 */
+  .page-group .life-viewport {
+    height: 300px;
+  }
+  
+  /* 手机上按钮可以稍微小一点 */
+  .page-group .life-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
 }
 
 /* ===== 响应式（仅调整 info-* 尺寸；不改 Alumni/Life） ===== */
