@@ -245,44 +245,40 @@ document.addEventListener('DOMContentLoaded', () => {
       buckets[years-1].push({el:t, x0, yc});
     });
 
-    const rMin = 18, rMax = 26, gap = 8;
+    const maxBucketSize = Math.max(1, ...buckets.map(bucket => bucket.length));
+    const rMin = 46, rMax = 54, gap = 12;
+    const fitR = (innerW - gap * (maxBucketSize - 1)) / (2 * maxBucketSize);
+    const r = Math.max(18, Math.min(rMax, Math.max(rMin, 0.46 * innerW / maxBucketSize), fitR));
+    const dMin = 2*r + gap; // 同一年内头像中心的最小水平间距
 
     // ★ 关键改动：同一年里只在 X 方向左右错开，Y 固定为该年的 yc
     buckets.forEach(bucket=>{
       if (bucket.length === 0) return;
 
       bucket.sort((a,b)=>a.x0 - b.x0);
-      const n = bucket.length || 1;
-      const r = Math.max(rMin, Math.min(rMax, 0.45 * innerW / n));
-      const dMin = 2*r + gap; // 同一年内头像中心的最小水平间距
 
       const minX = padX + r;
       const maxX = padX + innerW - r;
       const placed = [];
 
       bucket.forEach(item=>{
-        let x = item.x0; // 理想位置
-        let tries = 0;
-        let dir = 1;
+        const prev = placed[placed.length - 1];
+        const ideal = Math.max(minX, Math.min(maxX, item.x0));
+        const x = prev ? Math.max(ideal, prev.x + dMin) : ideal;
+        placed.push({ item, x });
+      });
 
-        // 只在 x 方向左右摆动，直到与已放的头像不重叠
-        while (placed.some(p => Math.abs(x - p.x) < dMin)) {
-          const shift = dMin * (1 + Math.floor(tries/2));
-          x = item.x0 + dir * shift;
-          dir *= -1;
-          tries++;
-          if (tries > 50) break;
-        }
+      const overflow = placed.length ? placed[placed.length - 1].x - maxX : 0;
+      if (overflow > 0) placed.forEach(p => { p.x -= overflow; });
 
-        // 防止越出轨道边界
-        x = Math.max(minX, Math.min(maxX, x));
-        placed.push({x});
+      const underflow = placed.length ? minX - placed[0].x : 0;
+      if (underflow > 0) placed.forEach(p => { p.x += underflow; });
 
+      placed.forEach(({ item, x }) => {
         const s = `${2*r}px`;
         item.el.style.width  = s;
         item.el.style.height = s;
         item.el.style.left   = `${x}px`;
-        // ★ Y 不再抖动，固定在该年的水平线
         item.el.style.top    = `${item.yc}px`;
       });
     });
@@ -298,42 +294,25 @@ document.addEventListener('DOMContentLoaded', () => {
     return {
       el: t,
       x: parseFloat(t.style.left) || 0,
+      y: parseFloat(t.style.top) || 0,
       name: d.name || '', title: d.title || '', affiliation: d.affiliation || '',
       desc: d.desc || '', page: d.page || '', github: d.github || '',
       email: d.email || '', photo: d.photo || ''
     };
   }
 
-  function pickTriplet(t){
+  function orderedItemsForThumb(t){
     const row = t.closest('.axis-row');
-    const items = Array.from(row.querySelectorAll('.axis-thumb'))
-      .map(thumbData).sort((a,b)=>a.x-b.x);
-    const n = items.length;
-    const i = items.findIndex(it => it.el === t);
-
-    if (n === 0) return { order: [], mode: 'center' };
-    if (n === 1) return { order: [items[0]], mode: 'center' };
-    if (n === 2){
-      if (i === 0) return { order: [items[0], items[1]], mode: 'edge-left' };
-      return { order: [items[0], items[1]], mode: 'edge-right' };
-    }
-
-    const left1  = (i-1 >= 0) ? items[i-1] : null;
-    const left2  = (i-2 >= 0) ? items[i-2] : null;
-    const right1 = (i+1 <  n) ? items[i+1] : null;
-    const right2 = (i+2 <  n) ? items[i+2] : null;
-
-    if (i === 0)     return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
-    if (i === n-1)   return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
-
-    if (!left1 && right1) return { order: [items[i], right1, right2].filter(Boolean), mode: 'edge-left' };
-    if (!right1 && left1) return { order: [left2, left1, items[i]].filter(Boolean), mode: 'edge-right' };
-
-    return { order: [left1, items[i], right1].filter(Boolean), mode: 'center' };
+    return Array.from(row.querySelectorAll('.axis-thumb'))
+      .map(thumbData).sort((a,b)=> {
+        const dx = a.x - b.x;
+        if (Math.abs(dx) > 1) return dx;
+        return a.y - b.y;
+      });
   }
 
   function cardHTML(item, mod){
-    return `<div class="info-card ${mod}">
+    return `<div class="info-card ${mod}" data-name="${item.name}">
       <div class="card-inner">
         <img src="${item.photo}" alt="${item.name}">
         <div class="card-text">
@@ -356,47 +335,71 @@ document.addEventListener('DOMContentLoaded', () => {
     // 保留函数，但不再对 .axis-thumb 添加/移除任何 class
   }
 
-  function renderRibbonSet(result){
-    const { order, mode } = result;
-    if (!order || order.length === 0) return;
-
-    // 不再对上方头像添加 thumb-main/thumb-side 等类，仅更新下方 info ribbon
-    clearThumbFocus();
-
-    let html = '';
-    if (mode === 'center'){
-      html += cardHTML(order[0], 'info-card--side side-left');
-      html += cardHTML(order[1], 'info-card--main');
-      if (order[2]) html += cardHTML(order[2], 'info-card--side side-right');
-    }else if (mode === 'edge-left'){
-      html += cardHTML(order[0], 'info-card--main');
-      if (order[1]) html += cardHTML(order[1], 'info-card--side side-right');
-      if (order[2]) html += cardHTML(order[2], 'info-card--side side-right');
-    }else if (mode === 'edge-right'){
-      if (order[0]) html += cardHTML(order[0], 'info-card--side side-left');
-      if (order[1]) html += cardHTML(order[1], 'info-card--side side-left');
-      html += cardHTML(order[2], 'info-card--main');
-    }
-
-    ribbon.innerHTML = html;
-    ribbon.dataset.mode = 'triplet';
-
-    ribbon.querySelectorAll('.info-card--side').forEach(c=>{
-      c.addEventListener('click', ()=>{
-        const name = c.querySelector('h3')?.textContent?.trim();
+  function bindMemberCards(){
+    ribbon.querySelectorAll('.info-card').forEach(c=>{
+      c.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const name = c.dataset.name || c.querySelector('h3')?.textContent?.trim();
         const th = Array.from(document.querySelectorAll('.axis-thumb'))
           .find(t => (t.dataset.name||'').trim() === name);
-        if (th){ const res2 = pickTriplet(th); renderRibbonSet(res2); }
-      }, {passive:true});
+        if (th) focusThumb(th);
+      });
     });
+  }
+
+  function updateMemberCardState(nextMain){
+    const cards = Array.from(ribbon.querySelectorAll('.info-card'));
+    const targetIndex = cards.findIndex(card => card.dataset.name === nextMain);
+    if (targetIndex < 0) return null;
+
+    cards.forEach((card, index) => {
+      card.classList.remove('info-card--main', 'info-card--side', 'side-left', 'side-right');
+      if (index === targetIndex) {
+        card.classList.add('info-card--main');
+      } else {
+        card.classList.add('info-card--side', index < targetIndex ? 'side-left' : 'side-right');
+      }
+    });
+
+    return cards[targetIndex];
+  }
+
+  function renderMemberScroller(t){
+    const items = orderedItemsForThumb(t);
+    if (!items.length) return;
+    clearThumbFocus();
+
+    const nextMain = t.dataset.name || '';
+    const axis = t.closest('.axis-row')?.dataset.axis || '';
+    const shouldBuild = ribbon.dataset.mode !== 'members' || ribbon.dataset.axis !== axis;
+
+    if (shouldBuild) {
+      ribbon.innerHTML = items.map((item, index) => {
+        const activeIndex = items.findIndex(it => it.name === nextMain);
+        const mod = index === activeIndex ? 'info-card--main' : `info-card--side ${index < activeIndex ? 'side-left' : 'side-right'}`;
+        return cardHTML(item, mod);
+      }).join('');
+      ribbon.dataset.mode = 'members';
+      ribbon.dataset.axis = axis;
+      bindMemberCards();
+    }
+
+    const mainCard = updateMemberCardState(nextMain);
+
+    if (mainCard) requestAnimationFrame(() => {
+      mainCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+  }
+
+  function focusThumb(t){
+    renderMemberScroller(t);
   }
 
   function bindThumbs(){
     document.querySelectorAll('.axis-thumb').forEach(t=>{
       t.addEventListener('click', (e)=>{
         e.stopPropagation();
-        const res = pickTriplet(t);
-        renderRibbonSet(res);
+        focusThumb(t);
       }, {passive:true});
     });
   }
