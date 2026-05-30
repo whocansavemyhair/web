@@ -14,7 +14,8 @@ body {
 
 :root{
   /* 这两个变量只给 header 用，不影响主体 */
-  --header-max: 1400px;   /* 与主体相同的对齐宽度 */
+  --content-max: 1280px;
+  --header-max: var(--content-max);   /* 与主体相同的对齐宽度 */
   --header-pad: 20px;     /* 与主体相同的左右 padding */
 }
 
@@ -28,7 +29,7 @@ body {
 
 /* 小屏时可单独缩小 header 的左右留白（可选） */
 @media (max-width: 900px){
-  :root{ --header-pad: 15px; }
+  :root{ --header-pad: 20px; }
 }
 
 /* ===========================
@@ -53,7 +54,7 @@ body {
 .masthead__inner-wrap,
 .footer {
   width: 100% !important;
-  max-width: 1400px !important;
+  max-width: var(--content-max) !important;
   margin: 0 auto !important;
   padding-left: 20px;
   padding-right: 20px;
@@ -74,12 +75,13 @@ body {
 }
 
 .masthead__inner-wrap {
-  max-width: 1400px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 12px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
 }
 
 .masthead.is-sticky {
@@ -88,7 +90,7 @@ body {
 
 /* 避免 header 遮住主体内容（保留你的原设置） */
 .page__content {
-  margin-top: 90px; /* 根据导航栏高度微调 */
+  margin-top: 56px; /* sticky header 不再遮挡首屏内容 */
 }
 
 /* ===========================
@@ -106,15 +108,60 @@ body {
    Header 菜单布局（保持原样）
    =========================== */
 .masthead__menu {
-  float: right !important;
-  text-align: right !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  float: none !important;
+  text-align: left !important;
 }
+
+.masthead__menu .greedy-nav {
+  justify-content: flex-start;
+  min-height: 2rem;
+  background: transparent;
+}
+
+.masthead__menu .greedy-nav .site-title {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-right: 22px;
+  font-weight: 700;
+  color: #53595e;
+}
+
+.masthead__menu .greedy-nav .site-title::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  margin-left: 22px;
+  vertical-align: -0.18em;
+  background: #c7ccd1;
+}
+
+.masthead__menu .greedy-nav .visible-links {
+  flex: 0 1 auto;
+  justify-content: flex-start;
+}
+
 .masthead__menu ul {
   display: flex;
-  gap: 30px;
+  gap: 26px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.masthead__jhu-engineering {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.masthead__jhu-engineering img {
+  display: block;
+  height: 38px;
+  width: auto;
 }
 
 /* ===========================
@@ -202,8 +249,8 @@ body {
   .masthead__inner-wrap,
   .footer {
     max-width: 100% !important;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .news-grid {
@@ -212,5 +259,25 @@ body {
 
   .news-card.long {
     grid-column: span 1;
+  }
+
+  .masthead__inner-wrap {
+    gap: 12px;
+  }
+
+  .masthead__jhu-engineering img {
+    height: 30px;
+  }
+
+  .masthead__menu ul {
+    gap: 18px;
+  }
+
+  .masthead__menu .greedy-nav .site-title {
+    padding-right: 14px;
+  }
+
+  .masthead__menu .greedy-nav .site-title::after {
+    margin-left: 14px;
   }
 }

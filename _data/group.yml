@@ -5,7 +5,7 @@ pi:
       Department of Civil and System Engineering  
       Johns Hopkins Data Science & AI Institute  
       Johns Hopkins University
-    photolink: "/assets/images/group/prof_yang.jpeg"
+    photolink: "/assets/images/group/members/prof_yang.jpeg"
     pagelink: "https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate"
     email: "haofrankyang@jhu.edu"
     github: "https://github.com/whocansavemyhair"
@@ -15,7 +15,7 @@ current:
     title: Master Student
     desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
     pagelink: https://guanlinwu123.github.io/ 
-    photolink: /assets/images/group/guanlin_wu.jpg
+    photolink: /assets/images/group/members/guanlin_wu.jpg
     years: 2024
     a1: 30   # Efficiency vs Robustness
     a2: 10   # Fundamental Models vs Optimal Systems
@@ -26,7 +26,7 @@ current:
     title: Master Student
     desc: My research interests focus on Multimodal Large Language Model and human behavior.
     pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
-    photolink: /assets/images/group/yichen_lin.jpg
+    photolink: /assets/images/group/members/yichen_lin.jpg
     years: 2024
     a1: 40
     a2: 20
@@ -37,7 +37,7 @@ current:
     title: Visiting PhD Student
     desc: My research interests lie in Multimodal Large Language Model and Energy System.
     pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
-    photolink: /assets/images/group/fan_yang.jpg
+    photolink: /assets/images/group/members/fan_yang.jpg
     years: 2025
     a1: 20
     a2: 30
@@ -48,7 +48,7 @@ current:
     title: Master student
     desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
     pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
-    photolink: /assets/images/group/yushan_li.jpg
+    photolink: /assets/images/group/members/yushan_li.jpg
     years: 2025
     a1: 20
     a2: 20
@@ -59,7 +59,7 @@ current:
     title: PhD student
     desc: My research interests lie in Efficiency Large Language Model and Edge AI for autonomous driving.  
     pagelink: https://www.linkedin.com/in/linshenliu-994591289/ 
-    photolink: /assets/images/group/linshen_liu.jpg
+    photolink: /assets/images/group/members/linshen_liu.jpg
     years: 2024
     a1: 20
     a2: 80
@@ -70,7 +70,7 @@ current:
     title: PhD student
     desc: My research interests include sustainable and efficient computing for machine learning systems, with a focus on energy-efficient decision making for edge AI and hardware–software co-optimization in smart transportation. 
     pagelink: https://www.linkedin.com/in/junyue-jiang-52454222b/ 
-    photolink: /assets/images/group/junyue_jiang.jpg
+    photolink: /assets/images/group/members/junyue_jiang.jpg
     years: 2024
     a1: 70
     a2: 90
@@ -81,7 +81,7 @@ current:
     title: PhD student
     desc: My research interests lie in multimodal large language models and data centric AI.
     pagelink: https://www.linkedin.com/in/pu-wang-a85048389/
-    photolink: /assets/images/group/pu_wang.jpg
+    photolink: /assets/images/group/members/pu_wang.jpg
     years: 2024
     a1: 70
     a2: 10
@@ -92,7 +92,7 @@ current:
     title: Master student
     desc: My research interest lies in optimization, quantitative economics, machine learning, and data-driven decision analytics in complex systems. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
-    photolink: /assets/images/group/bingjie_liu.jpg
+    photolink: /assets/images/group/members/bingjie_liu.jpg
     years: 2025
     a1: 70
     a2: 10
@@ -103,7 +103,7 @@ current:
     title: PhD student
     desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
-    photolink: /assets/images/group/yang_zhao.jpg
+    photolink: /assets/images/group/members/yang_zhao.jpg
     years: 2024
     a1: 50
     a2: 0
@@ -113,27 +113,27 @@ current:
 alumni:
   - name: "Xianglong Wang"
     title: "Master student"
-    photolink: "/assets/images/group/xianglong_wang.jpg"
+    photolink: "/assets/images/group/members/xianglong_wang.jpg"
     desc: "Now at Wyze Labs, Inc."
 
   - name: "Yibo Zhao"
     title: "Alumni"
-    photolink: "/assets/images/group/yibo_zhao.jpg"  
+    photolink: "/assets/images/group/members/yibo_zhao.jpg"
     desc: "Now MIT Media Lab Research Affiliate"
-  
+
   - name: "Boyan Su"
     title: "Master student"
-    photolink: "/assets/images/group/boyan_su.jpg"
+    photolink: "/assets/images/group/members/boyan_su.jpg"
     desc: ""
 
   - name: "Shiyu Pan"
     title: "Alumni"
-    photolink: "/assets/images/group/shiyu_pan.jpg"  
+    photolink: "/assets/images/group/members/shiyu_pan.jpg"
     desc: ""
 
   - name: "Yifei Xiang"
     title: "Alumni"
-    photolink: "/assets/images/group/yifei_xiang.jpg"  
+    photolink: "/assets/images/group/members/yifei_xiang.jpg"
     desc: "Now at Shanghai Jiao Tong University"
 life:
   - src: thanksgiving26.jpg

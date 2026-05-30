@@ -2,8 +2,9 @@
   authors: Guanlin Wu*, Boyan Su*, Yang Zhao, Pu Wang, Yichen Lin, Hao Frank Yang† 
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
-  type: conference 
+  type: conference
   direction: models 
+  image: /assets/images/research/publication/2510.21160v1.jpg
   pdf: /assets/publications/2510.21160v1.pdf
   doi: https://arxiv.org/abs/2510.21160 
 
@@ -13,59 +14,66 @@
   year:  2025 
   type: conference 
   direction: models
-  pdf: "#"
-  doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf 
+  image: /assets/images/research/publication/iccv2025_moe_3d_object_detection.jpg
+  pdf: /assets/publications/iccv2025_moe_3d_object_detection.pdf
+  doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf
 
-- title: 'Towards Accurate and Efficient 3D Object Detection for Autonomous Driving: A Mixture of Experts Computing System on Edge'
-  authors: Linshen Liu, Pu Wang, Guanlin Wu, Hao Frank Yang† 
+- title: 'Toward Optimal Mixture of Experts System for 3D Object Detection: A Game of Accuracy, Efficiency and Adaptivity'
+  authors: Linshen Liu, Pu Wang, Guanlin Wu, Junyue Jiang, Hao Frank Yang
   venue:  'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)'
-  year:  2025 
+  year:  2025
   type: journal
   direction: models
-  pdf: "#"
-  doi: https://ieeexplore.ieee.org/document/11175038 
-  
+  image: /assets/images/research/publication/tpami_moe_3d_object_detection.jpg
+  pdf: /assets/publications/Toward_Optimal_Mixture_of_Experts_System_for_3D_Object_Detection_A_Game_of_Accuracy_Efficiency_and_Adaptivity.pdf
+  doi: https://ieeexplore.ieee.org/document/11175038
+
 - title: 'Cost-effective vehicle recognition system in challenging environment empowered by micro-pulse lidar and edge AI'
-  authors: Junyue Jiang, Hongliang Lu, Chenxi Liu, Meixin Zhu, Yiran Chen, Hao Frank Yang 
-  venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)' 
-  year:  2024 
-  type: conference 
-  direction: systems 
-  pdf: "#"
-  doi: 10.1109/IV55156.2024.10588634 
+  authors: Junyue Jiang, Hongliang Lu, Chenxi Liu, Meixin Zhu, Yiran Chen, Hao Frank Yang
+  venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)'
+  year:  2024
+  type: conference
+  direction: systems
+  image: /assets/images/research/publication/iv_micro_pulse_lidar_edge_ai.jpg
+  pdf: /assets/publications/Cost-effective_Vehicle_Recognition_System_in_Challenging_Environment_Empowered_by_Micro-Pulse_LiDAR_and_Edge_AI.pdf
+  doi: 10.1109/IV55156.2024.10588634
 
 - title: 'SafeTraffic Copilot: adapting large language models for trustworthy traffic safety assessments and decision interventions'
-  authors: Yang Zhao, Pu Wang, Yibo Zhao, Hongru Du, Hao Frank Yang 
-  venue:  'Nature Communications volume 16, Article number: 8846 (2025)' 
-  year:  2025 
-  type: journal 
-  direction: models 
-  pdf: "#"
-  doi: 10.1038/s41467-025-64574-w 
+  authors: Yang Zhao, Pu Wang, Yibo Zhao, Hongru Du, Hao Frank Yang
+  venue:  'Nature Communications volume 16, Article number: 8846 (2025)'
+  year:  2025
+  type: journal
+  direction: models
+  image: /assets/images/research/publication/s41467-025-64574-w.jpg
+  pdf: /assets/publications/s41467-025-64574-w.pdf
+  doi: 10.1038/s41467-025-64574-w
 
 - title: 'How to Auto-optimize Prompts for Domain Tasks? Adaptive Prompting and Reasoning through Evolutionary Domain Knowledge Adaptation'
-  authors: Yang Zhao, Pu Wang, Hao Frank Yang 
-  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025' 
-  year:  2025 
-  type: conference 
-  direction: models 
-  pdf: “#”
-  doi: https://arxiv.org/pdf/2510.21148 
+  authors: Yang Zhao, Pu Wang, Hao Frank Yang
+  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025'
+  year:  2025
+  type: conference
+  direction: models
+  image: /assets/images/research/publication/2510.21148.jpg
+  pdf: /assets/publications/2510.21148.pdf
+  doi: https://arxiv.org/pdf/2510.21148
 
 - title: 'Personalized Decision Modeling: Utility Optimization or Textualized-Symbolic Reasoning'
-  authors: Yibo Zhao, Yang Zhao, Hongru Du, Hao Frank Yang 
-  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
-  year:  2025 
-  type: conference 
-  direction: models 
-  pdf: "#"
-  doi: https://arxiv.org/pdf/2511.02194 
+  authors: Yibo Zhao, Yang Zhao, Hongru Du, Hao Frank Yang
+  venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight'
+  year:  2025
+  type: conference
+  direction: models
+  image: /assets/images/research/publication/2511.02194.jpg
+  pdf: /assets/publications/2511.02194.pdf
+  doi: https://arxiv.org/pdf/2511.02194
 
 - title: 'Advancing real-time infectious disease forecasting using large language models'
-  authors: Hongru Du, Yang Zhao, Jianan Zhao, Shaochong Xu, Xihong Lin, Yiran Chen, Lauren M. Gardner, Hao Frank Yang 
-  venue:  'Nature Computational Science' 
-  year:  2025 
-  type: journal  
-  direction: models 
-  pdf: "#"
-  doi: https://doi.org/10.1038/s43588-025-00798-6 
+  authors: Hongru Du, Yang Zhao, Jianan Zhao, Shaochong Xu, Xihong Lin, Yiran Chen, Lauren M. Gardner, Hao Frank Yang
+  venue:  'Nature Computational Science'
+  year:  2025
+  type: journal
+  direction: models
+  image: /assets/images/research/publication/s43588-025-00798-6.jpg
+  pdf: /assets/publications/10623880.pdf
+  doi: https://doi.org/10.1038/s43588-025-00798-6

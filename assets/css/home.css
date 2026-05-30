@@ -10,15 +10,21 @@
 }
 
 .hero-section {
+  background: linear-gradient(120deg, #f9fbfd 0%, #edf1f5 100%);
+  border-radius: 12px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  width: calc(100% - 40px);
+  max-width: var(--content-max);
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(120deg, #f9fbfd 0%, #edf1f5 100%);
-  border-radius: 12px;
-  padding: 60px 40px;
-  margin-bottom: 50px;
+  padding: 60px 0;
   position: relative;
-  overflow: hidden;
 }
 
 /* 左侧文字区 */
@@ -67,10 +73,11 @@
 
 /* 响应式布局 */
 @media (max-width: 1000px) {
-  .hero-section {
+  .hero-inner {
+    width: calc(100% - 40px);
     flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
+    text-align: left;
+    padding: 40px 0;
   }
   .hero-text {
     max-width: 100%;
@@ -91,18 +98,92 @@
 
 /* ========== 原 index.md 中的 home-grid 栅格布局 ========== */
 
+.home-body-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 .home-grid {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: minmax(0, 2.4fr) minmax(280px, 1fr);
   gap: 40px;
   align-items: start;
+  width: calc(100% - 40px);
   margin-top: 30px;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 900px) {
   .home-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ========== Home Contact Panel ========== */
+
+.home-contact-panel {
+  color: #999;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.contact-block {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 34px;
+}
+
+.contact-icon {
+  color: #111;
+  padding-top: 2px;
+}
+
+.contact-icon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-copy h2 {
+  margin: 0 0 14px;
+  color: #222;
+  font-size: .92rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.contact-copy p {
+  margin: 0 0 20px;
+}
+
+.contact-copy strong {
+  color: #8c8c8c;
+  font-weight: 700;
+}
+
+.contact-copy a {
+  color: #222;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-copy a:hover {
+  color: #0a5771;
 }
 
 /* ========== 可复用 News 卡片样式 ========== */

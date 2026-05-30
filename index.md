@@ -8,21 +8,24 @@ classes: wide
 
 <div class = "hero-wrapper">
   <section class="hero-section">
-    <div class="hero-text">
-      <h1>Welcome</h1>
-      <p>
-        The Yang Research Group at Johns Hopkins University focuses on
-        <strong>computational systems and models</strong> in transportation,
-        public health, and optimization. Our research integrates data-driven
-        modeling with computational theory to advance intelligent system design.
-      </p>
-    </div>
-    <div class="hero-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Yang Lab photo">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Welcome</h1>
+        <p>
+          The Yang Research Group at Johns Hopkins University focuses on
+          <strong>computational systems and models</strong> in transportation,
+          public health, and optimization. Our research integrates data-driven
+          modeling with computational theory to advance intelligent system design.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img src="{{ '/assets/images/home/main/lab1.png' | relative_url }}" alt="Yang Lab photo">
+      </div>
     </div>
   </section>
 </div>
 
+<div class="home-body-wrapper">
 <div class="home-grid">
 
 <section>
@@ -70,18 +73,37 @@ classes: wide
   </section>
 </section>
 
-  <aside>
-    <h2>Contact</h2>
-    <p>
-      Johns Hopkins University<br>
-      📧 <a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a>
-    </p>
-
-    <h2>Links</h2>
-    <ul>
-      <li><a href="https://scholar.google.com/citations?user=IA_dRMIAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a></li>
-      <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-    </ul>
+  <aside class="home-contact-panel">
+    <section class="contact-block">
+      <div class="contact-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img">
+          <path d="M21 3 3 10.7l7.4 2.9L13.3 21 21 3Z"></path>
+          <path d="m10.4 13.6 4.4-4.4"></path>
+        </svg>
+      </div>
+      <div class="contact-copy">
+        <h2>Contact</h2>
+        <p>
+          <strong>Prof. Hao Frank Yang</strong><br>
+          Assistant Professor<br>
+          Department of Civil and Systems Engineering<br>
+          Whiting School of Engineering<br>
+          Johns Hopkins University
+        </p>
+        <p>
+          201N Latrobe Hall<br>
+          3400 North Charles Street<br>
+          Baltimore, MD 21218<br>
+          United States
+        </p>
+        <p class="contact-lines">
+          <a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a><br>
+          <a href="https://scholar.google.com/citations?user=IA_dRMIAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a><br>
+          <a href="">LinkedIn</a>
+        </p>
+      </div>
+    </section>
   </aside>
 
+</div>
 </div>

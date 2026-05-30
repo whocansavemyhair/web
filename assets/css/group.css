@@ -1,8 +1,33 @@
 /* 简洁：无边框、无背景盒子，仅保留基线与淡导引 */
 .page-group .section-title{ margin-top:.5rem; color:#0a5771; }
 
+.page-group .group-intro{
+  margin: 8px 0 0;
+  padding: 0 18px;
+}
+
+.page-group .group-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin:0;
+  color:#0a5771;
+  font-size:.9rem;
+  font-weight:700;
+  letter-spacing:.28em;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+
+.page-group .group-kicker::after{
+  content:"";
+  width:72px;
+  height:1px;
+  background:#cfd6de;
+}
+
 /* ===== 纯净横轴（像 Life 一样的结构：viewport + track + slides） ===== */
-.page-group .viz1d{ margin: 8px 0 0; }
+.page-group .viz1d{ margin: 6px 0 0; }
 
 .page-group .axes-plain{ position: relative; }
 .page-group .axes-plain .axes-viewport{ overflow: hidden; }
@@ -150,6 +175,50 @@
 }
 .page-group .info-card .links a{ color:#0a5771; text-decoration:none; font-weight:600; }
 .page-group .info-card .links a:hover{ text-decoration:underline; }
+
+@media (min-width: 1000px) {
+  .page-group .info-ribbon{
+    height:auto;
+    min-height:320px;
+    align-items:stretch;
+  }
+
+  .page-group .info-card .card-inner{
+    grid-template-columns:104px 1fr;
+  }
+
+  .page-group .info-card img{
+    width:104px;
+    height:104px;
+  }
+
+  .page-group .info-card .desc{
+    -webkit-line-clamp:4;
+  }
+
+  .page-group .info-card--main{
+    width:620px;
+    height:auto;
+    min-height:320px;
+  }
+
+  .page-group .info-card--main .card-inner{
+    grid-template-columns:104px 1fr;
+    height:auto;
+  }
+
+  .page-group .info-card--main img{
+    width:104px;
+    height:104px;
+  }
+
+  .page-group .info-card--main .desc{
+    display:block;
+    overflow:visible;
+    -webkit-line-clamp:unset;
+    -webkit-box-orient:initial;
+  }
+}
 
 /* ===== Alumni / Life 完全保持原样 ===== */
 .page-group .group-grid{

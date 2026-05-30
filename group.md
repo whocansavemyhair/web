@@ -4,12 +4,15 @@ permalink: /group/
 author_profile: false
 classes: wide
 sidebar: false
-title: "Our Group"
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/group.css' | relative_url }}">
 
 <div class="page-group">
+
+<header class="group-intro">
+  <p class="group-kicker">THE GROUP</p>
+</header>
 
 <!-- ===== 纯净横轴：一次只显示一条，样式与 Life 一致（viewport + track + slides） ===== -->
 <section class="viz1d">
@@ -186,7 +189,7 @@ title: "Our Group"
         {% for p in site.data.group.life %}
           {% assign filename = p.src | default: p.file %}
           <figure class="life-slide">
-            <img src="{{ '/assets/images/life/' | append: filename | relative_url }}" alt="{{ p.alt | default: 'Life' }}">
+            <img src="{{ '/assets/images/group/life/' | append: filename | relative_url }}" alt="{{ p.alt | default: 'Life' }}">
             {% if p.caption %}<figcaption>{{ p.caption }}</figcaption>{% endif %}
           </figure>
         {% endfor %}

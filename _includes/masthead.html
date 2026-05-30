@@ -1,0 +1,39 @@
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        <a class="site-title" href="{{ '/' | relative_url }}">
+          {{ site.masthead_title | default: site.title }}
+        </a>
+
+        <ul class="visible-links">
+          {%- for link in site.data.navigation.main -%}
+            {%- if link.url contains '://' -%}
+              {%- assign link_url = link.url -%}
+            {%- else -%}
+              {%- assign link_url = link.url | relative_url -%}
+            {%- endif -%}
+            <li class="masthead__menu-item">
+              <a href="{{ link_url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+
+    <a class="masthead__jhu-engineering"
+       href="https://engineering.jhu.edu/"
+       target="_blank"
+       rel="noopener"
+       aria-label="Johns Hopkins Whiting School of Engineering">
+      <img src="{{ '/assets/images/whiting.logo.large.horizontal.blue.svg' | relative_url }}"
+           alt="Johns Hopkins Whiting School of Engineering">
+    </a>
+  </div>
+</div>

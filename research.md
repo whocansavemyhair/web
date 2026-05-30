@@ -22,7 +22,7 @@ classes: wide
       </ul>
     </div>
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computation Models">
+      <img src="{{ '/assets/images/research/main/lab1.png' | relative_url }}" alt="Optimal Computation Models">
     </div>
   </div>
 </div>
@@ -30,7 +30,7 @@ classes: wide
 <div class="research-wrapper alt">
   <div class="research-section">
     <div class="research-image">
-      <img src="{{ '/assets/images/lab1.png' | relative_url }}" alt="Optimal Computational Systems">
+      <img src="{{ '/assets/images/research/main/lab1.png' | relative_url }}" alt="Optimal Computational Systems">
     </div>
     <div class="research-text">
       <h2>Optimal Computational Systems</h2>
@@ -50,29 +50,39 @@ classes: wide
 
 
 <!-- ========== 统一 Filter Bar（publication 同款结构/类名） ========== -->
-<!-- ========== 统一 Filter Bar（All 作为全局开关，放到最前） ========== -->
+<!-- ========== 统一 Filter Bar（Papers 作为全局开关，放到最前） ========== -->
 <div class="pub-filter-bar">
-  <div class="filter-buttons">
-    <!-- 全局 All（唯一的 All；控制 方向 + 类型 + 年份） -->
-    <button data-scope="all" class="active">All</button>
+  <button class="pub-filter-toggle" id="pubFilterToggle" type="button" aria-expanded="false" aria-controls="pubFilterPanel">
+    <span class="filter-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span>Filters</span>
+  </button>
 
-    <!-- 方向 -->
-    <button data-scope="direction" data-value="models">Models</button>
-    <button data-scope="direction" data-value="systems">Systems</button>
+  <div class="pub-filter-panel" id="pubFilterPanel">
+    <div class="filter-buttons">
+      <!-- 全局 Papers（控制 方向 + 类型 + 年份） -->
+      <button data-scope="all" class="active">Papers</button>
 
-    <!-- 类型 -->
-    <button data-scope="type" data-type="journal">Journal</button>
-    <button data-scope="type" data-type="conference">Conference</button>
+      <!-- 方向 -->
+      <button data-scope="direction" data-value="models">Models</button>
+      <button data-scope="direction" data-value="systems">Systems</button>
+
+      <!-- 类型 -->
+      <button data-scope="type" data-type="journal">Journal</button>
+      <button data-scope="type" data-type="conference">Conference</button>
+    </div>
+
+    <!-- 年份（右侧控件） -->
+    <div class="pub-year-filter" id="pubYearFilter">
+      <button class="pub-year-toggle" id="pubYearToggle" type="button" aria-haspopup="listbox" aria-expanded="false">Years</button>
+      <div class="pub-year-menu" id="pubYearMenu" role="listbox" aria-label="Filter by year">
+        <button class="pub-year-option active" type="button" data-year="all" role="option" aria-selected="true">All Years</button>
+      {% assign years = site.data.publications | map:"year" | uniq | sort | reverse %}
+      {% for y in years %}
+        <button class="pub-year-option" type="button" data-year="{{ y }}" role="option" aria-selected="false">{{ y }}</button>
+      {% endfor %}
+      </div>
+    </div>
   </div>
-
-  <!-- 年份（右侧控件） -->
-  <select id="pubYear" aria-label="Filter by year">
-    <option value="all" selected>All Years</option>
-    {% assign years = site.data.publications | map:"year" | uniq | sort | reverse %}
-    {% for y in years %}
-      <option value="{{ y }}">{{ y }}</option>
-    {% endfor %}
-  </select>
 </div>
 
 
@@ -120,14 +130,25 @@ classes: wide
        data-type="{{ pub.type }}"
        data-year="{{ pub.year }}"
        data-direction="{{ pub.direction }}">
-    <div class="pub-year">{{ pub.year }}</div>
+    <div class="pub-thumb">
+      {% if pub.image and pub.image != "" %}
+      <img src="{{ pub.image | relative_url }}" alt="{{ pub.title }}">
+      {% else %}
+      <div class="pub-thumb-placeholder">No image</div>
+      {% endif %}
+    </div>
     <div class="pub-content">
+      <div class="pub-year">{{ pub.year }}</div>
       <h3 class="pub-title">{{ pub.title }}</h3>
       <p class="pub-authors">{{ pub.authors }}</p>
       <p class="pub-venue"><em>{{ pub.venue }}</em></p>
       <p class="pub-links">
         {% if pub.pdf and pub.pdf != "" %}
-        <a href="{{ pub.pdf }}" target="_blank">[PDF]</a>
+        {% if pub.pdf == "#" or pub.pdf contains "://" %}
+        <a href="{{ pub.pdf }}" target="_blank" rel="noopener">[PDF]</a>
+        {% else %}
+        <a href="{{ pub.pdf | relative_url }}" target="_blank" rel="noopener">[PDF]</a>
+        {% endif %}
         {% endif %}
         {% if pub.doi and pub.doi != "" %}
         <a href="{{ pub.doi }}" target="_blank">[DOI]</a>
@@ -137,56 +158,90 @@ classes: wide
   </div>
   {% endfor %}
 </div>
+<div class="pub-load-more-wrap">
+  <button id="pubLoadMore" class="pub-load-more-btn" type="button">Load more</button>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // 按钮 & 控件
+  const filterBar = document.querySelector(".pub-filter-bar");
+  const filterToggle = document.getElementById("pubFilterToggle");
   const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button");
-  const yearSel = document.getElementById("pubYear");
-  const pubs = document.querySelectorAll(".pub-item");
+  const yearFilter = document.getElementById("pubYearFilter");
+  const yearToggle = document.getElementById("pubYearToggle");
+  const yearOptions = document.querySelectorAll(".pub-year-option");
+  const pubs = Array.from(document.querySelectorAll(".pub-item"));
+  const loadMoreBtn = document.getElementById("pubLoadMore");
+  const PAGE_SIZE = 5;
 
-  // 状态：默认 All 模式（展示全部）
+  // 状态：默认 Papers 模式（展示全部）
   let allMode = true;
   let currentDirection = "all";
   let currentType = "all";
   let currentYear = "all";
+  let visibleLimit = PAGE_SIZE;
 
   const btnAll = document.querySelector('.pub-filter-bar .filter-buttons button[data-scope="all"]');
 
-  function applyFilters() {
-    if (allMode) {
-      pubs.forEach(pub => { pub.style.display = "flex"; });
-      return;
-    }
+  function closeFilterPanel() {
+    filterBar.classList.remove("open");
+    filterToggle.setAttribute("aria-expanded", "false");
+  }
 
-    pubs.forEach(pub => {
-      const okDir  = (currentDirection === "all") || (pub.dataset.direction === currentDirection);
-      const okType = (currentType === "all") || (pub.dataset.type === currentType);
-      const okYear = (currentYear === "all") || (pub.dataset.year === currentYear);
-      pub.style.display = (okDir && okType && okYear) ? "flex" : "none";
+  function closeYearMenu() {
+    yearFilter.classList.remove("open");
+    yearToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function setYearFilter(year) {
+    currentYear = year;
+    yearOptions.forEach(option => {
+      const active = option.dataset.year === year;
+      option.classList.toggle("active", active);
+      option.setAttribute("aria-selected", active ? "true" : "false");
     });
   }
 
-  // 处理按钮点击（同 scope 互斥；All 为全局总开关）
+  function applyFilters() {
+    const matchedPubs = pubs.filter(pub => {
+      const okDir  = (currentDirection === "all") || (pub.dataset.direction === currentDirection);
+      const okType = (currentType === "all") || (pub.dataset.type === currentType);
+      const okYear = (currentYear === "all") || (pub.dataset.year === currentYear);
+      return okDir && okType && okYear;
+    });
+
+    pubs.forEach(pub => { pub.style.display = "none"; });
+    matchedPubs.slice(0, visibleLimit).forEach(pub => {
+      pub.style.display = "flex";
+    });
+
+    loadMoreBtn.style.display = (matchedPubs.length > visibleLimit) ? "inline-flex" : "none";
+  }
+
+  // 处理按钮点击（同 scope 互斥；Papers 为全局总开关）
   btns.forEach(btn => {
     btn.addEventListener("click", () => {
       const scope = btn.dataset.scope;
 
       if (scope === "all") {
-        // 进入 All 模式：清空其它激活
+        // 进入 Papers 模式：清空其它激活
         allMode = true;
         currentDirection = "all";
         currentType = "all";
         currentYear = "all";
-        yearSel.value = "all";
+        setYearFilter("all");
+        closeYearMenu();
 
         btns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
+        visibleLimit = PAGE_SIZE;
         applyFilters();
+        closeFilterPanel();
         return;
       }
 
-      // 只要点了非 All，All 就失效
+      // 只要点了非 Papers，Papers 就失效
       allMode = false;
       btnAll.classList.remove("active");
 
@@ -199,22 +254,70 @@ document.addEventListener("DOMContentLoaded", function () {
       if (scope === "direction") currentDirection = btn.dataset.value || "all";
       if (scope === "type")      currentType      = btn.dataset.type  || "all";
 
+      visibleLimit = PAGE_SIZE;
       applyFilters();
+      closeFilterPanel();
     });
   });
 
-  // 年份选择（变更即使 All 失效）
-  yearSel.addEventListener("change", () => {
-    const val = yearSel.value;
-    if (val !== "all") {
-      allMode = false;
-      btnAll.classList.remove("active");
+  filterToggle.addEventListener("click", event => {
+    event.stopPropagation();
+    const isOpen = filterBar.classList.toggle("open");
+    filterToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (!isOpen) closeYearMenu();
+  });
+
+  yearToggle.addEventListener("click", event => {
+    event.stopPropagation();
+    const isOpen = yearFilter.classList.toggle("open");
+    yearToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  yearOptions.forEach(option => {
+    option.addEventListener("click", () => {
+      const val = option.dataset.year || "all";
+      if (val !== "all") {
+        allMode = false;
+        btnAll.classList.remove("active");
+      }
+      setYearFilter(val);
+      visibleLimit = PAGE_SIZE;
+      closeYearMenu();
+      applyFilters();
+      closeFilterPanel();
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if (!filterBar.contains(event.target)) {
+      closeFilterPanel();
     }
-    currentYear = val;
+    if (!yearFilter.contains(event.target)) {
+      closeYearMenu();
+    }
+  });
+
+  filterToggle.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeFilterPanel();
+      closeYearMenu();
+      filterToggle.focus();
+    }
+  });
+
+  yearToggle.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeYearMenu();
+      yearToggle.focus();
+    }
+  });
+
+  loadMoreBtn.addEventListener("click", () => {
+    visibleLimit += PAGE_SIZE;
     applyFilters();
   });
 
-  // 首次渲染（All 模式）
+  // 首次渲染（Papers 模式）
   applyFilters();
 });
 </script>
