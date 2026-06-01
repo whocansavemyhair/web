@@ -99,6 +99,28 @@ current:
     a3: 10
     a4: 20
 
+  - name: Guangpeng Wang
+    title: Master Student
+    desc: My research interests lie in foundation models, multimodal learning, computer vision, generative models, and AI agents. I am particularly interested in exploring how visual and structured information can be represented to support understanding, generation, reasoning, and decision-making.
+    pagelink: https://www.linkedin.com/in/guangpeng-wang-0168a137a/
+    photolink: /assets/images/group/members/guangpeng_wang.jpg
+    years: 2026
+    a1: 30
+    a2: 20
+    a3: 20
+    a4: 50
+
+  - name: Ziyan Li
+    title: Master Student
+    desc: My research interests lie in human-centered ML, especially foundation model decision-making and alignment. I am always open to exploring new areas and questions as they come up.
+    pagelink: https://www.linkedin.com/in/angelina-li-b82613382/
+    photolink: /assets/images/group/members/ziyan_li.jpg
+    years: 2026
+    a1: 30
+    a2: 50
+    a3: 25
+    a4: 50
+
   - name: Yang Zhao
     title: PhD student
     desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 

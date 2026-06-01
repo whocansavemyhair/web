@@ -4,6 +4,9 @@
   year:  2025 
   type: conference
   direction: models 
+  keywords:
+    - Spatial Intelligence
+    - Autonomous Driving
   image: /assets/images/research/publication/2510.21160v1.jpg
   pdf: /assets/publications/2510.21160v1.pdf
   doi: https://arxiv.org/abs/2510.21160 
@@ -14,6 +17,10 @@
   year:  2025 
   type: conference 
   direction: models
+  keywords:
+    - 3D Object Detection
+    - Mixture of Experts
+    - Edge AI
   image: /assets/images/research/publication/iccv2025_moe_3d_object_detection.jpg
   pdf: /assets/publications/iccv2025_moe_3d_object_detection.pdf
   doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf
@@ -24,6 +31,9 @@
   year:  2025
   type: journal
   direction: models
+  keywords:
+    - Mixture of Experts
+    - 3D Object Detection
   image: /assets/images/research/publication/tpami_moe_3d_object_detection.jpg
   pdf: /assets/publications/Toward_Optimal_Mixture_of_Experts_System_for_3D_Object_Detection_A_Game_of_Accuracy_Efficiency_and_Adaptivity.pdf
   doi: https://ieeexplore.ieee.org/document/11175038
@@ -34,6 +44,9 @@
   year:  2024
   type: conference
   direction: systems
+  keywords:
+    - Vehicle Recognition
+    - Micro-pulse LiDAR
   image: /assets/images/research/publication/iv_micro_pulse_lidar_edge_ai.jpg
   pdf: /assets/publications/Cost-effective_Vehicle_Recognition_System_in_Challenging_Environment_Empowered_by_Micro-Pulse_LiDAR_and_Edge_AI.pdf
   doi: 10.1109/IV55156.2024.10588634
@@ -44,6 +57,10 @@
   year:  2025
   type: journal
   direction: models
+  keywords:
+    - Traffic Safety
+    - Trustworthy LLMs
+    - Decision Interventions
   image: /assets/images/research/publication/s41467-025-64574-w.jpg
   pdf: /assets/publications/s41467-025-64574-w.pdf
   doi: 10.1038/s41467-025-64574-w
@@ -54,6 +71,9 @@
   year:  2025
   type: conference
   direction: models
+  keywords:
+    - Prompt Optimization
+    - Auto-reasoning
   image: /assets/images/research/publication/2510.21148.jpg
   pdf: /assets/publications/2510.21148.pdf
   doi: https://arxiv.org/pdf/2510.21148
@@ -64,6 +84,9 @@
   year:  2025
   type: conference
   direction: models
+  keywords:
+    - Personalized Decision Modeling
+    - Symbolic Reasoning
   image: /assets/images/research/publication/2511.02194.jpg
   pdf: /assets/publications/2511.02194.pdf
   doi: https://arxiv.org/pdf/2511.02194
@@ -74,6 +97,9 @@
   year:  2025
   type: journal
   direction: models
+  keywords:
+    - Disease Forecasting
+    - Public Health
   image: /assets/images/research/publication/s43588-025-00798-6.jpg
   pdf: /assets/publications/10623880.pdf
   doi: https://doi.org/10.1038/s43588-025-00798-6

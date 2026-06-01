@@ -142,18 +142,28 @@ classes: wide
       <h3 class="pub-title">{{ pub.title }}</h3>
       <p class="pub-authors">{{ pub.authors }}</p>
       <p class="pub-venue"><em>{{ pub.venue }}</em></p>
-      <p class="pub-links">
-        {% if pub.pdf and pub.pdf != "" %}
-        {% if pub.pdf == "#" or pub.pdf contains "://" %}
-        <a href="{{ pub.pdf }}" target="_blank" rel="noopener">[PDF]</a>
-        {% else %}
-        <a href="{{ pub.pdf | relative_url }}" target="_blank" rel="noopener">[PDF]</a>
+
+      <div class="pub-meta-row">
+        {% if pub.keywords and pub.keywords.size > 0 %}
+        <span class="pub-keywords" aria-label="Keywords">
+          {% for keyword in pub.keywords %}
+          <span>{{ keyword }}</span>{% unless forloop.last %}<span class="pub-keyword-separator">,</span>{% endunless %}
+          {% endfor %}
+        </span>
         {% endif %}
-        {% endif %}
-        {% if pub.doi and pub.doi != "" %}
-        <a href="{{ pub.doi }}" target="_blank">[DOI]</a>
-        {% endif %}
-      </p>
+        <span class="pub-links">
+          {% if pub.pdf and pub.pdf != "" %}
+          {% if pub.pdf == "#" or pub.pdf contains "://" %}
+          <a href="{{ pub.pdf }}" target="_blank" rel="noopener">[PDF]</a>
+          {% else %}
+          <a href="{{ pub.pdf | relative_url }}" target="_blank" rel="noopener">[PDF]</a>
+          {% endif %}
+          {% endif %}
+          {% if pub.doi and pub.doi != "" %}
+          <a href="{{ pub.doi }}" target="_blank">[DOI]</a>
+          {% endif %}
+        </span>
+      </div>
     </div>
   </div>
   {% endfor %}
