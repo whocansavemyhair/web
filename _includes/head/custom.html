@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
 {% endif %}
 
-{% if page.url == "/research/" %}
+{% if page.url == "/research/" or page.url == "/research-hex/" %}
   <link rel="stylesheet" href="{{ '/assets/css/research.css' | relative_url }}">
 {% endif %}
 
@@ -12,6 +12,6 @@
   <link rel="stylesheet" href="{{ '/assets/css/publications.css' | relative_url }}">
 {% endif %}
 
-{% if page.url == "/group/" %}
+{% if page.url == "/group/" or page.url == "/group-2/" %}
   <link rel="stylesheet" href="{{ '/assets/css/group.css' | relative_url }}">
 {% endif %}

@@ -1,30 +1,55 @@
 /* ========== 顶部两段研究方向（保留你原样式） ========== */
-.research-wrapper {
+.research-hero-grid {
   width: 100vw;
   position: relative;
   left: 50%;
-  right: 50%;
   margin-left: -50vw;
-  margin-right: -50vw;
-  background: linear-gradient(120deg, #f9fbfd 0%, #edf1f5 100%);
-  padding: 80px 60px;
+  background: #fff;
+  overflow: hidden;
+  padding: 64px 60px;
+}
+
+.research-hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("../images/research/main/intersection-bg.png") center / cover no-repeat;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.research-wrapper {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  padding: 0;
 }
 
 .research-wrapper.alt {
-  background: linear-gradient(120deg, #f7f9fa 0%, #e8edf2 100%);
+  margin-top: 0;
 }
 
 /* 左右布局 */
 .research-section {
   max-width: 1300px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
 }
 
-.research-text { flex: 1; }
+.research-text {
+  min-width: 0;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px;
+  border-radius: 0;
+  background: transparent;
+}
 
 .research-text h2 {
   color: #0a5771;
@@ -52,12 +77,170 @@
   line-height: 1.7;
 }
 
-.research-image { flex: 1; text-align: center; }
+.research-image {
+  min-width: 0;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  border-radius: 0;
+  background: #fff;
+  text-align: center;
+}
 
-.research-image img {
+.research-static-image img {
+  width: 100%;
   max-width: 100%;
   border-radius: 12px;
   box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+}
+
+.research-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 14px;
+}
+
+.research-carousel-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.research-carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.research-carousel-slide.active {
+  opacity: 1;
+}
+
+.research-carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: #0a5771;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.16);
+  transform: translateY(-50%);
+}
+
+.research-carousel-control.prev {
+  left: 12px;
+}
+
+.research-carousel-control.next {
+  right: 12px;
+}
+
+.research-carousel-control:hover {
+  background: #fff;
+}
+
+.research-carousel-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.research-carousel-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(10, 87, 113, 0.32);
+  cursor: pointer;
+}
+
+.research-carousel-dots button.active {
+  background: #0a5771;
+}
+
+.research-hex-grid {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.3300181838423573 / 1;
+}
+
+.research-hex-grid img {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1.154700538 / 1;
+  object-fit: contain;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.14));
+}
+
+.research-hex-grid-models img:nth-child(1) {
+  width: 68%;
+  left: 0;
+  top: 12%;
+  z-index: 3;
+}
+
+.research-hex-grid-models img:nth-child(2) {
+  width: 33%;
+  left: 62.0387280478%;
+  top: 13.6871074883%;
+  z-index: 2;
+}
+
+.research-hex-grid-models img:nth-child(3) {
+  width: 39%;
+  left: 59.0464051057%;
+  top: 54.0645149919%;
+  z-index: 4;
+}
+
+.research-hex-grid-systems img:nth-child(1) {
+  width: 68%;
+  right: 0;
+  top: 12%;
+  z-index: 3;
+}
+
+.research-hex-grid-systems img:nth-child(2) {
+  width: 39%;
+  left: -0.000273688%;
+  top: 7.8396935567%;
+  z-index: 2;
+}
+
+.research-hex-grid-systems img:nth-child(3) {
+  width: 33%;
+  left: 6.9159775881%;
+  top: 55.1288166502%;
+  z-index: 4;
 }
 
 /* ========== 项目卡片（下半部分） ========== */
@@ -87,23 +270,90 @@
 }
 
 /* 响应式（上半部分） */
-@media (max-width: 900px) {
-  .research-wrapper {
-    padding: 56px 28px;
+@media (max-width: 700px) {
+  .research-hero-grid {
+    padding: 32px 18px;
   }
 
   .research-section {
-    flex-direction: column;
+    gap: 10px;
+  }
+
+  .research-text,
+  .research-image {
+    min-height: 320px;
+    padding: 20px;
+  }
+
+  .research-text h2 {
+    font-size: 1.45em;
+  }
+}
+
+@media (max-width: 520px) {
+  .research-hero-grid {
+    padding: 32px 18px;
+  }
+
+  .research-section {
+    grid-template-columns: 1fr;
+    gap: 14px;
     text-align: left;
   }
 
-  .research-section .research-image {
+  .research-text,
+  .research-image {
+    min-height: 0;
+    padding: 28px;
+  }
+
+  .research-wrapper.alt .research-image {
+    order: 2;
+  }
+
+  .research-wrapper.alt .research-text {
     order: 1;
   }
 
-  .research-section .research-text {
-    order: 2;
-  }
+}
+
+.highlighted-papers-section {
+  margin-top: 40px;
+}
+
+.highlighted-papers-title {
+  margin: 0 0 18px;
+}
+
+.highlighted-papers-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #0a5771;
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.highlighted-papers-reset:hover {
+  color: #084e65;
+}
+
+.highlighted-papers-reset:focus {
+  outline: none;
+}
+
+.highlighted-papers-reset:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 14px rgba(10, 87, 113, .16);
+  border-radius: 4px;
 }
 
 /* ========== Publication 风格的 Filter（完全同款 + 强特异性 + 外观重置） ========== */
@@ -116,7 +366,7 @@
   background: #f8fafc;
   padding: 12px 20px;
   border-radius: 8px;
-  margin: 40px 0 30px 0; /* 与上半部分留距 */
+  margin: 0 0 30px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
@@ -160,6 +410,23 @@
 .pub-filter-bar .filter-buttons button:hover {
   color: #084e65;
   transform: translateY(-1px);
+}
+
+.pub-filter-bar .filter-buttons button:focus,
+.pub-year-toggle:focus,
+.pub-year-option:focus,
+.pub-filter-toggle:focus,
+.pub-load-more-btn:focus {
+  outline: none;
+}
+
+.pub-filter-bar .filter-buttons button:focus-visible,
+.pub-year-toggle:focus-visible,
+.pub-year-option:focus-visible,
+.pub-filter-toggle:focus-visible,
+.pub-load-more-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 14px rgba(10, 87, 113, .16);
 }
 
 .pub-year-filter {

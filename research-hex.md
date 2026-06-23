@@ -1,77 +1,60 @@
 ---
 layout: single
-permalink: /research/
+permalink: /research-hex/
 author_profile: false
 sidebar: false
 classes: wide
 ---
 
 <!-- ========== 保留你的研究方向展示（原样不动） ========== -->
-<div class="research-hero-grid">
-  <div class="research-wrapper">
-    <div class="research-section">
-      <div class="research-text">
-        <h2>Optimal Computation Models</h2>
-        <p>
-          We study to integrate <strong>optimal computation models</strong> through data-driven modeling,
-          system-level simulation, and control theory in the areas of transportation and health.
-        </p>
-        <ul>
-          <li>Sub area 1</li>
-          <li>Sub area 2</li>
-          <li>Sub area 3</li>
-        </ul>
-      </div>
-      <div class="research-image research-carousel" data-research-carousel aria-label="Optimal Computation Models images">
-        <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="Optimal Computation Models figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="Optimal Computation Models figure 2">
-        </div>
-        <div class="research-carousel-dots" aria-label="Select image">
-          <button class="active" type="button" aria-label="Show image 1"></button>
-          <button type="button" aria-label="Show image 2"></button>
-        </div>
-      </div>
+<div class="research-wrapper">
+  <div class="research-section">
+    <div class="research-text">
+      <h2>Optimal Computation Models</h2>
+      <p>
+        We study to integrate <strong>optimal computation models</strong> through data-driven modeling,
+        system-level simulation, and control theory in the areas of transportation and health.
+      </p>
+      <ul>
+        <li>Sub area 1</li>
+        <li>Sub area 2</li>
+        <li>Sub area 3</li>
+      </ul>
+    </div>
+    <div class="research-image research-hex-grid research-hex-grid-models" aria-label="Optimal Computation Models research images">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture1.png' | relative_url }}" alt="Optimal Computation Models figure 1">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture2.png' | relative_url }}?v=20260622-2135" alt="Optimal Computation Models figure 2">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture3.png' | relative_url }}" alt="Optimal Computation Models figure 3">
     </div>
   </div>
+</div>
 
-  <div class="research-wrapper alt">
-    <div class="research-section">
-      <div class="research-image research-carousel" data-research-carousel aria-label="Optimal Computational Systems images">
-        <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/figs/Picture1.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture2.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 2">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture3.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 3">
-        </div>
-        <div class="research-carousel-dots" aria-label="Select image">
-          <button class="active" type="button" aria-label="Show image 1"></button>
-          <button type="button" aria-label="Show image 2"></button>
-          <button type="button" aria-label="Show image 3"></button>
-        </div>
-      </div>
-      <div class="research-text">
-        <h2>Optimal Computational Systems</h2>
-        <p>
-          We integrate computation and data science into
-          <strong>computational systems</strong> to improve 
-          policy design and resource allocation.
-        </p>
-        <ul>
-          <li>Sub area 1</li>
-          <li>Sub area 2</li>
-          <li>Sub area 3</li>
-        </ul>
-      </div>
+<div class="research-wrapper alt">
+  <div class="research-section">
+    <div class="research-image research-hex-grid research-hex-grid-systems" aria-label="Optimal Computational Systems research images">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture1.png' | relative_url }}" alt="Optimal Computational Systems figure 1">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture2.png' | relative_url }}?v=20260622-2135" alt="Optimal Computational Systems figure 2">
+      <img src="{{ '/assets/images/research/main/hex-cutout/Picture3.png' | relative_url }}" alt="Optimal Computational Systems figure 3">
+    </div>
+    <div class="research-text">
+      <h2>Optimal Computational Systems</h2>
+      <p>
+        We integrate computation and data science into
+        <strong>computational systems</strong> to improve 
+        policy design and resource allocation.
+      </p>
+      <ul>
+        <li>Sub area 1</li>
+        <li>Sub area 2</li>
+        <li>Sub area 3</li>
+      </ul>
     </div>
   </div>
 </div>
 
 
-<section class="highlighted-papers-section" aria-labelledby="highlighted-papers-title">
-<h2 id="highlighted-papers-title" class="highlighted-papers-title">
-  <button id="highlightedPapersReset" class="highlighted-papers-reset" type="button">Highlighted Papers</button>
-</h2>
-
+<!-- ========== 统一 Filter Bar（publication 同款结构/类名） ========== -->
+<!-- ========== 统一 Filter Bar（Papers 作为全局开关，放到最前） ========== -->
 <div class="pub-filter-bar">
   <button class="pub-filter-toggle" id="pubFilterToggle" type="button" aria-expanded="false" aria-controls="pubFilterPanel">
     <span class="filter-icon" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -80,12 +63,19 @@ classes: wide
 
   <div class="pub-filter-panel" id="pubFilterPanel">
     <div class="filter-buttons">
+      <!-- 全局 Papers（控制 方向 + 类型 + 年份） -->
+      <button data-scope="all" class="active">Papers</button>
+
+      <!-- 方向 -->
       <button data-scope="direction" data-value="models">Models</button>
       <button data-scope="direction" data-value="systems">Systems</button>
+
+      <!-- 类型 -->
       <button data-scope="type" data-type="journal">Journal</button>
       <button data-scope="type" data-type="conference">Conference</button>
     </div>
 
+    <!-- 年份（右侧控件） -->
     <div class="pub-year-filter" id="pubYearFilter">
       <button class="pub-year-toggle" id="pubYearToggle" type="button" aria-haspopup="listbox" aria-expanded="false">Years</button>
       <div class="pub-year-menu" id="pubYearMenu" role="listbox" aria-label="Filter by year">
@@ -185,64 +175,11 @@ classes: wide
 <div class="pub-load-more-wrap">
   <button id="pubLoadMore" class="pub-load-more-btn" type="button">Load more</button>
 </div>
-</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll("[data-research-carousel]").forEach(carousel => {
-    const slides = Array.from(carousel.querySelectorAll(".research-carousel-slide"));
-    const dots = Array.from(carousel.querySelectorAll(".research-carousel-dots button"));
-    const prev = carousel.querySelector(".research-carousel-control.prev");
-    const next = carousel.querySelector(".research-carousel-control.next");
-    let current = 0;
-    let timer = null;
-
-    function showSlide(index) {
-      current = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
-      dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
-    }
-
-    function start() {
-      timer = window.setInterval(() => showSlide(current + 1), 10000);
-    }
-
-    function restart() {
-      window.clearInterval(timer);
-      start();
-    }
-
-    if (prev) {
-      prev.addEventListener("click", () => {
-        showSlide(current - 1);
-        restart();
-      });
-    }
-
-    if (next) {
-      next.addEventListener("click", () => {
-        showSlide(current + 1);
-        restart();
-      });
-    }
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        showSlide(index);
-        restart();
-      });
-    });
-
-    carousel.addEventListener("mouseenter", () => window.clearInterval(timer));
-    carousel.addEventListener("mouseleave", start);
-
-    showSlide(0);
-    start();
-  });
-
   // 按钮 & 控件
   const filterBar = document.querySelector(".pub-filter-bar");
-  const highlightedPapersReset = document.getElementById("highlightedPapersReset");
   const filterToggle = document.getElementById("pubFilterToggle");
   const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button");
   const yearFilter = document.getElementById("pubYearFilter");
@@ -252,11 +189,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadMoreBtn = document.getElementById("pubLoadMore");
   const PAGE_SIZE = 5;
 
-  // 默认展示全部论文；筛选按钮按方向/类型分别互斥。
+  // 状态：默认 Papers 模式（展示全部）
+  let allMode = true;
   let currentDirection = "all";
   let currentType = "all";
   let currentYear = "all";
   let visibleLimit = PAGE_SIZE;
+
+  const btnAll = document.querySelector('.pub-filter-bar .filter-buttons button[data-scope="all"]');
 
   function closeFilterPanel() {
     filterBar.classList.remove("open");
@@ -277,18 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function clearAllFilters() {
-    currentDirection = "all";
-    currentType = "all";
-    currentYear = "all";
-    visibleLimit = PAGE_SIZE;
-    btns.forEach(btn => btn.classList.remove("active"));
-    setYearFilter("all");
-    closeYearMenu();
-    applyFilters();
-    closeFilterPanel();
-  }
-
   function applyFilters() {
     const matchedPubs = pubs.filter(pub => {
       const okDir  = (currentDirection === "all") || (pub.dataset.direction === currentDirection);
@@ -305,25 +233,40 @@ document.addEventListener("DOMContentLoaded", function () {
     loadMoreBtn.style.display = (matchedPubs.length > visibleLimit) ? "inline-flex" : "none";
   }
 
-  // 处理按钮点击：同 scope 互斥，再次点击同一按钮则清除该 scope。
+  // 处理按钮点击（同 scope 互斥；Papers 为全局总开关）
   btns.forEach(btn => {
     btn.addEventListener("click", () => {
       const scope = btn.dataset.scope;
-      const wasActive = btn.classList.contains("active");
+
+      if (scope === "all") {
+        // 进入 Papers 模式：清空其它激活
+        allMode = true;
+        currentDirection = "all";
+        currentType = "all";
+        currentYear = "all";
+        setYearFilter("all");
+        closeYearMenu();
+
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        visibleLimit = PAGE_SIZE;
+        applyFilters();
+        closeFilterPanel();
+        return;
+      }
+
+      // 只要点了非 Papers，Papers 就失效
+      allMode = false;
+      btnAll.classList.remove("active");
 
       // 同 scope 互斥
       btns.forEach(b => {
         if (b.dataset.scope === scope) b.classList.remove("active");
       });
+      btn.classList.add("active");
 
-      if (wasActive) {
-        if (scope === "direction") currentDirection = "all";
-        if (scope === "type") currentType = "all";
-      } else {
-        btn.classList.add("active");
-        if (scope === "direction") currentDirection = btn.dataset.value || "all";
-        if (scope === "type") currentType = btn.dataset.type || "all";
-      }
+      if (scope === "direction") currentDirection = btn.dataset.value || "all";
+      if (scope === "type")      currentType      = btn.dataset.type  || "all";
 
       visibleLimit = PAGE_SIZE;
       applyFilters();
@@ -347,6 +290,10 @@ document.addEventListener("DOMContentLoaded", function () {
   yearOptions.forEach(option => {
     option.addEventListener("click", () => {
       const val = option.dataset.year || "all";
+      if (val !== "all") {
+        allMode = false;
+        btnAll.classList.remove("active");
+      }
       setYearFilter(val);
       visibleLimit = PAGE_SIZE;
       closeYearMenu();
@@ -384,9 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
     applyFilters();
   });
 
-  highlightedPapersReset.addEventListener("click", clearAllFilters);
-
-  // 首次渲染：展示全部论文。
+  // 首次渲染（Papers 模式）
   applyFilters();
 });
 </script>

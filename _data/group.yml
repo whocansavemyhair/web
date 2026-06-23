@@ -12,7 +12,7 @@ pi:
 
 current:
   - name: Guanlin Wu
-    title: Master Student
+    title: Incoming PhD Student
     desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
     pagelink: https://guanlinwu123.github.io/ 
     photolink: /assets/images/group/members/guanlin_wu.jpg
@@ -21,39 +21,6 @@ current:
     a2: 10   # Fundamental Models vs Optimal Systems
     a3: 40   # Exploration vs Exploitation
     a4: 10   # Transportation vs Public Health
-
-  - name: Yichen Lin
-    title: Master Student
-    desc: My research interests focus on Multimodal Large Language Model and human behavior.
-    pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
-    photolink: /assets/images/group/members/yichen_lin.jpg
-    years: 2024
-    a1: 40
-    a2: 20
-    a3: 35
-    a4: 40
-
-  - name: Fan Yang
-    title: Visiting PhD Student
-    desc: My research interests lie in Multimodal Large Language Model and Energy System.
-    pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
-    photolink: /assets/images/group/members/fan_yang.jpg
-    years: 2025
-    a1: 20
-    a2: 30
-    a3: 40
-    a4: 10
-
-  - name: Yushan Li
-    title: Master student
-    desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
-    pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
-    photolink: /assets/images/group/members/yushan_li.jpg
-    years: 2025
-    a1: 20
-    a2: 20
-    a3: 30
-    a4: 10
 
   - name: Linshen Liu
     title: PhD student
@@ -88,6 +55,50 @@ current:
     a3: 10
     a4: 20
 
+  - name: Yang Zhao
+    title: PhD student
+    desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
+    pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
+    photolink: /assets/images/group/members/yang_zhao.jpg
+    years: 2024
+    a1: 50
+    a2: 0
+    a3: 10
+    a4: 20
+
+  - name: Yichen Lin
+    title: Incoming PhD Student
+    desc: My research interests focus on Multimodal Large Language Model and human behavior.
+    pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
+    photolink: /assets/images/group/members/yichen_lin.jpg
+    years: 2024
+    a1: 40
+    a2: 20
+    a3: 35
+    a4: 40
+
+  - name: Fan Yang
+    title: Visiting PhD Student
+    desc: My research interests lie in Multimodal Large Language Model and Energy System.
+    pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
+    photolink: /assets/images/group/members/fan_yang.jpg
+    years: 2025
+    a1: 20
+    a2: 30
+    a3: 40
+    a4: 10
+
+  - name: Yushan Li
+    title: Master student
+    desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
+    pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
+    photolink: /assets/images/group/members/yushan_li.jpg
+    years: 2025
+    a1: 20
+    a2: 20
+    a3: 30
+    a4: 10
+
   - name: Bingjie Liu
     title: Master student
     desc: My research interest lies in optimization, quantitative economics, machine learning, and data-driven decision analytics in complex systems. 
@@ -120,17 +131,6 @@ current:
     a2: 50
     a3: 25
     a4: 50
-
-  - name: Yang Zhao
-    title: PhD student
-    desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
-    pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
-    photolink: /assets/images/group/members/yang_zhao.jpg
-    years: 2024
-    a1: 50
-    a2: 0
-    a3: 10
-    a4: 20
 
 alumni:
   - name: "Xianglong Wang"
