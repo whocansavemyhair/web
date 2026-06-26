@@ -6,26 +6,26 @@ sidebar: false
 classes: wide
 ---
 
-<!-- ========== 保留你的研究方向展示（原样不动） ========== -->
 <div class="research-hero-grid">
-  <div class="research-wrapper">
+  <div class="research-wrapper research-wrapper--decision">
+    <div class="research-title-row research-title-row--left">
+      <h2>Decision-Making</h2>
+    </div>
     <div class="research-section">
       <div class="research-text">
-        <h2>Optimal Computation Models</h2>
         <p>
-          We study to integrate <strong>optimal computation models</strong> through data-driven modeling,
-          system-level simulation, and control theory in the areas of transportation and health.
+          Large language models are becoming decision interfaces for complex systems,
+          but reliable decisions still require domain grounding, uncertainty awareness,
+          and actionable intervention design. We develop <strong>decision-making</strong>
+          methods that use LLMs to connect data, language, and optimization, enabling
+          applications such as real-time infectious disease forecasting, personalized
+          decision modeling, and trustworthy traffic safety assessment.
         </p>
-        <ul>
-          <li>Sub area 1</li>
-          <li>Sub area 2</li>
-          <li>Sub area 3</li>
-        </ul>
       </div>
-      <div class="research-image research-carousel" data-research-carousel aria-label="Optimal Computation Models images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Decision-Making images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="Optimal Computation Models figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="Optimal Computation Models figure 2">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="Decision-Making figure 1">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="Decision-Making figure 2">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -35,32 +35,58 @@ classes: wide
     </div>
   </div>
 
-  <div class="research-wrapper alt">
+  <div class="research-wrapper research-wrapper--collaborative alt">
+    <div class="research-title-row research-title-row--right">
+      <h2>Collaborative Intelligence</h2>
+    </div>
     <div class="research-section">
-      <div class="research-image research-carousel" data-research-carousel aria-label="Optimal Computational Systems images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Collaborative Intelligence images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/figs/Picture1.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture2.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 2">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture3.png' | relative_url }}?v=20260623-1635" alt="Optimal Computational Systems figure 3">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Collaborative Intelligence benchmark overview">
+        </div>
+        <div class="research-carousel-dots" aria-label="Select image">
+          <button class="active" type="button" aria-label="Show image 1"></button>
+        </div>
+      </div>
+      <div class="research-text">
+        <p>
+          LLMs are powerful collaborators, but their reasoning becomes more reliable
+          when it is shaped by human priors, physical constraints, and domain knowledge.
+          Our work on <strong>collaborative intelligence</strong> studies how LLMs can organize,
+          evaluate, and improve their own reasoning through self-governance, and how
+          LLM-based mixture-of-experts systems can coordinate specialized agents to
+          produce grounded, cooperative intelligence.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="research-wrapper research-wrapper--scaling">
+    <div class="research-title-row research-title-row--left">
+      <h2>Computing and Intelligence Scaling</h2>
+    </div>
+    <div class="research-section">
+      <div class="research-text">
+        <p>
+          Scaling LLMs and multimodal foundation models is not only about making models
+          larger; it also requires efficient computation, adaptive routing, and deployable
+          intelligence under real-world resource constraints. We design <strong>computing and
+          intelligence scaling</strong> methods for mixture-of-experts systems, edge AI, 3D
+          perception, and cost-effective sensing systems that bring large-model
+          intelligence closer to practical deployment.
+        </p>
+      </div>
+      <div class="research-image research-carousel" data-research-carousel aria-label="Computing and Intelligence Scaling images">
+        <div class="research-carousel-track">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/figs/Picture1.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 1">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture2.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 2">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture3.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 3">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
           <button type="button" aria-label="Show image 2"></button>
           <button type="button" aria-label="Show image 3"></button>
         </div>
-      </div>
-      <div class="research-text">
-        <h2>Optimal Computational Systems</h2>
-        <p>
-          We integrate computation and data science into
-          <strong>computational systems</strong> to improve 
-          policy design and resource allocation.
-        </p>
-        <ul>
-          <li>Sub area 1</li>
-          <li>Sub area 2</li>
-          <li>Sub area 3</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -80,10 +106,16 @@ classes: wide
 
   <div class="pub-filter-panel" id="pubFilterPanel">
     <div class="filter-buttons">
-      <button data-scope="direction" data-value="models">Models</button>
-      <button data-scope="direction" data-value="systems">Systems</button>
       <button data-scope="type" data-type="journal">Journal</button>
       <button data-scope="type" data-type="conference">Conference</button>
+      <div class="pub-direction-filter">
+        <button class="pub-direction-trigger" type="button" aria-label="Show field filters">Fields</button>
+        <div class="pub-direction-options" aria-label="Filter by field">
+          <button data-scope="direction" data-value="decision">Decision-Making</button>
+          <button data-scope="direction" data-value="collaborative">Collaborative Intelligence</button>
+          <button data-scope="direction" data-value="scaling">Computing and Intelligence Scaling</button>
+        </div>
+      </div>
     </div>
 
     <div class="pub-year-filter" id="pubYearFilter">
@@ -244,7 +276,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterBar = document.querySelector(".pub-filter-bar");
   const highlightedPapersReset = document.getElementById("highlightedPapersReset");
   const filterToggle = document.getElementById("pubFilterToggle");
-  const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button");
+  const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button[data-scope]");
+  const directionTrigger = document.querySelector(".pub-direction-trigger");
   const yearFilter = document.getElementById("pubYearFilter");
   const yearToggle = document.getElementById("pubYearToggle");
   const yearOptions = document.querySelectorAll(".pub-year-option");
@@ -277,12 +310,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function syncDirectionTrigger() {
+    if (!directionTrigger) return;
+    directionTrigger.classList.toggle("active", currentDirection !== "all");
+  }
+
   function clearAllFilters() {
     currentDirection = "all";
     currentType = "all";
     currentYear = "all";
     visibleLimit = PAGE_SIZE;
     btns.forEach(btn => btn.classList.remove("active"));
+    syncDirectionTrigger();
     setYearFilter("all");
     closeYearMenu();
     applyFilters();
@@ -326,6 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       visibleLimit = PAGE_SIZE;
+      syncDirectionTrigger();
       applyFilters();
       closeFilterPanel();
     });

@@ -1,7 +1,9 @@
 main:
   - title: "Home"
     url: /
-  - title: "Research"
+  - title: "Research and Publications"
     url: /research/
   - title: "Group"
     url: /group/
+  - title: "Join Us"
+    url: /join-us/

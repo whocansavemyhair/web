@@ -1,4 +1,4 @@
-/* ========== 顶部两段研究方向（保留你原样式） ========== */
+/* ========== 顶部研究方向 ========== */
 .research-hero-grid {
   width: 100vw;
   position: relative;
@@ -6,41 +6,95 @@
   margin-left: -50vw;
   background: #fff;
   overflow: hidden;
-  padding: 64px 60px;
-}
-
-.research-hero-grid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: url("../images/research/main/intersection-bg.png") center / cover no-repeat;
-  opacity: 0.28;
-  pointer-events: none;
 }
 
 .research-wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   background: transparent;
   padding: 0;
+  margin: 44px 0;
+  overflow: hidden;
 }
 
 .research-wrapper.alt {
-  margin-top: 0;
+  margin-top: 44px;
+}
+
+.research-wrapper + .research-wrapper {
+  border-top: 0;
+}
+
+.research-title-row {
+  width: calc(100% - 40px);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: #fff;
+}
+
+.research-title-row h2 {
+  margin: 0;
+  padding: 14px 48px 14px 18px;
+  background: #0a5771;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.research-title-row--left h2 {
+  grid-column: 1;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%);
+}
+
+.research-title-row--right h2 {
+  grid-column: 2;
+  padding: 14px 18px 14px 48px;
+  clip-path: polygon(28px 0, 100% 0, 100% 100%, 28px 100%, 0 50%);
 }
 
 /* 左右布局 */
 .research-section {
-  max-width: 1300px;
+  position: relative;
+  width: calc(100% - 40px);
+  max-width: var(--content-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   gap: 0;
+  overflow: hidden;
+}
+
+.research-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.research-wrapper--decision .research-section::before {
+  background-image: url("../images/research/main/backgrounds/decision-making_background.png");
+}
+
+.research-wrapper--collaborative .research-section::before {
+  background-image: url("../images/research/main/backgrounds/collaborative-intelligence_background.png");
+}
+
+.research-wrapper--scaling .research-section::before {
+  background-image: url("../images/research/main/backgrounds/computing-and-intelligence-scaling_background.png");
 }
 
 .research-text {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   min-height: 420px;
   display: flex;
@@ -49,12 +103,6 @@
   padding: 44px;
   border-radius: 0;
   background: transparent;
-}
-
-.research-text h2 {
-  color: #0a5771;
-  font-size: 2em;
-  margin-bottom: 0.6em;
 }
 
 .research-text p {
@@ -78,6 +126,8 @@
 }
 
 .research-image {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   min-height: 420px;
   display: flex;
@@ -271,8 +321,8 @@
 
 /* 响应式（上半部分） */
 @media (max-width: 700px) {
-  .research-hero-grid {
-    padding: 32px 18px;
+  .research-wrapper {
+    margin: 28px 0;
   }
 
   .research-section {
@@ -285,20 +335,28 @@
     padding: 20px;
   }
 
-  .research-text h2 {
-    font-size: 1.45em;
-  }
 }
 
 @media (max-width: 520px) {
-  .research-hero-grid {
-    padding: 32px 18px;
+  .research-wrapper {
+    margin: 28px 0;
   }
 
   .research-section {
     grid-template-columns: 1fr;
     gap: 14px;
     text-align: left;
+  }
+
+  .research-title-row {
+    grid-template-columns: 1fr;
+  }
+
+  .research-title-row--right h2,
+  .research-title-row--left h2 {
+    grid-column: 1;
+    padding: 12px 18px;
+    clip-path: none;
   }
 
   .research-text,
@@ -384,6 +442,7 @@
 
 .pub-filter-bar .filter-buttons {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -401,6 +460,66 @@
   border-radius: 3px;
   transition: all 0.25s ease;
   line-height: 1.2;
+}
+
+.pub-direction-filter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pub-direction-trigger {
+  min-width: 76px;
+}
+
+.pub-direction-filter::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: rgba(10, 87, 113, .22);
+  opacity: 0;
+  transform: scaleX(.35);
+  transform-origin: left center;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.pub-direction-options {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  z-index: 25;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 8px;
+  min-width: 270px;
+  border: 1px solid #dce5eb;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, .12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-10px, -50%);
+  transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+}
+
+.pub-direction-options button {
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.pub-direction-filter:hover::after,
+.pub-direction-filter:focus-within::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.pub-direction-filter:hover .pub-direction-options,
+.pub-direction-filter:focus-within .pub-direction-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -50%);
 }
 
 .pub-filter-bar .filter-buttons button.active {
@@ -608,6 +727,33 @@
   .pub-filter-bar .filter-buttons button {
     min-height: 40px;
     text-align: center;
+  }
+
+  .pub-direction-filter {
+    display: block;
+    grid-column: 1 / -1;
+  }
+
+  .pub-direction-filter::after {
+    display: none;
+  }
+
+  .pub-direction-trigger {
+    width: 100%;
+  }
+
+  .pub-direction-options {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 
   .pub-year-filter {

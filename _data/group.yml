@@ -16,6 +16,7 @@ current:
     desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
     pagelink: https://guanlinwu123.github.io/ 
     photolink: /assets/images/group/members/guanlin_wu.jpg
+    research_area: collaborative
     years: 2024
     a1: 30   # Efficiency vs Robustness
     a2: 10   # Fundamental Models vs Optimal Systems
@@ -27,6 +28,7 @@ current:
     desc: My research interests lie in Efficiency Large Language Model and Edge AI for autonomous driving.  
     pagelink: https://www.linkedin.com/in/linshenliu-994591289/ 
     photolink: /assets/images/group/members/linshen_liu.jpg
+    research_area: scaling
     years: 2024
     a1: 20
     a2: 80
@@ -38,6 +40,7 @@ current:
     desc: My research interests include sustainable and efficient computing for machine learning systems, with a focus on energy-efficient decision making for edge AI and hardware–software co-optimization in smart transportation. 
     pagelink: https://www.linkedin.com/in/junyue-jiang-52454222b/ 
     photolink: /assets/images/group/members/junyue_jiang.jpg
+    research_area: scaling
     years: 2024
     a1: 70
     a2: 90
@@ -49,6 +52,7 @@ current:
     desc: My research interests lie in multimodal large language models and data centric AI.
     pagelink: https://www.linkedin.com/in/pu-wang-a85048389/
     photolink: /assets/images/group/members/pu_wang.jpg
+    research_area: collaborative
     years: 2024
     a1: 70
     a2: 10
@@ -60,6 +64,7 @@ current:
     desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
     photolink: /assets/images/group/members/yang_zhao.jpg
+    research_area: decision
     years: 2024
     a1: 50
     a2: 0
@@ -71,6 +76,7 @@ current:
     desc: My research interests focus on Multimodal Large Language Model and human behavior.
     pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
     photolink: /assets/images/group/members/yichen_lin.jpg
+    research_area: decision
     years: 2024
     a1: 40
     a2: 20
@@ -82,6 +88,7 @@ current:
     desc: My research interests lie in Multimodal Large Language Model and Energy System.
     pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
     photolink: /assets/images/group/members/fan_yang.jpg
+    research_area: decision
     years: 2025
     a1: 20
     a2: 30
@@ -93,6 +100,7 @@ current:
     desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
     pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
     photolink: /assets/images/group/members/yushan_li.jpg
+    research_area: decision
     years: 2025
     a1: 20
     a2: 20
@@ -104,6 +112,7 @@ current:
     desc: My research interest lies in optimization, quantitative economics, machine learning, and data-driven decision analytics in complex systems. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
     photolink: /assets/images/group/members/bingjie_liu.jpg
+    research_area: scaling
     years: 2025
     a1: 70
     a2: 10
@@ -115,6 +124,7 @@ current:
     desc: My research interests lie in foundation models, multimodal learning, computer vision, generative models, and AI agents. I am particularly interested in exploring how visual and structured information can be represented to support understanding, generation, reasoning, and decision-making.
     pagelink: https://www.linkedin.com/in/guangpeng-wang-0168a137a/
     photolink: /assets/images/group/members/guangpeng_wang.jpg
+    research_area: collaborative
     years: 2026
     a1: 30
     a2: 20
@@ -122,10 +132,11 @@ current:
     a4: 50
 
   - name: Ziyan Li
-    title: Master Student
+    title: Undergraduate Student
     desc: My research interests lie in human-centered ML, especially foundation model decision-making and alignment. I am always open to exploring new areas and questions as they come up.
     pagelink: https://www.linkedin.com/in/angelina-li-b82613382/
     photolink: /assets/images/group/members/ziyan_li.jpg
+    research_area: decision
     years: 2026
     a1: 30
     a2: 50
@@ -141,17 +152,17 @@ alumni:
   - name: "Yibo Zhao"
     title: "Alumni"
     photolink: "/assets/images/group/members/yibo_zhao.jpg"
-    desc: "Now MIT Media Lab Research Affiliate"
+    desc: "Now UIUC CS PhD"
 
   - name: "Boyan Su"
     title: "Master student"
     photolink: "/assets/images/group/members/boyan_su.jpg"
-    desc: ""
+    desc: "Now at China Southern Grid Artificial Intelligence Technology Co., Ltd."
 
   - name: "Shiyu Pan"
     title: "Alumni"
     photolink: "/assets/images/group/members/shiyu_pan.jpg"
-    desc: ""
+    desc: "Now at China Harbour Engineering Company Ltd, Kotka, Finland"
 
   - name: "Yifei Xiang"
     title: "Alumni"

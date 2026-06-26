@@ -3,7 +3,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference
-  direction: models 
+  direction: collaborative
   keywords:
     - Spatial Intelligence
     - Autonomous Driving
@@ -16,7 +16,7 @@
   venue:  'International Conference on Computer Vision (ICCV), Poster' 
   year:  2025 
   type: conference 
-  direction: models
+  direction: scaling
   keywords:
     - 3D Object Detection
     - Mixture of Experts
@@ -30,7 +30,7 @@
   venue:  'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)'
   year:  2025
   type: journal
-  direction: models
+  direction: scaling
   keywords:
     - Mixture of Experts
     - 3D Object Detection
@@ -43,7 +43,7 @@
   venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)'
   year:  2024
   type: conference
-  direction: systems
+  direction: scaling
   keywords:
     - Vehicle Recognition
     - Micro-pulse LiDAR
@@ -56,7 +56,7 @@
   venue:  'Nature Communications volume 16, Article number: 8846 (2025)'
   year:  2025
   type: journal
-  direction: models
+  direction: decision
   keywords:
     - Traffic Safety
     - Trustworthy LLMs
@@ -70,7 +70,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025'
   year:  2025
   type: conference
-  direction: models
+  direction: collaborative
   keywords:
     - Prompt Optimization
     - Auto-reasoning
@@ -83,7 +83,7 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight'
   year:  2025
   type: conference
-  direction: models
+  direction: decision
   keywords:
     - Personalized Decision Modeling
     - Symbolic Reasoning
@@ -96,7 +96,7 @@
   venue:  'Nature Computational Science'
   year:  2025
   type: journal
-  direction: models
+  direction: decision
   keywords:
     - Disease Forecasting
     - Public Health
