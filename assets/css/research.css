@@ -4,8 +4,10 @@
   position: relative;
   left: 50%;
   margin-left: -50vw;
+  padding-top: 42px;
   background: #fff;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .research-wrapper {
@@ -15,6 +17,10 @@
   padding: 0;
   margin: 44px 0;
   overflow: hidden;
+}
+
+.research-wrapper:first-child {
+  margin-top: 0;
 }
 
 .research-wrapper.alt {
