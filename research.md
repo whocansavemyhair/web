@@ -18,7 +18,7 @@ classes: wide
           but reliable decisions still require domain grounding, uncertainty awareness,
           and actionable intervention design. We develop <strong>decision-making</strong>
           methods that use LLMs to connect data, language, and optimization, enabling
-          applications such as real-time infectious disease forecasting, personalized
+          applications such as public health analysis, personalized
           decision modeling, and trustworthy traffic safety assessment.
         </p>
       </div>
@@ -71,8 +71,8 @@ classes: wide
           Scaling LLMs and multimodal foundation models is not only about making models
           larger; it also requires efficient computation, adaptive routing, and deployable
           intelligence under real-world resource constraints. We design <strong>computing and
-          intelligence scaling</strong> methods for mixture-of-experts systems, edge AI, 3D
-          perception, and cost-effective sensing systems that bring large-model
+          intelligence scaling</strong> methods for energy and transportation systems, edge AI,
+          computing efficiency, and LLM life assessment that bring large-model
           intelligence closer to practical deployment.
         </p>
       </div>
