@@ -91,30 +91,6 @@ sidebar: false
   </div>
 </section>
 
-<section class="group-cards-band group-cards-band--life life-section">
-  <div class="group-title-row group-title-row--left">
-    <h2>Life</h2>
-  </div>
-  <div class="group-cards-section">
-    <div class="life-slider" id="lifeSlider">
-      <div class="life-viewport">
-        <div class="life-track" id="lifeTrack">
-          {% for p in site.data.group.life %}
-            {% assign filename = p.src | default: p.file %}
-            <figure class="life-slide">
-              <img src="{{ '/assets/images/group/life/' | append: filename | relative_url }}" alt="{{ p.alt | default: 'Life' }}">
-              {% if p.caption %}<figcaption>{{ p.caption }}</figcaption>{% endif %}
-            </figure>
-          {% endfor %}
-        </div>
-      </div>
-      <button class="life-nav life-prev" aria-label="Previous">‹</button>
-      <button class="life-nav life-next" aria-label="Next">›</button>
-      <div class="life-dots" id="lifeDots"></div>
-    </div>
-  </div>
-</section>
-
 </div>
 
 <script>
@@ -178,35 +154,5 @@ document.addEventListener('DOMContentLoaded', () => {
     groupFilterRow.addEventListener('mouseleave', () => groupFilterRow.classList.remove('filter-open'));
   }
 
-  const lifeTrack = document.getElementById('lifeTrack');
-  if (!lifeTrack) return;
-
-  const slidesLife = Array.from(lifeTrack.children);
-  const lifeDots = document.getElementById('lifeDots');
-  let i = 0;
-
-  function renderLifeDots(){
-    if (!lifeDots) return;
-    lifeDots.innerHTML = '';
-    slidesLife.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.className = 'life-dot' + (index === i ? ' active' : '');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Show life photo ${index + 1}`);
-      dot.addEventListener('click', () => { i = index; updateLife(); });
-      lifeDots.appendChild(dot);
-    });
-  }
-
-  function updateLife(){
-    lifeTrack.style.transform = `translateX(-${i * 100}%)`;
-    renderLifeDots();
-  }
-
-  const prev = document.querySelector('.life-prev');
-  const next = document.querySelector('.life-next');
-  prev && prev.addEventListener('click', () => { i = (i - 1 + slidesLife.length) % slidesLife.length; updateLife(); });
-  next && next.addEventListener('click', () => { i = (i + 1) % slidesLife.length; updateLife(); });
-  updateLife();
 });
 </script>

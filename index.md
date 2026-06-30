@@ -36,18 +36,22 @@ classes: wide
 
       <article class="news-card">
         <div class="news-content">
-          <h3>🏆 Paper accepted to Nature Communications</h3>
+          <h3>Paper published in Nature Communications</h3>
           <p>
-            We are excited to announce that our paper has been accepted to Nature Communications. 
+            Our paper on SafeTraffic Copilot has been published in Nature Communications and featured by the JHU Hub.
             Congratulations to the authors!
           </p>
           <a class="read-more" href="https://hub.jhu.edu/2025/10/07/traffic-safety-artificial-intelligence-hopkins/">Read more →</a>
         </div>
-        </article>
+
+        <div class="news-thumb">
+          <img src="{{ '/assets/images/news/nature-communications-safetraffic-hopkins.jpg' | relative_url }}" alt="Emergency responders at a traffic crash scene">
+        </div>
+      </article>
 
       <article class="news-card">
         <div class="news-content">
-          <h3>🎉 Paper accepted to NeurIPS 2025</h3>
+          <h3>Paper accepted to NeurIPS 2025</h3>
           <p>
             We are excited to announce that our papers have been accepted to NeurIPS 2025. 
             Congratulations to the authors!
@@ -60,13 +64,46 @@ classes: wide
         </div>
       </article>
 
-      <article class="news-card external-link">
-        <a href="https://news.jhu.edu/some-news" target="_blank">
-          <div class="ext-content">
-            <h3>📰 Featured in JHU Hub: "AI in Transportation"</h3>
-            </div>
-          <span class="icon-arrow">↗</span>
-        </a>
+      <article class="news-card">
+        <div class="news-content">
+          <h3>NCHRP project awarded on generative AI for transportation planning</h3>
+          <p>
+            Prof. Hao Frank Yang will lead a Johns Hopkins research project developing a primer for using generative AI models in transportation planning.
+          </p>
+          <a class="read-more" href="https://apps.trb.org/cmsfeed/TRBNetProjectDisplay.asp?ProjectID=5655">Read more →</a>
+        </div>
+
+        <div class="news-thumb">
+          <img src="{{ '/assets/images/news/default-transportation-ai.png' | relative_url }}" alt="Abstract transportation AI network">
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-content">
+          <h3>Paper published in IEEE TPAMI</h3>
+          <p>
+            A research team led by Prof. Hao Frank Yang developed an EMOS framework to improve autonomous driving safety and efficiency.
+          </p>
+          <a class="read-more" href="https://engineering.jhu.edu/case/news/research-team-led-by-jhus-hao-frank-yang-develops-framework-to-improve-safety-efficiency-of-autonomous-driving/">Read more →</a>
+        </div>
+
+        <div class="news-thumb">
+          <img src="{{ '/assets/images/research/publication/tpami_moe_3d_object_detection.jpg' | relative_url }}" alt="Autonomous driving mixture of experts system">
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-content">
+          <h3>Paper published in Transportation Research Part C</h3>
+          <p>
+            Hopkins engineers put large language model agents behind the wheel to study how AI agents reason in driving scenarios.
+          </p>
+          <a class="read-more" href="https://engineering.jhu.edu/case/news/can-ai-agents-drive-better-than-humans-hopkins-engineers-put-large-language-models-behind-the-wheel/">Read more →</a>
+        </div>
+
+        <div class="news-thumb">
+          <img src="{{ '/assets/images/research/publication/s41467-025-64574-w.jpg' | relative_url }}" alt="Traffic safety AI research">
+        </div>
       </article>
 
     </div>

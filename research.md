@@ -37,12 +37,12 @@ classes: wide
 
   <div class="research-wrapper research-wrapper--collaborative alt">
     <div class="research-title-row research-title-row--right">
-      <h2>Collaborative Intelligence</h2>
+      <h2>Collaborative AI and Agentic Intelligence</h2>
     </div>
     <div class="research-section">
-      <div class="research-image research-carousel" data-research-carousel aria-label="Collaborative Intelligence images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Collaborative AI and Agentic Intelligence images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Collaborative Intelligence benchmark overview">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Collaborative AI and Agentic Intelligence benchmark overview">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -108,14 +108,6 @@ classes: wide
     <div class="filter-buttons">
       <button data-scope="type" data-type="journal">Journal</button>
       <button data-scope="type" data-type="conference">Conference</button>
-      <div class="pub-direction-filter">
-        <button class="pub-direction-trigger" type="button" aria-label="Show field filters">Fields</button>
-        <div class="pub-direction-options" aria-label="Filter by field">
-          <button data-scope="direction" data-value="decision">Decision-Making</button>
-          <button data-scope="direction" data-value="collaborative">Collaborative Intelligence</button>
-          <button data-scope="direction" data-value="scaling">Computing and Intelligence Scaling</button>
-        </div>
-      </div>
     </div>
 
     <div class="pub-year-filter" id="pubYearFilter">
@@ -277,7 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const highlightedPapersReset = document.getElementById("highlightedPapersReset");
   const filterToggle = document.getElementById("pubFilterToggle");
   const btns = document.querySelectorAll(".pub-filter-bar .filter-buttons button[data-scope]");
-  const directionTrigger = document.querySelector(".pub-direction-trigger");
   const yearFilter = document.getElementById("pubYearFilter");
   const yearToggle = document.getElementById("pubYearToggle");
   const yearOptions = document.querySelectorAll(".pub-year-option");
@@ -285,8 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadMoreBtn = document.getElementById("pubLoadMore");
   const PAGE_SIZE = 5;
 
-  // 默认展示全部论文；筛选按钮按方向/类型分别互斥。
-  let currentDirection = "all";
+  // 默认展示全部论文；筛选按钮按类型互斥。
   let currentType = "all";
   let currentYear = "all";
   let visibleLimit = PAGE_SIZE;
@@ -310,18 +300,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function syncDirectionTrigger() {
-    if (!directionTrigger) return;
-    directionTrigger.classList.toggle("active", currentDirection !== "all");
-  }
-
   function clearAllFilters() {
-    currentDirection = "all";
     currentType = "all";
     currentYear = "all";
     visibleLimit = PAGE_SIZE;
     btns.forEach(btn => btn.classList.remove("active"));
-    syncDirectionTrigger();
     setYearFilter("all");
     closeYearMenu();
     applyFilters();
@@ -330,10 +313,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function applyFilters() {
     const matchedPubs = pubs.filter(pub => {
-      const okDir  = (currentDirection === "all") || (pub.dataset.direction === currentDirection);
       const okType = (currentType === "all") || (pub.dataset.type === currentType);
       const okYear = (currentYear === "all") || (pub.dataset.year === currentYear);
-      return okDir && okType && okYear;
+      return okType && okYear;
     });
 
     pubs.forEach(pub => { pub.style.display = "none"; });
@@ -356,16 +338,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (wasActive) {
-        if (scope === "direction") currentDirection = "all";
         if (scope === "type") currentType = "all";
       } else {
         btn.classList.add("active");
-        if (scope === "direction") currentDirection = btn.dataset.value || "all";
         if (scope === "type") currentType = btn.dataset.type || "all";
       }
 
       visibleLimit = PAGE_SIZE;
-      syncDirectionTrigger();
       applyFilters();
       closeFilterPanel();
     });

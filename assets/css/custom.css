@@ -281,3 +281,24 @@ body {
     margin-left: 14px;
   }
 }
+
+/* ===========================
+   Global body text scale
+   =========================== */
+.page__content p,
+.page__content li,
+.page__content figcaption,
+.page__content .archive__item-excerpt,
+.page__content .news-card p,
+.page__content .research-text p,
+.page__content .pub-authors,
+.page__content .pub-venue,
+.page__content .pub-meta-row,
+.page__content .profile-title,
+.page__content .profile-affiliation,
+.page__content .profile-desc,
+.page__content .join-section p,
+.page__content .join-section li,
+.page__content .join-sweeties-ribbon p {
+  font-size: calc(1em + 2px) !important;
+}

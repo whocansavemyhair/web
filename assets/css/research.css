@@ -45,9 +45,10 @@
   padding: 14px 48px 14px 18px;
   background: #0a5771;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .page__content .research-title-row h2 {
@@ -372,6 +373,7 @@
     grid-column: 1;
     padding: 12px 18px;
     clip-path: none;
+    white-space: normal;
   }
 
   .research-text,
@@ -475,66 +477,6 @@
   border-radius: 3px;
   transition: all 0.25s ease;
   line-height: 1.2;
-}
-
-.pub-direction-filter {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.pub-direction-trigger {
-  min-width: 76px;
-}
-
-.pub-direction-filter::after {
-  content: "";
-  width: 14px;
-  height: 1px;
-  background: rgba(10, 87, 113, .22);
-  opacity: 0;
-  transform: scaleX(.35);
-  transform-origin: left center;
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-.pub-direction-options {
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  z-index: 25;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  padding: 8px;
-  min-width: 270px;
-  border: 1px solid #dce5eb;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 12px 26px rgba(15, 23, 42, .12);
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-10px, -50%);
-  transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
-}
-
-.pub-direction-options button {
-  width: 100%;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.pub-direction-filter:hover::after,
-.pub-direction-filter:focus-within::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.pub-direction-filter:hover .pub-direction-options,
-.pub-direction-filter:focus-within .pub-direction-options {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(0, -50%);
 }
 
 .pub-filter-bar .filter-buttons button.active {
@@ -742,33 +684,6 @@
   .pub-filter-bar .filter-buttons button {
     min-height: 40px;
     text-align: center;
-  }
-
-  .pub-direction-filter {
-    display: block;
-    grid-column: 1 / -1;
-  }
-
-  .pub-direction-filter::after {
-    display: none;
-  }
-
-  .pub-direction-trigger {
-    width: 100%;
-  }
-
-  .pub-direction-options {
-    position: static;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin-top: 8px;
-    padding: 0;
-    border: 0;
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
   }
 
   .pub-year-filter {
