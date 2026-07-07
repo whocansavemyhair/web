@@ -34,7 +34,7 @@ sidebar: false
         <button class="active" type="button" data-group-filter="all">All</button>
         <span class="group-filter-divider" aria-hidden="true"></span>
         <button type="button" data-area-filter="decision">Decision-Making</button>
-        <button type="button" data-area-filter="collaborative">Collaborative</button>
+        <button type="button" data-area-filter="collaborative">Agentic AI and Collaborative Intelligence</button>
         <button type="button" data-area-filter="scaling">Scaling</button>
         <span class="group-filter-divider" aria-hidden="true"></span>
         <button type="button" data-level-filter="graduate">Graduate</button>

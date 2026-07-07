@@ -33,7 +33,7 @@ sidebar: false
 
         <p>
           Our work spans the three directions described on the Research page:
-          decision-making, collaborative AI and agentic intelligence, and computing and
+          decision-making, agentic AI and collaborative intelligence, and computing and
           intelligence scaling. Across these directions, we are especially interested in
           LLM-centered methods that are grounded in real-world domains such as transportation,
           public health, behavior, and complex societal systems.

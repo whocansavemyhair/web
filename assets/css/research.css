@@ -92,7 +92,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.18;
+  opacity: 0.24;
   pointer-events: none;
 }
 
@@ -118,7 +118,7 @@
   justify-content: center;
   padding: 44px;
   border-radius: 0;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: saturate(105%);
 }
 
@@ -436,7 +436,7 @@
 .pub-filter-bar {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
   background: #f8fafc;
@@ -450,57 +450,14 @@
   display: none;
 }
 
-.pub-filter-panel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  width: 100%;
-}
-
-.pub-filter-bar .filter-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pub-filter-bar .filter-buttons button {
-  -webkit-appearance: none; /* 去系统外观 */
-  appearance: none;
-
-  background: #fff;
-  border: none;
-  border-bottom: 3px solid transparent;
-  color: #0a5771;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 3px;
-  transition: all 0.25s ease;
-  line-height: 1.2;
-}
-
-.pub-filter-bar .filter-buttons button.active {
-  border-bottom: 3px solid #0a5771;
-}
-
-.pub-filter-bar .filter-buttons button:hover {
-  color: #084e65;
-  transform: translateY(-1px);
-}
-
-.pub-filter-bar .filter-buttons button:focus,
 .pub-year-toggle:focus,
 .pub-year-option:focus,
-.pub-filter-toggle:focus,
 .pub-load-more-btn:focus {
   outline: none;
 }
 
-.pub-filter-bar .filter-buttons button:focus-visible,
 .pub-year-toggle:focus-visible,
 .pub-year-option:focus-visible,
-.pub-filter-toggle:focus-visible,
 .pub-load-more-btn:focus-visible {
   outline: none;
   box-shadow: 0 6px 14px rgba(10, 87, 113, .16);
@@ -606,85 +563,11 @@
   color: #0a5771;
 }
 
-/* 小屏：Filter 折叠为三横线按钮 */
 @media (max-width: 820px) {
   .pub-filter-bar {
     justify-content: flex-end;
     padding: 10px 14px;
     min-height: 56px;
-  }
-
-  .pub-filter-toggle {
-    -webkit-appearance: none;
-    appearance: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 40px;
-    padding: 9px 14px;
-    border: 1px solid rgba(10, 87, 113, .22);
-    border-radius: 8px;
-    background: #fff;
-    color: #0a5771;
-    font: inherit;
-    font-weight: 700;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(10, 87, 113, .08);
-  }
-
-  .filter-icon {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    width: 18px;
-  }
-
-  .filter-icon span {
-    display: block;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-  }
-
-  .pub-filter-panel {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    right: 0;
-    z-index: 30;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    padding: 14px;
-    border: 1px solid #dce5eb;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 16px 34px rgba(15, 23, 42, .16);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
-  }
-
-  .pub-filter-bar.open .pub-filter-panel {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .pub-filter-bar .filter-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .pub-filter-bar .filter-buttons button {
-    min-height: 40px;
-    text-align: center;
   }
 
   .pub-year-filter {
@@ -792,25 +675,25 @@
 }
 
 .pub-keywords {
-  display: inline;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
   margin: 0;
   font-weight: 400;
 }
 
 .pub-keywords span {
-  display: inline;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-.pub-keyword-separator {
-  margin-right: .45em;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 9px;
+  border: 1px solid rgba(10, 87, 113, .18);
+  border-radius: 999px;
+  background: #edf6fa;
+  color: #0a5771;
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.15;
 }
 
 .pub-authors {

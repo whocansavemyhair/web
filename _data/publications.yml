@@ -3,9 +3,9 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight' 
   year:  2025 
   type: conference
-  direction: collaborative
   keywords:
-    - Collaborative AI and Agentic Intelligence in Transportation
+    - Agentic AI and Collaborative Intelligence
+    - Transportation
   image: /assets/images/research/publication/2510.21160v1.jpg
   pdf: /assets/publications/2510.21160v1.pdf
   doi: https://arxiv.org/abs/2510.21160 
@@ -15,9 +15,9 @@
   venue:  'International Conference on Computer Vision (ICCV), Poster' 
   year:  2025 
   type: conference 
-  direction: scaling
   keywords:
-    - Computing and Intelligence Scaling in Autonomous Driving
+    - Computing and Intelligence Scaling
+    - Transportation
   image: /assets/images/research/publication/iccv2025_moe_3d_object_detection.jpg
   pdf: /assets/publications/iccv2025_moe_3d_object_detection.pdf
   doi: https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_Towards_Accurate_and_Efficient_3D_Object_Detection_for_Autonomous_Driving_ICCV_2025_paper.pdf
@@ -27,9 +27,9 @@
   venue:  'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)'
   year:  2025
   type: journal
-  direction: scaling
   keywords:
-    - Computing and Intelligence Scaling in Autonomous Driving
+    - Computing and Intelligence Scaling
+    - Transportation
   image: /assets/images/research/publication/tpami_moe_3d_object_detection.jpg
   pdf: /assets/publications/Toward_Optimal_Mixture_of_Experts_System_for_3D_Object_Detection_A_Game_of_Accuracy_Efficiency_and_Adaptivity.pdf
   doi: https://ieeexplore.ieee.org/document/11175038
@@ -39,9 +39,9 @@
   venue:  '2024 IEEE Intelligent Vehicles Symposium (IV)'
   year:  2024
   type: conference
-  direction: scaling
   keywords:
-    - Computing and Intelligence Scaling in Vehicle Recognition
+    - Computing and Intelligence Scaling
+    - Transportation
   image: /assets/images/research/publication/iv_micro_pulse_lidar_edge_ai.jpg
   pdf: /assets/publications/Cost-effective_Vehicle_Recognition_System_in_Challenging_Environment_Empowered_by_Micro-Pulse_LiDAR_and_Edge_AI.pdf
   doi: 10.1109/IV55156.2024.10588634
@@ -51,9 +51,9 @@
   venue:  'Nature Communications volume 16, Article number: 8846 (2025)'
   year:  2025
   type: journal
-  direction: decision
   keywords:
-    - Decision-making in Traffic and Transportation with LLMs
+    - Decision-Making
+    - Transportation
   image: /assets/images/research/publication/s41467-025-64574-w.jpg
   pdf: /assets/publications/s41467-025-64574-w.pdf
   doi: 10.1038/s41467-025-64574-w
@@ -63,9 +63,8 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025'
   year:  2025
   type: conference
-  direction: collaborative
   keywords:
-    - Collaborative AI and Agentic Intelligence in Domain Knowledge Adaptation
+    - Agentic AI and Collaborative Intelligence
   image: /assets/images/research/publication/2510.21148.jpg
   pdf: /assets/publications/2510.21148.pdf
   doi: https://arxiv.org/pdf/2510.21148
@@ -75,9 +74,10 @@
   venue:  'Advances in Neural Information Processing Systems (NeurIPS), 2025 Spotlight'
   year:  2025
   type: conference
-  direction: decision
   keywords:
-    - Decision-making with Textualized-Symbolic Reasoning
+    - Decision-Making
+    - Public Health
+    - Transportation
   image: /assets/images/research/publication/2511.02194.jpg
   pdf: /assets/publications/2511.02194.pdf
   doi: https://arxiv.org/pdf/2511.02194
@@ -87,9 +87,9 @@
   venue:  'Nature Computational Science'
   year:  2025
   type: journal
-  direction: decision
   keywords:
-    - Decision-making in Public Health
+    - Decision-Making
+    - Public Health
   image: /assets/images/research/publication/s43588-025-00798-6.jpg
   pdf: /assets/publications/10623880.pdf
   doi: https://doi.org/10.1038/s43588-025-00798-6
