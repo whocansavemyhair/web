@@ -1,8 +1,8 @@
 title: "Yang Lab"
 email: haofrankyang@jhu.edu
 description: "Research at Johns Hopkins University"
-url: "https://whocansavemyhair.github.io"   # 改成你的 GitHub 用户名
-baseurl: "/web"                 # 如果仓库名是 yourusername.github.io，这里要留空 ""
+url: "https://web-d6h.pages.dev"
+baseurl: ""
 
 remote_theme: mmistakes/minimal-mistakes
 
@@ -15,4 +15,3 @@ defaults:
       path: ""
     values:
       sidebar: false
-
