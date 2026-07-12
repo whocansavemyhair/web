@@ -143,6 +143,18 @@ current:
     a3: 25
     a4: 50
 
+  - name: Matthieu Giauque
+    title: Undergraduate Student
+    desc: Matthieu Giauque is an undergraduate student double majoring in Civil Engineering and Philosophy at Johns Hopkins University, where he is also a member of the varsity men's water polo team. His current work explores how large language models can generate evidence-based policy recommendations for traffic policy interventions. Motivated by a broader interest in sustainable infrastructure, he hopes to help build transportation and urban systems that are more efficient and environmentally responsible.
+    pagelink: https://www.linkedin.com/in/matthieu-giauque-jhu
+    photolink: /assets/images/group/members/matthieu_giauque.jpg
+    research_area: decision
+    years: 2026
+    a1: 35
+    a2: 25
+    a3: 40
+    a4: 70
+
 alumni:
   - name: "Xianglong Wang"
     title: "Master student"
