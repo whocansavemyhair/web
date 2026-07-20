@@ -67,10 +67,12 @@ sidebar: false
         <div class="join-carousel-track">
           <img class="join-carousel-slide active" src="{{ '/assets/images/join-us/cat-1-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
           <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-2-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-3-centered.jpg' | relative_url }}?v=20260714-001" alt="Lab sweeties on a cat tree">
         </div>
         <div class="join-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show sweetie 1"></button>
           <button type="button" aria-label="Show sweetie 2"></button>
+          <button type="button" aria-label="Show sweetie 3"></button>
         </div>
       </div>
     </div>
