@@ -220,3 +220,30 @@
     font-size:1.65rem;
   }
 }
+
+/* ========== JHU blue join treatment ========== */
+
+.join-hero {
+  background: linear-gradient(120deg, var(--jhu-pale) 0%, var(--jhu-sky) 100%);
+  border-top: 0;
+}
+
+.join-hero h1,
+.join-sweeties-copy p:first-child {
+  color: var(--jhu-blue);
+}
+
+.join-team-carousel,
+.join-sweeties-carousel {
+  box-shadow: 0 9px 24px rgba(0, 45, 114, .18);
+}
+
+.join-carousel-dots button.active,
+.join-title-row h2 {
+  background: var(--jhu-spirit-blue);
+  color: var(--jhu-blue-dark);
+}
+
+.join-sweeties-band {
+  background: linear-gradient(180deg, #fff 0%, var(--jhu-pale) 100%);
+}

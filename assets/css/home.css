@@ -335,3 +335,75 @@
 .news-card.external-link:hover .icon-arrow {
   transform: translate(4px, -4px);
 }
+
+/* ========== JHU blue homepage treatment ========== */
+
+.hero-section {
+  position: relative;
+  background: linear-gradient(118deg, var(--jhu-pale) 0%, var(--jhu-sky) 62%, #b9dcf3 100%);
+  border-top: 0;
+  border-radius: 0;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  right: -8vw;
+  bottom: -170px;
+  width: 430px;
+  height: 430px;
+  border: 70px solid rgba(0, 45, 114, .07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-text h1,
+.news-content h3,
+.read-more,
+.contact-copy a:hover,
+.news-card.external-link:hover h3,
+.news-card.external-link:hover .icon-arrow {
+  color: var(--jhu-blue);
+}
+
+.hero-text p {
+  color: var(--jhu-ink);
+}
+
+.contact-icon,
+.contact-copy h2 {
+  color: var(--jhu-blue);
+}
+
+.news-card {
+  border-color: rgba(0, 45, 114, .14);
+  border-left: 1px solid rgba(0, 45, 114, .14);
+  box-shadow: 0 5px 16px rgba(0, 45, 114, .08);
+}
+
+.news-card:hover {
+  border-color: rgba(0, 45, 114, .24);
+  box-shadow: 0 10px 24px rgba(0, 45, 114, .14);
+}
+
+.news-section .news-card h3,
+.news-section .news-card a,
+.news-section .read-more,
+.news-section .icon-arrow,
+.news-section .news-card:hover h3,
+.news-section .news-card:hover a,
+.news-section .news-card:hover .icon-arrow {
+  color: #111;
+}
+
+.news-section .news-card,
+.news-section .news-card:hover {
+  transform: none;
+  border-color: rgba(0, 45, 114, .14);
+  box-shadow: 0 5px 16px rgba(0, 45, 114, .08);
+  transition: none;
+}
+
+.news-card.external-link:hover .icon-arrow {
+  transform: none;
+}

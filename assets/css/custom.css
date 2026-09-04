@@ -17,6 +17,12 @@ body {
   --content-max: 1280px;
   --header-max: var(--content-max);   /* 与主体相同的对齐宽度 */
   --header-pad: 20px;     /* 与主体相同的左右 padding */
+  --jhu-blue: #002d72;
+  --jhu-blue-dark: #001f4e;
+  --jhu-spirit-blue: #68ace5;
+  --jhu-sky: #d9eefb;
+  --jhu-pale: #f1f8fd;
+  --jhu-ink: #10243e;
 }
 
 /* 让 header 内容与主体完全同宽并使用相同的左右留白 */
@@ -301,4 +307,117 @@ body {
 .page__content .join-section li,
 .page__content .join-sweeties-ribbon p {
   font-size: calc(1em + 2px) !important;
+}
+
+/* ===========================
+   JHU blue visual system
+   =========================== */
+
+body {
+  color: var(--jhu-ink);
+  background: #fff;
+}
+
+.masthead {
+  background: var(--jhu-blue);
+  border-bottom: 0;
+  box-shadow: 0 4px 16px rgba(0, 45, 114, .14);
+}
+
+.masthead.is-sticky {
+  box-shadow: 0 7px 22px rgba(0, 31, 78, .24);
+}
+
+.masthead__menu .greedy-nav .site-title,
+.masthead__menu .greedy-nav .visible-links a,
+.masthead__menu .greedy-nav .hidden-links a {
+  color: #fff;
+}
+
+.masthead__menu .greedy-nav .site-title {
+  letter-spacing: .015em;
+}
+
+.masthead__menu .greedy-nav .site-title::after {
+  background: rgba(255, 255, 255, .42);
+}
+
+.masthead__menu .greedy-nav .visible-links a::before {
+  background: var(--jhu-spirit-blue);
+}
+
+.masthead__menu .greedy-nav .visible-links a:hover,
+.masthead__menu .greedy-nav .visible-links a:focus {
+  color: #fff;
+}
+
+.masthead__jhu-engineering {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.masthead__jhu-engineering img {
+  filter: brightness(0) invert(1);
+  opacity: .96;
+}
+
+.greedy-nav__toggle {
+  color: #fff;
+  background-color: transparent;
+}
+
+.greedy-nav .navicon,
+.greedy-nav .navicon::before,
+.greedy-nav .navicon::after {
+  background: #fff;
+}
+
+.greedy-nav .hidden-links {
+  border-color: rgba(255, 255, 255, .24);
+  background: var(--jhu-blue);
+  box-shadow: 0 10px 24px rgba(0, 31, 78, .25);
+}
+
+.greedy-nav .hidden-links::before {
+  border-color: var(--jhu-blue) transparent;
+}
+
+.greedy-nav .hidden-links li {
+  border-bottom-color: rgba(255, 255, 255, .16);
+}
+
+.greedy-nav .hidden-links a:hover,
+.greedy-nav .hidden-links a:focus {
+  color: #fff;
+  background: rgba(104, 172, 229, .22);
+}
+
+a {
+  color: var(--jhu-blue);
+}
+
+.page__footer {
+  color: var(--jhu-blue-dark);
+  background: var(--jhu-spirit-blue);
+  border-top: 0;
+}
+
+.page__footer a,
+.page__footer .fas,
+.page__footer .fab,
+.page__footer .far,
+.page__footer .fal {
+  color: var(--jhu-blue-dark);
+}
+
+@media (max-width: 900px) {
+  .masthead {
+    border-bottom-width: 0;
+  }
+
+  .masthead__jhu-engineering {
+    padding: 0;
+  }
 }

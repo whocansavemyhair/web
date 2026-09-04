@@ -43,25 +43,39 @@ sidebar: false
     </div>
 
     <div class="member-card-grid">
-      {% for m in site.data.group.current %}
-      {% assign member_title = m.title | default: '' | downcase %}
-      {% assign member_level = 'graduate' %}
-      {% if member_title contains 'undergraduate' %}
-        {% assign member_level = 'undergraduate' %}
-      {% endif %}
-      <article class="profile-card profile-card--member" data-research-area="{{ m.research_area | default: 'all' }}" data-member-level="{{ member_level }}">
-        <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}" class="profile-photo">
-        <div class="profile-copy">
-          <h3>{{ m.name }}</h3>
-          {% if m.title %}<p class="profile-title">{{ m.title }}</p>{% endif %}
-          {% if m.desc %}<p class="profile-desc">{{ m.desc }}</p>{% endif %}
-          <div class="profile-links">
-            {% if m.pagelink %}<a href="{{ m.pagelink }}" target="_blank" rel="noopener">Page</a>{% endif %}
-            {% if m.github %}<a href="{{ m.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
-            {% if m.email %}<a href="mailto:{{ m.email }}">Email</a>{% endif %}
-          </div>
-        </div>
-      </article>
+      {% assign current_members = site.data.group.current | sort: "name" %}
+      {% assign degree_order = "phd,visiting_phd,master,undergraduate,other" | split: "," %}
+      {% for degree in degree_order %}
+        {% for m in current_members %}
+          {% assign member_title = m.title | default: '' | downcase %}
+          {% assign member_degree = 'other' %}
+          {% assign member_level = 'graduate' %}
+          {% if member_title contains 'visiting phd' %}
+            {% assign member_degree = 'visiting_phd' %}
+          {% elsif member_title contains 'phd' %}
+            {% assign member_degree = 'phd' %}
+          {% elsif member_title contains 'master' %}
+            {% assign member_degree = 'master' %}
+          {% elsif member_title contains 'undergraduate' %}
+            {% assign member_degree = 'undergraduate' %}
+            {% assign member_level = 'undergraduate' %}
+          {% endif %}
+          {% if member_degree == degree %}
+          <article class="profile-card profile-card--member" data-research-area="{{ m.research_area | default: 'all' }}" data-member-level="{{ member_level }}">
+            <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}" class="profile-photo">
+            <div class="profile-copy">
+              <h3>{{ m.name }}</h3>
+              {% if m.title %}<p class="profile-title">{{ m.title }}</p>{% endif %}
+              {% if m.desc %}<p class="profile-desc">{{ m.desc }}</p>{% endif %}
+              <div class="profile-links">
+                {% if m.pagelink %}<a href="{{ m.pagelink }}" target="_blank" rel="noopener">Page</a>{% endif %}
+                {% if m.github %}<a href="{{ m.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+                {% if m.email %}<a href="mailto:{{ m.email }}">Email</a>{% endif %}
+              </div>
+            </div>
+          </article>
+          {% endif %}
+        {% endfor %}
       {% endfor %}
     </div>
   </div>
@@ -73,7 +87,8 @@ sidebar: false
   </div>
   <div class="group-cards-section">
     <div class="alumni-card-grid">
-      {% for a in site.data.group.alumni %}
+      {% assign alumni_members = site.data.group.alumni | sort: "name" %}
+      {% for a in alumni_members %}
       <article class="profile-card profile-card--alumni">
         <img src="{{ a.photolink | relative_url }}" alt="{{ a.name }}" class="profile-photo">
         <div class="profile-copy">

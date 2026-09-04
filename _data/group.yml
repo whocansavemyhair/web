@@ -12,7 +12,7 @@ pi:
 
 current:
   - name: Guanlin Wu
-    title: Incoming PhD Student
+    title: PhD Student
     desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
     pagelink: https://guanlinwu123.github.io/ 
     photolink: /assets/images/group/members/guanlin_wu.jpg
@@ -72,7 +72,7 @@ current:
     a4: 20
 
   - name: Yichen Lin
-    title: Incoming PhD Student
+    title: PhD Student
     desc: My research interests focus on Multimodal Large Language Model and human behavior.
     pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
     photolink: /assets/images/group/members/yichen_lin.jpg

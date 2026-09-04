@@ -590,6 +590,29 @@
   }
 }
 
+.pub-item .pub-year,
+.pub-item .pub-title,
+.pub-item .pub-meta-row,
+.pub-item .pub-keywords span,
+.pub-item .pub-links a {
+  color: #111;
+}
+
+.pub-item,
+.pub-item:hover {
+  transform: none;
+  border-color: #e1e6eb;
+  box-shadow: none;
+  transition: none;
+}
+
+.research-hero-grid .news-card,
+.research-hero-grid .news-card:hover {
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+  transition: none;
+}
+
 
 /* ========== Publications 列表（从 publications.css 合并） ========== */
 .pub-list {
@@ -790,5 +813,139 @@
 
   .pub-links {
     margin-left: 0;
+  }
+}
+
+/* ========== JHU blue research treatment ========== */
+
+.research-hero-grid {
+  background: linear-gradient(180deg, var(--jhu-pale) 0%, #fff 34%);
+  border-top: 0;
+}
+
+.research-title-row,
+.page__content .research-title-row {
+  background: transparent;
+}
+
+.research-title-row h2,
+.page__content .research-title-row h2 {
+  background: var(--jhu-spirit-blue);
+  color: var(--jhu-blue-dark);
+  box-shadow: none;
+}
+
+.research-text {
+  background: rgba(255, 255, 255, .86);
+  border-left: 0;
+}
+
+.research-wrapper.alt .research-text {
+  border-right: 0;
+  border-left: 0;
+}
+
+.research-image,
+.research-carousel-track {
+  background: linear-gradient(145deg, #fff 0%, var(--jhu-pale) 100%);
+}
+
+.research-carousel-control,
+.highlighted-papers-reset,
+.pub-year,
+.pub-meta-row,
+.pub-year-toggle,
+.pub-links a {
+  color: var(--jhu-blue);
+}
+
+.research-carousel-dots button {
+  background: rgba(0, 45, 114, .25);
+}
+
+.research-carousel-dots button.active {
+  background: var(--jhu-blue);
+}
+
+.highlighted-papers-section {
+  padding: 0;
+  border-top: 0;
+  border-radius: 0;
+  background: #fff;
+}
+
+.highlighted-papers-title {
+  color: var(--jhu-blue);
+}
+
+.pub-filter-bar {
+  background: #fff;
+  border: 0;
+  border-top: 1px solid #d7dde3;
+  border-bottom: 1px solid #d7dde3;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pub-year-toggle {
+  border-color: rgba(0, 45, 114, .22);
+  box-shadow: 0 2px 7px rgba(0, 45, 114, .08);
+}
+
+.pub-year-toggle::after {
+  border-color: var(--jhu-blue);
+}
+
+.pub-year-filter.open .pub-year-toggle,
+.pub-year-toggle:hover {
+  background: var(--jhu-pale);
+  border-color: rgba(0, 45, 114, .4);
+}
+
+.pub-year-option:hover,
+.pub-year-option.active,
+.pub-keywords span {
+  color: var(--jhu-blue);
+  background: var(--jhu-sky);
+}
+
+.pub-keywords span {
+  border-color: rgba(0, 45, 114, .18);
+}
+
+.pub-item {
+  border-color: #e1e6eb;
+  border-left: 1px solid #e1e6eb;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.pub-item:hover {
+  border-color: #cfd8e1;
+  box-shadow: 0 4px 12px rgba(15, 35, 60, .08);
+}
+
+.pub-load-more-btn {
+  border-color: var(--jhu-spirit-blue);
+  background: var(--jhu-spirit-blue);
+  color: var(--jhu-blue-dark);
+  box-shadow: none;
+}
+
+.pub-load-more-btn:hover {
+  border-color: #4f9bd7;
+  background: #5ca5df;
+  color: var(--jhu-blue-dark);
+}
+
+@media (max-width: 700px) {
+  .research-wrapper.alt .research-text,
+  .research-text {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .highlighted-papers-section {
+    padding: 0;
   }
 }

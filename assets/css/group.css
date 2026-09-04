@@ -915,3 +915,140 @@
   .page-group .info-card .card-inner{ grid-template-columns:96px 1fr; }
   .page-group .info-card img{ width:96px; height:96px; }
 }
+
+/* ========== JHU blue group treatment ========== */
+
+.page-group-cards .group-cards-band--members,
+.page-group .group-band--current {
+  background: #fff;
+  border-top: 0;
+}
+
+.page-group-cards .group-cards-band--life,
+.page-group .group-band--life {
+  background: #fff;
+}
+
+.page-group-cards .group-title-row h2,
+.page-group .group-title-row h2 {
+  background: var(--jhu-spirit-blue);
+  color: var(--jhu-blue-dark);
+}
+
+.page-group-cards .group-filter-buttons {
+  background: rgba(104, 172, 229, .2);
+  border-color: rgba(0, 45, 114, .18);
+}
+
+.page-group-cards .group-filter-buttons button,
+.page-group-cards .profile-card h3,
+.page-group-cards .pi-listing h3,
+.page-group-cards .profile-links a,
+.page-group .info-card h3,
+.page-group .info-card .links a {
+  color: var(--jhu-blue);
+}
+
+.page-group-cards .group-filter-buttons button.active,
+.page-group-cards .life-nav,
+.page-group-cards .life-dot.active,
+.page-group .life-nav,
+.page-group .life-dot.active,
+.page-group .axes-dots .dot.active {
+  background: var(--jhu-spirit-blue);
+  color: var(--jhu-blue-dark);
+}
+
+.page-group-cards .profile-card {
+  border-top: 1px solid #e2e8ee;
+  box-shadow: none;
+}
+
+.page-group-cards .profile-card:hover {
+  border-color: #cfd8e1;
+  box-shadow: 0 4px 12px rgba(15, 35, 60, .08);
+}
+
+.page-group-cards .life-nav:hover,
+.page-group .life-nav:hover {
+  background: #5ca5df;
+}
+
+.page-group-cards .pi-listing h3,
+.page-group-cards .profile-card h3,
+.page-group-cards .pi-listing .profile-links a,
+.page-group-cards .profile-card .profile-links a,
+.page-group .info-card h3,
+.page-group .info-card .links a {
+  color: #111;
+}
+
+/* Group member filters stay visible on every input mode. */
+.page-group-cards .group-title-row--filterable {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-group-cards .group-filter-buttons,
+.page-group-cards .group-title-row--filterable:hover .group-filter-buttons,
+.page-group-cards .group-title-row--filterable.filter-open .group-filter-buttons,
+.page-group-cards .group-title-row--filterable:focus-within .group-filter-buttons {
+  width: auto;
+  margin-left: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.page-group-cards .group-filter-buttons button {
+  border-color: #d7dde3;
+  background: #fff;
+  color: #111;
+  box-shadow: none;
+}
+
+.page-group-cards .group-filter-buttons button:hover {
+  border-color: #bfc9d3;
+  background: #f6f8fa;
+  box-shadow: none;
+}
+
+.page-group-cards .group-filter-buttons button.active {
+  border-color: var(--jhu-spirit-blue);
+  background: var(--jhu-spirit-blue);
+  color: #111;
+}
+
+.page-group-cards .group-filter-divider {
+  background: #d7dde3;
+}
+
+@media (max-width: 600px) {
+  .page-group-cards .group-filter-buttons {
+    width: 100%;
+    padding: 0;
+    border: 0;
+  }
+}
+
+.page-group-cards .profile-card,
+.page-group-cards .profile-card:hover {
+  transform: none;
+  border-color: #e2e8ee;
+  box-shadow: none;
+  transition: none;
+}
+
+.page-group .member-card,
+.page-group .member-card:hover,
+.page-group .info-card,
+.page-group .info-card:hover {
+  transform: none;
+  box-shadow: none;
+  transition: none;
+}
