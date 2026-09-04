@@ -43,7 +43,7 @@ sidebar: false
     </div>
 
     <div class="member-card-grid">
-      {% assign current_members = site.data.group.current | sort: "name" %}
+      {% assign current_members = site.data.group.current | sort: "sort_name" %}
       {% assign degree_order = "phd,visiting_phd,master,undergraduate,other" | split: "," %}
       {% for degree in degree_order %}
         {% for m in current_members %}
@@ -87,7 +87,7 @@ sidebar: false
   </div>
   <div class="group-cards-section">
     <div class="alumni-card-grid">
-      {% assign alumni_members = site.data.group.alumni | sort: "name" %}
+      {% assign alumni_members = site.data.group.alumni | sort: "sort_name" %}
       {% for a in alumni_members %}
       <article class="profile-card profile-card--alumni">
         <img src="{{ a.photolink | relative_url }}" alt="{{ a.name }}" class="profile-photo">

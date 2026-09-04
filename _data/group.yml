@@ -12,6 +12,7 @@ pi:
 
 current:
   - name: Guanlin Wu
+    sort_name: Wu, Guanlin
     title: PhD Student
     desc: My research interests lie in Multimodal Large Language Model and Computer Vision.
     pagelink: https://guanlinwu123.github.io/ 
@@ -24,6 +25,7 @@ current:
     a4: 10   # Transportation vs Public Health
 
   - name: Linshen Liu
+    sort_name: Liu, Linshen
     title: PhD student
     desc: My research interests lie in Efficiency Large Language Model and Edge AI for autonomous driving.  
     pagelink: https://www.linkedin.com/in/linshenliu-994591289/ 
@@ -36,6 +38,7 @@ current:
     a4: 10
 
   - name: Junyue Jiang
+    sort_name: Jiang, Junyue
     title: PhD student
     desc: My research interests include sustainable and efficient computing for machine learning systems, with a focus on energy-efficient decision making for edge AI and hardware–software co-optimization in smart transportation. 
     pagelink: https://www.linkedin.com/in/junyue-jiang-52454222b/ 
@@ -48,6 +51,7 @@ current:
     a4: 10
 
   - name: Pu Wang
+    sort_name: Wang, Pu
     title: PhD student
     desc: My research interests lie in multimodal large language models and data centric AI.
     pagelink: https://www.linkedin.com/in/pu-wang-a85048389/
@@ -60,6 +64,7 @@ current:
     a4: 20
 
   - name: Yang Zhao
+    sort_name: Zhao, Yang
     title: PhD student
     desc: My research focuses on enhancing the interpretability, trustworthiness, and robustness of LLMs in domain-specific tasks. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
@@ -72,6 +77,7 @@ current:
     a4: 20
 
   - name: Yichen Lin
+    sort_name: Lin, Yichen
     title: PhD Student
     desc: My research interests focus on Multimodal Large Language Model and human behavior.
     pagelink: https://www.linkedin.com/in/yichen-lin-524632360/
@@ -84,6 +90,7 @@ current:
     a4: 40
 
   - name: Fan Yang
+    sort_name: Yang, Fan
     title: Visiting PhD Student
     desc: My research interests lie in Multimodal Large Language Model and Energy System.
     pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
@@ -96,6 +103,7 @@ current:
     a4: 10
 
   - name: Yushan Li
+    sort_name: Li, Yushan
     title: Master student
     desc: My research interests lie in Multimodal Large Language Model and Applied Machine Learning.  
     pagelink: https://www.linkedin.com/in/yushan-li-5290a3384/
@@ -108,6 +116,7 @@ current:
     a4: 10
 
   - name: Bingjie Liu
+    sort_name: Liu, Bingjie
     title: Master student
     desc: My research interest lies in optimization, quantitative economics, machine learning, and data-driven decision analytics in complex systems. 
     pagelink: https://www.linkedin.com/in/bingjie-undefined-617138387 
@@ -120,6 +129,7 @@ current:
     a4: 20
 
   - name: Guangpeng Wang
+    sort_name: Wang, Guangpeng
     title: Master Student
     desc: My research interests lie in foundation models, multimodal learning, computer vision, generative models, and AI agents. I am particularly interested in exploring how visual and structured information can be represented to support understanding, generation, reasoning, and decision-making.
     pagelink: https://www.linkedin.com/in/guangpeng-wang-0168a137a/
@@ -132,6 +142,7 @@ current:
     a4: 50
 
   - name: Ziyan Li
+    sort_name: Li, Ziyan
     title: Undergraduate Student
     desc: My research interests lie in human-centered ML, especially foundation model decision-making and alignment. I am always open to exploring new areas and questions as they come up.
     pagelink: https://www.linkedin.com/in/angelina-li-b82613382/
@@ -144,6 +155,7 @@ current:
     a4: 50
 
   - name: Matthieu Giauque
+    sort_name: Giauque, Matthieu
     title: Undergraduate Student
     desc: Matthieu Giauque is an undergraduate student double majoring in Civil Engineering and Philosophy at Johns Hopkins University, where he is also a member of the varsity men's water polo team. His current work explores how large language models can generate evidence-based policy recommendations for traffic policy interventions. Motivated by a broader interest in sustainable infrastructure, he hopes to help build transportation and urban systems that are more efficient and environmentally responsible.
     pagelink: https://www.linkedin.com/in/matthieu-giauque-jhu
@@ -157,26 +169,31 @@ current:
 
 alumni:
   - name: "Xianglong Wang"
+    sort_name: Wang, Xianglong
     title: "Master student"
     photolink: "/assets/images/group/members/xianglong_wang.jpg"
     desc: "Now at Wyze Labs, Inc."
 
   - name: "Yibo Zhao"
+    sort_name: Zhao, Yibo
     title: "Alumni"
     photolink: "/assets/images/group/members/yibo_zhao.jpg"
     desc: "Now UIUC CS PhD"
 
   - name: "Boyan Su"
+    sort_name: Su, Boyan
     title: "Master student"
     photolink: "/assets/images/group/members/boyan_su.jpg"
     desc: "Now at China Southern Grid Artificial Intelligence Technology Co., Ltd."
 
   - name: "Shiyu Pan"
+    sort_name: Pan, Shiyu
     title: "Alumni"
     photolink: "/assets/images/group/members/shiyu_pan.jpg"
     desc: "Now at China Harbour Engineering Company Ltd, Kotka, Finland"
 
   - name: "Yifei Xiang"
+    sort_name: Xiang, Yifei
     title: "Alumni"
     photolink: "/assets/images/group/members/yifei_xiang.jpg"
     desc: "Now at Shanghai Jiao Tong University"
