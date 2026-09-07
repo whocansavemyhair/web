@@ -68,11 +68,23 @@ sidebar: false
           <img class="join-carousel-slide active" src="{{ '/assets/images/join-us/cat-1-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
           <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-2-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
           <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-3-centered.jpg' | relative_url }}?v=20260714-001" alt="Lab sweeties on a cat tree">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki1.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi sitting in a car">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki2.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi relaxing upside down">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki3.jpg' | relative_url }}?v=20260905-001" alt="Outdoor portrait of Loki the corgi">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki4.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi holding a family celebration sign">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki5.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi resting by a kitchen counter">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/Loki6.jpg' | relative_url }}?v=20260905-001" alt="Close-up of Loki the corgi outdoors">
         </div>
         <div class="join-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show sweetie 1"></button>
           <button type="button" aria-label="Show sweetie 2"></button>
           <button type="button" aria-label="Show sweetie 3"></button>
+          <button type="button" aria-label="Show sweetie 4"></button>
+          <button type="button" aria-label="Show sweetie 5"></button>
+          <button type="button" aria-label="Show sweetie 6"></button>
+          <button type="button" aria-label="Show sweetie 7"></button>
+          <button type="button" aria-label="Show sweetie 8"></button>
+          <button type="button" aria-label="Show sweetie 9"></button>
         </div>
       </div>
     </div>

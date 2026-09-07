@@ -115,6 +115,20 @@ current:
     a3: 30
     a4: 10
 
+  - name: Jie Wang
+    sort_name: Wang, Jie
+    title: Master Student
+    desc: "I’m Jie Wang, a Master’s student in Systems Engineering at Johns Hopkins University. My research focuses on leveraging large language models for reasoning and decision-making in intelligent and autonomous systems."
+    pagelink: ""
+    photolink: /assets/images/group/members/jie_wang.jpg
+    research_area: decision
+    years: 2026
+    join_term: Fall 2026
+    a1: 50
+    a2: 50
+    a3: 50
+    a4: 50
+
   - name: Bingjie Liu
     sort_name: Liu, Bingjie
     title: Master student
@@ -152,6 +166,34 @@ current:
     a1: 30
     a2: 50
     a3: 25
+    a4: 50
+
+  - name: Ken Tian
+    sort_name: Tian, Ken
+    title: Undergraduate Student
+    desc: "I’m Ken Tian, an undergraduate at Johns Hopkins studying Mathematics and Applied Mathematics & Statistics. I’m currently working with Professor Yang’s group and am particularly interested in machine learning, AI agents, and their applications to real-world systems. Outside of research, I’m also interested in quantitative finance and sports analytics."
+    pagelink: ""
+    photolink: /assets/images/group/members/ken_tian.jpg
+    research_area: collaborative
+    years: 2026
+    join_term: Fall 2026
+    a1: 50
+    a2: 50
+    a3: 50
+    a4: 50
+
+  - name: James Zheng
+    sort_name: Zheng, James
+    title: Undergraduate Student
+    desc: "I’m James Zheng, an undergraduate student at Johns Hopkins University studying Physics and Applied Mathematics & Statistics. At Yang Lab, my interests currently lie in multi-agent collaboration and personalized AI. In my free time, I enjoy playing badminton, traveling, and photography. Please don’t hesitate to reach out!"
+    pagelink: ""
+    photolink: /assets/images/group/members/james_zheng.jpg
+    research_area: collaborative
+    years: 2026
+    join_term: Fall 2026
+    a1: 50
+    a2: 50
+    a3: 50
     a4: 50
 
   - name: Matthieu Giauque
