@@ -159,7 +159,7 @@ current:
     sort_name: Li, Ziyan
     title: Undergraduate Student
     desc: My research interests lie in human-centered ML, especially foundation model decision-making and alignment. I am always open to exploring new areas and questions as they come up.
-    pagelink: https://www.linkedin.com/in/angelina-li-b82613382/
+    pagelink: https://www.linkedin.com/in/ziyan-li-b82613382/
     photolink: /assets/images/group/members/ziyan_li.jpg
     research_area: decision
     years: 2026
@@ -182,11 +182,11 @@ current:
     a3: 50
     a4: 50
 
-  - name: James Zheng
-    sort_name: Zheng, James
+  - name: James Zhou
+    sort_name: Zhou, James
     title: Undergraduate Student
-    desc: "I’m James Zheng, an undergraduate student at Johns Hopkins University studying Physics and Applied Mathematics & Statistics. At Yang Lab, my interests currently lie in multi-agent collaboration and personalized AI. In my free time, I enjoy playing badminton, traveling, and photography. Please don’t hesitate to reach out!"
-    pagelink: ""
+    desc: "I’m James Zhou, an undergraduate student at Johns Hopkins University studying Physics and Applied Mathematics & Statistics. At Yang Lab, my interests currently lie in multi-agent collaboration and personalized AI. In my free time, I enjoy playing badminton, traveling, and photography. Please don’t hesitate to reach out!"
+    pagelink: https://www.linkedin.com/in/james-zhou-40083b37b/
     photolink: /assets/images/group/members/james_zheng.jpg
     research_area: collaborative
     years: 2026
