@@ -80,6 +80,30 @@
   background:#fff;
 }
 
+.join-sweeties-carousel .join-carousel-slide--loki-1{
+  object-position:center 46%;
+}
+
+.join-sweeties-carousel .join-carousel-slide--loki-2{
+  object-position:center 52%;
+}
+
+.join-sweeties-carousel .join-carousel-slide--loki-3{
+  object-position:center 42%;
+}
+
+.join-sweeties-carousel .join-carousel-slide--loki-4{
+  object-position:center 18%;
+}
+
+.join-sweeties-carousel .join-carousel-slide--loki-5{
+  object-position:center 45%;
+}
+
+.join-sweeties-carousel .join-carousel-slide--loki-6{
+  object-position:center 38%;
+}
+
 .join-carousel-slide.active{
   opacity:1;
 }
