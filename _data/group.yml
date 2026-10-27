@@ -5,6 +5,14 @@ pi:
       Department of Civil and System Engineering  
       Johns Hopkins Data Science & AI Institute  
       Johns Hopkins University
+    office:
+      room: "NW235"
+      institute: "Johns Hopkins Data Science & AI Institute (DSAI)"
+      campus: "Mt. Washington Campus"
+      street: "6225 Smith Avenue"
+      city: "Baltimore, MD 21209"
+      country: "United States"
+      map_url: "https://www.google.com/search?kgmid=%2Fg%2F11z200lmnx"
     photolink: "/assets/images/group/members/prof_yang.jpeg"
     pagelink: "https://scholar.google.com/citations?hl=en&user=IA_dRMIAAAAJ&view_op=list_works&sortby=pubdate"
     email: "haofrankyang@jhu.edu"
@@ -88,19 +96,6 @@ current:
     a2: 20
     a3: 35
     a4: 40
-
-  - name: Fan Yang
-    sort_name: Yang, Fan
-    title: Visiting PhD Student
-    desc: My research interests lie in Multimodal Large Language Model and Energy System.
-    pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
-    photolink: /assets/images/group/members/fan_yang.jpg
-    research_area: decision
-    years: 2025
-    a1: 20
-    a2: 30
-    a3: 40
-    a4: 10
 
   - name: Yushan Li
     sort_name: Li, Yushan
@@ -210,6 +205,13 @@ current:
     a4: 70
 
 alumni:
+  - name: Fan Yang
+    sort_name: Yang, Fan
+    title: Visiting PhD Student
+    photolink: /assets/images/group/members/fan_yang.jpg
+    pagelink: https://www.linkedin.com/in/fan-yang-b8577738b/
+    desc: "Now at Zhejiang University"
+
   - name: "Xianglong Wang"
     sort_name: Wang, Xianglong
     title: "Master student"

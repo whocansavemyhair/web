@@ -6,10 +6,12 @@ sidebar: false
 classes: wide
 ---
 
+{% include research-overview.html %}
+
 <div class="research-hero-grid">
   <div class="research-wrapper research-wrapper--decision">
     <div class="research-title-row research-title-row--left">
-      <h2>Decision-Making</h2>
+      <h2>AI for Decision Making</h2>
     </div>
     <div class="research-section">
       <div class="research-text">
@@ -22,10 +24,10 @@ classes: wide
           decision modeling, and trustworthy traffic safety assessment.
         </p>
       </div>
-      <div class="research-image research-carousel" data-research-carousel aria-label="Decision-Making images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="AI for Decision Making images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="Decision-Making figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="Decision-Making figure 2">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="AI for Decision Making figure 1">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="AI for Decision Making figure 2">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -37,12 +39,12 @@ classes: wide
 
   <div class="research-wrapper research-wrapper--collaborative alt">
     <div class="research-title-row research-title-row--right">
-      <h2>Agentic AI and Collaborative Intelligence</h2>
+      <h2>Agentic AI for Tool Use and Collaborative Intelligence</h2>
     </div>
     <div class="research-section">
-      <div class="research-image research-carousel" data-research-carousel aria-label="Agentic AI and Collaborative Intelligence images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Agentic AI for Tool Use and Collaborative Intelligence images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Agentic AI and Collaborative Intelligence benchmark overview">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Agentic AI for Tool Use and Collaborative Intelligence benchmark overview">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -63,7 +65,7 @@ classes: wide
 
   <div class="research-wrapper research-wrapper--scaling">
     <div class="research-title-row research-title-row--left">
-      <h2>Computing and Intelligence Scaling</h2>
+      <h2>Sustainable Computing and Intelligence Scaling</h2>
     </div>
     <div class="research-section">
       <div class="research-text">
@@ -76,11 +78,11 @@ classes: wide
           intelligence closer to practical deployment.
         </p>
       </div>
-      <div class="research-image research-carousel" data-research-carousel aria-label="Computing and Intelligence Scaling images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Sustainable Computing and Intelligence Scaling images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/figs/Picture1.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture2.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 2">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture3.png' | relative_url }}?v=20260626-001" alt="Computing and Intelligence Scaling figure 3">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/figs/Picture1.png' | relative_url }}?v=20260626-001" alt="Sustainable Computing and Intelligence Scaling figure 1">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture2.png' | relative_url }}?v=20260626-001" alt="Sustainable Computing and Intelligence Scaling figure 2">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/figs/Picture3.png' | relative_url }}?v=20260626-001" alt="Sustainable Computing and Intelligence Scaling figure 3">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -264,6 +266,89 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentYear = "all";
   let visibleLimit = PAGE_SIZE;
 
+  // One overview selection at a time; the existing year filter still applies.
+  let overviewSelection = null;
+  const overview = document.querySelector('.native-overview');
+  const filterTargets = [...overview.querySelectorAll('.phase-keywords li, .application')];
+  const paperTags = new Map(pubs.map(pub => [pub, new Set([...pub.querySelectorAll('.pub-keywords > span')].map(tag => tag.textContent.trim()))]));
+  const filterStatus = document.createElement('p');
+  filterStatus.className = 'overview-filter-status';
+  filterStatus.setAttribute('aria-live', 'polite');
+  overview.querySelector('.overview-inner').append(filterStatus);
+  const emptyState = document.createElement('p');
+  emptyState.className = 'overview-paper-empty';
+  emptyState.hidden = true;
+  emptyState.setAttribute('role', 'status');
+  loadMoreBtn.parentElement.before(emptyState);
+
+  let filterNavigationStarted = false;
+  const backToTop = document.createElement('button');
+  backToTop.type = 'button';
+  backToTop.className = 'overview-back-to-top';
+  backToTop.textContent = '↑ Back to top';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.hidden = true;
+  document.body.append(backToTop);
+  const scrollBehavior = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+  function updateBackToTop() { backToTop.hidden = !filterNavigationStarted || window.scrollY < 150; }
+  window.addEventListener('scroll', updateBackToTop, {passive:true});
+  backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:scrollBehavior()}));
+  function showFilteredPapers() {
+    filterNavigationStarted = true;
+    const headerHeight = document.querySelector('.masthead')?.getBoundingClientRect().height || 70;
+    const top = highlightedPapersReset.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+    window.scrollTo({top:Math.max(0,top), behavior:scrollBehavior()});
+    updateBackToTop();
+  }
+
+  filterTargets.forEach(target => {
+    const label = (target.querySelector('h3') || target).textContent.trim();
+    target.dataset.paperFilter = label;
+    target.setAttribute('role', 'button');
+    target.setAttribute('tabindex', '0');
+    target.setAttribute('aria-pressed', 'false');
+    target.setAttribute('aria-label', 'Filter papers: ' + label);
+    function select() {
+      overviewSelection = overviewSelection === label ? null : label;
+      visibleLimit = PAGE_SIZE;
+      applyFilters();
+      showFilteredPapers();
+    }
+    target.addEventListener('click', select);
+    target.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(); }
+    });
+  });
+  // Blank areas anywhere on this page reset filters, without intercepting content or controls.
+  document.addEventListener('click', event => {
+    if (!overviewSelection && currentYear === 'all') return;
+    if (!(event.target instanceof Element)) return;
+    if (event.target.closest('a, button, input, select, textarea, label, summary, [role="button"], [role="option"], [contenteditable], .pub-year-filter, .masthead, img, video, iframe, p, h1, h2, h3, h4, h5, h6, li, .pub-keywords, .pub-year')) return;
+    if (window.getSelection()?.toString().trim()) return;
+    clearAllFilters();
+  });
+  function updateOverviewState(matchedPubs) {
+    filterTargets.forEach(target => {
+      const active = target.dataset.paperFilter === overviewSelection;
+      target.classList.toggle('is-filter-active', active);
+      target.setAttribute('aria-pressed', String(active));
+    });
+    filterStatus.textContent = overviewSelection
+      ? overviewSelection + ' · ' + matchedPubs.length + ' matching papers. Click any blank area on this page to reset.'
+      : 'Select a keyword or application to filter papers. Click any blank area on this page to reset.';
+    if (overviewSelection && matchedPubs.length) {
+      const view = document.createElement('button');
+      view.type = 'button'; view.textContent = 'View papers';
+      view.addEventListener('click', showFilteredPapers);
+      filterStatus.append(view);
+    }
+    emptyState.hidden = matchedPubs.length > 0;
+    emptyState.textContent = overviewSelection
+      ? 'No papers currently match “' + overviewSelection + '”' + (currentYear === 'all' ? '.' : ' in ' + currentYear + '.')
+      : 'No papers match the selected year.';
+  }
+
+
   function closeYearMenu() {
     yearFilter.classList.remove("open");
     yearToggle.setAttribute("aria-expanded", "false");
@@ -279,6 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function clearAllFilters() {
+    overviewSelection = null;
     currentYear = "all";
     visibleLimit = PAGE_SIZE;
     setYearFilter("all");
@@ -289,9 +375,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function applyFilters() {
     const matchedPubs = pubs.filter(pub => {
       const okYear = (currentYear === "all") || (pub.dataset.year === currentYear);
-      return okYear;
+      return okYear && (!overviewSelection || paperTags.get(pub).has(overviewSelection));
     });
 
+    updateOverviewState(matchedPubs);
     pubs.forEach(pub => { pub.style.display = "none"; });
     matchedPubs.slice(0, visibleLimit).forEach(pub => {
       pub.style.display = "flex";

@@ -51,23 +51,18 @@ sidebar: false
 
   <section class="join-sweeties-band">
     <div class="join-title-row join-content">
-      <h2>Sweeties</h2>
+      <h2>Our Pets</h2>
     </div>
     <div class="join-sweeties join-content">
       <div class="join-sweeties-copy">
-        <p>
-          Our unofficial morale team.
-        </p>
-        <p>
-          We welcome everyone to bring their own sweeties and join our growing lab family.
-        </p>
+        <p>Meet the pets of our lab members. You are welcome to bring your pets along to meet the team.</p>
       </div>
 
-      <div class="join-sweeties-carousel" data-join-carousel aria-label="Lab sweeties">
+      <div class="join-sweeties-carousel" data-join-carousel aria-label="Pets of our lab members">
         <div class="join-carousel-track">
-          <img class="join-carousel-slide active" src="{{ '/assets/images/join-us/cat-1-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
-          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-2-centered.jpg' | relative_url }}?v=20260630-001" alt="Lab sweetie">
-          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-3-centered.jpg' | relative_url }}?v=20260714-001" alt="Lab sweeties on a cat tree">
+          <img class="join-carousel-slide active" src="{{ '/assets/images/join-us/cat-1-centered.jpg' | relative_url }}?v=20260630-001" alt="Cat belonging to a lab member">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-2-centered.jpg' | relative_url }}?v=20260630-001" alt="Cat belonging to a lab member">
+          <img class="join-carousel-slide" src="{{ '/assets/images/join-us/cat-3-centered.jpg' | relative_url }}?v=20260714-001" alt="Cats on a cat tree">
           <img class="join-carousel-slide join-carousel-slide--loki-1" src="{{ '/assets/images/join-us/Loki1.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi sitting in a car">
           <img class="join-carousel-slide join-carousel-slide--loki-2" src="{{ '/assets/images/join-us/Loki2.jpg' | relative_url }}?v=20260905-001" alt="Loki the corgi relaxing upside down">
           <img class="join-carousel-slide join-carousel-slide--loki-3" src="{{ '/assets/images/join-us/Loki3.jpg' | relative_url }}?v=20260905-001" alt="Outdoor portrait of Loki the corgi">
@@ -76,15 +71,15 @@ sidebar: false
           <img class="join-carousel-slide join-carousel-slide--loki-6" src="{{ '/assets/images/join-us/Loki6.jpg' | relative_url }}?v=20260905-001" alt="Close-up of Loki the corgi outdoors">
         </div>
         <div class="join-carousel-dots" aria-label="Select image">
-          <button class="active" type="button" aria-label="Show sweetie 1"></button>
-          <button type="button" aria-label="Show sweetie 2"></button>
-          <button type="button" aria-label="Show sweetie 3"></button>
-          <button type="button" aria-label="Show sweetie 4"></button>
-          <button type="button" aria-label="Show sweetie 5"></button>
-          <button type="button" aria-label="Show sweetie 6"></button>
-          <button type="button" aria-label="Show sweetie 7"></button>
-          <button type="button" aria-label="Show sweetie 8"></button>
-          <button type="button" aria-label="Show sweetie 9"></button>
+          <button class="active" type="button" aria-label="Show pet photo 1"></button>
+          <button type="button" aria-label="Show pet photo 2"></button>
+          <button type="button" aria-label="Show pet photo 3"></button>
+          <button type="button" aria-label="Show pet photo 4"></button>
+          <button type="button" aria-label="Show pet photo 5"></button>
+          <button type="button" aria-label="Show pet photo 6"></button>
+          <button type="button" aria-label="Show pet photo 7"></button>
+          <button type="button" aria-label="Show pet photo 8"></button>
+          <button type="button" aria-label="Show pet photo 9"></button>
         </div>
       </div>
     </div>

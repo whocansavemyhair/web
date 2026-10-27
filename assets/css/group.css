@@ -1052,3 +1052,21 @@
   box-shadow: none;
   transition: none;
 }
+
+/* Keep the compact PI portrait; give office details their own column. */
+.page-group-cards .pi-listing {
+  grid-template-columns: 112px minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.page-group-cards .pi-listing .profile-photo { align-self: center; }
+.page-group-cards .pi-office { padding-left: 24px; border-left: 1px solid #dce5eb; }
+.page-group-cards .pi-office .office-address { margin: 0; }
+@media (min-width: 601px) and (max-width: 900px) {
+  .page-group-cards .pi-listing { grid-template-columns: 104px minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; }
+  .page-group-cards .pi-office { padding-left: 20px; }
+}
+@media (max-width: 600px) {
+  .page-group-cards .pi-listing { grid-template-columns: 1fr; gap: 20px; }
+  .page-group-cards .pi-office { padding: 18px 0 0; border-left: 0; border-top: 1px solid #dce5eb; }
+}

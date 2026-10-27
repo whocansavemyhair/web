@@ -4,7 +4,8 @@
   year:  2025 
   type: conference
   keywords:
-    - Agentic AI and Collaborative Intelligence
+    - Grounded Reasoning
+    - Human Priors
     - Transportation
   image: /assets/images/research/publication/2510.21160v1.jpg
   pdf: /assets/publications/2510.21160v1.pdf
@@ -16,7 +17,10 @@
   year:  2025 
   type: conference 
   keywords:
-    - Computing and Intelligence Scaling
+    - Resource Efficiency
+    - Mixture of Experts
+    - Edge Intelligence
+    - Efficient Inference
     - Transportation
   image: /assets/images/research/publication/iccv2025_moe_3d_object_detection.jpg
   pdf: /assets/publications/iccv2025_moe_3d_object_detection.pdf
@@ -28,7 +32,10 @@
   year:  2025
   type: journal
   keywords:
-    - Computing and Intelligence Scaling
+    - Resource Efficiency
+    - Mixture of Experts
+    - Adaptive Computing
+    - Efficient Inference
     - Transportation
   image: /assets/images/research/publication/tpami_moe_3d_object_detection.jpg
   pdf: /assets/publications/Toward_Optimal_Mixture_of_Experts_System_for_3D_Object_Detection_A_Game_of_Accuracy_Efficiency_and_Adaptivity.pdf
@@ -40,7 +47,9 @@
   year:  2024
   type: conference
   keywords:
-    - Computing and Intelligence Scaling
+    - Resource Efficiency
+    - Edge Intelligence
+    - Efficient Inference
     - Transportation
   image: /assets/images/research/publication/iv_micro_pulse_lidar_edge_ai.jpg
   pdf: /assets/publications/Cost-effective_Vehicle_Recognition_System_in_Challenging_Environment_Empowered_by_Micro-Pulse_LiDAR_and_Edge_AI.pdf
@@ -52,7 +61,9 @@
   year:  2025
   type: journal
   keywords:
-    - Decision-Making
+    - Trustworthy AI
+    - Interpretable Reasoning
+    - Decision Support
     - Transportation
   image: /assets/images/research/publication/s41467-025-64574-w.jpg
   pdf: /assets/publications/s41467-025-64574-w.pdf
@@ -64,7 +75,10 @@
   year:  2025
   type: conference
   keywords:
-    - Agentic AI and Collaborative Intelligence
+    - Prompt Optimization
+    - Domain Adaptation
+    - Grounded Reasoning
+    - Efficient Inference
   image: /assets/images/research/publication/2510.21148.jpg
   pdf: /assets/publications/2510.21148.pdf
   doi: https://arxiv.org/pdf/2510.21148
@@ -75,7 +89,9 @@
   year:  2025
   type: conference
   keywords:
-    - Decision-Making
+    - Sequential Reasoning
+    - Personalized Modeling
+    - Interpretable Reasoning
     - Public Health
     - Transportation
   image: /assets/images/research/publication/2511.02194.jpg
@@ -88,7 +104,8 @@
   year:  2025
   type: journal
   keywords:
-    - Decision-Making
+    - Domain Adaptation
+    - Decision Support
     - Public Health
   image: /assets/images/research/publication/s43588-025-00798-6.jpg
   pdf: /assets/publications/10623880.pdf

@@ -1,0 +1,501 @@
+/* Selected version 3: scoped overview styling, independent of the research content. */
+/* native-overview-css */
+/* Native overview components; original page styles remain unchanged. */
+.page__content .native-overview{width:100vw;position:relative;left:50%;margin-left:-50vw;padding:40px 0 24px;background:#fff;box-sizing:border-box;overflow:hidden}
+
+.native-overview *{box-sizing:border-box}
+.native-overview .overview-inner{width:calc(100% - 40px);max-width:var(--content-max);margin:0 auto}
+
+.native-overview .version-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 36px;color:#718598;font:11px/1.5 Arial,sans-serif;letter-spacing:.08em}
+.native-overview .version-nav nav{display:flex;gap:8px}
+.native-overview .version-nav a{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;border-radius:50%;text-decoration:none;color:#6f87a0}
+.native-overview .version-nav a[aria-current=page]{background:#edf5fb;color:#17567f;font-weight:700}
+
+.native-overview .application-area{position:relative;padding:14px 0 0}
+.native-overview .application-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;position:relative;z-index:2}
+.native-overview .application{min-width:0;text-align:center;position:relative;margin:0}
+.native-overview .application h3{margin:0 0 15px;padding:0;border:0;color:#203f5e;font-size:clamp(16px,1.7vw,25px);line-height:1.25;letter-spacing:-.025em;font-weight:650}
+.native-overview .application-figure{height:175px;display:flex;align-items:center;justify-content:center;position:relative}
+.native-overview .application img{display:block;width:100%;height:100%;object-fit:contain;max-width:240px;margin:0;border:0;border-radius:0}
+
+.native-overview .gray-rail{height:21px;background:linear-gradient(90deg,#e4ecf2,#c5d5e1);position:relative;margin:24px 0 0;border-radius:3px;box-shadow:0 3px 7px #375d7810;z-index:1}
+.native-overview .rail-arrow{margin-right:0;clip-path:polygon(0 25%,calc(100% - 24px) 25%,calc(100% - 24px) 0,100% 50%,calc(100% - 24px) 100%,calc(100% - 24px) 75%,0 75%);height:42px;border-radius:0}
+
+.native-overview .node{display:block;width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#2170a0,#2692b9);border:2px solid white;box-shadow:0 2px 5px #174f7526;position:absolute;left:50%;bottom:-42px;transform:translateX(-50%);z-index:3}
+
+.native-overview .title-bridge{height:72px;position:relative;margin:0 calc(12.5% - 4px)}
+.native-overview .bridge-horizontal{height:3px;position:absolute;bottom:19px;left:0;right:0;background:linear-gradient(90deg,#24628d,#2295bc,#24628d);border-radius:2px}
+.native-overview .bridge-stem{position:absolute;bottom:-5px;left:50%;height:26px;width:3px;background:#2884a8}
+.native-overview .branch{position:absolute;top:0;bottom:19px;width:3px;background:#2a789d}
+.native-overview .branch:nth-child(1){left:0}
+.native-overview .branch:nth-child(2){left:33.333%}
+.native-overview .branch:nth-child(3){left:66.666%}
+.native-overview .branch:nth-child(4){right:0}
+
+.native-overview .overview-title{font-size:clamp(34px,4.7vw,66px);line-height:1.13;text-align:center;font-weight:750;letter-spacing:-.04em;margin:28px 0 36px;padding:0;border:0;color:#1e7199}
+.native-overview .overview-title span{background:linear-gradient(100deg,#204b7a,#258fba,#28659a);background-clip:text;-webkit-background-clip:text;color:transparent}
+
+.native-overview .phase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:0}
+.native-overview .phase{position:relative;min-width:0;display:flex;flex-direction:column;margin:0;padding:0}
+.native-overview .phase-banner{margin:0!important;padding:18px 32px 18px 22px!important;min-height:86px;display:flex;justify-content:center;align-items:center;text-align:center;font-size:clamp(15px,1.45vw,21px);line-height:1.3;font-weight:700;letter-spacing:-.02em;color:#173e61;border:0!important;background:linear-gradient(120deg,#e6f4fe,#cde8f9);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%,16px 50%)}
+.native-overview .phase:first-child .phase-banner{clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%)}
+.native-overview .phase:nth-child(2) .phase-banner{background:linear-gradient(120deg,#bfdcf3,#8dbde2)}
+.native-overview .phase:nth-child(3) .phase-banner{background:linear-gradient(120deg,#4796cc,#2b6aa4);color:white}
+
+.native-overview .phase-body{padding:24px 26px 28px;flex:1;position:relative;display:flex;flex-direction:column;align-items:center}
+.native-overview .phase+.phase .phase-body{border-left:1.5px dashed #9eafbf}
+.native-overview .phase-figures{width:100%;height:140px;display:flex;align-items:center;justify-content:center;gap:6px;margin:0 0 24px}
+.native-overview .phase-figures img{height:100%;width:40%;object-fit:contain;max-width:135px;margin:0;border:0}
+.native-overview .phase:first-child .phase-figures img{width:50%;max-width:150px}
+.native-overview .exchange{width:30px;min-width:25px;display:flex;flex-direction:column;gap:10px}
+.native-overview .exchange i{display:block;position:relative;height:2px;background:#7ab6dd}
+.native-overview .exchange i:after{content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid #7ab6dd;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.native-overview .exchange i+i{transform:rotate(180deg)}
+
+.native-overview .phase-keywords{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0;padding:0;list-style:none}
+.native-overview .phase-keywords li{margin:0;padding:7px 11px;color:#355a75;background:#edf5fb;border:1px solid #e0edf6;border-radius:6px;font-size:clamp(12px,1vw,15px);line-height:1.3;white-space:normal;text-align:center}
+
+/* Angular version: the rail and connecting strokes are separate CSS elements. */
+.native-overview.variant-2 .application-area{padding-top:0}
+.native-overview.variant-2 .application:first-child,.native-overview.variant-2 .application:last-child{padding-top:85px}
+.native-overview.variant-2 .gray-rail{margin-top:-65px;height:130px;background:linear-gradient(100deg,#e5edf3,#c1d2df);border-radius:0;clip-path:polygon(0 84%,24% 0,76% 0,100% 84%,100% 100%,75% 16%,25% 16%,0 100%);box-shadow:none}
+.native-overview.variant-2 .node{bottom:0}
+.native-overview.variant-2 .application:nth-child(2) .node,.native-overview.variant-2 .application:nth-child(3) .node{bottom:65px}
+.native-overview.variant-2 .title-bridge{height:46px;margin:-5px 12.5% 0}
+.native-overview.variant-2 .branch{top:-60px}
+.native-overview.variant-2 .branch:first-child,.native-overview.variant-2 .branch:nth-child(4){top:0}
+.native-overview.variant-2 .overview-title{margin-top:25px}
+
+/* Title-first version. */
+.native-overview.variant-3 .overview-title{margin:5px 0 26px}
+.native-overview .header-bridge{height:48px;position:relative;margin:0 calc(12.5% - 4px) 26px;border-top:3px solid #2a7fa5}
+.native-overview .header-bridge:before{content:"";position:absolute;left:50%;top:-27px;width:3px;height:26px;background:#2a7fa5}
+.native-overview .header-bridge .branch{top:0;bottom:20px}
+.native-overview.variant-3 .gray-rail{margin-bottom:35px}
+.native-overview.variant-3 .node{bottom:-42px}
+
+.native-overview.variant-4 .node{bottom:-53px}
+.native-overview.variant-4 .title-bridge{margin-top:-10px}
+
+/* Figure-connected version: no connection from the title to the arrow. */
+.native-overview.variant-5 .application:after{content:"";position:absolute;left:50%;bottom:-41px;width:3px;height:34px;background:linear-gradient(#2c779c,#3498ba);border-radius:2px}
+.native-overview.variant-5 .gray-rail{margin-top:30px}
+.native-overview.variant-5 .overview-title{margin-top:30px}
+
+@media(max-width:760px){.native-overview .version-nav{margin-bottom:22px;gap:8px;font-size:10px}
+.native-overview .version-nav nav{gap:2px}
+.native-overview .version-nav>span{max-width:170px}
+.native-overview .application-grid{gap:12px}
+.native-overview .application h3{font-size:14px}
+.native-overview .application-figure{height:100px}
+.native-overview .overview-title{font-size:36px}
+.native-overview .phase-banner{font-size:14px;padding:14px 22px 14px 13px!important;min-height:100px}
+.native-overview .phase-body{padding:20px 10px}
+.native-overview .phase-figures{height:100px;gap:3px}
+.native-overview .exchange{min-width:16px;width:16px}
+.native-overview .phase-keywords{gap:6px}
+.native-overview .phase-keywords li{font-size:11px;padding:6px 7px}
+.native-overview.variant-2 .application:first-child,.native-overview.variant-2 .application:last-child{padding-top:55px}
+.native-overview.variant-2 .gray-rail{margin-top:-35px;height:100px}
+.native-overview.variant-2 .application:nth-child(2) .node,.native-overview.variant-2 .application:nth-child(3) .node{bottom:45px}
+}
+
+@media(max-width:520px){.page__content .native-overview{padding-top:26px}
+.native-overview .application-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}
+.native-overview .application h3{font-size:16px;margin-bottom:8px}
+.native-overview .application-figure{height:125px}
+.native-overview .node,.native-overview .title-bridge,.native-overview .header-bridge{display:none}
+.native-overview .overview-title{font-size:34px;margin:24px 0}
+.native-overview .phase-grid{grid-template-columns:1fr}
+.native-overview .phase-banner{min-height:66px;font-size:19px;padding:16px 32px!important;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%)}
+.native-overview .phase-body{padding:22px 16px 28px}
+.native-overview .phase+.phase .phase-body{border-left:0}
+.native-overview .phase+.phase{border-top:1.5px dashed #9eafbf;padding-top:20px}
+.native-overview .phase-figures{height:128px;margin-bottom:18px}
+.native-overview .phase-keywords li{font-size:13px;padding:7px 10px}
+.native-overview.variant-2 .application:first-child,.native-overview.variant-2 .application:last-child{padding-top:0}
+.native-overview.variant-2 .gray-rail{margin-top:25px;height:30px;clip-path:polygon(0 65%,20% 0,80% 0,100% 65%,100% 100%,78% 35%,22% 35%,0 100%)}
+.native-overview.variant-5 .application:after{display:none}
+.native-overview.variant-3 .overview-title{margin-bottom:28px}
+}
+
+
+@media(min-width:521px){.native-overview .application-grid{column-gap:0}
+.native-overview .application{padding-left:15px;padding-right:15px}
+.native-overview .title-bridge,.native-overview .header-bridge{margin-left:12.5%;margin-right:12.5%}
+.native-overview .phase-banner{height:96px;flex:0 0 96px}
+.native-overview.variant-2 .gray-rail{margin-top:24px;height:80px;background:none;clip-path:none}
+.native-overview.variant-2 .gray-rail:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#e5edf3,#c1d2df);clip-path:polygon(0 84%,24% 0,76% 0,100% 84%,100% 100%,75% 20%,25% 20%,0 100%)}
+.native-overview.variant-2 .node{display:none}
+.native-overview.variant-2 .title-bridge{margin-top:0}
+.native-overview.variant-2 .branch{top:-70px}
+.native-overview.variant-2 .branch:first-child,.native-overview.variant-2 .branch:nth-child(4){top:-33px}
+.native-overview.variant-2 .angle-node{position:absolute;display:block;width:16px;height:16px;border:2px solid #fff;background:#2886ae;border-radius:4px;transform:translate(-50%,-50%);z-index:4;top:47px;left:12.5%}
+.native-overview.variant-2 .angle-node:nth-child(2){left:37.5%;top:8px}
+.native-overview.variant-2 .angle-node:nth-child(3){left:62.5%;top:8px}
+.native-overview.variant-2 .angle-node:nth-child(4){left:87.5%}
+}
+
+
+/* orbit-keyword-styles */
+/* Keywords surround the figures; all keywords use one shared font size. */
+.native-overview .phase-body{height:330px;min-height:330px;padding:0;display:block;position:relative}
+
+.native-overview .phase-figures{position:absolute;left:15%;top:126px;width:70%;height:94px;margin:0;gap:7px}
+
+.native-overview .phase-figures img{height:100%;width:40%;max-width:120px}
+
+.native-overview .phase:first-child .phase-figures img{width:54%;max-width:132px}
+
+.native-overview .phase-keywords{position:absolute;inset:0;display:block;margin:0;padding:0;list-style:none}
+
+.native-overview .phase-keywords li{position:absolute;max-width:46%;width:max-content;margin:0;padding:7px 10px;font-family:Arial,sans-serif;font-size:14px!important;font-weight:400;line-height:1.35;text-align:center;white-space:normal;overflow-wrap:normal;border-radius:6px}
+
+.native-overview .phase-keywords li:nth-child(1){top:28px;left:6%}
+
+.native-overview .phase-keywords li:nth-child(2){top:67px;right:5%}
+
+.native-overview .phase-keywords li:nth-child(3){bottom:65px;left:4%}
+
+.native-overview .phase-keywords li:nth-child(4){bottom:18px;right:7%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1){top:59px;left:6%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2){top:20px;right:5%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){bottom:30px;left:16%;max-width:78%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:60px;left:5%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:22px;right:5%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){bottom:70px;right:4%;left:auto}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){bottom:20px;left:6%;right:auto}
+
+@media(max-width:760px) and (min-width:521px){.native-overview .phase-body{height:360px;min-height:360px}
+.native-overview .phase-figures{top:135px;height:94px;left:10%;width:80%}
+.native-overview .phase-keywords li{max-width:80%}
+.native-overview .phase-keywords li:nth-child(1){top:18px}
+.native-overview .phase-keywords li:nth-child(2){top:70px}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:70px}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:18px}
+}
+
+
+/* compact-phase-styles */
+/* Compact, connected three-stage arrow, matching the PowerPoint reference. */
+.native-overview .phase-banner{height:66px;min-height:66px;flex:0 0 66px;padding:9px 30px 9px 18px!important;font-size:clamp(14px,1.45vw,21px);line-height:1.2;position:relative;overflow:visible;clip-path:none!important;background:none!important;isolation:isolate;color:#152f46}
+
+.native-overview .phase-banner:before{content:"";position:absolute;z-index:-1;inset:0 -26px 0 0;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 50%,calc(100% - 26px) 100%,0 100%);background:#dceaf7}
+
+.native-overview .phase:nth-child(1) .phase-banner{z-index:3}
+
+.native-overview .phase:nth-child(2) .phase-banner{z-index:2;padding-left:36px!important}
+
+.native-overview .phase:nth-child(3) .phase-banner{z-index:1;padding-left:36px!important;color:#102a40}
+
+.native-overview .phase:nth-child(2) .phase-banner:before{background:#a6caec}
+
+.native-overview .phase:nth-child(3) .phase-banner:before{background:#4e95cd;right:0}
+
+.native-overview .phase-body{height:250px;min-height:250px}
+
+.native-overview .phase-figures{top:76px;height:104px;left:14%;width:72%}
+
+.native-overview .phase-keywords li{padding:5px 8px;max-width:48%;font-size:14px!important;line-height:1.3!important}
+
+.native-overview .phase-keywords li:nth-child(1){top:13px;left:4%;bottom:auto}
+
+.native-overview .phase-keywords li:nth-child(2){top:39px;right:3%;bottom:auto}
+
+.native-overview .phase-keywords li:nth-child(3){top:auto;bottom:35px;left:3%}
+
+.native-overview .phase-keywords li:nth-child(4){top:auto;bottom:6px;right:4%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1){top:35px;left:4%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2){top:7px;right:3%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:auto;bottom:15px;left:15%;max-width:82%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:35px;left:3%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:7px;right:3%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){top:auto;bottom:35px;right:3%;left:auto}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){top:auto;bottom:6px;left:4%;right:auto}
+
+@media(min-width:521px) and (max-width:900px){.native-overview .phase-banner{height:84px;min-height:84px;flex-basis:84px;font-size:14px}
+.native-overview .phase-body{height:280px;min-height:280px}
+.native-overview .phase-figures{top:100px;height:90px;left:10%;width:80%}
+.native-overview .phase-keywords li{max-width:83%}
+.native-overview .phase-keywords li:nth-child(1){top:12px}
+.native-overview .phase-keywords li:nth-child(2){top:52px}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:52px}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:9px}
+}
+
+@media(max-width:520px){.native-overview .phase-banner{font-size:18px;padding-left:18px!important}
+.native-overview .phase-banner:before{right:0}
+.native-overview .phase:nth-child(2) .phase-banner,.native-overview .phase:nth-child(3) .phase-banner{padding-left:18px!important}
+.native-overview .phase-body{height:250px;min-height:250px}
+}
+
+
+/* center-keyword-styles */
+/* Bring the orbit inward around each illustration. */
+.native-overview .phase-keywords li{max-width:62%}
+
+.native-overview .phase-keywords li:nth-child(1){top:24px;left:15%}
+
+.native-overview .phase-keywords li:nth-child(2){top:43px;right:12%}
+
+.native-overview .phase-keywords li:nth-child(3){bottom:35px;left:14%}
+
+.native-overview .phase-keywords li:nth-child(4){bottom:3px;right:17%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1){top:41px;left:14%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2){top:18px;right:10%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){bottom:30px;left:50%;transform:translateX(-50%)}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:41px;left:11%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:18px;right:12%}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){bottom:35px;right:11%;left:auto}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){bottom:3px;left:17%;right:auto}
+
+@media(min-width:521px) and (max-width:900px){.native-overview .phase-keywords li{max-width:86%}
+.native-overview .phase-keywords li:nth-child(1){top:19px;left:9%}
+.native-overview .phase-keywords li:nth-child(2){top:59px;right:7%}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:59px;left:8%}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:19px;right:7%}
+}
+
+
+/* added-keyword-styles */
+/* Additional keywords share the same typography and compact orbit. */
+.native-overview .phase-body{height:275px;min-height:275px}
+
+.native-overview .phase-figures{top:110px;height:90px}
+
+.native-overview .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:40px;left:10%}
+
+.native-overview .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:74px;right:10%}
+
+.native-overview .phase-keywords li:nth-child(3),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){top:207px;bottom:auto}
+
+.native-overview .phase-keywords li:nth-child(4),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){top:240px;bottom:auto}
+
+.native-overview .phase-keywords li.added-keyword,.native-overview .phase:nth-child(2) .phase-keywords li.added-keyword{top:6px;bottom:auto;left:50%;right:auto;transform:translateX(-50%);max-width:90%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:214px;bottom:auto}
+
+@media(min-width:521px) and (max-width:900px){.native-overview .phase-body{height:310px;min-height:310px}
+.native-overview .phase-figures{top:135px}
+.native-overview .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:80px}
+.native-overview .phase-keywords li:nth-child(3),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){top:232px}
+.native-overview .phase-keywords li:nth-child(4),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){top:270px}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:238px}
+.native-overview .phase:nth-child(2) .phase-keywords li.added-keyword{top:6px}
+}
+
+
+/* balanced-orbit-styles */
+/* A shared, balanced orbit treats new and existing keywords equally. */
+.native-overview .phase-body{height:250px;min-height:250px}
+
+.native-overview .phase-figures{top:74px;height:100px;left:14%;width:72%}
+
+.native-overview .phase .phase-keywords li{top:auto;right:auto;bottom:auto;left:auto;transform:none;max-width:70%;font-size:14px!important;line-height:1.3!important}
+
+.native-overview .phase .phase-keywords li:nth-child(1){top:8px;left:8%}
+
+.native-overview .phase .phase-keywords li:nth-child(2){top:41px;right:8%}
+
+.native-overview .phase .phase-keywords li:nth-child(3){top:182px;left:8%}
+
+.native-overview .phase .phase-keywords li:nth-child(4){top:215px;left:50%;transform:translateX(-50%)}
+
+.native-overview .phase .phase-keywords li:nth-child(5){top:182px;right:8%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:182px;left:8%;transform:none}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(4){top:215px;right:8%;left:auto;transform:none}
+
+@media(min-width:521px) and (max-width:1100px){
+.native-overview .phase-body{height:278px;min-height:278px}
+
+.native-overview .phase-figures{top:80px;height:100px;left:10%;width:80%}
+
+.native-overview .phase .phase-keywords li{max-width:90%}
+
+.native-overview .phase .phase-keywords li:nth-child(1){top:8px;left:7%}
+
+.native-overview .phase .phase-keywords li:nth-child(2){top:43px;right:7%}
+
+.native-overview .phase .phase-keywords li:nth-child(3){top:187px;left:7%}
+
+.native-overview .phase .phase-keywords li:nth-child(4){top:246px;left:16%;transform:none}
+
+.native-overview .phase .phase-keywords li:nth-child(5){top:217px;right:7%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:187px;left:7%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(4){top:223px;left:auto;right:7%}
+
+}
+
+@media(max-width:520px){
+.native-overview .phase .phase-keywords li:nth-child(3){left:3%}
+
+.native-overview .phase .phase-keywords li:nth-child(5){right:3%}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){left:8%}
+
+}
+
+
+/* ppt-orbit-styles */
+.native-overview .phase-body{height:248px!important;min-height:248px!important}
+
+.native-overview .phase-figures{top:90px!important;height:100px!important;left:14%!important;width:72%!important}
+
+.native-overview .phase:first-child .phase-figures{left:34%!important;width:32%!important}
+
+.native-overview .phase:first-child .phase-figures img{width:100%!important}
+
+.native-overview .phase:nth-child(3) .phase-figures{left:6%!important;width:60%!important}
+
+.native-overview .phase .phase-keywords li{font-size:14px!important;line-height:1.3!important}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(1){top:18px!important;bottom:auto!important;left:auto!important;right:auto!important;left:8%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(2){top:52px!important;bottom:auto!important;left:auto!important;right:auto!important;right:4%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(3){top:114px!important;bottom:auto!important;left:auto!important;right:auto!important;left:1%!important;max-width:31%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(4){top:205px!important;bottom:auto!important;left:auto!important;right:auto!important;left:50%!important;max-width:65%!important;transform:translateX(-50%)!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(5){top:125px!important;bottom:auto!important;left:auto!important;right:auto!important;right:1%!important;max-width:31%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1){top:43px!important;bottom:auto!important;left:auto!important;right:auto!important;left:4%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2){top:10px!important;bottom:auto!important;left:auto!important;right:auto!important;right:4%!important;max-width:80%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:198px!important;bottom:auto!important;left:auto!important;right:auto!important;left:3%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(4){top:229px!important;bottom:auto!important;left:auto!important;right:auto!important;right:3%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:45px!important;bottom:auto!important;left:auto!important;right:auto!important;left:3%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:11px!important;bottom:auto!important;left:auto!important;right:auto!important;right:10%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){top:199px!important;bottom:auto!important;left:auto!important;right:auto!important;left:2%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){top:225px!important;bottom:auto!important;left:auto!important;right:auto!important;right:5%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(5){top:118px!important;bottom:auto!important;left:auto!important;right:auto!important;right:1%!important;max-width:31%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-body,.native-overview .phase:nth-child(3) .phase-body{height:263px!important;min-height:263px!important}
+
+@media(min-width:521px) and (max-width:900px){.native-overview .phase:first-child .phase-figures{top:104px!important;height:86px!important}
+}
+
+
+/* refine-orbit-soft-styles */
+.native-overview .phase:nth-child(n) .phase-body{height:242px!important;min-height:242px!important}
+
+.native-overview .phase:nth-child(n) .phase-figures{top:76px!important;height:90px!important}
+
+.native-overview .phase:first-child .phase-figures{left:37%!important;width:26%!important}
+
+.native-overview .phase:nth-child(3) .phase-figures{left:12%!important;width:52%!important}
+
+.native-overview .phase:nth-child(3) .phase-banner{color:#fff!important}
+
+.native-overview .application img{width:auto;height:auto;max-width:min(100%,240px);max-height:100%;--soft-x:10%;--soft-y:18%;-webkit-mask-image:linear-gradient(to right,transparent,#000 var(--soft-x),#000 calc(100% - var(--soft-x)),transparent),linear-gradient(to bottom,transparent,#000 var(--soft-y),#000 calc(100% - var(--soft-y)),transparent);mask-image:linear-gradient(to right,transparent,#000 var(--soft-x),#000 calc(100% - var(--soft-x)),transparent),linear-gradient(to bottom,transparent,#000 var(--soft-y),#000 calc(100% - var(--soft-y)),transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+
+.native-overview .application img[alt="Public health research"]{--soft-x:27%;--soft-y:27%}
+
+.native-overview .application img[alt="Network of collaborating agents"]{--soft-x:5.8%;--soft-y:9%}
+
+.native-overview .application img[alt="Tools for additional applications"]{--soft-x:9.6%;--soft-y:17%}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(1){top:17px!important;bottom:auto!important;left:auto!important;right:auto!important;left:15%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(2){top:42px!important;bottom:auto!important;left:auto!important;right:auto!important;right:11%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(3){top:100px!important;bottom:auto!important;left:auto!important;right:auto!important;left:5%!important;max-width:31%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(4){top:183px!important;bottom:auto!important;left:auto!important;right:auto!important;left:50%!important;max-width:65%!important;transform:translateX(-50%)!important;}
+
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(5){top:109px!important;bottom:auto!important;left:auto!important;right:auto!important;right:5%!important;max-width:31%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1){top:36px!important;bottom:auto!important;left:auto!important;right:auto!important;left:13%!important;max-width:65%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(2){top:7px!important;bottom:auto!important;left:auto!important;right:auto!important;right:10%!important;max-width:80%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){top:173px!important;bottom:auto!important;left:auto!important;right:auto!important;left:11%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(4){top:205px!important;bottom:auto!important;left:auto!important;right:auto!important;right:10%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:34px!important;bottom:auto!important;left:auto!important;right:auto!important;left:10%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(2){top:7px!important;bottom:auto!important;left:auto!important;right:auto!important;right:15%!important;max-width:75%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(3){top:173px!important;bottom:auto!important;left:auto!important;right:auto!important;left:11%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(4){top:205px!important;bottom:auto!important;left:auto!important;right:auto!important;right:12%!important;max-width:70%!important;transform:none!important;}
+
+.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(5){top:101px!important;bottom:auto!important;left:auto!important;right:auto!important;right:4%!important;max-width:31%!important;transform:none!important;}
+
+@media(min-width:521px) and (max-width:900px){.native-overview .phase:first-child .phase-figures{top:94px!important;height:72px!important}
+}
+ .native-overview .phase:nth-child(1) .phase-keywords li:nth-child(1){top:10px!important;max-width:90%!important}
+.native-overview .phase:nth-child(1) .phase-keywords li:nth-child(2){top:45px!important;max-width:90%!important}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(1),.native-overview .phase:nth-child(3) .phase-keywords li:nth-child(1){top:43px!important;max-width:90%!important}
+.native-overview .phase:nth-child(2) .phase-keywords li:nth-child(3){max-width:90%!important}
+
+
+/* overview-filter-styles */
+.native-overview .phase-keywords li,.native-overview .application{cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+
+.native-overview .phase-keywords li:hover,.native-overview .phase-keywords li.is-filter-active{background:#165f96;color:#fff;border-color:#165f96}
+
+.native-overview .application.is-filter-active h3{color:#086bb3;text-decoration:underline;text-underline-offset:6px}
+
+.native-overview .application:hover img,.native-overview .application.is-filter-active img{filter:saturate(1.15)}
+
+.native-overview [role="button"]:focus-visible{outline:2px solid #086bb3;outline-offset:4px}
+
+.native-overview .overview-filter-status{font-size:14px;color:#42617c;text-align:center;margin:12px 0 0;line-height:1.5}
+
+.native-overview .overview-filter-status button{border:0;background:none;color:#086bb3;text-decoration:underline;cursor:pointer;font:inherit;padding:0 5px}
+
+.overview-paper-empty{padding:24px 0;color:#42617c;font-size:16px}
+
+
+/* larger-overview-title */
+.native-overview .overview-title{font-size:clamp(38px,5.8vw,82px)!important;line-height:1.12!important;font-weight:800!important;letter-spacing:-.035em}
+@media(max-width:520px){.native-overview .overview-title{font-size:clamp(32px,9.5vw,48px)!important}
+}
+
+
+/* filter-navigation-styles */
+.overview-back-to-top{position:fixed;right:24px;bottom:24px;z-index:1000;border:1px solid #d4e3ef;border-radius:24px;padding:11px 18px;background:#073779;color:#fff;font:600 14px/1.3 Arial,sans-serif;box-shadow:0 4px 18px #17395a26;cursor:pointer}
+
+.overview-back-to-top:hover{background:#165f96}
+.overview-back-to-top:focus-visible{outline:3px solid #62b8ee;outline-offset:3px}
+.overview-back-to-top[hidden]{display:none!important}
+
+@media(max-width:520px){.overview-back-to-top{right:14px;bottom:max(16px,env(safe-area-inset-bottom));padding:10px 15px}
+}
+
+/* Contain full-width research bands within the theme's padded page shell. */
+.initial-content:has(.native-overview) { overflow-x: clip; }

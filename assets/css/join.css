@@ -271,3 +271,20 @@
 .join-sweeties-band {
   background: linear-gradient(180deg, #fff 0%, var(--jhu-pale) 100%);
 }
+
+/* Preserve the full pet photo across portrait and landscape images. */
+.join-sweeties-carousel { background: #edf3f8; }
+.join-sweeties-carousel .join-carousel-slide {
+  object-fit: contain;
+  object-position: center center;
+  box-sizing: border-box;
+  padding: 12px 16px 38px;
+}
+.join-sweeties-copy p:first-child {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.join-sweeties-carousel .join-carousel-dots button { background: #b6c6d5; }
+.join-sweeties-carousel .join-carousel-dots button.active { background: var(--jhu-blue); }

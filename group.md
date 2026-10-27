@@ -26,6 +26,11 @@ sidebar: false
           {% if pi.email %}<a href="mailto:{{ pi.email }}">Email</a>{% endif %}
         </div>
       </div>
+      {% if pi.office %}
+      <div class="pi-office" aria-label="Office location">
+        {% include office-address.html %}
+      </div>
+      {% endif %}
     </article>
 
     <div class="group-title-row group-title-row--left group-title-row--inside group-title-row--filterable">
@@ -44,23 +49,12 @@ sidebar: false
 
     <div class="member-card-grid">
       {% assign current_members = site.data.group.current | sort: "sort_name" %}
-      {% assign degree_order = "phd,visiting_phd,master,undergraduate,other" | split: "," %}
-      {% for degree in degree_order %}
-        {% for m in current_members %}
-          {% assign member_title = m.title | default: '' | downcase %}
-          {% assign member_degree = 'other' %}
-          {% assign member_level = 'graduate' %}
-          {% if member_title contains 'visiting phd' %}
-            {% assign member_degree = 'visiting_phd' %}
-          {% elsif member_title contains 'phd' %}
-            {% assign member_degree = 'phd' %}
-          {% elsif member_title contains 'master' %}
-            {% assign member_degree = 'master' %}
-          {% elsif member_title contains 'undergraduate' %}
-            {% assign member_degree = 'undergraduate' %}
-            {% assign member_level = 'undergraduate' %}
-          {% endif %}
-          {% if member_degree == degree %}
+      {% for m in current_members %}
+        {% assign member_title = m.title | default: '' | downcase %}
+        {% assign member_level = 'graduate' %}
+        {% if member_title contains 'undergraduate' %}
+          {% assign member_level = 'undergraduate' %}
+        {% endif %}
           <article class="profile-card profile-card--member" data-research-area="{{ m.research_area | default: 'all' }}" data-member-level="{{ member_level }}">
             <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}" class="profile-photo">
             <div class="profile-copy">
@@ -74,8 +68,6 @@ sidebar: false
               </div>
             </div>
           </article>
-          {% endif %}
-        {% endfor %}
       {% endfor %}
     </div>
   </div>
