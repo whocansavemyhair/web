@@ -42,8 +42,7 @@ sidebar: false
         <p>
           We welcome undergraduate and master's students who would like to explore
           research, as well as prospective PhD applicants interested in joining the lab.
-          Please feel free to contact Prof. Hao Frank Yang if your interests align with
-          our work.
+          Please feel free to contact Dr. Hao Frank Yang (<a href="mailto:haofrankyang@jhu.edu">haofrankyang@jhu.edu</a>) if your interests align with our work.
         </p>
       </div>
     </div>

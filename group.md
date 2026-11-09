@@ -42,7 +42,8 @@ sidebar: false
         <button type="button" data-area-filter="collaborative">Agentic AI and Collaborative Intelligence</button>
         <button type="button" data-area-filter="scaling">Scaling</button>
         <span class="group-filter-divider" aria-hidden="true"></span>
-        <button type="button" data-level-filter="graduate">Graduate</button>
+        <button type="button" data-level-filter="phd">PhD</button>
+        <button type="button" data-level-filter="master">Master</button>
         <button type="button" data-level-filter="undergraduate">Undergraduate</button>
       </div>
     </div>
@@ -51,9 +52,13 @@ sidebar: false
       {% assign current_members = site.data.group.current | sort: "sort_name" %}
       {% for m in current_members %}
         {% assign member_title = m.title | default: '' | downcase %}
-        {% assign member_level = 'graduate' %}
+        {% assign member_level = 'other' %}
         {% if member_title contains 'undergraduate' %}
           {% assign member_level = 'undergraduate' %}
+        {% elsif member_title contains 'phd' %}
+          {% assign member_level = 'phd' %}
+        {% elsif member_title contains 'master' %}
+          {% assign member_level = 'master' %}
         {% endif %}
           <article class="profile-card profile-card--member" data-research-area="{{ m.research_area | default: 'all' }}" data-member-level="{{ member_level }}">
             <img src="{{ m.photolink | relative_url }}" alt="{{ m.name }}" class="profile-photo">

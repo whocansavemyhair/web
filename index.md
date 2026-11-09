@@ -12,10 +12,7 @@ classes: wide
       <div class="hero-text">
         <h1>Welcome</h1>
         <p>
-          The Yang Research Group at Johns Hopkins University focuses on
-          <strong>computational systems and models</strong> in transportation,
-          public health, and optimization. Our research integrates data-driven
-          modeling with computational theory to advance intelligent system design.
+          At the Yang Research Group at Johns Hopkins University, we build AI copilots that help people make complex decisions. We combine scientific theory, domain knowledge, and physical constraints to help these systems reason through engineering problems, run simulations, and use tools. We study how copilots can learn from people’s choices and feedback, adapt to their goals and values, and help them judge when to trust a recommendation. We also design adaptive mixture-of-experts systems that match computing effort to the task to reduce response times, energy use, and deployment costs. Transportation and public health are our main application areas, where we test how these copilots can strengthen human judgment in practice.
         </p>
       </div>
       <div class="hero-image">
