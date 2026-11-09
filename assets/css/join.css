@@ -288,3 +288,50 @@
 }
 .join-sweeties-carousel .join-carousel-dots button { background: #b6c6d5; }
 .join-sweeties-carousel .join-carousel-dots button.active { background: var(--jhu-blue); }
+
+/* Our Memory: centered photo carousel with its introduction below. */
+.join-sweeties {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.join-memory-subtitle {
+  width: 100%;
+  max-width: 840px;
+  margin: 0;
+  color: var(--jhu-blue);
+  font-size: 1.5rem;
+  line-height: 1.3;
+  text-align: center;
+}
+.join-sweeties-carousel {
+  flex: none;
+  max-width: 840px;
+  height: 440px;
+}
+.join-sweeties-copy {
+  width: 100%;
+  max-width: 840px;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .join-sweeties-carousel { height: auto; aspect-ratio: 4 / 3; }
+}
+
+/* Photographs and their reflections form the second Our Memory subsection. */
+.memory-gallery { margin-top: 64px; padding-top: 36px; border-top: 1px solid #d7e2ec; }
+.memory-gallery .join-memory-subtitle { max-width: none; margin: 0 0 30px; }
+.memory-photo-wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 32px; }
+.memory-photo-wall .memory-photo-card { display: block; min-width: 0; margin: 0; }
+.memory-photo-link { display: block; border-radius: 6px; overflow: hidden; }
+.memory-photo-link:focus-visible { outline: 3px solid var(--jhu-spirit-blue); outline-offset: 4px; }
+.memory-photo-wall .memory-photo-card img { display: block; width: 100%; height: auto; margin: 0; }
+.memory-photo-wall .memory-photo-card figcaption { margin: 0; padding: 18px 2px 0; text-align: left; font-family: inherit; }
+.memory-photo-wall .memory-photo-card h4 { margin: 0 0 12px; color: var(--jhu-blue); font-size: 22px; line-height: 1.3; }
+.page__content .memory-photo-wall .memory-photo-card p { margin: 0; color: #394653; font-size: 16px; line-height: 1.75; }
+@media (max-width: 700px) {
+  .memory-photo-wall { grid-template-columns: 1fr; gap: 36px; }
+  .memory-gallery { margin-top: 44px; padding-top: 28px; }
+  .memory-photo-wall .memory-photo-card h4 { font-size: 20px; }
+}

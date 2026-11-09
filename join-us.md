@@ -50,12 +50,10 @@ sidebar: false
 
   <section class="join-sweeties-band">
     <div class="join-title-row join-content">
-      <h2>Our Pets</h2>
+      <h2>Our Memory</h2>
     </div>
     <div class="join-sweeties join-content">
-      <div class="join-sweeties-copy">
-        <p>Meet the pets of our lab members. You are welcome to bring your pets along to meet the team.</p>
-      </div>
+      <h3 class="join-memory-subtitle">Pets</h3>
 
       <div class="join-sweeties-carousel" data-join-carousel aria-label="Pets of our lab members">
         <div class="join-carousel-track">
@@ -81,7 +79,11 @@ sidebar: false
           <button type="button" aria-label="Show pet photo 9"></button>
         </div>
       </div>
+      <div class="join-sweeties-copy">
+        <p>Meet the pets of our lab members. You are welcome to bring your pets along to meet the team.</p>
+      </div>
     </div>
+    {% include memory-photo-wall.html %}
   </section>
 </div>
 

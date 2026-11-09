@@ -11,7 +11,7 @@ classes: wide
 <div class="research-hero-grid">
   <div class="research-wrapper research-wrapper--decision">
     <div class="research-title-row research-title-row--left">
-      <h2>AI for Decision Making</h2>
+      <h2>Civilized and Engineered AI Copilot</h2>
     </div>
     <div class="research-section">
       <div class="research-text">
@@ -24,10 +24,10 @@ classes: wide
           decision modeling, and trustworthy traffic safety assessment.
         </p>
       </div>
-      <div class="research-image research-carousel" data-research-carousel aria-label="AI for Decision Making images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Civilized and Engineered AI Copilot images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="AI for Decision Making figure 1">
-          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="AI for Decision Making figure 2">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/model-figs/Picture1.png' | relative_url }}?v=20260623-0015" alt="Civilized and Engineered AI Copilot figure 1">
+          <img class="research-carousel-slide" src="{{ '/assets/images/research/main/model-figs/Picture2.png' | relative_url }}?v=20260623-0015" alt="Civilized and Engineered AI Copilot figure 2">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>
@@ -39,12 +39,12 @@ classes: wide
 
   <div class="research-wrapper research-wrapper--collaborative alt">
     <div class="research-title-row research-title-row--right">
-      <h2>Agentic AI for Tool Use and Collaborative Intelligence</h2>
+      <h2>Copilot for Enhancing Decision and Collaboration</h2>
     </div>
     <div class="research-section">
-      <div class="research-image research-carousel" data-research-carousel aria-label="Agentic AI for Tool Use and Collaborative Intelligence images">
+      <div class="research-image research-carousel" data-research-carousel aria-label="Copilot for Enhancing Decision and Collaboration images">
         <div class="research-carousel-track">
-          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Agentic AI for Tool Use and Collaborative Intelligence benchmark overview">
+          <img class="research-carousel-slide active" src="{{ '/assets/images/research/main/collaborative-figs/benchmark_overview.png' | relative_url }}?v=20260627-001" alt="Copilot for Enhancing Decision and Collaboration benchmark overview">
         </div>
         <div class="research-carousel-dots" aria-label="Select image">
           <button class="active" type="button" aria-label="Show image 1"></button>

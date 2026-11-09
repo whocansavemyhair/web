@@ -1,0 +1,16 @@
+<section class="memory-gallery join-content" aria-labelledby="memory-gallery-title">
+  <h3 id="memory-gallery-title" class="join-memory-subtitle">Through the Lens</h3>
+  <div class="memory-photo-wall">
+    {% for memory in site.data.memories %}
+    <figure class="memory-photo-card">
+      <a class="memory-photo-link" href="{{ memory.image | relative_url }}" target="_blank" rel="noopener" aria-label="View full photograph: {{ memory.title | escape }}">
+        <img src="{{ memory.image | relative_url }}" alt="{{ memory.alt | escape }}" loading="lazy" decoding="async">
+      </a>
+      <figcaption>
+        <h4>{{ memory.title }}</h4>
+        <p>{{ memory.text }}</p>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
