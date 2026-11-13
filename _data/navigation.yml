@@ -3,6 +3,8 @@ main:
     url: /
   - title: "Research and Publications"
     url: /research/
+  - title: "Teaching"
+    url: /teaching/
   - title: "Group"
     url: /group/
   - title: "Join Us"

@@ -319,19 +319,83 @@
   .join-sweeties-carousel { height: auto; aspect-ratio: 4 / 3; }
 }
 
-/* Photographs and their reflections form the second Our Memory subsection. */
+/* A self-contained horizontal exhibition; the page keeps its vertical flow. */
 .memory-gallery { margin-top: 64px; padding-top: 36px; border-top: 1px solid #d7e2ec; }
 .memory-gallery .join-memory-subtitle { max-width: none; margin: 0 0 30px; }
-.memory-photo-wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 32px; }
-.memory-photo-wall .memory-photo-card { display: block; min-width: 0; margin: 0; }
-.memory-photo-link { display: block; border-radius: 6px; overflow: hidden; }
-.memory-photo-link:focus-visible { outline: 3px solid var(--jhu-spirit-blue); outline-offset: 4px; }
-.memory-photo-wall .memory-photo-card img { display: block; width: 100%; height: auto; margin: 0; }
-.memory-photo-wall .memory-photo-card figcaption { margin: 0; padding: 18px 2px 0; text-align: left; font-family: inherit; }
-.memory-photo-wall .memory-photo-card h4 { margin: 0 0 12px; color: var(--jhu-blue); font-size: 22px; line-height: 1.3; }
-.page__content .memory-photo-wall .memory-photo-card p { margin: 0; color: #394653; font-size: 16px; line-height: 1.75; }
+.memory-exhibit { display: grid; grid-template-columns: minmax(300px, 31%) minmax(0, 1fr); background: #111; color: #fff; }
+.memory-story { display: flex; flex-direction: column; padding: 36px 30px 26px; min-height: 560px; }
+.memory-eyebrow { color: #999; font-size: 10px; letter-spacing: .16em; line-height: 1.6; }
+.memory-captions { display: grid; margin: 32px 0 24px; }
+.memory-caption { grid-area: 1 / 1; align-self: start; }
+/* All captions reserve space; only the active one is visible or accessible. */
+.memory-caption[hidden] { display: block; visibility: hidden; pointer-events: none; }
+.page__content .memory-caption h4 { margin: 0 0 22px; color: #fff; font-size: clamp(24px, 2.3vw, 32px); font-weight: 500; line-height: 1.2; }
+.page__content .memory-caption p { margin: 0; color: #c9c9c9; font-size: 15px; line-height: 1.8; }
+.memory-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: auto; }
+.memory-count { color: #aaa; font-size: 12px; letter-spacing: .14em; font-variant-numeric: tabular-nums; }
+.memory-arrows { display: flex; gap: 10px; }
+.memory-arrows button { width: 42px; height: 42px; padding: 0; border: 1px solid #555; border-radius: 50%; background: transparent; color: #fff; font-size: 23px; cursor: pointer; }
+.memory-arrows button:hover:not(:disabled) { background: #fff; color: #111; }
+.memory-arrows button:disabled { opacity: .25; cursor: default; }
+.memory-track { position: relative; display: flex; align-items: stretch; gap: 16px; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #777 #191919; background: #191919; }
+.memory-track::after { content: ''; flex: 0 0 calc(6% - 16px); }
+.memory-track .memory-slide { display: flex; flex: 0 0 94%; min-width: 0; margin: 0; scroll-snap-align: start; }
+.memory-slide a { display: flex; align-items: center; width: 100%; }
+.memory-track .memory-slide img { display: block; width: 100%; height: 100%; max-height: 650px; object-fit: contain; margin: 0; }
+.memory-exhibit :focus-visible { outline: 2px solid #8ccaff; outline-offset: -3px; }
 @media (max-width: 700px) {
-  .memory-photo-wall { grid-template-columns: 1fr; gap: 36px; }
   .memory-gallery { margin-top: 44px; padding-top: 28px; }
-  .memory-photo-wall .memory-photo-card h4 { font-size: 20px; }
+  .memory-exhibit { grid-template-columns: 1fr; }
+  .memory-story { min-height: 390px; padding: 26px 24px 22px; }
+  .memory-captions { margin: 20px 0; }
+  .page__content .memory-caption h4 { font-size: 26px; margin-bottom: 14px; }
+  .page__content .memory-caption p { font-size: 14px; line-height: 1.7; }
+  .memory-track { height: auto; aspect-ratio: 1.5; }
+}
+
+/* Pets use the same gallery structure with a white exhibition panel. */
+.pet-gallery .join-memory-subtitle { max-width: none; margin: 0 0 30px; }
+.memory-exhibit--light { background: #fff; color: #222; }
+.memory-exhibit--light .memory-story { justify-content: center; }
+.memory-exhibit--light .memory-captions { margin-top: auto; }
+.page__content .memory-exhibit--light .memory-caption p { color: #444; }
+.memory-exhibit--light .memory-count { color: #666; }
+.memory-exhibit--light .memory-arrows button { border-color: #ccc; color: #222; }
+.memory-exhibit--light .memory-arrows button:hover { background: #222; color: #fff; }
+.memory-exhibit--light .memory-track { background: #fff; }
+.memory-exhibit--light .memory-slide img { max-height: 560px; }
+/* Hide a finite scrollbar: both ends of the repeated strip loop seamlessly. */
+[data-memory-carousel] .memory-track { scrollbar-width: none; }
+[data-memory-carousel] .memory-track::-webkit-scrollbar { display: none; }
+@media (max-width: 700px) {
+  .memory-exhibit--light .memory-story { min-height: 230px; }
+}
+
+/* Life and interests: a compact, looping strip of two or three photos. */
+.life-interests { margin-top: 64px; padding-top: 36px; border-top: 1px solid #d7e2ec; }
+.life-interests .join-memory-subtitle { max-width: none; margin: 0 0 32px; }
+.life-slider { max-width: 1200px; margin: 0 auto; }
+.life-slider .memory-track { background: transparent; gap: 20px; height: 320px; }
+.life-slider .memory-track::after { display: none; }
+.life-slider .memory-track .memory-slide { flex-basis: calc((100% - 40px) / 3); height: 100%; }
+.life-slider .memory-slide a { justify-content: center; height: 100%; }
+.life-slider .memory-track .memory-slide img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.life-slider .memory-captions { margin: 20px auto; max-width: 720px; text-align: center; }
+.page__content .life-slider .memory-caption h4 { margin: 0 0 10px; color: var(--jhu-blue); font-size: 22px; }
+.page__content .life-slider .memory-caption p { margin: 0; color: #394653; font-size: 16px; line-height: 1.7; }
+.life-slider .memory-controls { justify-content: center; gap: 24px; margin-top: 20px; }
+.life-slider .memory-count { color: #526577; }
+.life-slider .memory-controls button { width: 42px; height: 42px; padding: 0; border: 1px solid #b8c8d6; border-radius: 50%; background: transparent; color: var(--jhu-blue); font-size: 23px; cursor: pointer; }
+.life-slider .memory-controls button:hover { background: #e1edf7; }
+.life-slider :focus-visible { outline: 2px solid var(--jhu-blue); outline-offset: -2px; }
+@media (max-width: 700px) {
+  .life-interests { margin-top: 44px; padding-top: 28px; }
+  .life-slider .memory-track { height: 240px; aspect-ratio: auto; gap: 12px; }
+}
+
+@media (max-width: 1000px) {
+  .life-slider .memory-track .memory-slide { flex-basis: calc((100% - 20px) / 2); }
+}
+@media (max-width: 700px) {
+  .life-slider .memory-track .memory-slide { flex-basis: calc((100% - 12px) / 2); }
 }

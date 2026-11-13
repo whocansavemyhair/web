@@ -1,16 +1,35 @@
-<section class="memory-gallery join-content" aria-labelledby="memory-gallery-title">
-  <h3 id="memory-gallery-title" class="join-memory-subtitle">Through the Lens</h3>
-  <div class="memory-photo-wall">
-    {% for memory in site.data.memories %}
-    <figure class="memory-photo-card">
-      <a class="memory-photo-link" href="{{ memory.image | relative_url }}" target="_blank" rel="noopener" aria-label="View full photograph: {{ memory.title | escape }}">
-        <img src="{{ memory.image | relative_url }}" alt="{{ memory.alt | escape }}" loading="lazy" decoding="async">
-      </a>
-      <figcaption>
-        <h4>{{ memory.title }}</h4>
-        <p>{{ memory.text }}</p>
-      </figcaption>
-    </figure>
-    {% endfor %}
+{% assign gallery_items = include.items | default: site.data.memories %}
+{% assign gallery_id = include.id | default: 'memory-gallery' %}
+{% assign gallery_title = include.title | default: 'Through the Lens' %}
+<section id="{{ gallery_id }}" class="memory-gallery join-content" aria-labelledby="{{ gallery_id }}-title">
+  <h3 id="{{ gallery_id }}-title" class="join-memory-subtitle">{{ gallery_title }}</h3>
+  <div class="memory-exhibit" data-memory-carousel aria-roledescription="carousel" aria-label="{{ gallery_title | escape }}">
+    <div class="memory-story">
+      <span class="memory-eyebrow">{{ include.eyebrow | default: 'FIELD NOTES / PHOTOGRAPHS' }}</span>
+      <div class="memory-captions" aria-live="polite" aria-atomic="true">
+        {% for memory in gallery_items %}
+        <div class="memory-caption" {% unless forloop.first %}hidden{% endunless %}>
+          <h4>{{ memory.title }}</h4>
+          <p>{{ memory.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="memory-controls">
+        <span class="memory-count">01 / {% if gallery_items.size < 10 %}0{% endif %}{{ gallery_items.size }}</span>
+        <div class="memory-arrows">
+          <button type="button" class="memory-prev" aria-label="Previous photograph">&larr;</button>
+          <button type="button" class="memory-next" aria-label="Next photograph">&rarr;</button>
+        </div>
+      </div>
+    </div>
+    <div class="memory-track" tabindex="0" aria-label="Photo gallery. Swipe horizontally or use the arrow keys.">
+      {% for memory in gallery_items %}
+      <figure class="memory-slide" aria-label="{{ forloop.index }} of {{ gallery_items.size }}: {{ memory.title | escape }}">
+        <a href="{{ memory.image | relative_url }}" target="_blank" rel="noopener" aria-label="View full photograph: {{ memory.title | escape }}">
+          <img src="{{ memory.image | relative_url }}" alt="{{ memory.alt | escape }}" loading="lazy" decoding="async">
+        </a>
+      </figure>
+      {% endfor %}
+    </div>
   </div>
 </section>

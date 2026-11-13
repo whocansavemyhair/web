@@ -110,3 +110,30 @@
   image: /assets/images/research/publication/s43588-025-00798-6.jpg
   pdf: /assets/publications/10623880.pdf
   doi: https://doi.org/10.1038/s43588-025-00798-6
+
+- title: 'LLM agents can partially mimic human driving behaviors and decision values but better align with aggressive profiles'
+  authors: Pu Wang, Guanlin Wu, Yang Zhao, Yichen Lin, Hao Frank Yang
+  venue: 'Transportation Research Part C: Emerging Technologies, Volume 186, Article 105606'
+  year: 2026
+  type: journal
+  keywords:
+    - Personalized Modeling
+    - Human Priors
+    - Interpretable Reasoning
+    - Transportation
+  image: /assets/images/research/publication/llm-human-driving-behaviors.png
+  pdf: /assets/publications/llm-human-driving-behaviors.pdf
+  doi: https://doi.org/10.1016/j.trc.2026.105606
+
+- title: 'Canvas Beyond Words: Teaching Machines to Sketch Empowers Their Spatial Intelligence'
+  authors: Guanlin Wu, Boyan Su, Yang Zhao, Pu Wang, Yichen Lin, Hao Frank Yang
+  venue: 'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), Early Access'
+  year: 2026
+  type: journal
+  keywords:
+    - Grounded Reasoning
+    - Human Priors
+    - Transportation
+  image: /assets/images/research/publication/canvas-beyond-words.png
+  pdf: /assets/publications/canvas-beyond-words.pdf
+  doi: https://doi.org/10.1109/TPAMI.2026.3737728
